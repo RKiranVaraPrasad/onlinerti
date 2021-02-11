@@ -1,0 +1,48 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatAccordion} from '@angular/material/expansion';
+
+
+@Component({
+  selector: 'app-content-wrapper',
+  templateUrl: './content-wrapper.component.html',
+  styleUrls: ['./content-wrapper.component.scss']
+})
+export class ContentWrapperComponent implements OnInit {
+  @ViewChild(MatAccordion) accordion: MatAccordion;
+  loginForm: FormGroup;
+  constructor(
+    private fb: FormBuilder
+  ) {
+    this.loginForm = this.fb.group({
+      email: new FormControl('', [Validators.required, Validators.email])
+      // password = new FormControl('', [Validators.required]);
+    })
+  }
+  onLogin(){
+
+  }
+  ngOnInit(): void {
+  }
+
+  // home page slider 
+  bannerSlidesArray = [
+    {image: 'assets/images/home-banner.jpg', text: ''}
+  ];
+
+  // testimonial
+  testimonialsArray = [
+    {image: 'assets/images/testimonial-profile-pic.png', text: 'At Online RTI, our lawyers are experts at processing RTIs, so you don’t have to worry about it. Simply click on your problem below, submit your application, and consider your case at the top of the government’s queue.'}
+  ];
+
+  // services
+  servicesArray = [
+    {image: 'assets/icons/service-01.png', title: 'Passport Delay'},
+    {image: 'assets/icons/service-02.png', title: 'Income Tax Refund'},
+    {image: 'assets/icons/service-03.png', title: 'Answer Sheet Copies'},
+    {image: 'assets/icons/service-04.png', title: 'MP/ MLA Funds'},
+    {image: 'assets/icons/service-05.png', title: 'Property Documents'},
+    {image: 'assets/icons/service-06.png', title: 'Market sheet verification'},
+  ]
+
+}

@@ -1,1 +1,114 @@
-/* You can add global styles to this file, and also import other style files */
+// @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
+// body{
+//     font-family: 'Lato', sans-serif;
+// }
+html, body { height: 100%; }
+body { background-color: #293a4a; margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.carousel-control {
+    display: none;
+}
+h3 {
+    font-size: 18px;
+}
+ul,li{
+    list-style: none;
+    padding-left: 0;
+}
+section{
+    h2{
+        font-size: 22px;
+        padding-bottom: 20px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        color: #095cf2;
+    }
+}
+.service-opt{
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    .service-icon{
+        background: url(assets/icons/services-bg.png) left top no-repeat;
+        width: 140px;
+        height: 146px;
+        position: relative;
+        margin: 0 auto;
+        -webkit-transition: all .2s ease-in-out;
+        -moz-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+        img{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        &:hover{
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+    }
+    .service-text{
+        color: white;
+        font-size: 20px;
+        margin-top: 10px;
+        font-weight: 500;
+    }
+}
+.btn{
+    &.btn-primary{
+        &.arrow{
+            background-image: url(assets/icons/arrow-right.png);
+            background-repeat: no-repeat;
+            background-position: calc(100% - 10px) center;
+            background-size: 22px auto;
+            padding-right: 42px;
+        }
+    }
+}
+.form-control{
+    border: 0 none;
+}
+.font-white{
+    color: white;
+}
+.mat-form-field-appearance-legacy{
+    .mat-form-field-underline{
+        background-color: white
+    }
+    .mat-form-field-label{
+        color: white;
+    }
+}
+.mat-flat-button{
+    &.mat-primary{
+        background-color: #007bff;
+        &.arrow{
+            background-image: url(assets/icons/arrow-right.png);
+            background-repeat: no-repeat;
+            background-position: calc(100% - 10px) center;
+            background-size: 22px auto;
+            padding-right: 42px;
+        }
+    }
+}
+.mat-form-field{
+    &.mat-focused{
+        .mat-form-field-label{
+            color: white;
+        }
+    }
+}
+.mat-content{
+    color: #fff46d;
+    flex-direction: row-reverse;
+  }
+.example-action-buttons{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: yellow;
+}

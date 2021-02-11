@@ -1,0 +1,195 @@
+h2{
+    font-size: 24px;
+}
+.testimonials {
+    background-color: white;
+    .pic{
+        border-radius: 100%;
+        overflow: hidden;
+        border: 2px solid #095cf2;
+        height: 152px;
+        width: 152px;
+        img{
+            position: relative;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    .message{
+        padding-left: 35px;
+        padding-top: 8px;
+        position: relative;
+        &::before{
+            content: '';
+            background: url(../../../../assets/icons/testimonial.png) left top no-repeat;
+            background-size: 26px;
+            width: 26px;
+            height: 28px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform: rotate(180deg);
+        }
+    }
+    .name{
+        color: #095cf2;
+    }
+}
+.what-is-online{
+    background-color: white;
+    .what-is-online-icon{
+        position: relative;
+        background-color: #007bff;
+        border-radius: 100%;
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 15px;
+        img{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+.services{
+    .services-wrapper{
+        background: url(../../../../assets/images/service-bg.png) center top no-repeat;
+        min-height: 520px;
+        background-size: cover;
+        position: relative;
+    }
+    .section-title{
+        background-color: white;
+        h2{
+            display: inline-block;
+            background: #007bff;
+            padding: 10px 30px;
+            color: white;
+        }
+    }
+    .service-btn{
+        background-color: white;
+        padding-left: 30px;
+        padding-right: 30px;
+        .mat-flat-button{
+            font-size: 24px;
+            font-weight: 500;
+            padding: 10px 30px;
+            white-space: inherit;
+        }
+    }
+}
+
+.banner-slider{
+    position: relative;
+    .slider-content{
+        position: absolute;
+        z-index: 99;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        .slider-text{
+            font-size: 34px;
+            line-height: 42px;
+            font-weight: 500;
+            color: #294358;
+            span{
+                font-weight: 300;
+                font-size: 26px;
+            }
+        }
+        
+    }
+}
+.card{
+    background: #095cf2;
+    background: -moz-linear-gradient(left,  #095cf2 0%, #6199fe 100%);
+    background: -webkit-linear-gradient(left,  #095cf2 0%,#6199fe 100%);
+    background: linear-gradient(to right,  #095cf2 0%,#6199fe 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#095cf2', endColorstr='#6199fe',GradientType=1 );
+    border: 0 none;
+    .card-title{
+        color: white;
+    }
+    .form-control{
+        font-size: 14px;
+    }
+    form{
+        .form-text{ color: white;}
+        .btn-primary{
+            background-color: #294358;
+        }
+        a{
+            color: white;
+            font-size: 80%;
+        }
+    }
+    .mat-flat-button{
+        &.mat-primary{
+            background-color: #294358;
+            span{
+                font-weight: 300;
+            }
+        }
+    }
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  .mat-expansion-panel:not(.mat-expanded) {
+    .mat-expansion-panel-header:hover:not([aria-disabled=true]) {
+        background: transparent;
+    }
+  }
+  .mat-expansion-panel{
+      background-color: transparent;
+      box-shadow: none;
+  }
+ 
+//   @media (max-width: 768px) {
+//     .carousel-inner{
+//         .item{
+//             img{
+//                 height: 100%;
+//                 position: relative;
+//                 left: 50%;
+//                 width: auto;
+//                 transform: translateX(-70%);
+//             }
+//         }
+//     }
+//    }
+  @media (max-width: 576px) { 
+    .banner-slider {
+        .slider-content{
+            position: static;
+            top: inherit;
+            transform: translateY(0%);
+            background-image: url(../../../../assets/images/home-banner.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: bottom right;
+        }
+        .card{
+            background: linear-gradient(to right, rgb(9 92 242 / 89%) 0%, rgb(97 153 254 / 88%) 100%);
+        }
+    }
+    .services{
+        .service-btn{
+            .mat-flat-button{
+                font-size: 22px;
+                line-height: 26px;
+            }
+        }
+    }
+     
+   }
