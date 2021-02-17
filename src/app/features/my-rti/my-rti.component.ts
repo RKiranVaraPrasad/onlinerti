@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-my-rti',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyRtiComponent implements OnInit {
 
-  constructor() { }
+  trackApplicationForm: FormGroup;
+
+  constructor(
+    private fb: FormBuilder
+  ) { 
+    this.trackApplicationForm = this.fb.group({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      applicationId: new FormControl('', [Validators.required])
+    })
+  }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(){
+
   }
 
 }

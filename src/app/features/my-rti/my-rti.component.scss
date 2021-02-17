@@ -1,0 +1,49 @@
+.card{
+    background: #FFF;
+    border: 0 none;
+    .card-title{
+        color: white;
+    }
+    .form-control{
+        font-size: 14px;
+    }
+    form{
+        .form-text{ color: white;}
+        .btn-primary{
+            background-color: #294358;
+        }
+        a{
+            color: white;
+            font-size: 80%;
+        }
+    }
+    .mat-flat-button{
+        &.mat-primary{
+            background-color: #294358;
+            span{
+                font-weight: 300;
+            }
+        }
+    }
+}
+.banner-slider{
+    position: relative;
+    .slider-content{
+        position: absolute;
+        z-index: 99;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        .slider-text{
+            font-size: 34px;
+            line-height: 42px;
+            font-weight: 500;
+            color: #FFF;
+            span{
+                font-weight: 300;
+                font-size: 26px;
+            }
+        }
+        
+    }
+}
