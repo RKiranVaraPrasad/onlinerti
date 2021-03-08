@@ -1,5 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { FeaturesRoutingModule } from './features-routing.module';
+import { HomeComponent } from './home/home.component';
+import { MyRtiComponent } from './my-rti/my-rti.component';
+import { PricingComponent } from './pricing/pricing.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CarouselModule } from 'ngx-bootstrap/carousel';
@@ -9,16 +15,16 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 
-import { HomeRoutingModule } from './home-routing.module';
-import { HomeComponent } from './home.component';
-
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    MyRtiComponent,
+    PricingComponent
   ],
   imports: [
     CommonModule,
+    FeaturesRoutingModule,
     CarouselModule.forRoot(),
     MatFormFieldModule,
     MatInputModule,
@@ -26,8 +32,12 @@ import { HomeComponent } from './home.component';
     MatCardModule,
     MatExpansionModule,
     FormsModule,
-    ReactiveFormsModule,
-    HomeRoutingModule
+    ReactiveFormsModule
+  ],
+  exports: [
+    HomeComponent,
+    MyRtiComponent,
+    PricingComponent
   ]
 })
-export class HomeModule { }
+export class FeaturesModule { }

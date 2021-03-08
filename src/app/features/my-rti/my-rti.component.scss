@@ -28,6 +28,10 @@
 }
 .banner-slider{
     position: relative;
+    &.static-image{
+        background: url(../../../assets/images/my-rti.jpg) center no-repeat;
+        min-height: 360px;
+    }
     .slider-content{
         position: absolute;
         z-index: 99;

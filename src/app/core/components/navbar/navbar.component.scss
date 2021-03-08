@@ -1,3 +1,6 @@
+header{
+    background-color: white;
+}
 .login-signup{
     background-color: white;
     padding: .5rem 1rem;
@@ -22,7 +25,6 @@
             background: #095cf2;
             color: white;
             position: relative;
-            cursor: pointer;
             &::after{
                 width: 0px;
                 height: 0px;
@@ -41,6 +43,7 @@
         text-align: center;
         padding-right: .8rem;
         padding-left: .8rem;
+        cursor: pointer;
         &:hover{
             background: #095cf2;
             color: white;

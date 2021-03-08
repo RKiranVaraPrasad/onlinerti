@@ -13,8 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeModule } from './features/home/home.module';
-import { MyRtiModule } from './features/my-rti/my-rti.module';
+import { FeaturesModule } from './features/features.module';
 
 @NgModule({
   declarations: [
@@ -23,8 +22,7 @@ import { MyRtiModule } from './features/my-rti/my-rti.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HomeModule,
-    MyRtiModule,
+    FeaturesModule,
     CoreModule,
     AppRoutingModule,
     CarouselModule.forRoot(),
