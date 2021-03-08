@@ -24,7 +24,6 @@ import {MatExpansionModule} from '@angular/material/expansion';
   ],
   imports: [
     CommonModule,
-    FeaturesRoutingModule,
     CarouselModule.forRoot(),
     MatFormFieldModule,
     MatInputModule,
@@ -32,7 +31,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatCardModule,
     MatExpansionModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FeaturesRoutingModule,
   ],
   exports: [
     HomeComponent,
