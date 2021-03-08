@@ -9,7 +9,8 @@ body {
 }
 
 body {
-    background-color: #293a4a;
+    // background-color: #293a4a;
+    background-color: white;
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
@@ -17,7 +18,11 @@ body {
 .carousel-control {
     display: none;
 }
-
+.page-title{
+    font-size: 32px;
+    color: #3d66b0;
+    font-weight: 500;
+}
 h3 {
     font-size: 18px;
 }
@@ -141,14 +146,16 @@ section {
         }
     }
 }
-
-.mat-form-field {
-    &.mat-focused {
-        .mat-form-field-label {
-            color: white;
+.banner-login-form{
+    .mat-form-field {
+        &.mat-focused {
+            .mat-form-field-label {
+                color: white;
+            }
         }
     }
 }
+
 
 .mat-content {
     color: #fff46d;

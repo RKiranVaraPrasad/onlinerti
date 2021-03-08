@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatAccordion} from '@angular/material/expansion';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,9 @@ export class HomeComponent implements OnInit {
   @ViewChild(MatAccordion) accordion: MatAccordion;
   loginForm: FormGroup;
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute
   ) { 
     this.loginForm = this.fb.group({
       email: new FormControl('', [Validators.required, Validators.email])
@@ -23,6 +26,11 @@ export class HomeComponent implements OnInit {
   }
   onLogin(){
 
+  }
+
+  // apply now
+  apply(){
+    this.router.navigate(['/apply'], {relativeTo: this.route})
   }
   // home page slider 
   bannerSlidesArray = [

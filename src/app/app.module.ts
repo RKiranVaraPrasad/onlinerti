@@ -7,6 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
+import {MatIconModule} from '@angular/material/icon';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +19,9 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { ContentWrapperComponent } from './core/components/content-wrapper/content-wrapper.component';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
+import { ApplyComponent } from './shared/apply/apply.component';
+import { MatSelectModule} from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +29,8 @@ import { PageNotFoundComponent } from './core/components/page-not-found/page-not
     NavbarComponent,
     FooterComponent,
     ContentWrapperComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ApplyComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +43,8 @@ import { PageNotFoundComponent } from './core/components/page-not-found/page-not
     MatButtonModule,
     MatCardModule,
     MatExpansionModule,
+    MatIconModule,
+    MatSelectModule,
     FormsModule,
     ReactiveFormsModule
   ],
