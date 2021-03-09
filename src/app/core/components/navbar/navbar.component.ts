@@ -9,6 +9,13 @@ export class NavbarComponent implements OnInit {
 
   constructor() { }
 
+  ToggleNavBar() {
+    let element: HTMLElement = document.getElementsByClassName('navbar-toggler')[0] as HTMLElement;
+    if (element.getAttribute('aria-expanded') == 'true') {
+      element.click();
+    }
+  }
+
   ngOnInit(): void {
   }
 
