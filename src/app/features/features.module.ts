@@ -15,6 +15,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
+import { TeamComponent } from './team/team.component';
+
 
 
 
@@ -22,7 +24,8 @@ import {MatIconModule} from '@angular/material/icon';
   declarations: [
     HomeComponent,
     MyRtiComponent,
-    PricingComponent
+    PricingComponent,
+    TeamComponent
   ],
   imports: [
     CommonModule,

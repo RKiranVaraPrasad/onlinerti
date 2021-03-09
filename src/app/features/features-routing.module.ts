@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { MyRtiComponent } from './my-rti/my-rti.component';
 import { PricingComponent } from './pricing/pricing.component';
+import { TeamComponent } from './team/team.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'my-rti', component: MyRtiComponent},
   { path: 'pricing', component: PricingComponent},
+  { path: 'team', component: TeamComponent},
 ];
 
 @NgModule({
