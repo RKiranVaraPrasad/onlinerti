@@ -36,3 +36,16 @@
         }
     }
 }
+.personal-details, .service-type-details{
+  h4{
+    font-size: 18px;
+  }
+  .field-group{
+    .field-name{
+      font-weight: 500;
+    }
+    .field-desc{
+      margin-bottom: 10px;
+    }
+  }
+}

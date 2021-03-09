@@ -71,60 +71,68 @@
                                         <span>Passport Delay</span>
                                     </div>
                                 </div> -->
-                                <form class="example-container" [formGroup]="options" [style.fontSize.px]="getFontSize()">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <mat-form-field appearance="fill" [color]="selectControl.value">
-                                                <mat-label>Service</mat-label>
-                                                <mat-select [formControl]="selectControl">
-                                                  <mat-option value="passport-delay">Passport Delay</mat-option>
-                                                  <mat-option value="it-returnd">Income Tax Refund</mat-option>
-                                                  <mat-option value="marksheet-verification">Marksheet Verification</mat-option>
-                                                </mat-select>
-                                              </mat-form-field>
-                                            <div class="selected-service-form">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <mat-form-field class="example-full-width">
-                                                            <input type="text" matInput placeholder="Pancard Number">
-                                                        </mat-form-field>
-                                                        <mat-form-field class="example-full-width">
-                                                            <input type="text" matInput placeholder="Financial Year">
-                                                        </mat-form-field>
-                                                        <mat-form-field class="example-full-width">
-                                                            <input type="text" matInput placeholder="Ward/Circle Number">
-                                                        </mat-form-field>
-                                                        <mat-form-field class="example-full-width">
-                                                            <input type="text" matInput placeholder="Refund Amount">
-                                                        </mat-form-field>
-                                                        <mat-form-field class="example-full-width">
-                                                            <input type="text" matInput placeholder="Name of the District of IT Office">
-                                                        </mat-form-field>
-                                                        <mat-form-field class="example-full-width">
-                                                            <input type="text" matInput placeholder="Date of application">
-                                                        </mat-form-field>
-                                                        <mat-form-field class="example-full-width">
-                                                            <input type="text" matInput placeholder="More Information (optional)">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
+                                <form class="example-container" [formGroup]="options"
+                                    [style.fontSize.px]="getFontSize()">
+                                    <div class="choose-service">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <mat-form-field  class="example-full-width" appearance="fill" [color]="selectControl.value">
+                                                    <mat-label>Service</mat-label>
+                                                    <mat-select [formControl]="selectControl">
+                                                        <mat-option value="passport-delay">Passport Delay</mat-option>
+                                                        <mat-option value="it-returnd">Income Tax Refund</mat-option>
+                                                        <mat-option value="marksheet-verification">Marksheet
+                                                            Verification
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                  
-                                    <!-- <mat-form-field appearance="fill" [color]="colorControl.value">
-                                      <mat-label>Font size</mat-label>
-                                      <input matInput type="number" placeholder="Ex. 12" [formControl]="fontSizeControl" min="10">
-                                      <span matSuffix>px</span>
-                                      <mat-error *ngIf="fontSizeControl.invalid">Min size: 10px</mat-error>
-                                    </mat-form-field> -->
-                                  </form>
-                                  
+                                    <div class="selected-service-form">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <mat-form-field class="example-full-width">
+                                                    <input type="text" matInput placeholder="Pancard Number">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-3">
+                                                <mat-form-field class="example-full-width">
+                                                    <input type="text" matInput placeholder="Financial Year">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-3">
+                                                <mat-form-field class="example-full-width">
+                                                    <input type="text" matInput placeholder="Ward/Circle Number">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-3">
+                                                <mat-form-field class="example-full-width">
+                                                    <input type="text" matInput placeholder="Refund Amount">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-3">
+                                                <mat-form-field class="example-full-width">
+                                                    <input type="text" matInput
+                                                        placeholder="Name of the District of IT Office">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-3">
+                                                <mat-form-field class="example-full-width">
+                                                    <input type="text" matInput placeholder="Date of application">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-6">
+                                                <mat-form-field class="example-full-width">
+                                                    <mat-label>More Information (optional)</mat-label>
+                                                    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+                                                  </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-
-
                         <mat-action-row>
                             <button mat-button color="primary" (click)="nextStep()">Next</button>
                         </mat-action-row>
@@ -141,16 +149,48 @@
                                 <mat-icon>account_circle</mat-icon>
                             </mat-panel-description>
                         </mat-expansion-panel-header>
+                        <div class="row">
+                            <div class="col-3">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Full name</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-3">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Last name</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-3">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Mobile</mat-label>
+                                    <input matInput type="tel">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-3">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput type="email">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-3">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Address</mat-label>
+                                    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+                                  </mat-form-field>
+                            </div>
+                            <div class="col-3">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Pincode</mat-label>
+                                    <input matInput type="tel">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-3"></div>
+                        </div>
+                        
 
-                        <mat-form-field>
-                            <mat-label>First name</mat-label>
-                            <input matInput>
-                        </mat-form-field>
-
-                        <mat-form-field>
-                            <mat-label>Age</mat-label>
-                            <input matInput type="number" min="1">
-                        </mat-form-field>
+                        
 
                         <mat-action-row>
                             <button mat-button color="warn" (click)="prevStep()">Previous</button>
@@ -161,15 +201,70 @@
                     <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                Day of the trip
+                                Summary and Payment
                             </mat-panel-title>
                             <mat-panel-description>
-                                Inform the date you wish to travel
+                                Review and proceed to payment
                                 <mat-icon>date_range</mat-icon>
                             </mat-panel-description>
                         </mat-expansion-panel-header>
 
-
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="service-type-details">
+                                    <h4>My passport application details: </h4>
+                                    <div class="field-group">
+                                        <div class="field-name">Name of the Applicant</div>
+                                        <div class="field-desc">Raja Sekhar</div>
+                                    </div>
+                                    <div class="field-group">
+                                        <div class="field-name">Passport Application Number</div>
+                                        <div class="field-desc">980329580</div>
+                                    </div>
+                                    <div class="field-group">
+                                        <div class="field-name">Passport Office</div>
+                                        <div class="field-desc">1355 Market St, Suite 900
+                                            San Francisco, CA 94103
+                                            P: (123) 456-7890</div>
+                                    </div>
+                                    <div class="field-group">
+                                        <div class="field-name">Application Submission Date</div>
+                                        <div class="field-desc">12/02/2020</div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="personal-details">
+                                    <h4>Personal Details</h4>
+                                    <div class="field-group">
+                                        <div class="field-name">Full Name</div>
+                                        <div class="field-desc">Raja Sekhar</div>
+                                    </div>
+                                    <div class="field-group">
+                                        <div class="field-name">Mobile</div>
+                                        <div class="field-desc">9849123456</div>
+                                    </div>
+                                    <div class="field-group">
+                                        <div class="field-name">Email</div>
+                                        <div class="field-desc">test@gmail.com</div>
+                                    </div>
+                                    <div class="field-group">
+                                        <div class="field-name">Address</div>
+                                        <div class="field-desc">1355 Market St, Suite 900
+                                            San Francisco, CA 94103</div>
+                                    </div>
+                                    <div class="field-group">
+                                        <div class="field-name">Pincode</div>
+                                        <div class="field-desc">941033</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <h4>Pricing</h4>
+                                
+                            </div>
+                        </div>
 
                         <mat-action-row>
                             <button mat-button color="warn" (click)="prevStep()">Previous</button>
