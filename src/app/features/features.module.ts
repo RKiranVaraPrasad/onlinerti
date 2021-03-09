@@ -14,6 +14,8 @@ import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatIconModule} from '@angular/material/icon';
+
 
 
 @NgModule({
@@ -30,6 +32,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatButtonModule,
     MatCardModule,
     MatExpansionModule,
+    MatIconModule,
     FormsModule,
     ReactiveFormsModule,
     FeaturesRoutingModule,
