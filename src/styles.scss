@@ -130,7 +130,7 @@ section {
     }
 }
 .mat-form-field{
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .mat-flat-button {
@@ -171,3 +171,12 @@ section {
 .example-full-width{
     width: 100%;
 }
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+  .pricing{
+      label{ margin: 0;}
+    .mat-radio-label-content{
+        // display: none;
+      }
+  }

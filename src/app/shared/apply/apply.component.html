@@ -11,11 +11,11 @@
                     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                Service
+                                RTI Details
                             </mat-panel-title>
                             <mat-panel-description>
                                 Which service do you need?
-                                <mat-icon>search</mat-icon>
+                                <mat-icon>insert_drive_file</mat-icon>
                             </mat-panel-description>
                         </mat-expansion-panel-header>
 
@@ -76,7 +76,8 @@
                                     <div class="choose-service">
                                         <div class="row">
                                             <div class="col-3">
-                                                <mat-form-field  class="example-full-width" appearance="fill" [color]="selectControl.value">
+                                                <mat-form-field class="example-full-width" appearance="fill"
+                                                    [color]="selectControl.value">
                                                     <mat-label>Service</mat-label>
                                                     <mat-select [formControl]="selectControl">
                                                         <mat-option value="passport-delay">Passport Delay</mat-option>
@@ -126,7 +127,7 @@
                                                 <mat-form-field class="example-full-width">
                                                     <mat-label>More Information (optional)</mat-label>
                                                     <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-                                                  </mat-form-field>
+                                                </mat-form-field>
                                             </div>
                                         </div>
                                     </div>
@@ -142,7 +143,7 @@
 
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                Personal data
+                                Personal Details
                             </mat-panel-title>
                             <mat-panel-description>
                                 Type your name and age
@@ -178,7 +179,7 @@
                                 <mat-form-field class="example-full-width">
                                     <mat-label>Address</mat-label>
                                     <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-                                  </mat-form-field>
+                                </mat-form-field>
                             </div>
                             <div class="col-3">
                                 <mat-form-field class="example-full-width">
@@ -188,9 +189,9 @@
                             </div>
                             <div class="col-3"></div>
                         </div>
-                        
 
-                        
+
+
 
                         <mat-action-row>
                             <button mat-button color="warn" (click)="prevStep()">Previous</button>
@@ -205,70 +206,163 @@
                             </mat-panel-title>
                             <mat-panel-description>
                                 Review and proceed to payment
-                                <mat-icon>date_range</mat-icon>
+                                <mat-icon>payment</mat-icon>
                             </mat-panel-description>
                         </mat-expansion-panel-header>
 
                         <div class="row">
-                            <div class="col-3">
-                                <div class="service-type-details">
-                                    <h4>My passport application details: </h4>
-                                    <div class="field-group">
-                                        <div class="field-name">Name of the Applicant</div>
-                                        <div class="field-desc">Raja Sekhar</div>
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <div class="service-type-details">
+                                            <h4 class="text-nowrap">My passport application details</h4>
+                                            <div class="field-group">
+                                                <div class="field-name">Name of the Applicant</div>
+                                                <div class="field-desc">Raja Sekhar</div>
+                                            </div>
+                                            <div class="field-group">
+                                                <div class="field-name">Passport Application Number</div>
+                                                <div class="field-desc">980329580</div>
+                                            </div>
+                                            <div class="field-group">
+                                                <div class="field-name">Passport Office</div>
+                                                <div class="field-desc">1355 Market St, Suite 900
+                                                    San Francisco, CA 94103
+                                                    P: (123) 456-7890</div>
+                                            </div>
+                                            <div class="field-group">
+                                                <div class="field-name">Application Submission Date</div>
+                                                <div class="field-desc">12/02/2020</div>
+                                            </div>
+
+                                        </div>
                                     </div>
-                                    <div class="field-group">
-                                        <div class="field-name">Passport Application Number</div>
-                                        <div class="field-desc">980329580</div>
-                                    </div>
-                                    <div class="field-group">
-                                        <div class="field-name">Passport Office</div>
-                                        <div class="field-desc">1355 Market St, Suite 900
-                                            San Francisco, CA 94103
-                                            P: (123) 456-7890</div>
-                                    </div>
-                                    <div class="field-group">
-                                        <div class="field-name">Application Submission Date</div>
-                                        <div class="field-desc">12/02/2020</div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="personal-details">
-                                    <h4>Personal Details</h4>
-                                    <div class="field-group">
-                                        <div class="field-name">Full Name</div>
-                                        <div class="field-desc">Raja Sekhar</div>
-                                    </div>
-                                    <div class="field-group">
-                                        <div class="field-name">Mobile</div>
-                                        <div class="field-desc">9849123456</div>
-                                    </div>
-                                    <div class="field-group">
-                                        <div class="field-name">Email</div>
-                                        <div class="field-desc">test@gmail.com</div>
-                                    </div>
-                                    <div class="field-group">
-                                        <div class="field-name">Address</div>
-                                        <div class="field-desc">1355 Market St, Suite 900
-                                            San Francisco, CA 94103</div>
-                                    </div>
-                                    <div class="field-group">
-                                        <div class="field-name">Pincode</div>
-                                        <div class="field-desc">941033</div>
+                                    <div class="col-5">
+                                        <div class="personal-details">
+                                            <h4 class="text-nowrap">Personal Details</h4>
+                                            <div class="field-group">
+                                                <div class="field-name">Full Name</div>
+                                                <div class="field-desc">Raja Sekhar</div>
+                                            </div>
+                                            <div class="field-group">
+                                                <div class="field-name">Mobile</div>
+                                                <div class="field-desc">9849123456</div>
+                                            </div>
+                                            <div class="field-group">
+                                                <div class="field-name">Email</div>
+                                                <div class="field-desc">test@gmail.com</div>
+                                            </div>
+                                            <div class="field-group">
+                                                <div class="field-name">Address</div>
+                                                <div class="field-desc">1355 Market St, Suite 900
+                                                    San Francisco, CA 94103</div>
+                                            </div>
+                                            <div class="field-group">
+                                                <div class="field-name">Pincode</div>
+                                                <div class="field-desc">941033</div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-6">
-                                <h4>Pricing</h4>
-                                
+                                <div class="pricing">
+                                    <h4>Pricing</h4>
+                                    <div class="table">
+                                        <mat-radio-group aria-label="Select an option">
+                                            <table class="table table-bordered">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Postal Charges
+                                                            <div class="float-right">
+                                                                <span>&#8377;49</span>
+                                                                <mat-icon [ngStyle]="{'color':'#3d66b0'}">contact_support</mat-icon>
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <mat-icon [ngStyle]="{'color':'#3db04b'}">done</mat-icon>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <mat-icon [ngStyle]="{'color':'#3db04b'}">done</mat-icon>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <mat-icon [ngStyle]="{'color':'#3db04b'}">done</mat-icon>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Processing Charges
+                                                            <div class="float-right">
+                                                                <span>&#8377;150</span>
+                                                                <mat-icon [ngStyle]="{'color':'#3d66b0'}">contact_support</mat-icon>
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <mat-icon [ngStyle]="{'color':'#3db04b'}">done</mat-icon>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <mat-icon [ngStyle]="{'color':'#3db04b'}">done</mat-icon>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <mat-icon [ngStyle]="{'color':'#3db04b'}">done</mat-icon>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>RTI Drafting Charges
+                                                            <div class="float-right">
+                                                                <span>&#8377;100</span>
+                                                                <mat-icon [ngStyle]="{'color':'#3d66b0'}">contact_support</mat-icon>
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <mat-icon [ngStyle]="{'color':'#d20b0b'}">clear</mat-icon>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <mat-icon [ngStyle]="{'color':'#3db04b'}">done</mat-icon>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <mat-icon [ngStyle]="{'color':'#3db04b'}">done</mat-icon>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Phone from RTI Expert
+                                                            <div class="float-right">
+                                                                <span>&#8377;200</span>
+                                                                <mat-icon [ngStyle]="{'color':'#3d66b0'}">contact_support</mat-icon>
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <mat-icon [ngStyle]="{'color':'#d20b0b'}">clear</mat-icon>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <mat-icon [ngStyle]="{'color':'#d20b0b'}">clear</mat-icon>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <mat-icon [ngStyle]="{'color':'#3db04b'}">done</mat-icon>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Choose your option</td>
+                                                        <td>
+                                                            <mat-radio-button value="1">&#8377;199</mat-radio-button>
+                                                        </td>
+                                                        <td>
+                                                            <mat-radio-button value="2">&#8377;299</mat-radio-button>
+                                                        </td>
+                                                        <td>
+                                                            <mat-radio-button value="3">499</mat-radio-button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </mat-radio-group>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <mat-action-row>
                             <button mat-button color="warn" (click)="prevStep()">Previous</button>
-                            <button mat-button color="primary" (click)="nextStep()">End</button>
+                            <button mat-button color="primary" (click)="nextStep()">Proceed to Payment</button>
                         </mat-action-row>
                     </mat-expansion-panel>
 

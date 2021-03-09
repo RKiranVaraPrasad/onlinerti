@@ -7,7 +7,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./apply.component.scss']
 })
 export class ApplyComponent implements OnInit {
-
+  postalChecked = false;
+  rtiChecked = false;
+  expretChecked = false;
   options: FormGroup;
   selectControl = new FormControl('accent');
   fontSizeControl = new FormControl(16, Validators.min(10));

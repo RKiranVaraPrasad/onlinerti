@@ -21,6 +21,10 @@ import { ContentWrapperComponent } from './core/components/content-wrapper/conte
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 import { ApplyComponent } from './shared/apply/apply.component';
 import { MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
+
+
 
 
 @NgModule({
@@ -45,6 +49,8 @@ import { MatSelectModule} from '@angular/material/select';
     MatExpansionModule,
     MatIconModule,
     MatSelectModule,
+    MatCheckboxModule,
+    MatRadioModule,
     FormsModule,
     ReactiveFormsModule
   ],

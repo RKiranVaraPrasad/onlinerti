@@ -36,9 +36,10 @@
         }
     }
 }
-.personal-details, .service-type-details{
+.personal-details, .service-type-details, .pricing{
   h4{
     font-size: 18px;
+    margin-bottom: 1rem;
   }
   .field-group{
     .field-name{
@@ -48,4 +49,14 @@
       margin-bottom: 10px;
     }
   }
+  .icon{
+    max-width: 22px;
+  }
+  .mat-icon{
+    vertical-align: middle;
+  }
+}
+
+.mat-expansion-panel-header-title {
+  color: rgb(61 102 176);
 }
