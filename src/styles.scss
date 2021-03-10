@@ -23,6 +23,15 @@ body {
     color: #3d66b0;
     text-align: center;
 }
+.static-banner{
+    color: white;
+    .title{ 
+        font-weight: 600;
+        font-size: 42px;
+        margin-top: 30px;
+     }
+    .desc{ }
+}
 .content-title{
     font-size: 22px;
     color: #3d66b0;
@@ -37,7 +46,11 @@ li {
     list-style: none;
     padding-left: 0;
 }
-
+.table{
+    td,th{
+        white-space: nowrap;
+    }
+}
 section {
     h2 {
         font-size: 22px;

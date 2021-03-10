@@ -11,52 +11,62 @@
 .example-headers-align .mat-form-field + .mat-form-field {
   margin-left: 8px;
 }
-.service-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    .service-type{
-        width: 160px;
-        text-align: center;
-        border: 1px solid #dfdbcf;
-        margin: 5px;
-        padding: 10px;
-        cursor: pointer;
-        &:hover{
-            background: rgba(61,102,176,0.45);
-        }
-        span{
-            display: block;
-            text-align: center;
-        }
-        img{ 
-            margin: 0 auto 10px;
-            max-width: 32px;
-            max-height: 32px;
-        }
-    }
-}
-.personal-details, .service-type-details, .pricing{
-  h4{
-    font-size: 18px;
-    margin-bottom: 1rem;
+.apply{
+  .static-banner{
+    background: #709dbc url(../../../assets/images/online-apply.jpg) center right no-repeat;
+    min-height: 260px;
   }
-  .field-group{
-    .field-name{
-      font-weight: 500;
+  .personal-details, .service-type-details, .pricing{
+    h4{
+      font-size: 18px;
+      margin-bottom: 1rem;
     }
-    .field-desc{
-      margin-bottom: 10px;
+    .field-group{
+      .field-name{
+        font-weight: 500;
+      }
+      .field-desc{
+        margin-bottom: 10px;
+      }
     }
-  }
-  .icon{
-    max-width: 22px;
-  }
-  .mat-icon{
-    vertical-align: middle;
+    .icon{
+      max-width: 22px;
+    }
+    .mat-icon{
+      vertical-align: middle;
+    }
   }
 }
+// .service-container{
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: space-around;
+//     .service-type{
+//         width: 160px;
+//         text-align: center;
+//         border: 1px solid #dfdbcf;
+//         margin: 5px;
+//         padding: 10px;
+//         cursor: pointer;
+//         &:hover{
+//             background: rgba(61,102,176,0.45);
+//         }
+//         span{
+//             display: block;
+//             text-align: center;
+//         }
+//         img{ 
+//             margin: 0 auto 10px;
+//             max-width: 32px;
+//             max-height: 32px;
+//         }
+//     }
+// }
+
 
 .mat-expansion-panel-header-title {
   color: rgb(61 102 176);
+}
+.mat-expansion-panel-header-description {
+  flex-grow: initial;
 }
