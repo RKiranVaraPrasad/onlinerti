@@ -205,3 +205,6 @@ section {
 .mat-card:not([class*=mat-elevation-z]){
     box-shadow: none;
 }
+.mat-expansion-panel-header-description{
+    margin-right: 0 !important;
+}

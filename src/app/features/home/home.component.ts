@@ -17,15 +17,15 @@ export class HomeComponent implements OnInit {
     private route: ActivatedRoute
   ) { 
     this.loginForm = this.fb.group({
-      email: new FormControl('', [Validators.required, Validators.email])
-      // password = new FormControl('', [Validators.required]);
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required])
     })
   }
-
+  
   ngOnInit(): void {
   }
   onLogin(){
-
+    console.log(this.loginForm.value)
   }
 
   // apply now

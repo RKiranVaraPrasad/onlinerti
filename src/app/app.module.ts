@@ -23,6 +23,7 @@ import { ApplyComponent } from './shared/apply/apply.component';
 import { MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
+import { RegisterComponent } from './auth/register/register.component';
 
 
 
@@ -34,7 +35,8 @@ import {MatRadioModule} from '@angular/material/radio';
     FooterComponent,
     ContentWrapperComponent,
     PageNotFoundComponent,
-    ApplyComponent
+    ApplyComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
