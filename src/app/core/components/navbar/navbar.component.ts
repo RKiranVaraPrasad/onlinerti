@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
+  logged: boolean = true;
+  constructor() { } 
 
   ToggleNavBar() {
     let element: HTMLElement = document.getElementsByClassName('navbar-toggler')[0] as HTMLElement;

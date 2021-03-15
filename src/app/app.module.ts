@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -20,10 +20,10 @@ import { FooterComponent } from './core/components/footer/footer.component';
 import { ContentWrapperComponent } from './core/components/content-wrapper/content-wrapper.component';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 import { ApplyComponent } from './shared/apply/apply.component';
-import { MatSelectModule} from '@angular/material/select';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatRadioModule} from '@angular/material/radio';
-import { RegisterComponent } from './auth/register/register.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { AuthModule } from './auth/auth.module';
 
 
 
@@ -35,12 +35,12 @@ import { RegisterComponent } from './auth/register/register.component';
     FooterComponent,
     ContentWrapperComponent,
     PageNotFoundComponent,
-    ApplyComponent,
-    RegisterComponent
+    ApplyComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AuthModule,
     FeaturesModule,
     AppRoutingModule,
     CarouselModule.forRoot(),

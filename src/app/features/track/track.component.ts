@@ -2,14 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'app-my-rti',
-  templateUrl: './my-rti.component.html',
-  styleUrls: ['./my-rti.component.scss']
+  selector: 'app-track',
+  templateUrl: './track.component.html',
+  styleUrls: ['./track.component.scss']
 })
-export class MyRtiComponent implements OnInit {
-
+export class TrackComponent implements OnInit {
   trackApplicationForm: FormGroup;
-
   constructor(
     private fb: FormBuilder
   ) { 
@@ -21,7 +19,6 @@ export class MyRtiComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   onSubmit(){
 
   }

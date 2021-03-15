@@ -1,3 +1,51 @@
-<section class="banner">
-    
+<section class="login-register py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <mat-card class="example-card" *ngIf="register">
+                    <mat-card-header>
+                        <mat-card-title>Register</mat-card-title>
+                    </mat-card-header>
+                    <form class="banner-login-form" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+                        <mat-card-content>
+                            <div class="row">
+                                <div class="col-12">
+                                    <mat-form-field class="example-full-width">
+                                        <input type="email" matInput placeholder="Email" formControlName="email"
+                                            required>
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width">
+                                        <input type="password" matInput placeholder="Password"
+                                            formControlName="password" required>
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width">
+                                        <input type="password" matInput placeholder="Confirm Password"
+                                            formControlName="confirmPassword" required>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                        </mat-card-content>
+                        <div class="row">
+                            <div class="col-12 text-right">
+                                <button mat-flat-button color="primary" type="submit"
+                                    [disabled]="!registerForm.valid">Submit</button>
+                            </div>
+                        </div>
+                        <div class="row my-3">
+                            <div class="col-12 text-center">
+                                <span class="font-white">OR</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-right">
+                                <button mat-flat-button color="primary"><span>Have an account?</span>
+                                    Login</button>
+                            </div>
+                        </div>
+                    </form>
+                </mat-card>
+            </div>
+        </div>
+    </div>
 </section>

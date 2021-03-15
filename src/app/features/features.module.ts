@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { FeaturesRoutingModule } from './features-routing.module';
 import { HomeComponent } from './home/home.component';
-import { MyRtiComponent } from './my-rti/my-rti.component';
 import { PricingComponent } from './pricing/pricing.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,6 +15,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import { TeamComponent } from './team/team.component';
+import { TrackComponent } from './track/track.component';
 
 
 
@@ -23,9 +23,9 @@ import { TeamComponent } from './team/team.component';
 @NgModule({
   declarations: [
     HomeComponent,
-    MyRtiComponent,
     PricingComponent,
-    TeamComponent
+    TeamComponent,
+    TrackComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +42,6 @@ import { TeamComponent } from './team/team.component';
   ],
   exports: [
     HomeComponent,
-    MyRtiComponent,
     PricingComponent
   ]
 })

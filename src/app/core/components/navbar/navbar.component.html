@@ -5,12 +5,12 @@
                 <div class="col text-right">
                     <div class="rti-count">
                         RTIs SINCE 2013 <span>1,001,673</span> &nbsp; &nbsp; &nbsp; &nbsp;
-                        RTIs LAST 24 HRS <span>274</span>
+                        RTIs LrAST 24 HRS <span>274</span>
                     </div>
                 </div>
-                <div class="col-auto text-right">
-                    <a mat-button href="#">Login / Register</a>
-                </div>
+                <!-- <div class="col-auto text-right">
+                    <a mat-button routerLink="login-register">Login / Register</a>
+                </div> -->
             </div>
         </div>
         <nav class="navbar navbar-expand-lg navbar-light bg-white px-0">
@@ -29,7 +29,7 @@
                             <a class="nav-link" routerLink="home">About RTI <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
-                            <a class="nav-link" routerLink="my-rti">My RTIs</a>
+                            <a class="nav-link" routerLink="track-application">Application Status</a>
                         </li>
                         <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
                             <a class="nav-link" routerLink="pricing">Pricing</a>
@@ -40,12 +40,18 @@
                         <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
                             <a class="nav-link" routerLink="forum">Forum</a>
                         </li>
-                        <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                        <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()"*ngIf="!logged">
+                            <a class="nav-link" routerLink="login-register">Login/Register</a>
+                        </li>
+                        <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()" *ngIf="logged">
+                            <a class="nav-link" routerLink="my-rti">My RTI</a>
+                        </li>
+                        <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
                             <a class="nav-link" routerLink="faq">FAQ</a>
                         </li>
                         <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
                             <a class="nav-link" routerLink="contact">Contact Us</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>

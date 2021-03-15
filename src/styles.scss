@@ -13,6 +13,7 @@ body {
     background-color: white;
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 14px;
 }
 
 .carousel-control {
@@ -40,6 +41,9 @@ body {
 h3 {
     font-size: 18px;
 }
+h4{
+    font-size: 16px;
+}
 
 ul,
 li {
@@ -49,7 +53,9 @@ li {
 .table{
     td,th{
         white-space: nowrap;
+        vertical-align: middle;
     }
+    
 }
 section {
     h2 {
