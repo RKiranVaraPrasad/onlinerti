@@ -1,0 +1,28 @@
+<form class="banner-login-form" [formGroup]="loginForm" (ngSubmit)="onLogin()" >
+    <mat-card-content>
+        <div class="row">
+            <div class="col-12">
+                <mat-form-field class="example-full-width">
+                    <input type="email" matInput placeholder="Email" formControlName="identifier"
+                        required>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <input [type]="fieldType ? 'text':'password'" matInput placeholder="Password"
+                        formControlName="password" required>
+                        <span (click)="togglePassword()" class="eye-icon"></span>
+                </mat-form-field>
+            </div>
+        </div>
+
+    </mat-card-content>
+    <div class="row">
+        <div class="col-6">
+            <a mat-button (click)="gotoRegister()" *ngIf="router.url === '/login'"><span>Don't have an account?</span>
+                Register</a>
+        </div>
+        <div class="col-6 text-right">
+            <button mat-flat-button color="primary" type="submit"
+                [disabled]="!loginForm.valid">Submit</button>
+        </div>
+    </div>
+</form>

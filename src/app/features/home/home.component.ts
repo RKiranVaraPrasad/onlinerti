@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  logged: boolean = false;
   @ViewChild(MatAccordion) accordion: MatAccordion;
   loginForm: FormGroup;
   constructor(
@@ -23,6 +24,9 @@ export class HomeComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    if(localStorage.getItem('access-token') !== null){
+      this.logged = true;
+    }
   }
   onLogin(){
     console.log(this.loginForm.value)

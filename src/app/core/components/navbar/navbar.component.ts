@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  logged: boolean = true;
+  logged: boolean = false;
   constructor() { } 
 
   ToggleNavBar() {
@@ -17,6 +17,14 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(localStorage.getItem('access-token') !== null){
+      this.logged = false;
+    }
+  }
+  logout(){
+    localStorage.removeItem('access-token')
+    localStorage.removeItem('user')
+    this.logged = true;
   }
 
 }

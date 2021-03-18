@@ -16,6 +16,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import { TeamComponent } from './team/team.component';
 import { TrackComponent } from './track/track.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -29,6 +30,7 @@ import { TrackComponent } from './track/track.component';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     CarouselModule.forRoot(),
     MatFormFieldModule,
     MatInputModule,

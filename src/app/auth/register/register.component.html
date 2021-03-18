@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-auto">
-                <mat-card class="example-card" *ngIf="register">
+                <mat-card class="example-card">
                     <mat-card-header>
                         <mat-card-title>Register</mat-card-title>
                     </mat-card-header>
@@ -33,7 +33,7 @@
                         </mat-card-content>
                         <div class="row">
                             <div class="col-6">
-                                <a mat-button><span>Have an account?</span>
+                                <a mat-button routerLink="../login"><span>Have an account?</span>
                                     Login</a>
                             </div>
                             <div class="col-6 text-right">

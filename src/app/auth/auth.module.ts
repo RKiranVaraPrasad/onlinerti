@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { MyRtiComponent } from './my-rti/my-rti.component';
 import { DetailsComponent } from './details/details.component';
+import { LoginComponent } from './login/login.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -20,7 +22,8 @@ import { DetailsComponent } from './details/details.component';
   declarations: [
     RegisterComponent,
     MyRtiComponent,
-    DetailsComponent
+    DetailsComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
@@ -29,6 +32,7 @@ import { DetailsComponent } from './details/details.component';
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
+    SharedModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     AuthRoutingModule

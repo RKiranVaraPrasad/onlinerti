@@ -10,17 +10,17 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+
   fieldType: boolean = false;
   registerForm: FormGroup;
-  register: boolean = true;
   formData: any;
+
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
     private router: Router,
     private toastr: ToastrService
   ) { 
-    this.formData = new FormData();
     this.registerForm = this.fb.group({
       username: new FormControl('', [Validators.required]),
       mobile: new FormControl('', [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]),
