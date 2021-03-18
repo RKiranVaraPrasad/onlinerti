@@ -11,36 +11,34 @@
                             <div class="row">
                                 <div class="col-12">
                                     <mat-form-field class="example-full-width">
+                                        <input type="text" matInput placeholder="Name" formControlName="username"
+                                            required>
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width">
+                                        <input type="text" matInput placeholder="Mobile" formControlName="mobile"
+                                            required>
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width">
                                         <input type="email" matInput placeholder="Email" formControlName="email"
                                             required>
                                     </mat-form-field>
                                     <mat-form-field class="example-full-width">
-                                        <input type="password" matInput placeholder="Password"
+                                        <input [type]="fieldType ? 'text':'password'" matInput placeholder="password"
                                             formControlName="password" required>
-                                    </mat-form-field>
-                                    <mat-form-field class="example-full-width">
-                                        <input type="password" matInput placeholder="Confirm Password"
-                                            formControlName="confirmPassword" required>
+                                            <span (click)="togglePassword()" class="eye-icon"></span>
                                     </mat-form-field>
                                 </div>
                             </div>
 
                         </mat-card-content>
                         <div class="row">
-                            <div class="col-12 text-right">
+                            <div class="col-6">
+                                <a mat-button><span>Have an account?</span>
+                                    Login</a>
+                            </div>
+                            <div class="col-6 text-right">
                                 <button mat-flat-button color="primary" type="submit"
                                     [disabled]="!registerForm.valid">Submit</button>
-                            </div>
-                        </div>
-                        <div class="row my-3">
-                            <div class="col-12 text-center">
-                                <span class="font-white">OR</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 text-right">
-                                <button mat-flat-button color="primary"><span>Have an account?</span>
-                                    Login</button>
                             </div>
                         </div>
                     </form>

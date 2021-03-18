@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -7,21 +10,49 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  fieldType: boolean = false;
   registerForm: FormGroup;
   register: boolean = true;
+  formData: any;
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private apiService: ApiService,
+    private router: Router,
+    private toastr: ToastrService
   ) { 
+    this.formData = new FormData();
     this.registerForm = this.fb.group({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
-      confirmPassword: new FormControl('', [Validators.required])
+      username: new FormControl('', [Validators.required]),
+      mobile: new FormControl('', [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]),
+      email: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+      password: new FormControl('', [Validators.required])
     })
   }
 
   ngOnInit(): void {
   }
+  togglePassword(){
+    this.fieldType = !this.fieldType;
+  }
   onRegister(){
+    const data: any = {}
+    data.username = this.registerForm.get('username').value;
+    data.mobile = this.registerForm.get('mobile').value;
+    data.email = this.registerForm.get('email').value;
+    data.password = this.registerForm.get('password').value;
+
+    this.formData.append('data', JSON.stringify(data));
+    this.apiService.postUserRegistrationService(this.formData)
+    .subscribe(
+      data => {
+        this.toastr.success('Your details has been submitted!');
+        this.router.navigate(['/login']);
+        console.log(data)
+      },
+      err => {
+        this.toastr.error('Submission of details failed');
+      }
+    )
 
   }
 
