@@ -41,8 +41,8 @@ export class RegisterComponent implements OnInit {
     data.email = this.registerForm.get('email').value;
     data.password = this.registerForm.get('password').value;
 
-    this.formData.append('data', JSON.stringify(data));
-    this.apiService.postUserRegistrationService(this.formData)
+    //this.formData.append('data', JSON.stringify(data));
+    this.apiService.postUserRegistrationService(data)
     .subscribe(
       data => {
         this.toastr.success('Your details has been submitted!');
