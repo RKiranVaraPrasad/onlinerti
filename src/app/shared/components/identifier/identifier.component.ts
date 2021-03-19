@@ -14,6 +14,7 @@ export class IdentifierComponent implements OnInit {
   fieldType: boolean = false;
   loginForm: FormGroup;
   formData: any;
+  error: any;
 
   constructor(
     private fb: FormBuilder,
@@ -48,9 +49,12 @@ export class IdentifierComponent implements OnInit {
         console.log(data)
         localStorage.setItem('access-token', data.jwt);
         localStorage.setItem('user', data.user);
+        this.apiService.menuFlag(true);
       },
       err => {
         this.toastr.error('Login failed');
+        // this.error = err.error.message[0].messages[0].message;
+        this.error = "Email or password invalid.";
       }
     )
 

@@ -50,6 +50,11 @@ li {
     list-style: none;
     padding-left: 0;
 }
+.error-message{
+    color: white;
+    background: red;
+    padding: 0 10px;
+}
 .table{
     td,th{
         white-space: nowrap;

@@ -13,7 +13,11 @@
                 </mat-form-field>
             </div>
         </div>
-
+        <div class="row" *ngIf="error">
+            <div class="col-12">
+                <div class="error-message">{{error}}</div>
+            </div>
+        </div>
     </mat-card-content>
     <div class="row">
         <div class="col-6">

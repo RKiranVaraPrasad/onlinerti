@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -15,6 +15,12 @@ export class ApiService {
   constructor(
     private http: HttpClient
   ) { }
+
+  //menu items
+  public menuAfterLogin: EventEmitter<any> = new EventEmitter();
+  public menuFlag(value) {
+    this.menuAfterLogin.emit(value);
+  }
 
   // user registration
   postUserRegistrationService(data: any): Observable<any>{
