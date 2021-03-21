@@ -16,10 +16,14 @@ export class ApiService {
     private http: HttpClient
   ) { }
 
+  // home banner login card
+  public loginCardAfterLogin: EventEmitter<any> = new EventEmitter();
+
   //menu items
   public menuAfterLogin: EventEmitter<any> = new EventEmitter();
   public menuFlag(value) {
     this.menuAfterLogin.emit(value);
+    this.loginCardAfterLogin.emit(value);
   }
 
   // user registration

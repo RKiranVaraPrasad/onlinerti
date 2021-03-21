@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatAccordion} from '@angular/material/expansion';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ export class HomeComponent implements OnInit {
   @ViewChild(MatAccordion) accordion: MatAccordion;
   loginForm: FormGroup;
   constructor(
+    private apiService: ApiService,
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute
@@ -27,6 +29,9 @@ export class HomeComponent implements OnInit {
     if(localStorage.getItem('access-token') !== null){
       this.logged = true;
     }
+    this.apiService.menuAfterLogin.subscribe(
+      value => {this.logged = value}
+    )
   }
   onLogin(){
     console.log(this.loginForm.value)

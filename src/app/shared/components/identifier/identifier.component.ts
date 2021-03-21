@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./identifier.component.scss']
 })
 export class IdentifierComponent implements OnInit {
-
+  returnUrl: string;
   fieldType: boolean = false;
   loginForm: FormGroup;
   formData: any;
@@ -20,6 +20,7 @@ export class IdentifierComponent implements OnInit {
     private fb: FormBuilder,
     private apiService: ApiService,
     public router: Router,
+    private route: ActivatedRoute,
     private toastr: ToastrService
   ) {
     this.loginForm = this.fb.group({
@@ -29,6 +30,7 @@ export class IdentifierComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/my-rti';
   }
   gotoRegister(){
     this.router.navigate(['/register'])
@@ -45,7 +47,8 @@ export class IdentifierComponent implements OnInit {
     .subscribe(
       data => {
         this.toastr.success('Login Successful');
-        this.router.navigate(['/my-rti']);
+        this.router.navigateByUrl(this.returnUrl);
+        //this.router.navigate(['/my-rti']);
         console.log(data)
         localStorage.setItem('access-token', data.jwt);
         localStorage.setItem('user', data.user);
