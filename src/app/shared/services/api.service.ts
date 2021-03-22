@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -8,23 +9,31 @@ import { map } from 'rxjs/operators';
 })
 export class ApiService {
 
+  logged = localStorage.getItem('user') != null;
+  userDetails = JSON.parse(localStorage.getItem('user'));
   baseUrl = "http://172.105.60.86:1337";
 
   private userRegistration = `${this.baseUrl}/auth/local/register`;
   private userLogin = `${this.baseUrl}/auth/local`;
 
   constructor(
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    private router: Router
+  ) { 
+    setTimeout(() => {
+      this.userDataAfterLoggedIn.next(this.userDetails);
+    }, 500);
+  }
 
-  // home banner login card
-  public loginCardAfterLogin: EventEmitter<any> = new EventEmitter();
+  // user details after login
+  userDataAfterLoggedIn = new BehaviorSubject<any>(this.userDetails);
+  userData = this.userDataAfterLoggedIn.asObservable();
+
 
   //menu items
   public menuAfterLogin: EventEmitter<any> = new EventEmitter();
-  public menuFlag(value) {
+  public menuFlag(value: any) {
     this.menuAfterLogin.emit(value);
-    this.loginCardAfterLogin.emit(value);
   }
 
   // user registration
@@ -39,6 +48,8 @@ export class ApiService {
         if (user && user.jwt) {
           localStorage.setItem('access-token', user.jwt);
           localStorage.setItem('user', JSON.stringify(user.user));
+          
+          // this.userDataAfterLoggedIn.next(JSON.parse(localStorage.getItem('user')))
         }
         return user;
       }));
@@ -49,6 +60,8 @@ export class ApiService {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('user');
+    localStorage.removeItem('access-token');
+    this.router.navigate(['login']);
   }
 
 }

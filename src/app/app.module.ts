@@ -6,8 +6,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatIconModule } from '@angular/material/icon';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -19,12 +17,9 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { ContentWrapperComponent } from './core/components/content-wrapper/content-wrapper.component';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
-import { ApplyComponent } from './shared/apply/apply.component';
-import { MatSelectModule } from '@angular/material/select';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatRadioModule } from '@angular/material/radio';
 import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './shared/shared.module';
 
 
 
@@ -35,8 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     FooterComponent,
     ContentWrapperComponent,
-    PageNotFoundComponent,
-    ApplyComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -44,17 +38,13 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     AuthModule,
     FeaturesModule,
+    SharedModule,
     AppRoutingModule,
     CarouselModule.forRoot(),
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    MatExpansionModule,
-    MatIconModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatRadioModule,
     FormsModule,
     ReactiveFormsModule
   ],

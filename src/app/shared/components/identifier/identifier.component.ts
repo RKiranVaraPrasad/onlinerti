@@ -27,7 +27,7 @@ export class IdentifierComponent implements OnInit {
       identifier: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
       password: new FormControl('', [Validators.required])
     })
-   }
+  }
 
   ngOnInit(): void {
     // reset login status
@@ -36,29 +36,29 @@ export class IdentifierComponent implements OnInit {
     // get return url from route parameters or default to '/my-rti'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/my-rti';
   }
-  gotoRegister(){
+  gotoRegister() {
     this.router.navigate(['/register'])
   }
-  togglePassword(){
+  togglePassword() {
     this.fieldType = !this.fieldType;
   }
-  onLogin(){
+  onLogin() {
     const data: any = {}
     data.identifier = this.loginForm.get('identifier').value;
     data.password = this.loginForm.get('password').value;
 
     this.apiService.postUserLoginService(data)
-    .subscribe(
-      data => {
-        this.router.navigateByUrl(this.returnUrl);
-        //this.toastr.success('Login Successful');
-        this.apiService.menuFlag(true);
-      },
-      err => {
-        // this.error = err.error.message[0].messages[0].message;
-        this.error = "Email or password invalid.";
-      }
-    )
+      .subscribe(
+        data => {
+          this.router.navigateByUrl(this.returnUrl);
+          //this.toastr.success('Login Successful');
+          this.apiService.menuFlag(true);
+        },
+        err => {
+          // this.error = err.error.message[0].messages[0].message;
+          this.error = "Email or password invalid.";
+        }
+      )
 
   }
 

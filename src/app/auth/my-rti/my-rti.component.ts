@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
   selector: 'app-my-rti',
@@ -7,15 +8,19 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./my-rti.component.scss']
 })
 export class MyRtiComponent implements OnInit {
+  username: any;
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private apiService: ApiService
   ) { 
     
   }
 
   ngOnInit(): void {
+    const userData = JSON.parse(localStorage.getItem('user'))
+    this.username = userData.username;
   }
 
   seeDetails(){

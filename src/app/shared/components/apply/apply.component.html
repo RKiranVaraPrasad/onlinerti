@@ -33,16 +33,10 @@
                                         <div class="choose-service">
                                             <div class="row">
                                                 <div class="col-md-3 col-12">
-                                                    <mat-form-field class="example-full-width" appearance="fill"
-                                                        [color]="selectControl.value">
-                                                        <mat-label>Service</mat-label>
-                                                        <mat-select [formControl]="selectControl">
-                                                            <mat-option value="passport-delay">Passport Delay
-                                                            </mat-option>
-                                                            <mat-option value="it-returnd">Income Tax Refund
-                                                            </mat-option>
-                                                            <mat-option value="marksheet-verification">Marksheet
-                                                                Verification
+                                                    <mat-form-field class="example-full-width" appearance="fill">
+                                                        <mat-label>Select Service</mat-label>
+                                                        <mat-select [formControl]="selectControl" (selectionChange)="onChangeService($event)" [(ngModel)]="selectedValue">
+                                                            <mat-option *ngFor="let service of services" [value]="service.link">{{service.option}}
                                                             </mat-option>
                                                         </mat-select>
                                                     </mat-form-field>
@@ -50,46 +44,7 @@
                                             </div>
                                         </div>
                                         <div class="selected-service-form">
-                                            <div class="row">
-                                                <div class="col-md-3 col-12">
-                                                    <mat-form-field class="example-full-width">
-                                                        <input type="text" matInput placeholder="Pancard Number">
-                                                    </mat-form-field>
-                                                </div>
-                                                <div class="col-md-3 col-12">
-                                                    <mat-form-field class="example-full-width">
-                                                        <input type="text" matInput placeholder="Financial Year">
-                                                    </mat-form-field>
-                                                </div>
-                                                <div class="col-md-3 col-12">
-                                                    <mat-form-field class="example-full-width">
-                                                        <input type="text" matInput placeholder="Ward/Circle Number">
-                                                    </mat-form-field>
-                                                </div>
-                                                <div class="col-md-3 col-12">
-                                                    <mat-form-field class="example-full-width">
-                                                        <input type="text" matInput placeholder="Refund Amount">
-                                                    </mat-form-field>
-                                                </div>
-                                                <div class="col-md-3 col-12">
-                                                    <mat-form-field class="example-full-width">
-                                                        <input type="text" matInput
-                                                            placeholder="Name of the District of IT Office">
-                                                    </mat-form-field>
-                                                </div>
-                                                <div class="col-md-3 col-12">
-                                                    <mat-form-field class="example-full-width">
-                                                        <input type="text" matInput placeholder="Date of application">
-                                                    </mat-form-field>
-                                                </div>
-                                                <div class="col-md-6 col-12">
-                                                    <mat-form-field class="example-full-width">
-                                                        <mat-label>More Information (optional)</mat-label>
-                                                        <textarea matInput
-                                                            placeholder="Ex. It makes me feel..."></textarea>
-                                                    </mat-form-field>
-                                                </div>
-                                            </div>
+                                            <router-outlet></router-outlet>
                                         </div>
                                     </form>
                                 </div>
@@ -113,31 +68,31 @@
                                 <div class="col-md-3 col-12">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Full name</mat-label>
-                                        <input matInput>
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-3 col-12">
-                                    <mat-form-field class="example-full-width">
-                                        <mat-label>Last name</mat-label>
-                                        <input matInput>
+                                        <input matInput [(ngModel)]="username">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3 col-12">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Mobile</mat-label>
-                                        <input matInput type="tel">
+                                        <input matInput type="tel" [(ngModel)]="mobile">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3 col-12">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Email</mat-label>
-                                        <input matInput type="email">
+                                        <input matInput type="email" [(ngModel)]="email">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3 col-12">
                                     <mat-form-field class="example-full-width">
-                                        <mat-label>Address</mat-label>
-                                        <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+                                        <mat-label>State</mat-label>
+                                        <input matInput type="tel">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3 col-12">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>City</mat-label>
+                                        <input matInput type="tel">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3 col-12">
@@ -146,6 +101,13 @@
                                         <input matInput type="tel">
                                     </mat-form-field>
                                 </div>
+                                <div class="col-md-6 col-12">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Address</mat-label>
+                                        <textarea matInput style="resize: none;"></textarea>
+                                    </mat-form-field>
+                                </div>
+                                
                                 <div class="col-md-3 col-12"></div>
                             </div>
 
@@ -316,7 +278,7 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Choose your option</td>
+                                                            <td>Choose your plan</td>
                                                             <td>
                                                                 <mat-radio-button value="1">&#8377;199
                                                                 </mat-radio-button>

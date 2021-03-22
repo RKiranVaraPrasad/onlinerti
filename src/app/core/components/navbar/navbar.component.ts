@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(localStorage.getItem('access-token') != null){
+    if(this.apiService.logged){
       this.logged = true;
     }
     this.apiService.menuAfterLogin.subscribe(
@@ -28,8 +28,7 @@ export class NavbarComponent implements OnInit {
     )
   }
   logout(){
-    localStorage.removeItem('access-token')
-    localStorage.removeItem('user')
+    this.apiService.logout();
     this.apiService.menuFlag(false);
   }
 

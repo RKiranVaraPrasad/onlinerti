@@ -10,7 +10,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  logged: boolean = false;
+  logged: boolean;
   @ViewChild(MatAccordion) accordion: MatAccordion;
   loginForm: FormGroup;
   constructor(
@@ -26,12 +26,9 @@ export class HomeComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    if(localStorage.getItem('access-token') !== null){
-      this.logged = true;
-    }
-    this.apiService.menuAfterLogin.subscribe(
-      value => {this.logged = value}
-    )
+    // this.apiService.menuAfterLogin.subscribe(
+    //   value => {this.logged = value}
+    // )
   }
   onLogin(){
     console.log(this.loginForm.value)
