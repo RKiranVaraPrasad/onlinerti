@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -27,13 +28,27 @@ export class ApiService {
   }
 
   // user registration
-  postUserRegistrationService(data: any): Observable<any>{
+  postUserRegistrationService(data: any): Observable<any> {
     return this.http.post<any>(this.userRegistration, data);
   }
 
   // user Login
-  postUserLoginService(data: any): Observable<any>{
-    return this.http.post<any>(this.userLogin, data);
+  postUserLoginService(data: any) {
+    return this.http.post<any>(this.userLogin, data)
+      .pipe(map(user => {
+        if (user && user.jwt) {
+          localStorage.setItem('access-token', user.jwt);
+          localStorage.setItem('user', JSON.stringify(user.user));
+        }
+        return user;
+      }));
+    // return this.http.post<any>(this.userLogin, data);
+  }
+
+  // user logout
+  logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('user');
   }
 
 }

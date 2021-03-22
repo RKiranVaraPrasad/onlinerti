@@ -30,6 +30,10 @@ export class IdentifierComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    // reset login status
+    this.apiService.logout();
+
+    // get return url from route parameters or default to '/my-rti'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/my-rti';
   }
   gotoRegister(){
@@ -46,16 +50,11 @@ export class IdentifierComponent implements OnInit {
     this.apiService.postUserLoginService(data)
     .subscribe(
       data => {
-        this.toastr.success('Login Successful');
         this.router.navigateByUrl(this.returnUrl);
-        //this.router.navigate(['/my-rti']);
-        console.log(data)
-        localStorage.setItem('access-token', data.jwt);
-        localStorage.setItem('user', data.user);
+        //this.toastr.success('Login Successful');
         this.apiService.menuFlag(true);
       },
       err => {
-        this.toastr.error('Login failed');
         // this.error = err.error.message[0].messages[0].message;
         this.error = "Email or password invalid.";
       }
