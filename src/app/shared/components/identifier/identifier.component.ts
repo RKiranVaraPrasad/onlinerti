@@ -30,8 +30,6 @@ export class IdentifierComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // reset login status
-    this.apiService.logout();
 
     // get return url from route parameters or default to '/my-rti'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/my-rti';
