@@ -15,9 +15,11 @@ export class ApplyComponent implements OnInit, AfterContentInit {
   rtiChecked = false;
   expretChecked = false;
   options: FormGroup;
+  rtidetails: FormGroup;
+  personalDetailsForm: FormGroup;
   selectControl = new FormControl('accent');
   fontSizeControl = new FormControl(16, Validators.min(10));
-  username: any;
+  fullname: any;
   email: any;
   mobile: any;
   selectedValue: string = this.router.url.split('/').pop();
@@ -27,18 +29,30 @@ export class ApplyComponent implements OnInit, AfterContentInit {
     private apiService: ApiService,
     private router: Router,
     private route: ActivatedRoute,
-    fb: FormBuilder
+    private fb: FormBuilder
   ) {
-    this.options = fb.group({
+    this.options = this.fb.group({
       color: this.selectControl,
       fontSize: this.fontSizeControl,
     });
+    this.rtidetails = this.fb.group({
+      serviceType: new FormControl('', [])
+    })
+    this.personalDetailsForm = this.fb.group({
+      fullname: new FormControl('',[Validators.required]),
+      mobile: new FormControl('',[Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]),
+      email: new FormControl('',[Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+      state: new FormControl('',[Validators.required]),
+      city: new FormControl('',[Validators.required]),
+      pincode: new FormControl('',[Validators.required]),
+      address: new FormControl('',[Validators.required])      
+    })
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     const userData = JSON.parse(localStorage.getItem('user'));
     if (localStorage.getItem('access-token') != null) {
-      this.username = userData.username;
+      this.fullname = userData.username;
       this.email = userData.email;
       this.mobile = userData.mobile;
     }
@@ -52,6 +66,8 @@ export class ApplyComponent implements OnInit, AfterContentInit {
 
   onChangeService(event) {
     this.router.navigate([event.value], { relativeTo: this.route })
+  }
+  onSubmitPersonalDetails(){
 
   }
 
@@ -77,6 +93,12 @@ export class ApplyComponent implements OnInit, AfterContentInit {
 
   setStep(index: number) {
     this.step = index;
+  }
+
+  message:string;
+  onSubmitRti(){
+    this.apiService.saveServiceTypeData(this.selectedValue)
+    console.log('Router Url: '+ this.selectedValue)
   }
 
   nextStep() {

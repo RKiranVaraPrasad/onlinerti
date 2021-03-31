@@ -1,28 +1,35 @@
-<div class="row">
-    <div class="col-md-3 col-12">
-        <mat-form-field class="example-full-width">
-            <input type="text" matInput placeholder="Name of Course">
-        </mat-form-field>
+<form class="rit-details-form" [formGroup]="rtiDetailsForm">
+    <div class="row">
+        <div class="col-md-3 col-12">
+            <mat-form-field class="example-full-width">
+                <input type="text" matInput placeholder="Name of Course" formControlName="course"
+                required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-3 col-12">
+            <mat-form-field class="example-full-width">
+                <input type="text" matInput placeholder="Name of College/University" formControlName="college"
+                required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-3 col-12">
+            <mat-form-field class="example-full-width">
+                <input type="text" matInput placeholder="Registration Roll No" formControlName="rollNo"
+                required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-3 col-12">
+            <mat-form-field class="example-full-width">
+                <input type="text" matInput placeholder="Year" formControlName="year"
+                required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6 col-12">
+            <mat-form-field class="example-full-width">
+                <mat-label>More Information (optional)</mat-label>
+                <textarea matInput style="resize: none;" formControlName="moreInfo"
+                required></textarea>
+            </mat-form-field>
+        </div>
     </div>
-    <div class="col-md-3 col-12">
-        <mat-form-field class="example-full-width">
-            <input type="text" matInput placeholder="Name of College/University">
-        </mat-form-field>
-    </div>
-    <div class="col-md-3 col-12">
-        <mat-form-field class="example-full-width">
-            <input type="text" matInput placeholder="Registration Roll No">
-        </mat-form-field>
-    </div>
-    <div class="col-md-3 col-12">
-        <mat-form-field class="example-full-width">
-            <input type="text" matInput placeholder="Year">
-        </mat-form-field>
-    </div>
-    <div class="col-md-6 col-12">
-        <mat-form-field class="example-full-width">
-            <mat-label>More Information (optional)</mat-label>
-            <textarea matInput style="resize: none;"></textarea>
-        </mat-form-field>
-    </div>
-</div>
+</form>

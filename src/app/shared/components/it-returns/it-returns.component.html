@@ -1,38 +1,41 @@
-<div class="row">
-    <div class="col-md-3 col-12">
-        <mat-form-field class="example-full-width">
-            <input type="text" matInput placeholder="Pancard Number">
-        </mat-form-field>
+<form class="rit-details-form" [formGroup]="rtiDetailsForm">
+    <div class="row">
+        <div class="col-md-3 col-12">
+            <mat-form-field class="example-full-width">
+                <input type="text" matInput placeholder="Pancard Number" formControlName="pancardNumber" required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-3 col-12">
+            <mat-form-field class="example-full-width">
+                <input type="text" matInput placeholder="Financial Year" formControlName="financialYear" required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-3 col-12">
+            <mat-form-field class="example-full-width">
+                <input type="text" matInput placeholder="Ward/Circle Number" formControlName="wardNumber" required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-3 col-12">
+            <mat-form-field class="example-full-width">
+                <input type="text" matInput placeholder="Refund Amount" formControlName="refundAmount" required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-3 col-12">
+            <mat-form-field class="example-full-width">
+                <input type="text" matInput placeholder="Name of the District of IT Office" formControlName="itOffice"
+                    required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-3 col-12">
+            <mat-form-field class="example-full-width">
+                <input type="text" matInput placeholder="Date of application" formControlName="ApplicantDate" required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6 col-12">
+            <mat-form-field class="example-full-width">
+                <mat-label>More Information (optional)</mat-label>
+                <textarea matInput style="resize: none;" formControlName="moreInfo" required></textarea>
+            </mat-form-field>
+        </div>
     </div>
-    <div class="col-md-3 col-12">
-        <mat-form-field class="example-full-width">
-            <input type="text" matInput placeholder="Financial Year">
-        </mat-form-field>
-    </div>
-    <div class="col-md-3 col-12">
-        <mat-form-field class="example-full-width">
-            <input type="text" matInput placeholder="Ward/Circle Number">
-        </mat-form-field>
-    </div>
-    <div class="col-md-3 col-12">
-        <mat-form-field class="example-full-width">
-            <input type="text" matInput placeholder="Refund Amount">
-        </mat-form-field>
-    </div>
-    <div class="col-md-3 col-12">
-        <mat-form-field class="example-full-width">
-            <input type="text" matInput placeholder="Name of the District of IT Office">
-        </mat-form-field>
-    </div>
-    <div class="col-md-3 col-12">
-        <mat-form-field class="example-full-width">
-            <input type="text" matInput placeholder="Date of application">
-        </mat-form-field>
-    </div>
-    <div class="col-md-6 col-12">
-        <mat-form-field class="example-full-width">
-            <mat-label>More Information (optional)</mat-label>
-            <textarea matInput style="resize: none;"></textarea>
-        </mat-form-field>
-    </div>
-</div>
+</form>

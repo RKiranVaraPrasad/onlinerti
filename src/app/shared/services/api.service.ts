@@ -25,6 +25,13 @@ export class ApiService {
     }, 500);
   }
 
+  private serviceType = new BehaviorSubject('default message');
+  currentServiceType = this.serviceType.asObservable();
+
+  saveServiceTypeData(message: string) {
+    this.serviceType.next(message)
+  }
+
   // user details after login
   userDataAfterLoggedIn = new BehaviorSubject<any>(this.userDetails);
   userData = this.userDataAfterLoggedIn.asObservable();

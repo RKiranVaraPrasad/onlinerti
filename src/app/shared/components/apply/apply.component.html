@@ -28,15 +28,18 @@
 
                             <div class="row">
                                 <div class="col-12">
-                                    <form class="example-container" [formGroup]="options"
+                                    <form class="example-container" [formGroup]="rtidetails"
                                         [style.fontSize.px]="getFontSize()">
                                         <div class="choose-service">
                                             <div class="row">
                                                 <div class="col-md-3 col-12">
                                                     <mat-form-field class="example-full-width" appearance="fill">
                                                         <mat-label>Select Service</mat-label>
-                                                        <mat-select [formControl]="selectControl" (selectionChange)="onChangeService($event)" [(ngModel)]="selectedValue">
-                                                            <mat-option *ngFor="let service of services" [value]="service.link">{{service.option}}
+                                                        <mat-select [formControl]="selectControl"
+                                                            (selectionChange)="onChangeService($event)"
+                                                            [(ngModel)]="selectedValue" ngDefaultControl formControlName="serviceType">
+                                                            <mat-option *ngFor="let service of services"
+                                                                [value]="service.link">{{service.option}}
                                                             </mat-option>
                                                         </mat-select>
                                                     </mat-form-field>
@@ -50,7 +53,7 @@
                                 </div>
                             </div>
                             <mat-action-row>
-                                <button mat-button color="primary" (click)="nextStep()">Next</button>
+                                <button mat-button color="primary" (click)="onSubmitRti()">Next</button>
                             </mat-action-row>
                         </mat-expansion-panel>
 
@@ -64,60 +67,59 @@
                                     <mat-icon>account_circle</mat-icon>
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
-                            <div class="row">
-                                <div class="col-md-3 col-12">
-                                    <mat-form-field class="example-full-width">
-                                        <mat-label>Full name</mat-label>
-                                        <input matInput [(ngModel)]="username">
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-3 col-12">
-                                    <mat-form-field class="example-full-width">
-                                        <mat-label>Mobile</mat-label>
-                                        <input matInput type="tel" [(ngModel)]="mobile">
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-3 col-12">
-                                    <mat-form-field class="example-full-width">
-                                        <mat-label>Email</mat-label>
-                                        <input matInput type="email" [(ngModel)]="email">
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-3 col-12">
-                                    <mat-form-field class="example-full-width">
-                                        <mat-label>State</mat-label>
-                                        <input matInput type="tel">
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-3 col-12">
-                                    <mat-form-field class="example-full-width">
-                                        <mat-label>City</mat-label>
-                                        <input matInput type="tel">
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-3 col-12">
-                                    <mat-form-field class="example-full-width">
-                                        <mat-label>Pincode</mat-label>
-                                        <input matInput type="tel">
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <mat-form-field class="example-full-width">
-                                        <mat-label>Address</mat-label>
-                                        <textarea matInput style="resize: none;"></textarea>
-                                    </mat-form-field>
-                                </div>
-                                
-                                <div class="col-md-3 col-12"></div>
-                            </div>
+                            <form [formGroup]="personalDetailsForm" (ngSubmit)="onSubmitPersonalDetails()">
+                                <div class="row">
+                                    <div class="col-md-3 col-12">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>Full name</mat-label>
+                                            <input matInput [(ngModel)]="fullname" ngDefaultControl  formControlName="fullname">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-3 col-12">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>Mobile</mat-label>
+                                            <input matInput type="tel" [(ngModel)]="mobile" ngDefaultControl formControlName="mobile">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-3 col-12">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>Email</mat-label>
+                                            <input matInput type="email" [(ngModel)]="email" ngDefaultControl formControlName="email">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-3 col-12">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>State</mat-label>
+                                            <input matInput type="text" formControlName="state" ngDefaultControl>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-3 col-12">
+                                        <mat-form-field class="example-full-width" formControlName="city" ngDefaultControl>
+                                            <mat-label>City</mat-label>
+                                            <input matInput type="text">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-3 col-12">
+                                        <mat-form-field class="example-full-width" formControlName="pincode" ngDefaultControl>
+                                            <mat-label>Pincode</mat-label>
+                                            <input matInput type="tel">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>Address</mat-label>
+                                            <textarea matInput style="resize: none;"
+                                                formControlName="address" ngDefaultControl></textarea>
+                                        </mat-form-field>
+                                    </div>
 
-
-
-
-                            <mat-action-row>
-                                <button mat-button color="warn" (click)="prevStep()">Previous</button>
-                                <button mat-button color="primary" (click)="nextStep()">Next</button>
-                            </mat-action-row>
+                                    <div class="col-md-3 col-12"></div>
+                                </div>
+                                <mat-action-row>
+                                    <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                                    <button mat-button color="primary" (click)="nextStep()">Next</button>
+                                </mat-action-row>
+                            </form>
                         </mat-expansion-panel>
 
                         <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
@@ -192,108 +194,108 @@
                                             <mat-radio-group aria-label="Select an option">
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Postal Charges
-                                                                <div class="float-right">
-                                                                    <span>&#8377;49</span>
-                                                                    <mat-icon [ngStyle]="{'color':'#3d66b0'}">
-                                                                        contact_support</mat-icon>
-                                                                </div>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <mat-icon [ngStyle]="{'color':'#3db04b'}">done
-                                                                </mat-icon>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <mat-icon [ngStyle]="{'color':'#3db04b'}">done
-                                                                </mat-icon>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <mat-icon [ngStyle]="{'color':'#3db04b'}">done
-                                                                </mat-icon>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Processing Charges
-                                                                <div class="float-right">
-                                                                    <span>&#8377;150</span>
-                                                                    <mat-icon [ngStyle]="{'color':'#3d66b0'}">
-                                                                        contact_support</mat-icon>
-                                                                </div>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <mat-icon [ngStyle]="{'color':'#3db04b'}">done
-                                                                </mat-icon>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <mat-icon [ngStyle]="{'color':'#3db04b'}">done
-                                                                </mat-icon>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <mat-icon [ngStyle]="{'color':'#3db04b'}">done
-                                                                </mat-icon>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>RTI Drafting Charges
-                                                                <div class="float-right">
-                                                                    <span>&#8377;100</span>
-                                                                    <mat-icon [ngStyle]="{'color':'#3d66b0'}">
-                                                                        contact_support</mat-icon>
-                                                                </div>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <mat-icon [ngStyle]="{'color':'#d20b0b'}">clear
-                                                                </mat-icon>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <mat-icon [ngStyle]="{'color':'#3db04b'}">done
-                                                                </mat-icon>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <mat-icon [ngStyle]="{'color':'#3db04b'}">done
-                                                                </mat-icon>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Phone from RTI Expert
-                                                                <div class="float-right">
-                                                                    <span>&#8377;200</span>
-                                                                    <mat-icon [ngStyle]="{'color':'#3d66b0'}">
-                                                                        contact_support</mat-icon>
-                                                                </div>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <mat-icon [ngStyle]="{'color':'#d20b0b'}">clear
-                                                                </mat-icon>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <mat-icon [ngStyle]="{'color':'#d20b0b'}">clear
-                                                                </mat-icon>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <mat-icon [ngStyle]="{'color':'#3db04b'}">done
-                                                                </mat-icon>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Choose your plan</td>
-                                                            <td>
-                                                                <mat-radio-button value="1">&#8377;199
-                                                                </mat-radio-button>
-                                                            </td>
-                                                            <td>
-                                                                <mat-radio-button value="2">&#8377;299
-                                                                </mat-radio-button>
-                                                            </td>
-                                                            <td>
-                                                                <mat-radio-button value="3">&#8377;499
-                                                                </mat-radio-button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Postal Charges
+                                                                    <div class="float-right">
+                                                                        <span>&#8377;49</span>
+                                                                        <mat-icon [ngStyle]="{'color':'#3d66b0'}">
+                                                                            contact_support</mat-icon>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <mat-icon [ngStyle]="{'color':'#3db04b'}">done
+                                                                    </mat-icon>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <mat-icon [ngStyle]="{'color':'#3db04b'}">done
+                                                                    </mat-icon>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <mat-icon [ngStyle]="{'color':'#3db04b'}">done
+                                                                    </mat-icon>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Processing Charges
+                                                                    <div class="float-right">
+                                                                        <span>&#8377;150</span>
+                                                                        <mat-icon [ngStyle]="{'color':'#3d66b0'}">
+                                                                            contact_support</mat-icon>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <mat-icon [ngStyle]="{'color':'#3db04b'}">done
+                                                                    </mat-icon>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <mat-icon [ngStyle]="{'color':'#3db04b'}">done
+                                                                    </mat-icon>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <mat-icon [ngStyle]="{'color':'#3db04b'}">done
+                                                                    </mat-icon>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>RTI Drafting Charges
+                                                                    <div class="float-right">
+                                                                        <span>&#8377;100</span>
+                                                                        <mat-icon [ngStyle]="{'color':'#3d66b0'}">
+                                                                            contact_support</mat-icon>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <mat-icon [ngStyle]="{'color':'#d20b0b'}">clear
+                                                                    </mat-icon>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <mat-icon [ngStyle]="{'color':'#3db04b'}">done
+                                                                    </mat-icon>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <mat-icon [ngStyle]="{'color':'#3db04b'}">done
+                                                                    </mat-icon>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Phone from RTI Expert
+                                                                    <div class="float-right">
+                                                                        <span>&#8377;200</span>
+                                                                        <mat-icon [ngStyle]="{'color':'#3d66b0'}">
+                                                                            contact_support</mat-icon>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <mat-icon [ngStyle]="{'color':'#d20b0b'}">clear
+                                                                    </mat-icon>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <mat-icon [ngStyle]="{'color':'#d20b0b'}">clear
+                                                                    </mat-icon>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <mat-icon [ngStyle]="{'color':'#3db04b'}">done
+                                                                    </mat-icon>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Choose your plan</td>
+                                                                <td>
+                                                                    <mat-radio-button value="1">&#8377;199
+                                                                    </mat-radio-button>
+                                                                </td>
+                                                                <td>
+                                                                    <mat-radio-button value="2">&#8377;299
+                                                                    </mat-radio-button>
+                                                                </td>
+                                                                <td>
+                                                                    <mat-radio-button value="3">&#8377;499
+                                                                    </mat-radio-button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </mat-radio-group>
                                         </div>
