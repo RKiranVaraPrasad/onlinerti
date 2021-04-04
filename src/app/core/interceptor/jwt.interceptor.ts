@@ -3,7 +3,8 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HttpHeaders
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -15,15 +16,15 @@ export class JwtInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     let user = JSON.parse(localStorage.getItem('user'));
-    let jwt = JSON.parse(localStorage.getItem('access-token'));
+    let jwt = localStorage.getItem('access-token');
     
-    if (user && jwt) {
-      request = request.clone({
-        setHeaders: {
-          Authorization: `Bearer ${jwt}`
-        }
+      const authReq = request.clone({
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+          'Authorization': `Bearer ${jwt}`
+        })
       })
-    }
-    return next.handle(request);
+    console.log('Intercepted HTTP call', authReq);
+    return next.handle(authReq);
   }
 }

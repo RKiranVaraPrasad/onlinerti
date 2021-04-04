@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
@@ -15,6 +15,9 @@ export class ApiService {
 
   private userRegistration = `${this.baseUrl}/auth/local/register`;
   private userLogin = `${this.baseUrl}/auth/local`;
+  private personalDetails = `${this.baseUrl}/personal-details`;
+  private passportDelay = `${this.baseUrl}/passport-delays`;
+  private apply = `${this.baseUrl}/applies`;
 
   constructor(
     private http: HttpClient,
@@ -25,12 +28,58 @@ export class ApiService {
     }, 500);
   }
 
+  //apply now
   private serviceType = new BehaviorSubject('default message');
   currentServiceType = this.serviceType.asObservable();
 
-  saveServiceTypeData(message: string) {
+  saveServiceTypeData(message: any) {
     this.serviceType.next(message)
   }
+
+  private applyData = new BehaviorSubject<any>('');
+  subscribeApplyData = this.applyData.asObservable();
+
+  sendApplyRtiData(data: any){
+    this.applyData.next(data);
+  }
+
+  private rtiData = new BehaviorSubject<any>('default message');
+  subscribeRtiData = this.rtiData.asObservable();
+
+  submitRtiDetails(message: any){
+    this.rtiData.next(message)
+  }
+
+  private formStatus = new BehaviorSubject<boolean>(false);
+  subscribeFormStatus = this.formStatus.asObservable();
+
+  sendFormStatus(status: boolean){
+    this.formStatus.next(status);
+  }
+
+  private rtiId = new BehaviorSubject<boolean>(false);
+  subscribeRtiId = this.rtiId.asObservable();
+
+  sendRtiId(data: any){
+    this.rtiId.next(data);
+  }
+
+  postPersonalDetailsService(data: any){
+    return this.http.post(this.personalDetails, data)
+  }
+
+  postApplyService(data: any){
+    return this.http.post(this.apply, data)
+  }
+
+  postPassportDelayService(data: any): Observable<any>{
+    const accessToken = localStorage.getItem('access-token');
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
+    return this.http.post(this.passportDelay, data, {
+      headers
+    });
+  }
+
 
   // user details after login
   userDataAfterLoggedIn = new BehaviorSubject<any>(this.userDetails);
@@ -55,12 +104,9 @@ export class ApiService {
         if (user && user.jwt) {
           localStorage.setItem('access-token', user.jwt);
           localStorage.setItem('user', JSON.stringify(user.user));
-          
-          // this.userDataAfterLoggedIn.next(JSON.parse(localStorage.getItem('user')))
         }
         return user;
       }));
-    // return this.http.post<any>(this.userLogin, data);
   }
 
   // user logout

@@ -18,8 +18,9 @@ import { FooterComponent } from './core/components/footer/footer.component';
 import { ContentWrapperComponent } from './core/components/content-wrapper/content-wrapper.component';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 import { AuthModule } from './auth/auth.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
+import { JwtInterceptor } from './core/interceptor/jwt.interceptor';
 
 
 
@@ -48,7 +49,9 @@ import { SharedModule } from './shared/shared.module';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

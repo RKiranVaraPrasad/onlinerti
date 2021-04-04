@@ -16,7 +16,7 @@
             <div class="row my-5">
                 <div class="col-12">
                     <mat-accordion class="example-headers-align">
-                        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                        <mat-expansion-panel [expanded]="step === 0" hideToggle>
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
                                     RTI Details
@@ -53,11 +53,11 @@
                                 </div>
                             </div>
                             <mat-action-row>
-                                <button mat-button color="primary" (click)="onSubmitRti()">Next</button>
+                                <button mat-button color="primary" (click)="onSubmitRti()" [disabled]="!status">Next</button>
                             </mat-action-row>
                         </mat-expansion-panel>
 
-                        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+                        <mat-expansion-panel [expanded]="step === 1"  hideToggle [disabled]="!stepTwo">
 
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
@@ -67,7 +67,7 @@
                                     <mat-icon>account_circle</mat-icon>
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
-                            <form [formGroup]="personalDetailsForm" (ngSubmit)="onSubmitPersonalDetails()">
+                            <form [formGroup]="personalDetailsForm">
                                 <div class="row">
                                     <div class="col-md-3 col-12">
                                         <mat-form-field class="example-full-width">
@@ -90,17 +90,17 @@
                                     <div class="col-md-3 col-12">
                                         <mat-form-field class="example-full-width">
                                             <mat-label>State</mat-label>
-                                            <input matInput type="text" formControlName="state" ngDefaultControl>
+                                            <input matInput type="text" [(ngModel)]="state" formControlName="state" ngDefaultControl>
                                         </mat-form-field>
                                     </div>
                                     <div class="col-md-3 col-12">
-                                        <mat-form-field class="example-full-width" formControlName="city" ngDefaultControl>
+                                        <mat-form-field class="example-full-width" [(ngModel)]="city" formControlName="city" ngDefaultControl>
                                             <mat-label>City</mat-label>
                                             <input matInput type="text">
                                         </mat-form-field>
                                     </div>
                                     <div class="col-md-3 col-12">
-                                        <mat-form-field class="example-full-width" formControlName="pincode" ngDefaultControl>
+                                        <mat-form-field class="example-full-width" [(ngModel)]="pincode" formControlName="pincode" ngDefaultControl>
                                             <mat-label>Pincode</mat-label>
                                             <input matInput type="tel">
                                         </mat-form-field>
@@ -108,7 +108,7 @@
                                     <div class="col-md-6 col-12">
                                         <mat-form-field class="example-full-width">
                                             <mat-label>Address</mat-label>
-                                            <textarea matInput style="resize: none;"
+                                            <textarea matInput style="resize: none;" [(ngModel)]="address"
                                                 formControlName="address" ngDefaultControl></textarea>
                                         </mat-form-field>
                                     </div>
@@ -117,12 +117,12 @@
                                 </div>
                                 <mat-action-row>
                                     <button mat-button color="warn" (click)="prevStep()">Previous</button>
-                                    <button mat-button color="primary" (click)="nextStep()">Next</button>
+                                    <button mat-button color="primary" (click)="onSubmitPersonalDetails()">Next</button>
                                 </mat-action-row>
                             </form>
                         </mat-expansion-panel>
 
-                        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+                        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle  [disabled]="!stepThree">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
                                     Summary and Payment
@@ -136,25 +136,23 @@
                                 <div class="col-md-6 col-12">
                                     <div class="row">
                                         <div class="col-md-7 col-12">
-                                            <div class="service-type-details">
+                                            <div class="service-type-details" *ngIf="rtiData">
                                                 <h4 class="text-nowrap">My passport application details</h4>
                                                 <div class="field-group">
                                                     <div class="field-name">Name of the Applicant</div>
-                                                    <div class="field-desc">Raja Sekhar</div>
+                                                    <div class="field-desc">{{rtiData.applicantName}}</div>
                                                 </div>
                                                 <div class="field-group">
                                                     <div class="field-name">Passport Application Number</div>
-                                                    <div class="field-desc">980329580</div>
+                                                    <div class="field-desc">{{rtiData.applicationNo}}</div>
                                                 </div>
                                                 <div class="field-group">
                                                     <div class="field-name">Passport Office</div>
-                                                    <div class="field-desc">1355 Market St, Suite 900
-                                                        San Francisco, CA 94103
-                                                        P: (123) 456-7890</div>
+                                                    <div class="field-desc">{{rtiData.passportOffice}}</div>
                                                 </div>
                                                 <div class="field-group">
                                                     <div class="field-name">Application Submission Date</div>
-                                                    <div class="field-desc">12/02/2020</div>
+                                                    <div class="field-desc">{{rtiData.applicationDate}}</div>
                                                 </div>
 
                                             </div>
@@ -164,24 +162,23 @@
                                                 <h4 class="text-nowrap">Personal Details</h4>
                                                 <div class="field-group">
                                                     <div class="field-name">Full Name</div>
-                                                    <div class="field-desc">Raja Sekhar</div>
+                                                    <div class="field-desc">{{fullname}}</div>
                                                 </div>
                                                 <div class="field-group">
                                                     <div class="field-name">Mobile</div>
-                                                    <div class="field-desc">9849123456</div>
+                                                    <div class="field-desc">{{mobile}}</div>
                                                 </div>
                                                 <div class="field-group">
                                                     <div class="field-name">Email</div>
-                                                    <div class="field-desc">test@gmail.com</div>
+                                                    <div class="field-desc">{{email}}</div>
                                                 </div>
                                                 <div class="field-group">
                                                     <div class="field-name">Address</div>
-                                                    <div class="field-desc">1355 Market St, Suite 900
-                                                        San Francisco, CA 94103</div>
+                                                    <div class="field-desc">{{address}}</div>
                                                 </div>
                                                 <div class="field-group">
                                                     <div class="field-name">Pincode</div>
-                                                    <div class="field-desc">941033</div>
+                                                    <div class="field-desc">{{pincode}}</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -305,7 +302,7 @@
 
                             <mat-action-row>
                                 <button mat-button color="warn" (click)="prevStep()">Previous</button>
-                                <button mat-button color="primary" (click)="nextStep()">Proceed to Payment</button>
+                                <button mat-button color="primary" (click)="onSubmitApplyForm()">Proceed to Payment</button>
                             </mat-action-row>
                         </mat-expansion-panel>
 

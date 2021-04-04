@@ -14,13 +14,16 @@ export class PassportDelayComponent implements OnInit, OnDestroy {
   currentService: any;
   selectedRoute: string = this.router.url.split('/').pop();
   subscription: Subscription;
+  subscriptionTwo: Subscription;
+  formData: any;
   constructor(
     private apiService: ApiService,
     private router: Router,
     private fb: FormBuilder
   ) {
+    this.formData = new FormData();
     this.rtiDetailsForm = this.fb.group({
-      ApplicantName: new FormControl('', [Validators.required]),
+      applicantName: new FormControl('', [Validators.required]),
       applicationNo: new FormControl('', [Validators.required]),
       passportOffice: new FormControl('', [Validators.required]),
       applicationDate: new FormControl('', [Validators.required]),
@@ -30,30 +33,66 @@ export class PassportDelayComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.rtiDetailsForm.statusChanges.subscribe(
+      newStatus => {
+        if (newStatus === 'VALID') {
+          this.apiService.sendFormStatus(true)
+        } else {
+          this.apiService.sendFormStatus(false)
+        }
+      }
+    )
     this.subscription = this.apiService.currentServiceType.subscribe(
       currentservice => {
+
+        const data: any = {}
+        data.applicantName = this.rtiDetailsForm.get('applicantName').value;
+        data.applicationNo = this.rtiDetailsForm.get('applicationNo').value;
+        data.passportOffice = this.rtiDetailsForm.get('passportOffice').value;
+        data.applicationDate = this.rtiDetailsForm.get('applicationDate').value;
+        data.itOffice = this.rtiDetailsForm.get('itOffice').value;
+        data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
+
+        console.log(data)
         this.currentService = currentservice
         if (this.selectedRoute === this.currentService) {
           console.log(this.currentService)
-          
-          const data: any = {}
-          data.ApplicantName = this.rtiDetailsForm.get('ApplicantName').value;
-          data.applicationNo = this.rtiDetailsForm.get('applicationNo').value;
-          data.passportOffice = this.rtiDetailsForm.get('passportOffice').value;
-          data.applicationDate = this.rtiDetailsForm.get('applicationDate').value;
-          data.itOffice = this.rtiDetailsForm.get('itOffice').value;
-          data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
-
-          localStorage.setItem('tempData', JSON.stringify(data))
-          // if(this.rtiDetailsForm.valid){
-          //   console.log(this.rtiDetailsForm.value)
-          // }
+          this.apiService.sendApplyRtiData(data);
+          this.apiService.postPassportDelayService(data)
+          .subscribe(
+            data => console.log(data)
+          )
         }
+      }
+    )
+    this.subscriptionTwo = this.apiService.subscribeRtiData.subscribe(
+      rtiData => {
+
+        const data: any = {}
+        data.applicantName = this.rtiDetailsForm.get('applicantName').value;
+        data.applicationNo = this.rtiDetailsForm.get('applicationNo').value;
+        data.passportOffice = this.rtiDetailsForm.get('passportOffice').value;
+        data.applicationDate = this.rtiDetailsForm.get('applicationDate').value;
+        data.itOffice = this.rtiDetailsForm.get('itOffice').value;
+        data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
+
+        this.currentService = rtiData
+        console.log(data)
+        if (this.selectedRoute === this.currentService) {
+          this.apiService.postPassportDelayService(data)
+            .subscribe(
+              (resultID: any) => {
+                this.apiService.sendRtiId(resultID.id);
+              }
+            )
+        }
+        console.log(rtiData)
       }
     )
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.subscriptionTwo.unsubscribe();
   }
 
   onSubmit() {

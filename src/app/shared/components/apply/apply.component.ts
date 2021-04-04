@@ -1,15 +1,19 @@
-import { Component, OnInit, AfterContentInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, AfterContentInit, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-apply',
   templateUrl: './apply.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./apply.component.scss']
 })
 export class ApplyComponent implements OnInit, AfterContentInit {
 
+  step = 0;
+  status: boolean = false;
   services: any;
   postalChecked = false;
   rtiChecked = false;
@@ -22,15 +26,27 @@ export class ApplyComponent implements OnInit, AfterContentInit {
   fullname: any;
   email: any;
   mobile: any;
+  state: any;
+  city: any;
+  pincode: any;
+  address: any;
   selectedValue: string = this.router.url.split('/').pop();
   @Output() selectionChange: EventEmitter<any> = new EventEmitter()
+  rtiData: any;
+  subscription: Subscription;
+  stepTwo: boolean = false;
+  stepThree: boolean = false;
+  tempData: string;
+  formData: any;
 
   constructor(
     private apiService: ApiService,
     private router: Router,
     private route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private cd: ChangeDetectorRef
   ) {
+    this.formData = new FormData();
     this.options = this.fb.group({
       color: this.selectControl,
       fontSize: this.fontSizeControl,
@@ -49,7 +65,13 @@ export class ApplyComponent implements OnInit, AfterContentInit {
     })
   }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
+    this.apiService.subscribeFormStatus.subscribe(
+      currentStatus => {
+        this.status = currentStatus;
+        this.cd.markForCheck();
+      }
+    )
     const userData = JSON.parse(localStorage.getItem('user'));
     if (localStorage.getItem('access-token') != null) {
       this.fullname = userData.username;
@@ -63,52 +85,76 @@ export class ApplyComponent implements OnInit, AfterContentInit {
     ]
 
   }
+  ngAfterContentInit() {
+  }
 
   onChangeService(event) {
     this.router.navigate([event.value], { relativeTo: this.route })
   }
+
+  onSubmitRti(){
+    this.apiService.saveServiceTypeData(this.selectedValue)
+    this.subscription = this.apiService.subscribeApplyData
+    .subscribe(
+      rtiDetails => {
+        this.rtiData = rtiDetails;
+        console.log(this.rtiData)
+      })
+    this.nextStep();
+    this.stepTwo = true;
+  }
+
   onSubmitPersonalDetails(){
+    this.nextStep();
+    this.stepThree = true;
+  }
+  onSubmitApplyForm(){
+    this.apiService.submitRtiDetails(this.selectedValue);
+    // const applyData: any = {}
+    // this.apiService.subscribeRtiData
+    // .subscribe(
+    //   (rtiId: any) => {
+    //     const rtiDetailID = rtiId;
+    //     applyData.rtiDetailsId = rtiDetailID;
+    //   }
+    // )
 
+    // const personalData: any = {}
+    // personalData.fullname = this.fullname;
+    // personalData.mobile = this.mobile;
+    // personalData.email = this.email;
+    // personalData.address = this.address;
+    // personalData.pincode = this.pincode;
+    // personalData.city = this.personalDetailsForm.get('city').value;
+    // console.log(personalData)
+    // this.apiService.postPersonalDetailsService(personalData)
+    // .subscribe(
+    //   (result: any) => {
+    //     const perDetailID = result.id;
+    //     applyData.personalDetailsId = perDetailID;
+        // this.apiService.postApplyService(applyData)
+        // .subscribe(
+        //   data => {
+        //     console.log(data)
+        //   }
+        // )
+    //   }
+    // )
   }
 
-  ngAfterContentInit() {
-    // if (this.apiService.logged) {
-    //   const userData = this.apiService.userDetails;
-    //   this.username = userData.username;
-    //   this.mobile = userData.mobile;
-    //   this.email = userData.email;
-    // }
-    // if (Array.isArray(userData)) {
-    //   this.username = userData[0].username;
-    //   this.email = userData[0].email;
-    //   this.mobile = userData[0].mobile;
-    // } else if (typeof userData === 'object') {
-    //   this.username = userData.username;
-    //   this.email = userData.email;
-    //   this.mobile = userData.mobile;
-    // }
+  ngOnDestroy() {
+    // this.subscription.unsubscribe();
   }
-
-  step = 0;
 
   setStep(index: number) {
     this.step = index;
   }
-
-  message:string;
-  onSubmitRti(){
-    this.apiService.saveServiceTypeData(this.selectedValue)
-    console.log('Router Url: '+ this.selectedValue)
-  }
-
   nextStep() {
     this.step++;
   }
-
   prevStep() {
     this.step--;
   }
-
   getFontSize() {
     return Math.max(10, this.fontSizeControl.value);
   }
