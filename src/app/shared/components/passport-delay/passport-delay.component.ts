@@ -72,11 +72,11 @@ export class PassportDelayComponent implements OnInit, OnDestroy {
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
 
         // this.currentService = rtiData
-        console.log(data)
         if (this.selectedRoute === rtiData) {
           this.apiService.postPassportDelayService(data)
             .subscribe(
               (resultID: any) => {
+                console.log(resultID)
                 this.apiService.sendRtiId(resultID.id);
                 console.log(resultID.id)
               }
@@ -89,10 +89,6 @@ export class PassportDelayComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
     this.subscriptionTwo.unsubscribe();
-  }
-
-  onSubmit() {
-    console.log(this.rtiDetailsForm.value)
   }
 
 }

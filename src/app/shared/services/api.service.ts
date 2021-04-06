@@ -17,6 +17,8 @@ export class ApiService {
   private userLogin = `${this.baseUrl}/auth/local`;
   private personalDetails = `${this.baseUrl}/personal-details`;
   private passportDelay = `${this.baseUrl}/passport-delays`;
+  private itReturns = `${this.baseUrl}/income-tax-refunds`;
+  private marksheetVerification = `${this.baseUrl}/marksheet-verifications`;
   private apply = `${this.baseUrl}/applies`;
 
   constructor(
@@ -76,6 +78,22 @@ export class ApiService {
     const accessToken = localStorage.getItem('access-token');
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
     return this.http.post(this.passportDelay, data, {
+      headers
+    });
+  }
+
+  postItReturnService(data: any): Observable<any>{
+    const accessToken = localStorage.getItem('access-token');
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
+    return this.http.post(this.itReturns, data, {
+      headers
+    });
+  }
+ 
+  postMarksheetVerificationService(data: any): Observable<any>{
+    const accessToken = localStorage.getItem('access-token');
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
+    return this.http.post(this.marksheetVerification, data, {
       headers
     });
   }

@@ -122,6 +122,7 @@ export class ApplyComponent implements OnInit, AfterContentInit {
     this.apiService.postPersonalDetailsService(personalData)
       .subscribe(
         (data: any) => {
+          console.log(data)
           applyData.personalDetailsId = data.id;
           console.log(data.id)
           // submit rti data - step 02
@@ -129,15 +130,17 @@ export class ApplyComponent implements OnInit, AfterContentInit {
           this.subscription = this.apiService.subscribeRtiId
             .subscribe(
               (resultId: any) => {
-                applyData.rtiDetailsId = resultId;
-                console.log(resultId)
-                // submit two ids - step -03
-                this.apiService.postApplyService(applyData)
+                if(resultId){
+                  applyData.rtiDetailsId = resultId;
+                  console.log(resultId)
+                  // submit two ids - step -03
+                  this.apiService.postApplyService(applyData)
                   .subscribe(
                     data => {
                       console.log(data)
                     }
                   )
+                }
               }
             )
         }

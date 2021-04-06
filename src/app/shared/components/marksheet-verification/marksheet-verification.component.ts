@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -9,11 +9,12 @@ import { ApiService } from '../../services/api.service';
   templateUrl: './marksheet-verification.component.html',
   styleUrls: ['./marksheet-verification.component.scss']
 })
-export class MarksheetVerificationComponent implements OnInit {
+export class MarksheetVerificationComponent implements OnInit, OnDestroy {
   rtiDetailsForm: FormGroup;
   currentService: any;
   selectedRoute: string = this.router.url.split('/').pop();
   subscription: Subscription;
+  subscriptionTwo: Subscription;
   constructor(
     private apiService: ApiService,
     private router: Router,
@@ -29,26 +30,60 @@ export class MarksheetVerificationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.rtiDetailsForm.statusChanges.subscribe(
+      newStatus => {
+        if (newStatus === 'VALID') {
+          this.apiService.sendFormStatus(true)
+        } else {
+          this.apiService.sendFormStatus(false)
+        }
+      }
+    )
     this.subscription = this.apiService.currentServiceType.subscribe(
       currentservice => {
-        this.currentService = currentservice
-        if (this.selectedRoute === this.currentService) {
-          console.log(this.currentService)
-          
-          const data: any = {}
+
+        const data: any = {}
           data.course = this.rtiDetailsForm.get('course').value;
           data.college = this.rtiDetailsForm.get('college').value;
           data.rollNo = this.rtiDetailsForm.get('rollNo').value;
           data.year = this.rtiDetailsForm.get('year').value;
           data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
 
-          localStorage.setItem('tempData', JSON.stringify(data))
+        console.log(data)
+        this.currentService = currentservice
+        if (this.selectedRoute === this.currentService) {
+          console.log(this.currentService)
+          this.apiService.sendApplyRtiData(data);
         }
+      }
+    )
+    this.subscriptionTwo = this.apiService.subscribeRtiData.subscribe(
+      rtiData => {
+        const data: any = {}
+          data.course = this.rtiDetailsForm.get('course').value;
+          data.college = this.rtiDetailsForm.get('college').value;
+          data.rollNo = this.rtiDetailsForm.get('rollNo').value;
+          data.year = this.rtiDetailsForm.get('year').value;
+          data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
+
+        // this.currentService = rtiData
+        if (this.selectedRoute === rtiData) {
+          this.apiService.postMarksheetVerificationService(data)
+            .subscribe(
+              (resultID: any) => {
+                console.log(resultID)
+                this.apiService.sendRtiId(resultID.id);
+                console.log(resultID.id)
+              }
+            )
+        }
+        console.log(rtiData)
       }
     )
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.subscriptionTwo.unsubscribe();
   }
 
 }

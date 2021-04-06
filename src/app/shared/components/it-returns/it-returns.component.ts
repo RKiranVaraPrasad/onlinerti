@@ -14,6 +14,7 @@ export class ItReturnsComponent implements OnInit, OnDestroy {
   currentService: any;
   selectedRoute: string = this.router.url.split('/').pop();
   subscription: Subscription;
+  subscriptionTwo: Subscription;
   constructor(
     private apiService: ApiService,
     private router: Router,
@@ -31,13 +32,19 @@ export class ItReturnsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.rtiDetailsForm.statusChanges.subscribe(
+      newStatus => {
+        if (newStatus === 'VALID') {
+          this.apiService.sendFormStatus(true)
+        } else {
+          this.apiService.sendFormStatus(false)
+        }
+      }
+    )
     this.subscription = this.apiService.currentServiceType.subscribe(
       currentservice => {
-        this.currentService = currentservice
-        if (this.selectedRoute === this.currentService) {
-          console.log(this.currentService)
-          
-          const data: any = {}
+
+        const data: any = {}
           data.pancardNumber = this.rtiDetailsForm.get('pancardNumber').value;
           data.financialYear = this.rtiDetailsForm.get('financialYear').value;
           data.wardNumber = this.rtiDetailsForm.get('wardNumber').value;
@@ -46,12 +53,43 @@ export class ItReturnsComponent implements OnInit, OnDestroy {
           data.ApplicantDate = this.rtiDetailsForm.get('ApplicantDate').value;
           data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
 
-          localStorage.setItem('tempData', JSON.stringify(data))
+        console.log(data)
+        this.currentService = currentservice
+        if (this.selectedRoute === this.currentService) {
+          console.log(this.currentService)
+          this.apiService.sendApplyRtiData(data);
         }
       }
     )
+    this.subscriptionTwo = this.apiService.subscribeRtiData.subscribe(
+      rtiData => {
+        const data: any = {}
+          data.pancardNumber = this.rtiDetailsForm.get('pancardNumber').value;
+          data.financialYear = this.rtiDetailsForm.get('financialYear').value;
+          data.wardNumber = this.rtiDetailsForm.get('wardNumber').value;
+          data.refundAmount = this.rtiDetailsForm.get('refundAmount').value;
+          data.itOffice = this.rtiDetailsForm.get('itOffice').value;
+          data.ApplicantDate = this.rtiDetailsForm.get('ApplicantDate').value;
+          data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
+
+        // this.currentService = rtiData
+        if (this.selectedRoute === rtiData) {
+          this.apiService.postItReturnService(data)
+            .subscribe(
+              (resultID: any) => {
+                console.log(resultID)
+                this.apiService.sendRtiId(resultID.id);
+                console.log(resultID.id)
+              }
+            )
+        }
+        console.log(rtiData)
+      }
+    )
+    
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.subscriptionTwo.unsubscribe();
   }
 }
