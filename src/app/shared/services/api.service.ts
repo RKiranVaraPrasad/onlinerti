@@ -10,8 +10,7 @@ import { map } from 'rxjs/operators';
 export class ApiService {
 
   logged = localStorage.getItem('user') != null;
-  user = localStorage.getItem('user')
-  userDetails = JSON.parse(JSON.stringify(this.user));
+  userDetails = localStorage.getItem('user');
   baseUrl = "http://172.105.60.86:1337";
 
   private userRegistration = `${this.baseUrl}/auth/local/register`;
