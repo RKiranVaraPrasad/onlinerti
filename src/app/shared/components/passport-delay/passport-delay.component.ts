@@ -58,16 +58,11 @@ export class PassportDelayComponent implements OnInit, OnDestroy {
         if (this.selectedRoute === this.currentService) {
           console.log(this.currentService)
           this.apiService.sendApplyRtiData(data);
-          this.apiService.postPassportDelayService(data)
-          .subscribe(
-            data => console.log(data)
-          )
         }
       }
     )
     this.subscriptionTwo = this.apiService.subscribeRtiData.subscribe(
       rtiData => {
-
         const data: any = {}
         data.applicantName = this.rtiDetailsForm.get('applicantName').value;
         data.applicationNo = this.rtiDetailsForm.get('applicationNo').value;
@@ -76,13 +71,14 @@ export class PassportDelayComponent implements OnInit, OnDestroy {
         data.itOffice = this.rtiDetailsForm.get('itOffice').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
 
-        this.currentService = rtiData
+        // this.currentService = rtiData
         console.log(data)
-        if (this.selectedRoute === this.currentService) {
+        if (this.selectedRoute === rtiData) {
           this.apiService.postPassportDelayService(data)
             .subscribe(
               (resultID: any) => {
                 this.apiService.sendRtiId(resultID.id);
+                console.log(resultID.id)
               }
             )
         }

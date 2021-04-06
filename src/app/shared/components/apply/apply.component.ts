@@ -34,6 +34,7 @@ export class ApplyComponent implements OnInit, AfterContentInit {
   @Output() selectionChange: EventEmitter<any> = new EventEmitter()
   rtiData: any;
   subscription: Subscription;
+  subscription2: Subscription;
   stepTwo: boolean = false;
   stepThree: boolean = false;
   tempData: string;
@@ -55,13 +56,13 @@ export class ApplyComponent implements OnInit, AfterContentInit {
       serviceType: new FormControl('', [])
     })
     this.personalDetailsForm = this.fb.group({
-      fullname: new FormControl('',[Validators.required]),
-      mobile: new FormControl('',[Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]),
-      email: new FormControl('',[Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-      state: new FormControl('',[Validators.required]),
-      city: new FormControl('',[Validators.required]),
-      pincode: new FormControl('',[Validators.required]),
-      address: new FormControl('',[Validators.required])      
+      fullname: new FormControl('', [Validators.required]),
+      mobile: new FormControl('', [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]),
+      email: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+      state: new FormControl('', [Validators.required]),
+      city: new FormControl('', [Validators.required]),
+      pincode: new FormControl('', [Validators.required]),
+      address: new FormControl('', [Validators.required])
     })
   }
 
@@ -92,58 +93,60 @@ export class ApplyComponent implements OnInit, AfterContentInit {
     this.router.navigate([event.value], { relativeTo: this.route })
   }
 
-  onSubmitRti(){
+  onSubmitRti() {
     this.apiService.saveServiceTypeData(this.selectedValue)
     this.subscription = this.apiService.subscribeApplyData
-    .subscribe(
-      rtiDetails => {
-        this.rtiData = rtiDetails;
-        console.log(this.rtiData)
-      })
+      .subscribe(
+        rtiDetails => {
+          this.rtiData = rtiDetails;
+          console.log(this.rtiData)
+        })
     this.nextStep();
     this.stepTwo = true;
   }
 
-  onSubmitPersonalDetails(){
+  onSubmitPersonalDetails() {
     this.nextStep();
     this.stepThree = true;
   }
-  onSubmitApplyForm(){
-    this.apiService.submitRtiDetails(this.selectedValue);
-    // const applyData: any = {}
-    // this.apiService.subscribeRtiData
-    // .subscribe(
-    //   (rtiId: any) => {
-    //     const rtiDetailID = rtiId;
-    //     applyData.rtiDetailsId = rtiDetailID;
-    //   }
-    // )
-
-    // const personalData: any = {}
-    // personalData.fullname = this.fullname;
-    // personalData.mobile = this.mobile;
-    // personalData.email = this.email;
-    // personalData.address = this.address;
-    // personalData.pincode = this.pincode;
-    // personalData.city = this.personalDetailsForm.get('city').value;
-    // console.log(personalData)
-    // this.apiService.postPersonalDetailsService(personalData)
-    // .subscribe(
-    //   (result: any) => {
-    //     const perDetailID = result.id;
-    //     applyData.personalDetailsId = perDetailID;
-        // this.apiService.postApplyService(applyData)
-        // .subscribe(
-        //   data => {
-        //     console.log(data)
-        //   }
-        // )
-    //   }
-    // )
+  onSubmitApplyForm() {
+    const applyData: any = {}
+    const personalData: any = {}
+    personalData.fullname = this.fullname;
+    personalData.mobile = this.mobile;
+    personalData.email = this.email;
+    personalData.address = this.address;
+    personalData.pincode = this.pincode;
+    personalData.city = this.personalDetailsForm.get('city').value;
+    // submit personal data - step 01
+    this.apiService.postPersonalDetailsService(personalData)
+      .subscribe(
+        (data: any) => {
+          applyData.personalDetailsId = data.id;
+          console.log(data.id)
+          // submit rti data - step 02
+          this.apiService.submitRtiDetails(this.selectedValue);
+          this.subscription = this.apiService.subscribeRtiId
+            .subscribe(
+              (resultId: any) => {
+                applyData.rtiDetailsId = resultId;
+                console.log(resultId)
+                // submit two ids - step -03
+                this.apiService.postApplyService(applyData)
+                  .subscribe(
+                    data => {
+                      console.log(data)
+                    }
+                  )
+              }
+            )
+        }
+      )
   }
 
   ngOnDestroy() {
-    // this.subscription.unsubscribe();
+    this.subscription.unsubscribe();
+    this.subscription2.unsubscribe();
   }
 
   setStep(index: number) {

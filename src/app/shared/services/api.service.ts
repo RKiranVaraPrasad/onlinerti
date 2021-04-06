@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 export class ApiService {
 
   logged = localStorage.getItem('user') != null;
-  userDetails = JSON.parse(localStorage.getItem('user'));
+  // userDetails = JSON.parse(localStorage.getItem('user'));
   baseUrl = "http://172.105.60.86:1337";
 
   private userRegistration = `${this.baseUrl}/auth/local/register`;
@@ -24,7 +24,7 @@ export class ApiService {
     private router: Router
   ) { 
     setTimeout(() => {
-      this.userDataAfterLoggedIn.next(this.userDetails);
+      this.userDataAfterLoggedIn.next(JSON.parse(localStorage.getItem('user')));
     }, 500);
   }
 
@@ -82,7 +82,7 @@ export class ApiService {
 
 
   // user details after login
-  userDataAfterLoggedIn = new BehaviorSubject<any>(this.userDetails);
+  userDataAfterLoggedIn = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('user')));
   userData = this.userDataAfterLoggedIn.asObservable();
 
 
