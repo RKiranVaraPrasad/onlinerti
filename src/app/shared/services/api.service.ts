@@ -24,7 +24,7 @@ export class ApiService {
     private router: Router
   ) { 
     setTimeout(() => {
-      this.userDataAfterLoggedIn.next(this.userDetails);
+      this.userDataAfterLoggedIn.next(JSON.parse(this.userDetails));
     }, 500);
   }
 
@@ -82,7 +82,7 @@ export class ApiService {
 
 
   // user details after login
-  userDataAfterLoggedIn = new BehaviorSubject<any>(this.userDetails);
+  userDataAfterLoggedIn = new BehaviorSubject<any>(JSON.parse(this.userDetails));
   userData = this.userDataAfterLoggedIn.asObservable();
 
 
