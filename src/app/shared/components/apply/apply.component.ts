@@ -138,6 +138,7 @@ export class ApplyComponent implements OnInit, AfterContentInit {
                   .subscribe(
                     data => {
                       console.log(data)
+                      this.router.navigate(['/my-rti'])
                     }
                   )
                 }
@@ -149,7 +150,6 @@ export class ApplyComponent implements OnInit, AfterContentInit {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-    this.subscription2.unsubscribe();
   }
 
   setStep(index: number) {
