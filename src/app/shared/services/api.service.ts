@@ -21,13 +21,13 @@ export class ApiService {
   private passportDelay = `${this.baseUrl}/passport-delays`;
   private itReturns = `${this.baseUrl}/income-tax-refunds`;
   private marksheetVerification = `${this.baseUrl}/marksheet-verifications`;
-  private answerCopy = `${this.baseUrl}/answer-copy`;
-  private firStatus = `${this.baseUrl}/fir-status`;
+  private answerCopy = `${this.baseUrl}/answer-copies`;
+  private firStatus = `${this.baseUrl}/fir-statuses`;
   private propertyDetails = `${this.baseUrl}/property-details`;
-  private epfStatus = `${this.baseUrl}/epf-status`;
-  private pensionApplication = `${this.baseUrl}/pension-application`;
-  private occupancyCertificate = `${this.baseUrl}/occupancy-certificate`;
-  private otherRti = `${this.baseUrl}/other-rti`;
+  private epfStatus = `${this.baseUrl}/epf-statuses`;
+  private pensionApplication = `${this.baseUrl}/pension-applications`;
+  private occupancyCertificate = `${this.baseUrl}/occupancy-certificates`;
+  private otherRti = `${this.baseUrl}/other-rtis`;
 
   constructor(
     private http: HttpClient,

@@ -21,7 +21,7 @@ export class OccupancyCertificateComponent implements OnInit, OnDestroy {
     private fb: FormBuilder
   ) {
     this.rtiDetailsForm = this.fb.group({
-      buildAddress: new FormControl('', [Validators.required]),
+      buildingAddress: new FormControl('', [Validators.required]),
       surveyNo: new FormControl('', [Validators.required]),
       moreInfo: new FormControl('', [Validators.required])
     })
@@ -41,7 +41,7 @@ export class OccupancyCertificateComponent implements OnInit, OnDestroy {
       currentservice => {
 
         const data: any = {}
-        data.buildAddress = this.rtiDetailsForm.get('buildAddress').value;
+        data.buildingAddress = this.rtiDetailsForm.get('buildingAddress').value;
         data.surveyNo = this.rtiDetailsForm.get('surveyNo').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
         this.currentService = currentservice
@@ -53,7 +53,7 @@ export class OccupancyCertificateComponent implements OnInit, OnDestroy {
     this.subscriptionTwo = this.apiService.subscribeRtiData.subscribe(
       rtiData => {
         const data: any = {}
-        data.buildAddress = this.rtiDetailsForm.get('buildAddress').value;
+        data.buildingAddress = this.rtiDetailsForm.get('buildingAddress').value;
         data.surveyNo = this.rtiDetailsForm.get('surveyNo').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
 
