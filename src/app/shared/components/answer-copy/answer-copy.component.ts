@@ -9,7 +9,7 @@ import { ApiService } from '../../services/api.service';
   templateUrl: './answer-copy.component.html',
   styleUrls: ['./answer-copy.component.scss']
 })
-export class AnswerCopyComponent implements OnInit {
+export class AnswerCopyComponent implements OnInit, OnDestroy {
   rtiDetailsForm: FormGroup;
   currentService: any;
   selectedRoute: string = this.router.url.split('/').pop();
@@ -48,11 +48,8 @@ export class AnswerCopyComponent implements OnInit {
           data.examName = this.rtiDetailsForm.get('examName').value;
           data.examDate = this.rtiDetailsForm.get('examDate').value;
           data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
-
-        console.log(data)
         this.currentService = currentservice
         if (this.selectedRoute === this.currentService) {
-          console.log(this.currentService)
           this.apiService.sendApplyRtiData(data);
         }
       }
@@ -71,13 +68,10 @@ export class AnswerCopyComponent implements OnInit {
           this.apiService.postAnswerCopyService(data)
             .subscribe(
               (resultID: any) => {
-                console.log(resultID)
                 this.apiService.sendRtiId(resultID.id);
-                console.log(resultID.id)
               }
             )
         }
-        console.log(rtiData)
       }
     )
   }

@@ -1,1 +1,29 @@
-<p>fir-status works!</p>
+<form class="rit-details-form" [formGroup]="rtiDetailsForm">
+    <div class="row">
+        <div class="col-md-3 col-12">
+            <mat-form-field class="example-full-width">
+                <input type="text" matInput placeholder="FIR Number" formControlName="firNo"
+                required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-3 col-12">
+            <mat-form-field class="example-full-width">
+                <input type="text" matInput placeholder="Police Station" formControlName="policeStation"
+                required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-3 col-12">
+            <mat-form-field class="example-full-width">
+                <input type="date" matInput placeholder="Date of FIR" formControlName="firDate"
+                required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6 col-12">
+            <mat-form-field class="example-full-width">
+                <mat-label>More Information (optional)</mat-label>
+                <textarea matInput style="resize: none;" formControlName="moreInfo"
+                required></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+</form>

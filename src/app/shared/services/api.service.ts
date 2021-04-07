@@ -16,11 +16,18 @@ export class ApiService {
   private userRegistration = `${this.baseUrl}/auth/local/register`;
   private userLogin = `${this.baseUrl}/auth/local`;
   private personalDetails = `${this.baseUrl}/personal-details`;
+  private apply = `${this.baseUrl}/applies`;
+
   private passportDelay = `${this.baseUrl}/passport-delays`;
   private itReturns = `${this.baseUrl}/income-tax-refunds`;
   private marksheetVerification = `${this.baseUrl}/marksheet-verifications`;
   private answerCopy = `${this.baseUrl}/answer-copy`;
-  private apply = `${this.baseUrl}/applies`;
+  private firStatus = `${this.baseUrl}/fir-status`;
+  private propertyDetails = `${this.baseUrl}/property-details`;
+  private epfStatus = `${this.baseUrl}/epf-status`;
+  private pensionApplication = `${this.baseUrl}/pension-application`;
+  private occupancyCertificate = `${this.baseUrl}/occupancy-certificate`;
+  private otherRti = `${this.baseUrl}/other-rti`;
 
   constructor(
     private http: HttpClient,
@@ -103,6 +110,55 @@ export class ApiService {
     const accessToken = localStorage.getItem('access-token');
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
     return this.http.post(this.answerCopy, data, {
+      headers
+    });
+  }
+
+  postFirStatusService(data: any): Observable<any>{
+    const accessToken = localStorage.getItem('access-token');
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
+    return this.http.post(this.firStatus, data, {
+      headers
+    });
+  }
+
+
+  postPropertyDetailsService(data: any): Observable<any>{
+    const accessToken = localStorage.getItem('access-token');
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
+    return this.http.post(this.propertyDetails, data, {
+      headers
+    });
+  }
+
+  postEpfStatusService(data: any): Observable<any>{
+    const accessToken = localStorage.getItem('access-token');
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
+    return this.http.post(this.epfStatus, data, {
+      headers
+    });
+  }
+
+  postPensionApplicationService(data: any): Observable<any>{
+    const accessToken = localStorage.getItem('access-token');
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
+    return this.http.post(this.pensionApplication, data, {
+      headers
+    });
+  }
+
+  postOccupancyCertificateService(data: any): Observable<any>{
+    const accessToken = localStorage.getItem('access-token');
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
+    return this.http.post(this.occupancyCertificate, data, {
+      headers
+    });
+  }
+
+  postOtherRtiService(data: any): Observable<any>{
+    const accessToken = localStorage.getItem('access-token');
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
+    return this.http.post(this.otherRti, data, {
       headers
     });
   }

@@ -33,8 +33,8 @@ export class ApplyComponent implements OnInit, AfterContentInit {
   selectedValue: string = this.router.url.split('/').pop();
   @Output() selectionChange: EventEmitter<any> = new EventEmitter()
   rtiData: any;
-  subscription: Subscription;
-  subscription2: Subscription;
+  applySubscription: Subscription;
+  rtiSubscription: Subscription;
   stepTwo: boolean = false;
   stepThree: boolean = false;
   tempData: string;
@@ -102,7 +102,7 @@ export class ApplyComponent implements OnInit, AfterContentInit {
 
   onSubmitRti() {
     this.apiService.saveServiceTypeData(this.selectedValue)
-    this.subscription = this.apiService.subscribeApplyData
+    this.applySubscription = this.apiService.subscribeApplyData
       .subscribe(
         rtiDetails => {
           this.rtiData = rtiDetails;
@@ -134,7 +134,7 @@ export class ApplyComponent implements OnInit, AfterContentInit {
           console.log(data.id)
           // submit rti data - step 02
           this.apiService.submitRtiDetails(this.selectedValue);
-          this.subscription = this.apiService.subscribeRtiId
+          this.rtiSubscription = this.apiService.subscribeRtiId
             .subscribe(
               (resultId: any) => {
                 if(resultId){
@@ -156,7 +156,12 @@ export class ApplyComponent implements OnInit, AfterContentInit {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    if(this.applySubscription){
+      this.applySubscription.unsubscribe
+    }
+    if(this.rtiSubscription){
+      this.rtiSubscription.unsubscribe
+    }
   }
 
   setStep(index: number) {
