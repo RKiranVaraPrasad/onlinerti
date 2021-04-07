@@ -24,32 +24,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Passport Delay</td>
-                                <td>Mar 04, 2021</td>
-                                <td>Mar 06, 2021</td>
-                                <td>In Progress</td>
-                                <td>
-                                    <a mat-button (click)="seeDetails()">Details</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Passport Delay</td>
-                                <td>Mar 04, 2021</td>
-                                <td>Mar 06, 2021</td>
-                                <td>In Progress</td>
-                                <td>
-                                    <a mat-button (click)="seeDetails()">Details</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Passport Delay</td>
-                                <td>Feb 04, 2021</td>
-                                <td>Feb 06, 2021</td>
-                                <td>Closed</td>
+                            <tr *ngFor="let data of applyData; let i = index">
+                                <td>{{i+1}}</td>
+                                <td>{{data.serviceType}}</td>
+                                <td>{{data.published_at | date }}</td>
+                                <td>{{data.updatedAt | date}}</td>
+                                <td>{{data.status}}</td>
                                 <td>
                                     <a mat-button (click)="seeDetails()">Details</a>
                                 </td>

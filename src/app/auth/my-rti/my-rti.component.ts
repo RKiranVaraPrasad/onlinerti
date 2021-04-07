@@ -9,6 +9,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 })
 export class MyRtiComponent implements OnInit {
   username: any;
+  applyData: any;
 
   constructor(
     private router: Router,
@@ -21,6 +22,13 @@ export class MyRtiComponent implements OnInit {
   ngOnInit(): void {
     const userData = JSON.parse(localStorage.getItem('user'))
     this.username = userData.username;
+    this.apiService.getMyRtiService()
+    .subscribe(
+      data => {
+        console.log(data)
+        this.applyData = data;
+      }
+    )
   }
 
   seeDetails(){

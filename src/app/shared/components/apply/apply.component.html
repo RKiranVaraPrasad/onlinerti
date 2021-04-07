@@ -137,8 +137,8 @@
                                     <div class="row">
                                         <div class="col-md-7 col-12">
                                             <div class="service-type-details" *ngIf="rtiData">
-                                                <h4 class="text-nowrap">My passport application details</h4>
-                                                <div class="field-group">
+                                                <h4 class="text-nowrap">RTI details</h4>
+                                                <!-- <div class="field-group">
                                                     <div class="field-name">Name of the Applicant</div>
                                                     <div class="field-desc">{{rtiData.applicantName}}</div>
                                                 </div>
@@ -153,8 +153,8 @@
                                                 <div class="field-group">
                                                     <div class="field-name">Application Submission Date</div>
                                                     <div class="field-desc">{{rtiData.applicationDate}}</div>
-                                                </div>
-
+                                                </div> -->
+                                                {{rtiData| json}}
                                             </div>
                                         </div>
                                         <div class="col-md-5 col-12">

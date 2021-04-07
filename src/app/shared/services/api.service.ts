@@ -163,6 +163,10 @@ export class ApiService {
     });
   }
 
+  // my rti
+  getMyRtiService(){
+    return this.http.get(`${this.apply}?_sort=id:DESC`);
+  }
 
   // user details after login
   userDataAfterLoggedIn = new BehaviorSubject<any>(this.userDetails);
