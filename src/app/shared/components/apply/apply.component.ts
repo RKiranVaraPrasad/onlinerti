@@ -118,6 +118,8 @@ export class ApplyComponent implements OnInit, AfterContentInit {
   }
   onSubmitApplyForm() {
     const applyData: any = {}
+    applyData.serviceType = this.selectedValue;
+    applyData.status = "Pending";
     const personalData: any = {}
     personalData.fullname = this.fullname;
     personalData.mobile = this.mobile;
