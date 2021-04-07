@@ -19,6 +19,7 @@ export class ApiService {
   private passportDelay = `${this.baseUrl}/passport-delays`;
   private itReturns = `${this.baseUrl}/income-tax-refunds`;
   private marksheetVerification = `${this.baseUrl}/marksheet-verifications`;
+  private answerCopy = `${this.baseUrl}/answer-copy`;
   private apply = `${this.baseUrl}/applies`;
 
   constructor(
@@ -94,6 +95,14 @@ export class ApiService {
     const accessToken = localStorage.getItem('access-token');
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
     return this.http.post(this.marksheetVerification, data, {
+      headers
+    });
+  }
+
+  postAnswerCopyService(data: any): Observable<any>{
+    const accessToken = localStorage.getItem('access-token');
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
+    return this.http.post(this.answerCopy, data, {
       headers
     });
   }

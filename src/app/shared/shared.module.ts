@@ -17,6 +17,13 @@ import { MatRadioModule } from '@angular/material/radio';
 import { SharedRoutingModule } from './shared-routing.module';
 import { PassportDelayComponent } from './components/passport-delay/passport-delay.component';
 import { MarksheetVerificationComponent } from './components/marksheet-verification/marksheet-verification.component';
+import { AnswerCopyComponent } from './components/answer-copy/answer-copy.component';
+import { FirStatusComponent } from './components/fir-status/fir-status.component';
+import { PropertyDetailsComponent } from './components/property-details/property-details.component';
+import { EpfStatusComponent } from './components/epf-status/epf-status.component';
+import { PensionApplicationComponent } from './components/pension-application/pension-application.component';
+import { OccupancyCertificateComponent } from './components/occupancy-certificate/occupancy-certificate.component';
+import { OtherComponent } from './components/other/other.component';
 
 
 
@@ -26,7 +33,14 @@ import { MarksheetVerificationComponent } from './components/marksheet-verificat
     ItReturnsComponent,
     ApplyComponent,
     PassportDelayComponent,
-    MarksheetVerificationComponent
+    MarksheetVerificationComponent,
+    AnswerCopyComponent,
+    FirStatusComponent,
+    PropertyDetailsComponent,
+    EpfStatusComponent,
+    PensionApplicationComponent,
+    OccupancyCertificateComponent,
+    OtherComponent
   ],
   imports: [
     CommonModule,

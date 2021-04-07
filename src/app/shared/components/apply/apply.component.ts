@@ -82,7 +82,14 @@ export class ApplyComponent implements OnInit, AfterContentInit {
     this.services = [
       { id: 1, option: "Passport Delay", link: "passport-delay" },
       { id: 2, option: "Income Tax Refund", link: "it-returns" },
-      { id: 3, option: "Marksheet Verification", link: "marksheet-verification" }
+      { id: 3, option: "Marksheet Verification", link: "marksheet-verification" },
+      { id: 4, option: "Answer Copy", link: "answer-copy" },
+      { id: 5, option: "FIR Status", link: "fir-status" },
+      { id: 6, option: "Property Details", link: "property-details" },
+      { id: 7, option: "EPF Status", link: "epf-status" },
+      { id: 8, option: "Pension Application", link: "pension-application" },
+      { id: 9, option: "Occupancy Certificate", link: "occupancy-certificate" },
+      { id: 10, option: "Other", link: "other" },
     ]
 
   }
