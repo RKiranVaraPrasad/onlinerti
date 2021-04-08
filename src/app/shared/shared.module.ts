@@ -25,6 +25,7 @@ import { PensionApplicationComponent } from './components/pension-application/pe
 import { OccupancyCertificateComponent } from './components/occupancy-certificate/occupancy-certificate.component';
 import { OtherComponent } from './components/other/other.component';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import { PipesModule } from '../core/pipes/pipes.module';
 
 
 
@@ -58,7 +59,8 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     SharedRoutingModule,
-    NgxJsonViewerModule
+    NgxJsonViewerModule,
+    PipesModule
   ],
   exports: [
     IdentifierComponent,

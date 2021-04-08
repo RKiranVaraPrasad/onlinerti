@@ -13,25 +13,12 @@
                 <img src="assets/svg/left-arrow.svg" (click)="back()" width="52" alt="" style="cursor: pointer;">
             </div>
             <div class="col-12">
-                <ngx-json-viewer [json]="rtiDetails"></ngx-json-viewer>
-                <!-- <div class="flex-box">
-                    <div class="flex-col">
-                        <h3>Application</h3>
-                        <span>Passport Delay</span>
+                <div class="flex-box">
+                    <div class="flex-col" *ngFor="let item of rtiDetails | keyvalue">
+                        <h3>{{item.key  | splitCamelcase | uppercase}}</h3>
+                        <span>{{item.value}}</span>
                     </div>
-                    <div class="flex-col">
-                        <h3>Posted On</h3>
-                        <span>Mar 04, 2021</span>
-                    </div>
-                    <div class="flex-col">
-                        <h3>Updated On</h3>
-                        <span>Mar 06, 2021</span>
-                    </div>
-                    <div class="flex-col">
-                        <h3>Status</h3>
-                        <span>In Progress</span>
-                    </div>
-                </div> -->
+                </div>
             </div>
             <div class="col-12 pt-5">
                 <h3>Uploaded Documents</h3>

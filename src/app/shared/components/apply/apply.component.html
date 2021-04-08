@@ -138,24 +138,11 @@
                                         <div class="col-md-7 col-12">
                                             <div class="service-type-details" *ngIf="rtiData">
                                                 <h4 class="text-nowrap">RTI details</h4>
-                                                <!-- <div class="field-group">
-                                                    <div class="field-name">Name of the Applicant</div>
-                                                    <div class="field-desc">{{rtiData.applicantName}}</div>
+                                                <div class="field-group" *ngFor="let item of rtiData | keyvalue">
+                                                    <div class="field-name">{{item.key | splitCamelcase | titlecase}}</div>
+                                                    <div class="field-desc">{{item.value}}</div>
                                                 </div>
-                                                <div class="field-group">
-                                                    <div class="field-name">Passport Application Number</div>
-                                                    <div class="field-desc">{{rtiData.applicationNo}}</div>
-                                                </div>
-                                                <div class="field-group">
-                                                    <div class="field-name">Passport Office</div>
-                                                    <div class="field-desc">{{rtiData.passportOffice}}</div>
-                                                </div>
-                                                <div class="field-group">
-                                                    <div class="field-name">Application Submission Date</div>
-                                                    <div class="field-desc">{{rtiData.applicationDate}}</div>
-                                                </div> -->
-                                                <!-- {{rtiData| json}} -->
-                                                <ngx-json-viewer [json]="rtiData"></ngx-json-viewer>
+                                                <!-- <ngx-json-viewer [json]="rtiData"></ngx-json-viewer> -->
                                             </div>
                                         </div>
                                         <div class="col-md-5 col-12">

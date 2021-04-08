@@ -15,6 +15,7 @@ import { DetailsComponent } from './details/details.component';
 import { LoginComponent } from './login/login.component';
 import { SharedModule } from '../shared/shared.module';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import { PipesModule } from '../core/pipes/pipes.module';
 
 
 
@@ -37,7 +38,8 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     AuthRoutingModule,
-    NgxJsonViewerModule
+    NgxJsonViewerModule,
+    PipesModule
   ],
   exports: [
     RegisterComponent,
