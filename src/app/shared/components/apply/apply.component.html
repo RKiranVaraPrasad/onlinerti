@@ -189,10 +189,16 @@
                                     <div class="pricing">
                                         <h4>Pricing</h4>
                                         <div class="table">
-                                            <mat-radio-group aria-label="Select an option">
+                                            <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedPlan">
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered">
                                                         <tbody>
+                                                            <tr>
+                                                                <td>Plan</td>
+                                                                <td align="middle">Basic</td>
+                                                                <td align="middle">Standard</td>
+                                                                <td align="middle">Premium</td>
+                                                            </tr>
                                                             <tr>
                                                                 <td>Postal Charges
                                                                     <div class="float-right">
@@ -280,15 +286,15 @@
                                                             <tr>
                                                                 <td>Choose your plan</td>
                                                                 <td>
-                                                                    <mat-radio-button value="1">&#8377;199
+                                                                    <mat-radio-button value="Basic &#8377;199">&#8377;199
                                                                     </mat-radio-button>
                                                                 </td>
                                                                 <td>
-                                                                    <mat-radio-button value="2">&#8377;299
+                                                                    <mat-radio-button value="Standard &#8377;299">&#8377;299
                                                                     </mat-radio-button>
                                                                 </td>
                                                                 <td>
-                                                                    <mat-radio-button value="3">&#8377;499
+                                                                    <mat-radio-button value="Premium &#8377;499">&#8377;499
                                                                     </mat-radio-button>
                                                                 </td>
                                                             </tr>
@@ -296,6 +302,13 @@
                                                     </table>
                                                 </div>
                                             </mat-radio-group>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 text-right">
+                                                <div class="selected-plan" *ngIf="selectedPlan">
+                                                    <strong>Selected Plan: </strong> {{selectedPlan}}
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

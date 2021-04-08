@@ -23,6 +23,7 @@ export class ApplyComponent implements OnInit, AfterContentInit {
   personalDetailsForm: FormGroup;
   selectControl = new FormControl('accent');
   fontSizeControl = new FormControl(16, Validators.min(10));
+  selectedPlan: string;
   fullname: any;
   email: any;
   mobile: any;
@@ -120,6 +121,7 @@ export class ApplyComponent implements OnInit, AfterContentInit {
     const applyData: any = {}
     applyData.serviceType = this.selectedValue;
     applyData.status = "Pending";
+    applyData.selectedPlan = this.selectedPlan;
     const personalData: any = {}
     personalData.fullname = this.fullname;
     personalData.mobile = this.mobile;
