@@ -14,6 +14,7 @@ import { MyRtiComponent } from './my-rti/my-rti.component';
 import { DetailsComponent } from './details/details.component';
 import { LoginComponent } from './login/login.component';
 import { SharedModule } from '../shared/shared.module';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
 
 
 
@@ -35,7 +36,8 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    AuthRoutingModule
+    AuthRoutingModule,
+    NgxJsonViewerModule
   ],
   exports: [
     RegisterComponent,

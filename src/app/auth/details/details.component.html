@@ -13,7 +13,8 @@
                 <img src="assets/svg/left-arrow.svg" (click)="back()" width="52" alt="" style="cursor: pointer;">
             </div>
             <div class="col-12">
-                <div class="flex-box">
+                <ngx-json-viewer [json]="rtiDetails"></ngx-json-viewer>
+                <!-- <div class="flex-box">
                     <div class="flex-col">
                         <h3>Application</h3>
                         <span>Passport Delay</span>
@@ -30,7 +31,7 @@
                         <h3>Status</h3>
                         <span>In Progress</span>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="col-12 pt-5">
                 <h3>Uploaded Documents</h3>

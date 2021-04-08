@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   { path: 'my-rti', component: MyRtiComponent, canActivate: [AuthGuard]},
-  { path: 'details', component: DetailsComponent, canActivate: [AuthGuard]},
+  { path: 'details/:service/:id', component: DetailsComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

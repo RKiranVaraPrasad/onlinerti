@@ -31,7 +31,7 @@
                                 <td>{{data.updatedAt | date}}</td>
                                 <td>{{data.status}}</td>
                                 <td>
-                                    <a mat-button (click)="seeDetails()">Details</a>
+                                    <a mat-button routerLink="../details/{{data.serviceType}}/{{data.id}}">Details</a>
                                 </td>
                             </tr>
                         </tbody>

@@ -168,6 +168,35 @@ export class ApiService {
     return this.http.get(`${this.apply}?_sort=id:DESC`);
   }
 
+    // details
+    getAppliesService(id:any){
+      return this.http.get(`${this.apply}/${id}`);
+    }
+    getRtiDetailsService(service:any, id:any){
+      if(service === 'it-returns'){
+        return this.http.get(`${this.itReturns}/${id}`)
+      }else if(service === 'other'){
+        return this.http.get(`${this.otherRti}/${id}`)
+      }else if(service === 'epf-status'){
+        return this.http.get(`${this.epfStatus}/${id}`)
+      }else if(service === 'fir-status'){
+        return this.http.get(`${this.firStatus}/${id}`)
+      }else if(service === 'passport-delay'){
+        return this.http.get(`${this.passportDelay}/${id}`)
+      }else if(service === 'marksheet-verification'){
+        return this.http.get(`${this.marksheetVerification}/${id}`)
+      }else if(service === 'answer-copy'){
+        return this.http.get(`${this.answerCopy}/${id}`)
+      }else if(service === 'property-details'){
+        return this.http.get(`${this.propertyDetails}/${id}`)
+      }else if(service === 'pension-application'){
+        return this.http.get(`${this.pensionApplication}/${id}`)
+      }else if(service === 'occupancy-certificate'){
+        return this.http.get(`${this.occupancyCertificate}/${id}`)
+      }
+      
+    }
+
   // user details after login
   userDataAfterLoggedIn = new BehaviorSubject<any>(this.userDetails);
   userData = this.userDataAfterLoggedIn.asObservable();
