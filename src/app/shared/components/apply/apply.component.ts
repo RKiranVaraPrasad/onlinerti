@@ -130,6 +130,9 @@ export class ApplyComponent implements OnInit, AfterContentInit {
     personalData.pincode = this.pincode;
     personalData.city = this.personalDetailsForm.get('city').value;
     // submit personal data - step 01
+    if(localStorage.getItem('user') != null){
+      alert('logged');
+    }
     this.apiService.postPersonalDetailsService(personalData)
       .subscribe(
         (data: any) => {
