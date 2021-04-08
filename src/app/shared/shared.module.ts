@@ -24,6 +24,7 @@ import { EpfStatusComponent } from './components/epf-status/epf-status.component
 import { PensionApplicationComponent } from './components/pension-application/pension-application.component';
 import { OccupancyCertificateComponent } from './components/occupancy-certificate/occupancy-certificate.component';
 import { OtherComponent } from './components/other/other.component';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
 
 
 
@@ -56,7 +57,8 @@ import { OtherComponent } from './components/other/other.component';
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    SharedRoutingModule
+    SharedRoutingModule,
+    NgxJsonViewerModule
   ],
   exports: [
     IdentifierComponent,

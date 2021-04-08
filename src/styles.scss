@@ -219,3 +219,23 @@ section {
 .mat-expansion-panel-header-description{
     margin-right: 0 !important;
 }
+.ngx-json-viewer {
+    font-size: 14px !important;
+    font-family: Roboto, "Helvetica Neue", sans-serif !important;
+    .segment{
+      margin: 0 !important;
+      .segment-main{
+        .segment-value{
+          display: block !important;
+          color: #000 !important;
+        }
+        .segment-key{
+          font-weight: 500 !important;
+          color: #000 !important;
+        }
+        .segment-separator{
+          display: none;
+        }
+      }
+    }
+  }

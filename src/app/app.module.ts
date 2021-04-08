@@ -21,7 +21,6 @@ import { AuthModule } from './auth/auth.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { JwtInterceptor } from './core/interceptor/jwt.interceptor';
-import { NgxJsonViewerModule } from 'ngx-json-viewer';
 
 
 
@@ -48,8 +47,7 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
     MatButtonModule,
     MatCardModule,
     FormsModule,
-    ReactiveFormsModule,
-    NgxJsonViewerModule
+    ReactiveFormsModule
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
