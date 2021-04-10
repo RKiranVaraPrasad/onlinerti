@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
@@ -74,8 +74,22 @@ export class ApiService {
     this.rtiId.next(data);
   }
 
+  getPersonalDetailByEmailService(email: any){
+    const accessToken = localStorage.getItem('access-token');
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
+    const params = new HttpParams().set('email', `${email}`);
+    return this.http.get(this.personalDetails, {
+      params
+    })
+  }
+
   postPersonalDetailsService(data: any){
     return this.http.post(this.personalDetails, data)
+  }
+
+  putPersonalDetailsService(id: any, data: any){
+    let reqID :any = id;
+    return this.http.put(`${this.personalDetails}/${reqID}`, data)
   }
 
   postApplyService(data: any){
@@ -164,8 +178,13 @@ export class ApiService {
   }
 
   // my rti
-  getMyRtiService(){
-    return this.http.get(`${this.apply}?_sort=id:DESC`);
+  getMyRtiService(id: any){
+    const accessToken = localStorage.getItem('access-token');
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
+    const params = new HttpParams().set('personalDetailsId', `${id}`);
+    return this.http.get(this.apply, {
+      params
+    });
   }
 
     // details

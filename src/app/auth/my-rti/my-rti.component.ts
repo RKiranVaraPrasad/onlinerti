@@ -15,24 +15,32 @@ export class MyRtiComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private apiService: ApiService
-  ) { 
-    
+  ) {
+
   }
 
   ngOnInit(): void {
     const userData = JSON.parse(localStorage.getItem('user'))
     this.username = userData.username;
-    this.apiService.getMyRtiService()
-    .subscribe(
-      data => {
-        console.log(data)
-        this.applyData = data;
-      }
-    )
+    let email = userData.email;
+    this.apiService.getPersonalDetailByEmailService(email)
+      .subscribe(
+        (resultID: any) => {
+          console.log(resultID)
+          this.apiService.getMyRtiService(resultID[0].id)
+            .subscribe(
+              data => {
+                console.log(data)
+                this.applyData = data;
+              }
+            )
+        }
+      )
+
   }
 
-  seeDetails(){
-    this.router.navigate(['/details'], {relativeTo: this.route})
+  seeDetails() {
+    this.router.navigate(['/details'], { relativeTo: this.route })
   }
 
 

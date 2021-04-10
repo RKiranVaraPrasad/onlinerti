@@ -130,43 +130,110 @@ export class ApplyComponent implements OnInit, AfterContentInit {
     personalData.pincode = this.pincode;
     personalData.city = this.personalDetailsForm.get('city').value;
     // submit personal data - step 01
-    if(localStorage.getItem('user') != null){
-      alert('logged');
+    if (localStorage.getItem('user') != null) {
+      let user: any = JSON.parse(localStorage.getItem('user'));
+      let email = user.email;
+      this.apiService.getPersonalDetailByEmailService(email)
+        .subscribe(
+          (resultId: any) => {
+            console.log(resultId.length)
+            if (resultId.length > 0) {
+              let id = resultId[0].id;
+              this.apiService.putPersonalDetailsService(id, personalData)
+                .subscribe(
+                  (data: any) => {
+                    applyData.personalDetailsId = data.id;
+                    console.log('updated details: ' + data)
+                    //submit rti data - step 02
+                    this.apiService.submitRtiDetails(this.selectedValue);
+                    this.rtiSubscription = this.apiService.subscribeRtiId
+                      .subscribe(
+                        (resultId: any) => {
+                          if (resultId) {
+                            applyData.rtiDetailsId = resultId;
+                            console.log(resultId)
+                            // submit two ids - step -03
+                            this.apiService.postApplyService(applyData)
+                              .subscribe(
+                                data => {
+                                  console.log(data)
+                                  this.router.navigate(['/my-rti'])
+                                }
+                              )
+                          }
+                        }
+                      )
+                  }
+                )
+            } else {
+              this.apiService.postPersonalDetailsService(personalData)
+                .subscribe(
+                  (data: any) => {
+                    console.log(data)
+                    applyData.personalDetailsId = data.id;
+                    console.log(data.id)
+                    // submit rti data - step 02
+                    this.apiService.submitRtiDetails(this.selectedValue);
+                    this.rtiSubscription = this.apiService.subscribeRtiId
+                      .subscribe(
+                        (resultId: any) => {
+                          if (resultId) {
+                            applyData.rtiDetailsId = resultId;
+                            console.log(resultId)
+                            // submit two ids - step -03
+                            this.apiService.postApplyService(applyData)
+                              .subscribe(
+                                data => {
+                                  console.log(data)
+                                  this.router.navigate(['/my-rti'])
+                                }
+                              )
+                          }
+                        }
+                      )
+                  }
+                )
+            }
+          }
+        )
+    } else {
+      alert('Please login or Register')
+      // this.apiService.postPersonalDetailsService(personalData)
+      //   .subscribe(
+      //     (data: any) => {
+      //       console.log(data)
+      //       applyData.personalDetailsId = data.id;
+      //       console.log(data.id)
+      //       // submit rti data - step 02
+      //       this.apiService.submitRtiDetails(this.selectedValue);
+      //       this.rtiSubscription = this.apiService.subscribeRtiId
+      //         .subscribe(
+      //           (resultId: any) => {
+      //             if (resultId) {
+      //               applyData.rtiDetailsId = resultId;
+      //               console.log(resultId)
+      //               // submit two ids - step -03
+      //               this.apiService.postApplyService(applyData)
+      //                 .subscribe(
+      //                   data => {
+      //                     console.log(data)
+      //                     this.router.navigate(['/my-rti'])
+      //                   }
+      //                 )
+      //             }
+      //           }
+      //         )
+      //     }
+      //   )
     }
-    this.apiService.postPersonalDetailsService(personalData)
-      .subscribe(
-        (data: any) => {
-          console.log(data)
-          applyData.personalDetailsId = data.id;
-          console.log(data.id)
-          // submit rti data - step 02
-          this.apiService.submitRtiDetails(this.selectedValue);
-          this.rtiSubscription = this.apiService.subscribeRtiId
-            .subscribe(
-              (resultId: any) => {
-                if(resultId){
-                  applyData.rtiDetailsId = resultId;
-                  console.log(resultId)
-                  // submit two ids - step -03
-                  this.apiService.postApplyService(applyData)
-                  .subscribe(
-                    data => {
-                      console.log(data)
-                      this.router.navigate(['/my-rti'])
-                    }
-                  )
-                }
-              }
-            )
-        }
-      )
+
   }
 
   ngOnDestroy() {
-    if(this.applySubscription){
+    if (this.applySubscription) {
       this.applySubscription.unsubscribe
     }
-    if(this.rtiSubscription){
+    if (this.rtiSubscription) {
       this.rtiSubscription.unsubscribe
     }
   }
