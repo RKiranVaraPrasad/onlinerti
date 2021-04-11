@@ -22,9 +22,9 @@ export class ItReturnsComponent implements OnInit, OnDestroy {
   ) { 
     this.rtiDetailsForm = this.fb.group({
       pancardNumber: new FormControl('', [Validators.required]),
-      financialYear: new FormControl('', [Validators.required]),
+      financialYear: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
       wardNumber: new FormControl('', [Validators.required]),
-      refundAmount: new FormControl('', [Validators.required]),
+      refundAmount: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
       itOffice: new FormControl('', [Validators.required]),
       ApplicantDate: new FormControl('', [Validators.required]),
       moreInfo: new FormControl('', [Validators.required])

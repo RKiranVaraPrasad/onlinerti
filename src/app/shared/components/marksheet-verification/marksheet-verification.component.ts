@@ -24,7 +24,7 @@ export class MarksheetVerificationComponent implements OnInit, OnDestroy {
       course: new FormControl('', [Validators.required]),
       college: new FormControl('', [Validators.required]),
       rollNo: new FormControl('', [Validators.required]),
-      year: new FormControl('', [Validators.required]),
+      year: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
       moreInfo: new FormControl('', [Validators.required])
     })
   }

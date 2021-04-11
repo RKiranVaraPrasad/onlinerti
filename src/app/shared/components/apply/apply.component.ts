@@ -62,7 +62,7 @@ export class ApplyComponent implements OnInit, AfterContentInit {
       email: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
       state: new FormControl('', [Validators.required]),
       city: new FormControl('', [Validators.required]),
-      pincode: new FormControl('', [Validators.required]),
+      pincode: new FormControl('', [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{6}$')]),
       address: new FormControl('', [Validators.required])
     })
   }

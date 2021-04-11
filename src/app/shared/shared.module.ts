@@ -26,6 +26,8 @@ import { OccupancyCertificateComponent } from './components/occupancy-certificat
 import { OtherComponent } from './components/other/other.component';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { PipesModule } from '../core/pipes/pipes.module';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 
@@ -60,7 +62,9 @@ import { PipesModule } from '../core/pipes/pipes.module';
     ToastrModule.forRoot(),
     SharedRoutingModule,
     NgxJsonViewerModule,
-    PipesModule
+    PipesModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   exports: [
     IdentifierComponent,
