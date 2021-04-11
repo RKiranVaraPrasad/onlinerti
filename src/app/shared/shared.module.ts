@@ -6,7 +6,6 @@ import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { ToastrModule } from 'ngx-toastr';
 import { ItReturnsComponent } from './components/it-returns/it-returns.component';
 import { ApplyComponent } from './components/apply/apply.component';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -59,7 +58,6 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatRadioModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot(),
     SharedRoutingModule,
     NgxJsonViewerModule,
     PipesModule,

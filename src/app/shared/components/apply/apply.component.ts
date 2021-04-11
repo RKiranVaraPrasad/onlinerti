@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiService } from '../../services/api.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-apply',
@@ -46,6 +47,7 @@ export class ApplyComponent implements OnInit, AfterContentInit {
     private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
+    private toastr: ToastrService,
     private cd: ChangeDetectorRef
   ) {
     this.formData = new FormData();
@@ -156,6 +158,7 @@ export class ApplyComponent implements OnInit, AfterContentInit {
                             this.apiService.postApplyService(applyData)
                               .subscribe(
                                 data => {
+                                  this.toastr.success('Applied successfully');
                                   console.log(data)
                                   this.router.navigate(['/my-rti'])
                                 }
@@ -184,6 +187,7 @@ export class ApplyComponent implements OnInit, AfterContentInit {
                             this.apiService.postApplyService(applyData)
                               .subscribe(
                                 data => {
+                                  this.toastr.success('Applied successfully');
                                   console.log(data)
                                   this.router.navigate(['/my-rti'])
                                 }

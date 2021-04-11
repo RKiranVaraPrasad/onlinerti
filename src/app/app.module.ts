@@ -21,6 +21,7 @@ import { AuthModule } from './auth/auth.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { JwtInterceptor } from './core/interceptor/jwt.interceptor';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -42,6 +43,7 @@ import { JwtInterceptor } from './core/interceptor/jwt.interceptor';
     SharedModule,
     AppRoutingModule,
     CarouselModule.forRoot(),
+    ToastrModule.forRoot(),
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
