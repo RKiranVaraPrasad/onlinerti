@@ -16,6 +16,8 @@ import { LoginComponent } from './login/login.component';
 import { SharedModule } from '../shared/shared.module';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { PipesModule } from '../core/pipes/pipes.module';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 
@@ -25,7 +27,9 @@ import { PipesModule } from '../core/pipes/pipes.module';
     RegisterComponent,
     MyRtiComponent,
     DetailsComponent,
-    LoginComponent
+    LoginComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,

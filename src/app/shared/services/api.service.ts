@@ -14,6 +14,7 @@ export class ApiService {
   baseUrl = "http://172.105.60.86:1337";
 
   private userRegistration = `${this.baseUrl}/auth/local/register`;
+  private forgotPassword = `${this.baseUrl}/auth/forgot-password`;
   private userLogin = `${this.baseUrl}/auth/local`;
   private personalDetails = `${this.baseUrl}/personal-details`;
   private apply = `${this.baseUrl}/applies`;
@@ -32,7 +33,7 @@ export class ApiService {
   constructor(
     private http: HttpClient,
     private router: Router
-  ) { 
+  ) {
     setTimeout(() => {
       this.userDataAfterLoggedIn.next(this.userDetails);
     }, 500);
@@ -49,32 +50,32 @@ export class ApiService {
   private applyData = new BehaviorSubject<any>('');
   subscribeApplyData = this.applyData.asObservable();
 
-  sendApplyRtiData(data: any){
+  sendApplyRtiData(data: any) {
     this.applyData.next(data);
   }
 
   private rtiData = new BehaviorSubject<any>('default message');
   subscribeRtiData = this.rtiData.asObservable();
 
-  submitRtiDetails(message: any){
+  submitRtiDetails(message: any) {
     this.rtiData.next(message)
   }
 
   private formStatus = new BehaviorSubject<boolean>(false);
   subscribeFormStatus = this.formStatus.asObservable();
 
-  sendFormStatus(status: boolean){
+  sendFormStatus(status: boolean) {
     this.formStatus.next(status);
   }
 
   private rtiId = new BehaviorSubject<boolean>(false);
   subscribeRtiId = this.rtiId.asObservable();
 
-  sendRtiId(data: any){
+  sendRtiId(data: any) {
     this.rtiId.next(data);
   }
 
-  getPersonalDetailByEmailService(email: any){
+  getPersonalDetailByEmailService(email: any) {
     const accessToken = localStorage.getItem('access-token');
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
     const params = new HttpParams().set('email', `${email}`);
@@ -83,20 +84,20 @@ export class ApiService {
     })
   }
 
-  postPersonalDetailsService(data: any){
+  postPersonalDetailsService(data: any) {
     return this.http.post(this.personalDetails, data)
   }
 
-  putPersonalDetailsService(id: any, data: any){
-    let reqID :any = id;
+  putPersonalDetailsService(id: any, data: any) {
+    let reqID: any = id;
     return this.http.put(`${this.personalDetails}/${reqID}`, data)
   }
 
-  postApplyService(data: any){
+  postApplyService(data: any) {
     return this.http.post(this.apply, data)
   }
 
-  postPassportDelayService(data: any): Observable<any>{
+  postPassportDelayService(data: any): Observable<any> {
     const accessToken = localStorage.getItem('access-token');
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
     return this.http.post(this.passportDelay, data, {
@@ -104,15 +105,15 @@ export class ApiService {
     });
   }
 
-  postItReturnService(data: any): Observable<any>{
+  postItReturnService(data: any): Observable<any> {
     const accessToken = localStorage.getItem('access-token');
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
     return this.http.post(this.itReturns, data, {
       headers
     });
   }
- 
-  postMarksheetVerificationService(data: any): Observable<any>{
+
+  postMarksheetVerificationService(data: any): Observable<any> {
     const accessToken = localStorage.getItem('access-token');
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
     return this.http.post(this.marksheetVerification, data, {
@@ -120,7 +121,7 @@ export class ApiService {
     });
   }
 
-  postAnswerCopyService(data: any): Observable<any>{
+  postAnswerCopyService(data: any): Observable<any> {
     const accessToken = localStorage.getItem('access-token');
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
     return this.http.post(this.answerCopy, data, {
@@ -128,7 +129,7 @@ export class ApiService {
     });
   }
 
-  postFirStatusService(data: any): Observable<any>{
+  postFirStatusService(data: any): Observable<any> {
     const accessToken = localStorage.getItem('access-token');
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
     return this.http.post(this.firStatus, data, {
@@ -137,7 +138,7 @@ export class ApiService {
   }
 
 
-  postPropertyDetailsService(data: any): Observable<any>{
+  postPropertyDetailsService(data: any): Observable<any> {
     const accessToken = localStorage.getItem('access-token');
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
     return this.http.post(this.propertyDetails, data, {
@@ -145,7 +146,7 @@ export class ApiService {
     });
   }
 
-  postEpfStatusService(data: any): Observable<any>{
+  postEpfStatusService(data: any): Observable<any> {
     const accessToken = localStorage.getItem('access-token');
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
     return this.http.post(this.epfStatus, data, {
@@ -153,7 +154,7 @@ export class ApiService {
     });
   }
 
-  postPensionApplicationService(data: any): Observable<any>{
+  postPensionApplicationService(data: any): Observable<any> {
     const accessToken = localStorage.getItem('access-token');
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
     return this.http.post(this.pensionApplication, data, {
@@ -161,7 +162,7 @@ export class ApiService {
     });
   }
 
-  postOccupancyCertificateService(data: any): Observable<any>{
+  postOccupancyCertificateService(data: any): Observable<any> {
     const accessToken = localStorage.getItem('access-token');
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
     return this.http.post(this.occupancyCertificate, data, {
@@ -169,7 +170,7 @@ export class ApiService {
     });
   }
 
-  postOtherRtiService(data: any): Observable<any>{
+  postOtherRtiService(data: any): Observable<any> {
     const accessToken = localStorage.getItem('access-token');
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
     return this.http.post(this.otherRti, data, {
@@ -178,7 +179,7 @@ export class ApiService {
   }
 
   // my rti
-  getMyRtiService(id: any){
+  getMyRtiService(id: any) {
     const accessToken = localStorage.getItem('access-token');
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
     const params = new HttpParams().set('personalDetailsId', `${id}`);
@@ -187,34 +188,34 @@ export class ApiService {
     });
   }
 
-    // details
-    getAppliesService(id:any){
-      return this.http.get(`${this.apply}/${id}`);
+  // details
+  getAppliesService(id: any) {
+    return this.http.get(`${this.apply}/${id}`);
+  }
+  getRtiDetailsService(service: any, id: any) {
+    if (service === 'it-returns') {
+      return this.http.get(`${this.itReturns}/${id}`)
+    } else if (service === 'other') {
+      return this.http.get(`${this.otherRti}/${id}`)
+    } else if (service === 'epf-status') {
+      return this.http.get(`${this.epfStatus}/${id}`)
+    } else if (service === 'fir-status') {
+      return this.http.get(`${this.firStatus}/${id}`)
+    } else if (service === 'passport-delay') {
+      return this.http.get(`${this.passportDelay}/${id}`)
+    } else if (service === 'marksheet-verification') {
+      return this.http.get(`${this.marksheetVerification}/${id}`)
+    } else if (service === 'answer-copy') {
+      return this.http.get(`${this.answerCopy}/${id}`)
+    } else if (service === 'property-details') {
+      return this.http.get(`${this.propertyDetails}/${id}`)
+    } else if (service === 'pension-application') {
+      return this.http.get(`${this.pensionApplication}/${id}`)
+    } else if (service === 'occupancy-certificate') {
+      return this.http.get(`${this.occupancyCertificate}/${id}`)
     }
-    getRtiDetailsService(service:any, id:any){
-      if(service === 'it-returns'){
-        return this.http.get(`${this.itReturns}/${id}`)
-      }else if(service === 'other'){
-        return this.http.get(`${this.otherRti}/${id}`)
-      }else if(service === 'epf-status'){
-        return this.http.get(`${this.epfStatus}/${id}`)
-      }else if(service === 'fir-status'){
-        return this.http.get(`${this.firStatus}/${id}`)
-      }else if(service === 'passport-delay'){
-        return this.http.get(`${this.passportDelay}/${id}`)
-      }else if(service === 'marksheet-verification'){
-        return this.http.get(`${this.marksheetVerification}/${id}`)
-      }else if(service === 'answer-copy'){
-        return this.http.get(`${this.answerCopy}/${id}`)
-      }else if(service === 'property-details'){
-        return this.http.get(`${this.propertyDetails}/${id}`)
-      }else if(service === 'pension-application'){
-        return this.http.get(`${this.pensionApplication}/${id}`)
-      }else if(service === 'occupancy-certificate'){
-        return this.http.get(`${this.occupancyCertificate}/${id}`)
-      }
-      
-    }
+
+  }
 
   // user details after login
   userDataAfterLoggedIn = new BehaviorSubject<any>(this.userDetails);
@@ -243,6 +244,11 @@ export class ApiService {
         }
         return user;
       }));
+  }
+
+  // forgot password
+  postForgotPasswordService(email: any): Observable<any> {
+    return this.http.post<any>(this.forgotPassword, email);
   }
 
   // user logout

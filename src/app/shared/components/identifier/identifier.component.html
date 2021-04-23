@@ -20,6 +20,11 @@
         </div>
     </mat-card-content>
     <div class="row">
+        <div class="col-12 text-right">
+            <span class="forgot-password" routerLink="/forgot-password">Forgot Password</span>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-6">
             <a mat-button (click)="gotoRegister()" *ngIf="router.url === '/login'"><span>Don't have an account?</span>
                 Register</a>
