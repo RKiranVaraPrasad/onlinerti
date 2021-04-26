@@ -41,6 +41,7 @@ export class ApplyComponent implements OnInit, AfterContentInit {
   stepThree: boolean = false;
   tempData: string;
   formData: any;
+  applicationId: any;
 
   constructor(
     private apiService: ApiService,
@@ -101,6 +102,7 @@ export class ApplyComponent implements OnInit, AfterContentInit {
 
   onChangeService(event) {
     this.router.navigate([event.value], { relativeTo: this.route })
+    console.log(event.value)
   }
 
   onSubmitRti() {
@@ -153,6 +155,7 @@ export class ApplyComponent implements OnInit, AfterContentInit {
                         (resultId: any) => {
                           if (resultId) {
                             applyData.rtiDetailsId = resultId;
+                            applyData.applicationId = this.selectControl.value.slice(0, 3).toUpperCase() + Math.floor(Date.now() / 1000);
                             console.log(resultId)
                             // submit two ids - step -03
                             this.apiService.postApplyService(applyData)
@@ -182,6 +185,7 @@ export class ApplyComponent implements OnInit, AfterContentInit {
                         (resultId: any) => {
                           if (resultId) {
                             applyData.rtiDetailsId = resultId;
+                            applyData.applicationId = this.selectControl.value.slice(0, 3).toUpperCase() + Math.floor(Date.now() / 1000);
                             console.log(resultId)
                             // submit two ids - step -03
                             this.apiService.postApplyService(applyData)
@@ -202,33 +206,6 @@ export class ApplyComponent implements OnInit, AfterContentInit {
         )
     } else {
       alert('Please login or Register')
-      // this.apiService.postPersonalDetailsService(personalData)
-      //   .subscribe(
-      //     (data: any) => {
-      //       console.log(data)
-      //       applyData.personalDetailsId = data.id;
-      //       console.log(data.id)
-      //       // submit rti data - step 02
-      //       this.apiService.submitRtiDetails(this.selectedValue);
-      //       this.rtiSubscription = this.apiService.subscribeRtiId
-      //         .subscribe(
-      //           (resultId: any) => {
-      //             if (resultId) {
-      //               applyData.rtiDetailsId = resultId;
-      //               console.log(resultId)
-      //               // submit two ids - step -03
-      //               this.apiService.postApplyService(applyData)
-      //                 .subscribe(
-      //                   data => {
-      //                     console.log(data)
-      //                     this.router.navigate(['/my-rti'])
-      //                   }
-      //                 )
-      //             }
-      //           }
-      //         )
-      //     }
-      //   )
     }
 
   }

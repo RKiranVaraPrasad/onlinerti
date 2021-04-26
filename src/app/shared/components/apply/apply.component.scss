@@ -1,6 +1,15 @@
+.mat-expansion-panel-header,
+.mat-expansion-panel-header.mat-expanded:focus, .mat-expansion-panel-header.mat-expanded:hover{
+  background: #8fb7ff;
+  border-radius: 0;
+}
+.mat-expansion-panel-header-title{
+  color: white !important;
+}
 .example-headers-align .mat-expansion-panel-header-title,
 .example-headers-align .mat-expansion-panel-header-description {
   flex-basis: 0;
+  font-size: 22px;
 }
 
 .example-headers-align .mat-expansion-panel-header-description {
@@ -10,6 +19,9 @@
 
 .example-headers-align .mat-form-field + .mat-form-field {
   margin-left: 8px;
+}
+.mat-icon{
+  color: white;
 }
 .apply{
   .static-banner{
@@ -72,4 +84,11 @@
 .mat-expansion-panel-header-description {
   flex-grow: initial;
 }
-
+.payment-options{
+  // background-color: #927275;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: 1px solid #8fb7ff;
+  color: #8fb7ff;
+}
