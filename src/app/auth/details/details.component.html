@@ -1,17 +1,17 @@
 <section class="details py-5">
     <div class="container">
-        <div class="row mb-3">
+        <div class="row mb-3" *ngIf="loggedIn">
             <div class="col-12">
                 <h3>Hello User,</h3>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply
                     dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the
                     printing and typesetting industry. </p>
             </div>
-        </div>
-        <div class="row">
             <div class="col-12 pb-3">
                 <img src="assets/svg/left-arrow.svg" (click)="back()" width="52" alt="" style="cursor: pointer;">
             </div>
+        </div>
+        <div class="row">
             <div class="col-12">
                 <div class="flex-box">
                     <div class="flex-col" *ngFor="let item of rtiDetails | keyvalue">

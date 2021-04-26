@@ -10,7 +10,6 @@ import { ApiService } from 'src/app/shared/services/api.service';
 export class MyRtiComponent implements OnInit {
   username: any;
   applyData: any;
-
   constructor(
     private router: Router,
     private route: ActivatedRoute,

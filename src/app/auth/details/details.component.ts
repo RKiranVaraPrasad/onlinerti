@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DetailsComponent implements OnInit {
   rtiDetails: any;
+  loggedIn: boolean = localStorage.getItem('access-token') != null;
   constructor(
     private location: Location,
     private apiService: ApiService,

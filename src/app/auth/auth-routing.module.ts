@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
   { path: 'my-rti', component: MyRtiComponent, canActivate: [AuthGuard]},
-  { path: 'details/:service/:id', component: DetailsComponent, canActivate: [AuthGuard]},
+  { path: 'details/:service/:id', component: DetailsComponent},
 ];
 
 @NgModule({

@@ -17,6 +17,7 @@
                             <tr>
                                 <th>S.No</th>
                                 <th>Application</th>
+                                <th>Tracking ID</th>
                                 <th>Posted On</th>
                                 <th>Updated On</th>
                                 <th>Status</th>
@@ -27,6 +28,7 @@
                             <tr *ngFor="let data of applyData; let i = index">
                                 <td>{{i+1}}</td>
                                 <td>{{data.serviceType}}</td>
+                                <td>{{data.applicationId}}</td>
                                 <td>{{data.published_at | date }}</td>
                                 <td>{{data.updatedAt | date}}</td>
                                 <td>{{data.status}}</td>
