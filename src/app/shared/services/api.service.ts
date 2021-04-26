@@ -15,6 +15,7 @@ export class ApiService {
 
   private userRegistration = `${this.baseUrl}/auth/local/register`;
   private forgotPassword = `${this.baseUrl}/auth/forgot-password`;
+  private resetPassword = `${this.baseUrl}/auth/reset-password`;
   private userLogin = `${this.baseUrl}/auth/local`;
   private personalDetails = `${this.baseUrl}/personal-details`;
   private apply = `${this.baseUrl}/applies`;
@@ -250,6 +251,11 @@ export class ApiService {
   postForgotPasswordService(email: any): Observable<any> {
     return this.http.post<any>(this.forgotPassword, email);
   }
+
+    // reset password
+    postResetPasswordService(password: any): Observable<any> {
+      return this.http.post<any>(this.resetPassword, password);
+    }
 
   // user logout
   logout() {
