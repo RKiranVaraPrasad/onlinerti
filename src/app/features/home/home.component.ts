@@ -10,7 +10,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  logged: boolean;
+  logged: boolean = localStorage.getItem('access-token') != null;
   @ViewChild(MatAccordion) accordion: MatAccordion;
   loginForm: FormGroup;
   constructor(
