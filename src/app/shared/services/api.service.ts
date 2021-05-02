@@ -16,6 +16,7 @@ export class ApiService {
   private userRegistration = `${this.baseUrl}/auth/local/register`;
   private forgotPassword = `${this.baseUrl}/auth/forgot-password`;
   private resetPassword = `${this.baseUrl}/auth/reset-password`;
+  private emailConfirmation = `${this.baseUrl}/auth/send-email-confirmation`;
   private userLogin = `${this.baseUrl}/auth/local`;
   private personalDetails = `${this.baseUrl}/personal-details`;
   private apply = `${this.baseUrl}/applies`;
@@ -75,6 +76,13 @@ export class ApiService {
 
   sendRtiId(data: any) {
     this.rtiId.next(data);
+  }
+
+  private mailConfirmation = new BehaviorSubject<any>('');
+  subscribeMailConfirmation = this.mailConfirmation.asObservable();
+
+  sendEmailConfirmation(email: any) {
+    this.mailConfirmation.next(email);
   }
 
   getPersonalDetailByEmailService(email: any) {
@@ -259,6 +267,11 @@ export class ApiService {
     // reset password
     postResetPasswordService(password: any): Observable<any> {
       return this.http.post<any>(this.resetPassword, password);
+    }
+
+    // email confirmation
+    postEmailConfirmationService(email: any): Observable<any> {
+      return this.http.post<any>(this.emailConfirmation, email);
     }
 
   // user logout

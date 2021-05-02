@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   fieldType: boolean = false;
   registerForm: FormGroup;
   formData: any;
-
+  email: any;
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
@@ -46,8 +46,9 @@ export class RegisterComponent implements OnInit {
     .subscribe(
       data => {
         this.toastr.success('Your details has been submitted!');
-        this.router.navigate(['/login']);
+        this.router.navigate(['/email-confirmation']);
         console.log(data)
+        localStorage.setItem('confirmEmail', this.email);
       },
       err => {
         this.toastr.error('Submission of details failed');

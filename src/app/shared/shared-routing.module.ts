@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ActivateComponent } from './components/activate/activate.component';
 import { AnswerCopyComponent } from './components/answer-copy/answer-copy.component';
 import { ApplyComponent } from './components/apply/apply.component';
+import { EmailConfirmationComponent } from './components/email-confirmation/email-confirmation.component';
 import { EpfStatusComponent } from './components/epf-status/epf-status.component';
 import { FirStatusComponent } from './components/fir-status/fir-status.component';
 import { FundsUtilizationComponent } from './components/funds-utilization/funds-utilization.component';
@@ -49,6 +51,8 @@ const routes: Routes = [
       {path: 'other', component: OtherComponent},
     ]
   },
+  {path: 'activate', component: ActivateComponent},
+  {path: 'email-confirmation', component: EmailConfirmationComponent},
   
 ];
 

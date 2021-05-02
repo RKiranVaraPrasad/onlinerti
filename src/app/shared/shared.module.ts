@@ -36,6 +36,8 @@ import { FundsUtilizationComponent } from './components/funds-utilization/funds-
 import { GramPanchayatComponent } from './components/gram-panchayat/gram-panchayat.component';
 import { MlaFundUtilizationComponent } from './components/mla-fund-utilization/mla-fund-utilization.component';
 import { MpFundsUtilizationComponent } from './components/mp-funds-utilization/mp-funds-utilization.component';
+import { ActivateComponent } from './components/activate/activate.component';
+import { EmailConfirmationComponent } from './components/email-confirmation/email-confirmation.component';
 
 
 
@@ -61,7 +63,9 @@ import { MpFundsUtilizationComponent } from './components/mp-funds-utilization/m
     FundsUtilizationComponent,
     GramPanchayatComponent,
     MlaFundUtilizationComponent,
-    MpFundsUtilizationComponent
+    MpFundsUtilizationComponent,
+    ActivateComponent,
+    EmailConfirmationComponent
   ],
   imports: [
     CommonModule,
