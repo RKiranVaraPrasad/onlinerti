@@ -15,7 +15,7 @@ export class ApplyComponent implements OnInit, AfterContentInit {
 
   step = 0;
   status: boolean = false;
-  services: any;
+  finalServices: any = [];
   postalChecked = false;
   rtiChecked = false;
   expretChecked = false;
@@ -42,6 +42,7 @@ export class ApplyComponent implements OnInit, AfterContentInit {
   tempData: string;
   formData: any;
   applicationId: any;
+  services: { id: number; category: number; option: string; link: string; };
 
   constructor(
     private apiService: ApiService,
@@ -83,18 +84,39 @@ export class ApplyComponent implements OnInit, AfterContentInit {
       this.email = userData.email;
       this.mobile = userData.mobile;
     }
-    this.services = [
-      { id: 1, option: "Passport Delay", link: "passport-delay" },
-      { id: 2, option: "Income Tax Refund", link: "it-returns" },
-      { id: 3, option: "Marksheet Verification", link: "marksheet-verification" },
-      { id: 4, option: "Answer Copy", link: "answer-copy" },
-      { id: 5, option: "FIR Status", link: "fir-status" },
-      { id: 6, option: "Property Details", link: "property-details" },
-      { id: 7, option: "EPF Status", link: "epf-status" },
-      { id: 8, option: "Pension Application", link: "pension-application" },
-      { id: 9, option: "Occupancy Certificate", link: "occupancy-certificate" },
-      { id: 10, option: "Other", link: "other" },
-    ]
+    // this.services = [
+    //   { id: 1, category: 1, option: "Passport Delay", link: "passport-delay" },
+    //   { id: 2, category: 1, option: "Income Tax Refund", link: "it-returns" },
+    //   { id: 3, category: 1, option: "Marksheet Verification", link: "marksheet-verification" },
+    //   { id: 4, category: 1,option: "Answer Copy", link: "answer-copy" },
+    //   { id: 5, category: 1, option: "FIR Status", link: "fir-status" },
+    //   { id: 6, category: 1, option: "Property Details", link: "property-details" },
+    //   { id: 7, category: 1, option: "EPF Status", link: "epf-status" },
+    //   { id: 8, category: 1, option: "Pension Application", link: "pension-application" },
+    //   { id: 9, category: 1, option: "Occupancy Certificate", link: "occupancy-certificate" },
+    //   { id: 10, category: 2, option: "MP Funds Utilization", link: "mp-funds-utilization" },
+    //   { id: 11, category: 2, option: "MLA Fund Utilization", link: "mla-fund-utilization" },
+    //   { id: 12, category: 2, option: "Gram Panchayat", link: "gram-panchayat" },
+    //   { id: 13, category: 2, option: "Funds Utilization", link: "funds-utilization" },
+    //   { id: 14, category: 2, option: "Tender Details", link: "tender-details" },
+    //   { id: 15, category: 2, option: "Road Work", link: "road-work" },
+    //   { id: 16, category: 3, option: "Other", link: "other" },
+    // ]
+
+  }
+  onChangeCategory(event) {
+    this.router.navigate(['/apply'])
+    this.finalServices = []
+    this.apiService.getServicesService()
+      .subscribe(
+        (data: any) => {
+          data.forEach(element => {
+            if (element.category == event.value) {
+              this.finalServices.push(element)
+            }
+          });
+        }
+      )
 
   }
   ngAfterContentInit() {

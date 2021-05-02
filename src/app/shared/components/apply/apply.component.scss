@@ -1,11 +1,18 @@
 .mat-expansion-panel-header,
-.mat-expansion-panel-header.mat-expanded:focus, .mat-expansion-panel-header.mat-expanded:hover{
-  background: #8fb7ff;
+.mat-expansion-panel-header.mat-expanded:focus,
+.mat-expansion-panel-header.mat-expanded:hover {
+  background: #095cf2;
   border-radius: 0;
 }
-.mat-expansion-panel-header-title{
-  color: white !important;
+.mat-expansion-panel-header[aria-disabled=true],
+.mat-expansion-panel-header[aria-disabled=true] .mat-expansion-panel-header-description .mat-icon{
+  color: rgba(0,0,0,.26);
+  background: rgba(9,92,242,.26);
 }
+.mat-expansion-panel-header-title {
+  color: white;
+}
+
 .example-headers-align .mat-expansion-panel-header-title,
 .example-headers-align .mat-expansion-panel-header-description {
   flex-basis: 0;
@@ -17,40 +24,50 @@
   align-items: center;
 }
 
-.example-headers-align .mat-form-field + .mat-form-field {
+.example-headers-align .mat-form-field+.mat-form-field {
   margin-left: 8px;
 }
-.mat-icon{
+
+.mat-icon {
   color: white;
 }
-.apply{
-  .static-banner{
+
+.apply {
+  .static-banner {
     background: #709dbc url(../../../../assets/images/online-apply2.jpg) center right no-repeat;
     min-height: 260px;
     padding: 20px 0;
 
   }
-  .personal-details, .service-type-details, .pricing{
-    h4{
+
+  .personal-details,
+  .service-type-details,
+  .pricing {
+    h4 {
       font-size: 18px;
       margin-bottom: 1rem;
     }
-    .field-group{
-      .field-name{
+
+    .field-group {
+      .field-name {
         font-weight: 500;
       }
-      .field-desc{
+
+      .field-desc {
         margin-bottom: 10px;
       }
     }
-    .icon{
+
+    .icon {
       max-width: 22px;
     }
-    .mat-icon{
+
+    .mat-icon {
       vertical-align: middle;
     }
   }
 }
+
 // .service-container{
 //     display: flex;
 //     flex-wrap: wrap;
@@ -78,17 +95,54 @@
 // }
 
 
-.mat-expansion-panel-header-title {
-  color: rgb(61 102 176);
-}
+// .mat-expansion-panel-header-title {
+//   color: rgb(61 102 176);
+// }
+
 .mat-expansion-panel-header-description {
   flex-grow: initial;
 }
-.payment-options{
+
+.payment-options {
   // background-color: #927275;
   width: 100%;
   height: 100%;
   border-radius: 5px;
   border: 1px solid #8fb7ff;
   color: #8fb7ff;
+}
+
+.service-category {
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+
+  .img-wrapper {
+    border: 1px solid #095cf2;
+    padding: 15px;
+    display: inline-block;
+    margin: 0 auto;
+    border-radius: 6px;
+
+    img {
+      width: 32px;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  span {
+    display: block;
+    font-weight: 600;
+    font-size: 18px;
+    margin-top: 5px;
+    text-transform: uppercase;
+  }
+
+  &:hover {
+
+    .img-wrapper {
+      background: #095cf2;
+    }
+  }
 }

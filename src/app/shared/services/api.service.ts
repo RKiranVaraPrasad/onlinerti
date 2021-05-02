@@ -19,6 +19,7 @@ export class ApiService {
   private userLogin = `${this.baseUrl}/auth/local`;
   private personalDetails = `${this.baseUrl}/personal-details`;
   private apply = `${this.baseUrl}/applies`;
+  private services = `${this.baseUrl}/services`;
 
   private passportDelay = `${this.baseUrl}/passport-delays`;
   private itReturns = `${this.baseUrl}/income-tax-refunds`;
@@ -85,6 +86,9 @@ export class ApiService {
     })
   }
 
+  getServicesService() {
+    return this.http.get(this.services)
+  }
   postPersonalDetailsService(data: any) {
     return this.http.post(this.personalDetails, data)
   }

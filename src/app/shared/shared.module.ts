@@ -27,6 +27,15 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { PipesModule } from '../core/pipes/pipes.module';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { GovernmentSchoolsComponent } from './components/government-schools/government-schools.component';
+import { GovernmentHospitalsComponent } from './components/government-hospitals/government-hospitals.component';
+import { GovernmentHostelsComponent } from './components/government-hostels/government-hostels.component';
+import { RoadWorkComponent } from './components/road-work/road-work.component';
+import { TenderDetailsComponent } from './components/tender-details/tender-details.component';
+import { FundsUtilizationComponent } from './components/funds-utilization/funds-utilization.component';
+import { GramPanchayatComponent } from './components/gram-panchayat/gram-panchayat.component';
+import { MlaFundUtilizationComponent } from './components/mla-fund-utilization/mla-fund-utilization.component';
+import { MpFundsUtilizationComponent } from './components/mp-funds-utilization/mp-funds-utilization.component';
 
 
 
@@ -43,7 +52,16 @@ import {MatNativeDateModule} from '@angular/material/core';
     EpfStatusComponent,
     PensionApplicationComponent,
     OccupancyCertificateComponent,
-    OtherComponent
+    OtherComponent,
+    GovernmentSchoolsComponent,
+    GovernmentHospitalsComponent,
+    GovernmentHostelsComponent,
+    RoadWorkComponent,
+    TenderDetailsComponent,
+    FundsUtilizationComponent,
+    GramPanchayatComponent,
+    MlaFundUtilizationComponent,
+    MpFundsUtilizationComponent
   ],
   imports: [
     CommonModule,
