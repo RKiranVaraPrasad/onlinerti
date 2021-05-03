@@ -60,6 +60,10 @@ h2{
             transform: translate(-50%, -50%);
         }
     }
+    .mat-card:not([class*=mat-elevation-z]) {
+        box-shadow: none;
+        border: 1px solid #007bff;
+    }
 }
 .services{
     background: url(../../../assets/images/service-bg.png) center top no-repeat;
@@ -112,6 +116,7 @@ h2{
         
     }
 }
+
 .card{
     background: #095cf2;
     background: -moz-linear-gradient(left,  #095cf2 0%, #6199fe 100%);
