@@ -20,6 +20,7 @@ export class ApiService {
   private userLogin = `${this.baseUrl}/auth/local`;
   private personalDetails = `${this.baseUrl}/personal-details`;
   private apply = `${this.baseUrl}/applies`;
+  private applyEmailConfirmation = `${this.baseUrl}/apply/email-confirmation`;
   private services = `${this.baseUrl}/services`;
 
   private passportDelay = `${this.baseUrl}/passport-delays`;
@@ -108,6 +109,10 @@ export class ApiService {
 
   postApplyService(data: any) {
     return this.http.post(this.apply, data)
+  }
+
+  postApplyEmailService(data: any){
+    return this.http.post(this.applyEmailConfirmation, data)
   }
 
   postPassportDelayService(data: any): Observable<any> {

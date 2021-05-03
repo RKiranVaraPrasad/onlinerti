@@ -84,24 +84,6 @@ export class ApplyComponent implements OnInit, AfterContentInit {
       this.email = userData.email;
       this.mobile = userData.mobile;
     }
-    // this.services = [
-    //   { id: 1, category: 1, option: "Passport Delay", link: "passport-delay" },
-    //   { id: 2, category: 1, option: "Income Tax Refund", link: "it-returns" },
-    //   { id: 3, category: 1, option: "Marksheet Verification", link: "marksheet-verification" },
-    //   { id: 4, category: 1,option: "Answer Copy", link: "answer-copy" },
-    //   { id: 5, category: 1, option: "FIR Status", link: "fir-status" },
-    //   { id: 6, category: 1, option: "Property Details", link: "property-details" },
-    //   { id: 7, category: 1, option: "EPF Status", link: "epf-status" },
-    //   { id: 8, category: 1, option: "Pension Application", link: "pension-application" },
-    //   { id: 9, category: 1, option: "Occupancy Certificate", link: "occupancy-certificate" },
-    //   { id: 10, category: 2, option: "MP Funds Utilization", link: "mp-funds-utilization" },
-    //   { id: 11, category: 2, option: "MLA Fund Utilization", link: "mla-fund-utilization" },
-    //   { id: 12, category: 2, option: "Gram Panchayat", link: "gram-panchayat" },
-    //   { id: 13, category: 2, option: "Funds Utilization", link: "funds-utilization" },
-    //   { id: 14, category: 2, option: "Tender Details", link: "tender-details" },
-    //   { id: 15, category: 2, option: "Road Work", link: "road-work" },
-    //   { id: 16, category: 3, option: "Other", link: "other" },
-    // ]
 
   }
   onChangeCategory(event) {
@@ -182,9 +164,17 @@ export class ApplyComponent implements OnInit, AfterContentInit {
                             // submit two ids - step -03
                             this.apiService.postApplyService(applyData)
                               .subscribe(
-                                data => {
+                                (data: any) => {
                                   this.toastr.success('Applied successfully');
-                                  console.log(data)
+                                  console.log(data.applicationId)
+                                  // send email with details
+                                  const body = "<p>Thank you for submiting application</p><p>We will review your application and get back to you soon.</p><p>"+ data.applicationId + " is application ID to track the status.</p>"
+                                  const emailData = {
+                                    to: email,
+                                    html: body
+                                  };
+                                  this.apiService.postApplyEmailService(emailData)
+                                  .subscribe()
                                   this.router.navigate(['/my-rti'])
                                 }
                               )
