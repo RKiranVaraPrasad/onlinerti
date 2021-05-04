@@ -2,23 +2,21 @@
     <div class="row">
         <div class="col-md-3 col-12">
             <mat-form-field class="example-full-width">
-                <input type="text" matInput placeholder="Name of the applicant" formControlName="applicantName"
+                <input type="text" matInput placeholder="District's Name" formControlName="districtName"
                 required>
             </mat-form-field>
         </div>
         <div class="col-md-3 col-12">
             <mat-form-field class="example-full-width">
-                <input type="text" matInput placeholder="Application number" formControlName="applicationNo"
+                <input type="text" matInput placeholder="State" formControlName="state"
                 required>
             </mat-form-field>
         </div>
-        <div class="col-md-3 col-12">
+        <div class="col-md-6 col-12">
             <mat-form-field class="example-full-width">
-                <mat-label>Date of Application</mat-label>
-                <input matInput [matDatepicker]="picker" formControlName="applicationDate"
-                required disabled>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker disabled="false"></mat-datepicker>
+                <mat-label>Collectorate Address</mat-label>
+                <textarea matInput style="resize: none;" formControlName="collectorateAddress"
+                required></textarea>
             </mat-form-field>
         </div>
         <div class="col-md-6 col-12">

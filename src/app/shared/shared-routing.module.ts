@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ActivateComponent } from './components/activate/activate.component';
 import { AnswerCopyComponent } from './components/answer-copy/answer-copy.component';
 import { ApplyComponent } from './components/apply/apply.component';
+import { CollectorOfficeComponent } from './components/collector-office/collector-office.component';
 import { EmailConfirmationComponent } from './components/email-confirmation/email-confirmation.component';
 import { EpfStatusComponent } from './components/epf-status/epf-status.component';
 import { FirStatusComponent } from './components/fir-status/fir-status.component';
@@ -19,7 +20,9 @@ import { OccupancyCertificateComponent } from './components/occupancy-certificat
 import { OtherComponent } from './components/other/other.component';
 import { PassportDelayComponent } from './components/passport-delay/passport-delay.component';
 import { PensionApplicationComponent } from './components/pension-application/pension-application.component';
+import { PrincipalSecretaryComponent } from './components/principal-secretary/principal-secretary.component';
 import { PropertyDetailsComponent } from './components/property-details/property-details.component';
+import { RevenueOfficesComponent } from './components/revenue-offices/revenue-offices.component';
 import { RoadWorkComponent } from './components/road-work/road-work.component';
 import { TenderDetailsComponent } from './components/tender-details/tender-details.component';
 
@@ -48,6 +51,9 @@ const routes: Routes = [
       {path: 'government-hostels', component: GovernmentHostelsComponent},
       {path: 'government-hospitals', component: GovernmentHospitalsComponent},
       {path: 'government-schools', component: GovernmentSchoolsComponent},
+      {path: 'principal-secretary', component: PrincipalSecretaryComponent},
+      {path: 'revenue-offices', component: RevenueOfficesComponent},
+      {path: 'collector-office', component: CollectorOfficeComponent},
       {path: 'other', component: OtherComponent},
     ]
   },

@@ -38,6 +38,9 @@ import { MlaFundUtilizationComponent } from './components/mla-fund-utilization/m
 import { MpFundsUtilizationComponent } from './components/mp-funds-utilization/mp-funds-utilization.component';
 import { ActivateComponent } from './components/activate/activate.component';
 import { EmailConfirmationComponent } from './components/email-confirmation/email-confirmation.component';
+import { CollectorOfficeComponent } from './components/collector-office/collector-office.component';
+import { PrincipalSecretaryComponent } from './components/principal-secretary/principal-secretary.component';
+import { RevenueOfficesComponent } from './components/revenue-offices/revenue-offices.component';
 
 
 
@@ -65,7 +68,10 @@ import { EmailConfirmationComponent } from './components/email-confirmation/emai
     MlaFundUtilizationComponent,
     MpFundsUtilizationComponent,
     ActivateComponent,
-    EmailConfirmationComponent
+    EmailConfirmationComponent,
+    CollectorOfficeComponent,
+    PrincipalSecretaryComponent,
+    RevenueOfficesComponent
   ],
   imports: [
     CommonModule,
