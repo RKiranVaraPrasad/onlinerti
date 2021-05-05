@@ -21,8 +21,8 @@ export class FundsUtilizationComponent implements OnInit, OnDestroy {
     private fb: FormBuilder
   ) {
     this.rtiDetailsForm = this.fb.group({
-      nameOfProject: new FormControl('', [Validators.required]),
-      nameOfTown: new FormControl('', [Validators.required]),
+      nameOfSchemeProject: new FormControl('', [Validators.required]),
+      nameOfVillageTownCity: new FormControl('', [Validators.required]),
       nameOfDistrict: new FormControl('', [Validators.required]),
       from: new FormControl('', [Validators.required]),
       to: new FormControl('', [Validators.required]),
@@ -44,8 +44,8 @@ export class FundsUtilizationComponent implements OnInit, OnDestroy {
       currentservice => {
 
         const data: any = {}
-        data.nameOfProject = this.rtiDetailsForm.get('nameOfProject').value;
-        data.nameOfTown = this.rtiDetailsForm.get('nameOfTown').value;
+        data.nameOfSchemeProject = this.rtiDetailsForm.get('nameOfSchemeProject').value;
+        data.nameOfVillageTownCity = this.rtiDetailsForm.get('nameOfVillageTownCity').value;
         data.nameOfDistrict = this.rtiDetailsForm.get('nameOfDistrict').value;
         data.from = this.rtiDetailsForm.get('from').value;
         data.to = this.rtiDetailsForm.get('to').value;
@@ -59,8 +59,8 @@ export class FundsUtilizationComponent implements OnInit, OnDestroy {
     this.subscriptionTwo = this.apiService.subscribeRtiData.subscribe(
       rtiData => {
         const data: any = {}
-        data.nameOfProject = this.rtiDetailsForm.get('nameOfProject').value;
-        data.nameOfTown = this.rtiDetailsForm.get('nameOfTown').value;
+        data.nameOfSchemeProject = this.rtiDetailsForm.get('nameOfSchemeProject').value;
+        data.nameOfVillageTownCity = this.rtiDetailsForm.get('nameOfVillageTownCity').value;
         data.nameOfDistrict = this.rtiDetailsForm.get('nameOfDistrict').value;
         data.from = this.rtiDetailsForm.get('from').value;
         data.to = this.rtiDetailsForm.get('to').value;

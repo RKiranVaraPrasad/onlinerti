@@ -24,7 +24,7 @@ export class TenderDetailsComponent implements OnInit, OnDestroy {
       tenderNumber: new FormControl('', [Validators.required]),
       date: new FormControl('', [Validators.required]),
       department: new FormControl('', [Validators.required]),
-      town: new FormControl('', [Validators.required]),
+      villageTown: new FormControl('', [Validators.required]),
       district: new FormControl('', [Validators.required]),
       moreInfo: new FormControl('', [Validators.required])
     })
@@ -47,7 +47,7 @@ export class TenderDetailsComponent implements OnInit, OnDestroy {
         data.tenderNumber = this.rtiDetailsForm.get('tenderNumber').value;
         data.date = this.rtiDetailsForm.get('date').value;
         data.department = this.rtiDetailsForm.get('department').value;
-        data.town = this.rtiDetailsForm.get('town').value;
+        data.villageTown = this.rtiDetailsForm.get('villageTown').value;
         data.district = this.rtiDetailsForm.get('district').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
         this.currentService = currentservice
@@ -62,7 +62,7 @@ export class TenderDetailsComponent implements OnInit, OnDestroy {
         data.tenderNumber = this.rtiDetailsForm.get('tenderNumber').value;
         data.date = this.rtiDetailsForm.get('date').value;
         data.department = this.rtiDetailsForm.get('department').value;
-        data.town = this.rtiDetailsForm.get('town').value;
+        data.villageTown = this.rtiDetailsForm.get('villageTown').value;
         data.district = this.rtiDetailsForm.get('district').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
 

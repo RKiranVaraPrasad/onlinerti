@@ -21,10 +21,10 @@ export class RevenueOfficesComponent implements OnInit, OnDestroy {
     private fb: FormBuilder
   ) {
     this.rtiDetailsForm = this.fb.group({
-      officeName: new FormControl('', [Validators.required]),
+      nameOfTheOffice: new FormControl('', [Validators.required]),
       state: new FormControl('', [Validators.required]),
       district: new FormControl('', [Validators.required]),
-      officeAddress: new FormControl('', [Validators.required]),
+      mandalTehsilDistrict: new FormControl('', [Validators.required]),
       moreInfo: new FormControl('', [Validators.required])
     })
    }
@@ -43,9 +43,9 @@ export class RevenueOfficesComponent implements OnInit, OnDestroy {
       currentservice => {
 
         const data: any = {}
-        data.officeName = this.rtiDetailsForm.get('officeName').value;
+        data.nameOfTheOffice = this.rtiDetailsForm.get('nameOfTheOffice').value;
         data.state = this.rtiDetailsForm.get('state').value;
-        data.district = this.rtiDetailsForm.get('district').value;
+        data.mandalTehsilDistrict = this.rtiDetailsForm.get('mandalTehsilDistrict').value;
         data.officeAddress = this.rtiDetailsForm.get('officeAddress').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
         this.currentService = currentservice
@@ -57,9 +57,9 @@ export class RevenueOfficesComponent implements OnInit, OnDestroy {
     this.subscriptionTwo = this.apiService.subscribeRtiData.subscribe(
       rtiData => {
         const data: any = {}
-        data.officeName = this.rtiDetailsForm.get('officeName').value;
+        data.nameOfTheOffice = this.rtiDetailsForm.get('nameOfTheOffice').value;
         data.state = this.rtiDetailsForm.get('state').value;
-        data.district = this.rtiDetailsForm.get('district').value;
+        data.mandalTehsilDistrict = this.rtiDetailsForm.get('mandalTehsilDistrict').value;
         data.officeAddress = this.rtiDetailsForm.get('officeAddress').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
 
