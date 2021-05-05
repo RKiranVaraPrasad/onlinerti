@@ -59,7 +59,7 @@ export class PrincipalSecretaryComponent implements OnInit, OnDestroy {
 
         // this.currentService = rtiData
         if (this.selectedRoute === rtiData) {
-          this.apiService.postPensionApplicationService(data)
+          this.apiService.postPrincipalSecretaryService(data)
             .subscribe(
               (resultID: any) => {
                 this.apiService.sendRtiId(resultID.id);
