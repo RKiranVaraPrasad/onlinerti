@@ -340,6 +340,30 @@ export class ApiService {
       return this.http.get(`${this.pensionApplication}/${id}`)
     } else if (service === 'occupancy-certificate') {
       return this.http.get(`${this.occupancyCertificate}/${id}`)
+    } else if (service === 'collector-office') {
+      return this.http.get(`${this.collectorOffice}/${id}`)
+    } else if (service === 'revenue-offices') {
+      return this.http.get(`${this.revenueOffices}/${id}`)
+    } else if (service === 'principal-secretary') {
+      return this.http.get(`${this.principalSecretary}/${id}`)
+    } else if (service === 'mp-funds-utilization') {
+      return this.http.get(`${this.mpFundsUtilization}/${id}`)
+    } else if (service === 'mla-fund-utilization') {
+      return this.http.get(`${this.mlaFundUtilization}/${id}`)
+    } else if (service === 'gram-panchayat') {
+      return this.http.get(`${this.gramPanchayat}/${id}`)
+    } else if (service === 'funds-utilization') {
+      return this.http.get(`${this.fundsUtilization}/${id}`)
+    } else if (service === 'tender-details') {
+      return this.http.get(`${this.tenderDetails}/${id}`)
+    } else if (service === 'road-work') {
+      return this.http.get(`${this.roadWork}/${id}`)
+    } else if (service === 'government-hostels') {
+      return this.http.get(`${this.governmentHostels}/${id}`)
+    } else if (service === 'government-hospitals') {
+      return this.http.get(`${this.governmentHospitals}/${id}`)
+    } else if (service === 'government-schools') {
+      return this.http.get(`${this.governmentSchools}/${id}`)
     }
 
   }
