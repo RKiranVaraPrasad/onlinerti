@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./apply.component.scss']
 })
-export class ApplyComponent implements OnInit, AfterContentInit {
+export class ApplyComponent implements OnInit, OnDestroy {
 
   step = 0;
   status: boolean = false;
@@ -102,8 +102,6 @@ export class ApplyComponent implements OnInit, AfterContentInit {
       )
 
   }
-  ngAfterContentInit() {
-  }
 
   onChangeService(event) {
     this.router.navigate([event.value], { relativeTo: this.route })
@@ -169,13 +167,13 @@ export class ApplyComponent implements OnInit, AfterContentInit {
                                   this.toastr.success('Applied successfully');
                                   console.log(data.applicationId)
                                   // send email with details
-                                  const body = "<p>Thank you for submiting application</p><p>We will review your application and get back to you soon.</p><p>"+ data.applicationId + " is application ID to track the status.</p>"
+                                  const body = "<p>Thank you for submiting application</p><p>We will review your application and get back to you soon.</p><p>" + data.applicationId + " is application ID to track the status.</p>"
                                   const emailData = {
                                     to: email,
                                     html: body
                                   };
                                   this.apiService.postApplyEmailService(emailData)
-                                  .subscribe()
+                                    .subscribe()
                                   this.router.navigate(['/my-rti'])
                                 }
                               )
@@ -224,12 +222,14 @@ export class ApplyComponent implements OnInit, AfterContentInit {
   }
 
   ngOnDestroy() {
-    if (this.applySubscription) {
-      this.applySubscription.unsubscribe
-    }
-    if (this.rtiSubscription) {
-      this.rtiSubscription.unsubscribe
-    }
+    this.applySubscription.unsubscribe()
+    this.rtiSubscription.unsubscribe()
+    // if (this.applySubscription) {
+      
+    // }
+    // if (this.rtiSubscription) {
+      
+    // }
   }
 
   setStep(index: number) {
