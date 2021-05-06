@@ -121,7 +121,7 @@
     border: 1px solid #095cf2;
     padding: 15px;
     display: inline-block;
-    margin: 0 auto;
+      margin: 0 auto;
     border-radius: 6px;
 
     img {
@@ -144,5 +144,13 @@
     .img-wrapper {
       background: #095cf2;
     }
+  }
+}
+@media only screen and (max-width: 600px) {
+  .mat-radio-button {
+    display: block;
+}
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 0;
   }
 }

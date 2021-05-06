@@ -97,6 +97,7 @@ export class ApplyComponent implements OnInit, AfterContentInit {
               this.finalServices.push(element)
             }
           });
+          console.log(this.finalServices)
         }
       )
 

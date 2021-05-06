@@ -23,7 +23,7 @@ export class RevenueOfficesComponent implements OnInit, OnDestroy {
     this.rtiDetailsForm = this.fb.group({
       nameOfTheOffice: new FormControl('', [Validators.required]),
       state: new FormControl('', [Validators.required]),
-      district: new FormControl('', [Validators.required]),
+      officeAddress: new FormControl('', [Validators.required]),
       mandalTehsilDistrict: new FormControl('', [Validators.required]),
       moreInfo: new FormControl('', [Validators.required])
     })
