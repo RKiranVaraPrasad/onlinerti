@@ -68,7 +68,7 @@ export class GramPanchayatComponent implements OnInit, OnDestroy {
 
         // this.currentService = rtiData
         if (this.selectedRoute === rtiData) {
-          this.apiService.postPensionApplicationService(data)
+          this.apiService.postGramPanchayatService(data)
             .subscribe(
               (resultID: any) => {
                 this.apiService.sendRtiId(resultID.id);

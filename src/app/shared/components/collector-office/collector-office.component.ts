@@ -62,7 +62,7 @@ export class CollectorOfficeComponent implements OnInit, OnDestroy {
 
         // this.currentService = rtiData
         if (this.selectedRoute === rtiData) {
-          this.apiService.postPensionApplicationService(data)
+          this.apiService.postCollectorOfficeService(data)
             .subscribe(
               (resultID: any) => {
                 this.apiService.sendRtiId(resultID.id);
