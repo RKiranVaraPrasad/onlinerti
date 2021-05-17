@@ -14,32 +14,22 @@
     <div class="content">
         <div class="container">
             <div class="row my-5">
-                <div class="col-md-9 col-12">
-                    <mat-accordion class="example-headers-align">
-                        <mat-expansion-panel [expanded]="step === 0" hideToggle>
-                            <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                    RTI Details
-                                </mat-panel-title>
-                                <mat-panel-description>
-                                    <mat-icon>insert_drive_file</mat-icon>
-                                </mat-panel-description>
-                            </mat-expansion-panel-header>
-
-                            <div class="row">
-                                <div class="col-12">
-                                    <form class="example-container" [formGroup]="rtidetails"
-                                        [style.fontSize.px]="getFontSize()">
-                                        <div class="choose-service">
-                                            <div class="row mt-4">
-                                                <div class="col-12">
-                                                    <mat-radio-group aria-label="Select an option" (change)="onChangeCategory($event)">
-                                                        <mat-radio-button value="1">Personal RTI</mat-radio-button>
-                                                        <mat-radio-button value="2">Social RTI</mat-radio-button>
-                                                        <mat-radio-button value="3">Other RTI</mat-radio-button>
-                                                      </mat-radio-group>
-                                                </div>
-                                                <!-- <div class="col-4">
+                <div class="col-md-8 col-12">
+                    <mat-horizontal-stepper #stepper>
+                        <mat-step [stepControl]="rtidetails">
+                            <form [formGroup]="rtidetails">
+                                <ng-template matStepLabel>RTI Details</ng-template>
+                                <div class="choose-service">
+                                    <div class="row mt-4">
+                                        <div class="col-12">
+                                            <mat-radio-group aria-label="Select an option"
+                                                (change)="onChangeCategory($event)">
+                                                <mat-radio-button value="1">Personal RTI</mat-radio-button>
+                                                <mat-radio-button value="2">Social RTI</mat-radio-button>
+                                                <mat-radio-button value="3">Other RTI</mat-radio-button>
+                                            </mat-radio-group>
+                                        </div>
+                                        <!-- <div class="col-4">
                                                     <div class="service-category" (click)="categoryChange(1)">
                                                         <div class="img-wrapper">
                                                             <img src="assets/svg/man-user.svg" alt="">
@@ -63,79 +53,73 @@
                                                         <span>Other RTI</span>
                                                     </div>
                                                 </div> -->
-                                            </div>
-                                            <div class="row mt-4">
-                                                <div class="col-md-4 col-12">
-                                                    <mat-form-field class="example-full-width" appearance="fill">
-                                                        <mat-label>Select Service</mat-label>
-                                                        <mat-select [formControl]="selectControl"
-                                                            (selectionChange)="onChangeService($event)"
-                                                            [(ngModel)]="selectedValue" ngDefaultControl formControlName="serviceType">
-                                                            <mat-option *ngFor="let service of finalServices"
-                                                                [value]="service.link">{{service.option}}
-                                                            </mat-option>
-                                                        </mat-select>
-                                                    </mat-form-field>
-                                                </div>
-                                            </div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-md-4 col-12">
+                                            <mat-form-field class="example-full-width" appearance="fill">
+                                                <mat-label>Select Service</mat-label>
+                                                <mat-select [formControl]="selectControl"
+                                                    (selectionChange)="onChangeService($event)"
+                                                    [(ngModel)]="selectedValue" ngDefaultControl
+                                                    formControlName="serviceType">
+                                                    <mat-option *ngFor="let service of finalServices"
+                                                        [value]="service.link">{{service.option}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
                                         </div>
-                                        <div class="selected-service-form">
-                                            <router-outlet></router-outlet>
-                                        </div>
-                                    </form>
+                                    </div>
                                 </div>
-                            </div>
-                            <mat-action-row>
-                                <button mat-button color="primary" (click)="onSubmitRti()" [disabled]="!status">Next</button>
-                            </mat-action-row>
-                        </mat-expansion-panel>
-
-                        <mat-expansion-panel [expanded]="step === 1"  hideToggle [disabled]="!stepTwo">
-
-                            <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                    Personal Details
-                                </mat-panel-title>
-                                <mat-panel-description>
-                                    <mat-icon>account_circle</mat-icon>
-                                </mat-panel-description>
-                            </mat-expansion-panel-header>
+                                <div class="selected-service-form">
+                                    <router-outlet></router-outlet>
+                                </div>
+                                <button mat-flat-button color="primary" matStepperNext (click)="onSubmitRti()"
+                                        [disabled]="!status">Next</button>
+                            </form>
+                        </mat-step>
+                        <mat-step [stepControl]="personalDetailsForm" label="Personal Details">
                             <form [formGroup]="personalDetailsForm">
                                 <div class="row mt-4">
                                     <div class="col-md-3 col-12">
                                         <mat-form-field class="example-full-width">
                                             <mat-label>Full name</mat-label>
-                                            <input matInput [(ngModel)]="fullname" ngDefaultControl  formControlName="fullname">
+                                            <input matInput [(ngModel)]="fullname" ngDefaultControl
+                                                formControlName="fullname">
                                         </mat-form-field>
                                     </div>
                                     <div class="col-md-3 col-12">
                                         <mat-form-field class="example-full-width">
                                             <mat-label>Mobile</mat-label>
-                                            <input matInput type="tel" [(ngModel)]="mobile" ngDefaultControl formControlName="mobile" maxlength="10">
+                                            <input matInput type="tel" [(ngModel)]="mobile" ngDefaultControl
+                                                formControlName="mobile" maxlength="10">
                                         </mat-form-field>
                                     </div>
                                     <div class="col-md-3 col-12">
                                         <mat-form-field class="example-full-width">
                                             <mat-label>Email</mat-label>
-                                            <input matInput type="email" [(ngModel)]="email" ngDefaultControl formControlName="email">
+                                            <input matInput type="email" [(ngModel)]="email" ngDefaultControl
+                                                formControlName="email">
                                         </mat-form-field>
                                     </div>
                                     <div class="col-md-3 col-12">
                                         <mat-form-field class="example-full-width">
                                             <mat-label>State</mat-label>
-                                            <input matInput type="text" [(ngModel)]="state" formControlName="state" ngDefaultControl>
+                                            <input matInput type="text" [(ngModel)]="state" formControlName="state"
+                                                ngDefaultControl>
                                         </mat-form-field>
                                     </div>
                                     <div class="col-md-3 col-12">
                                         <mat-form-field class="example-full-width">
                                             <mat-label>City</mat-label>
-                                            <input matInput type="text" [(ngModel)]="city" formControlName="city" ngDefaultControl>
+                                            <input matInput type="text" [(ngModel)]="city" formControlName="city"
+                                                ngDefaultControl>
                                         </mat-form-field>
                                     </div>
                                     <div class="col-md-3 col-12">
                                         <mat-form-field class="example-full-width">
                                             <mat-label>Pincode</mat-label>
-                                            <input matInput type="text" [(ngModel)]="pincode" formControlName="pincode" ngDefaultControl maxlength="6">
+                                            <input matInput type="text" [(ngModel)]="pincode" formControlName="pincode"
+                                                ngDefaultControl maxlength="6">
                                         </mat-form-field>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -148,23 +132,17 @@
 
                                     <div class="col-md-3 col-12"></div>
                                 </div>
-                                <mat-action-row>
-                                    <button mat-button color="warn" (click)="prevStep()">Previous</button>
-                                    <button mat-button color="primary" (click)="onSubmitPersonalDetails()" [disabled]="this.personalDetailsForm.invalid">Next</button>
-                                </mat-action-row>
+
+                                <div>
+                                    <button mat-flat-button color="secondary" matStepperPrevious>Back</button>
+                                    <button mat-flat-button color="primary" matStepperNext
+                                        (click)="onSubmitPersonalDetails()"
+                                        [disabled]="this.personalDetailsForm.invalid">Next</button>
+                                </div>
                             </form>
-                        </mat-expansion-panel>
-
-                        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle  [disabled]="!stepThree">
-                            <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                    Summary and Payment
-                                </mat-panel-title>
-                                <mat-panel-description>
-                                    <mat-icon>payment</mat-icon>
-                                </mat-panel-description>
-                            </mat-expansion-panel-header>
-
+                        </mat-step>
+                        <mat-step>
+                            <ng-template matStepLabel>Summary and Payment</ng-template>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="row">
@@ -172,7 +150,8 @@
                                             <div class="service-type-details" *ngIf="rtiData">
                                                 <h4 class="text-nowrap">RTI details</h4>
                                                 <div class="field-group" *ngFor="let item of rtiData | keyvalue">
-                                                    <div class="field-name">{{item.key | splitCamelcase | titlecase}}</div>
+                                                    <div class="field-name">{{item.key | splitCamelcase | titlecase}}
+                                                    </div>
                                                     <div class="field-desc">{{item.value}}</div>
                                                 </div>
                                                 <!-- <ngx-json-viewer [json]="rtiData"></ngx-json-viewer> -->
@@ -209,7 +188,8 @@
                                     <div class="pricing">
                                         <h4>Pricing</h4>
                                         <div class="table">
-                                            <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedPlan" name="radio" required>
+                                            <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedPlan"
+                                                name="radio" required>
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered">
                                                         <tbody>
@@ -306,15 +286,18 @@
                                                             <tr>
                                                                 <td>Choose your plan</td>
                                                                 <td>
-                                                                    <mat-radio-button value="Basic &#8377;199">&#8377;199
+                                                                    <mat-radio-button value="Basic &#8377;199">
+                                                                        &#8377;199
                                                                     </mat-radio-button>
                                                                 </td>
                                                                 <td>
-                                                                    <mat-radio-button value="Standard &#8377;299">&#8377;299
+                                                                    <mat-radio-button value="Standard &#8377;299">
+                                                                        &#8377;299
                                                                     </mat-radio-button>
                                                                 </td>
                                                                 <td>
-                                                                    <mat-radio-button value="Premium &#8377;499">&#8377;499
+                                                                    <mat-radio-button value="Premium &#8377;499">
+                                                                        &#8377;499
                                                                     </mat-radio-button>
                                                                 </td>
                                                             </tr>
@@ -333,19 +316,18 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <mat-action-row>
-                                <button mat-button color="warn" (click)="prevStep()">Previous</button>
-                                <button mat-button color="primary" (click)="onSubmitApplyForm()" [disabled]="!selectedPlan">Proceed to Payment</button>
-                            </mat-action-row>
-                        </mat-expansion-panel>
-
-                    </mat-accordion>
+                            <button mat-flat-button color="secondary" matStepperPrevious>Back</button>
+                                <button mat-flat-button color="primary" (click)="onSubmitApplyForm()"
+                                    [disabled]="!selectedPlan">Proceed to Payment</button>
+                        </mat-step>
+                    </mat-horizontal-stepper>
                 </div>
-                <div class="col-md-3 col-12">
-                    <div class="payment-options">
-                        <h2 class="p-3 text-center">Pay with Paytm</h2>
-                    </div>
+                <div class="col-md-4 col-12">
+                    <h3>Fed up with the corruption and slow Govt. work ?</h3>
+                    <ul>
+                        <li>Going all the way to a post office or finding someone to file an RTI for you could be a tedious and expensive task. Corruption and fraudulent is common in many organizations, but you have the power to file an RTI Online from your home.<br/><br/></li>
+                        <li>Most of the people believe that filing an online RTI is an expensive task. That’s not the case with us! We are an independent entity and our sole aim is to provide you a platform to get answers to your queries. If nobody is hearing you out, we will ensure that the Government listens to your voice and what you wish to say.</li>
+                    </ul>
                 </div>
             </div>
         </div>

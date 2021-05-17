@@ -72,6 +72,7 @@ export class ApplyComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+
     this.apiService.subscribeFormStatus.subscribe(
       currentStatus => {
         this.status = currentStatus;
@@ -150,7 +151,6 @@ export class ApplyComponent implements OnInit, OnDestroy {
                 .subscribe(
                   (data: any) => {
                     applyData.personalDetailsId = data.id;
-                    console.log('updated details: ' + data)
                     //submit rti data - step 02
                     this.apiService.submitRtiDetails(this.selectedValue);
                     this.rtiSubscription = this.apiService.subscribeRtiId
@@ -222,14 +222,14 @@ export class ApplyComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.applySubscription.unsubscribe()
-    this.rtiSubscription.unsubscribe()
-    // if (this.applySubscription) {
-      
-    // }
-    // if (this.rtiSubscription) {
-      
-    // }
+    
+    
+    if (this.applySubscription) {
+      this.applySubscription.unsubscribe()
+    }
+    if (this.rtiSubscription) {
+      this.rtiSubscription.unsubscribe()
+    }
   }
 
   setStep(index: number) {

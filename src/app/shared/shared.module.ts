@@ -41,6 +41,8 @@ import { EmailConfirmationComponent } from './components/email-confirmation/emai
 import { CollectorOfficeComponent } from './components/collector-office/collector-office.component';
 import { PrincipalSecretaryComponent } from './components/principal-secretary/principal-secretary.component';
 import { RevenueOfficesComponent } from './components/revenue-offices/revenue-offices.component';
+import {MatStepperModule} from '@angular/material/stepper';
+
 
 
 
@@ -91,6 +93,7 @@ import { RevenueOfficesComponent } from './components/revenue-offices/revenue-of
     PipesModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatStepperModule
   ],
   exports: [
     IdentifierComponent,
