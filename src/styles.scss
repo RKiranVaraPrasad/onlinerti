@@ -283,3 +283,14 @@ section {
 .mat-horizontal-stepper-header{
     pointer-events: none !important;
 }
+.mat-flat-button{
+    &.mat-primary{
+        background-color: #294358;
+        &.mat-button-disabled{
+            background-color: rgba(41,66,87, .12);
+        }
+        span{
+            font-weight: 300;
+        }
+    }
+}

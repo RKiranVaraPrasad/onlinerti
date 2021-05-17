@@ -73,8 +73,12 @@
                                 <div class="selected-service-form">
                                     <router-outlet></router-outlet>
                                 </div>
-                                <button mat-flat-button color="primary" matStepperNext (click)="onSubmitRti()"
+                                <div class="row">
+                                    <div class="col-12 text-right">
+                                        <button mat-flat-button color="primary" matStepperNext (click)="onSubmitRti()"
                                         [disabled]="!status">Next</button>
+                                    </div>
+                                </div>
                             </form>
                         </mat-step>
                         <mat-step [stepControl]="personalDetailsForm" label="Personal Details">
@@ -133,61 +137,62 @@
                                     <div class="col-md-3 col-12"></div>
                                 </div>
 
-                                <div>
-                                    <button mat-flat-button color="secondary" matStepperPrevious>Back</button>
+                                <div class="row">
+                                    <div class="col-12 text-right">
+                                        <button mat-flat-button color="secondary" matStepperPrevious class="mr-3">Back</button>
                                     <button mat-flat-button color="primary" matStepperNext
                                         (click)="onSubmitPersonalDetails()"
                                         [disabled]="this.personalDetailsForm.invalid">Next</button>
+                                    </div>
                                 </div>
                             </form>
                         </mat-step>
                         <mat-step>
                             <ng-template matStepLabel>Summary and Payment</ng-template>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="row">
-                                        <div class="col-md-7 col-12">
-                                            <div class="service-type-details" *ngIf="rtiData">
-                                                <h4 class="text-nowrap">RTI details</h4>
-                                                <div class="field-group" *ngFor="let item of rtiData | keyvalue">
-                                                    <div class="field-name">{{item.key | splitCamelcase | titlecase}}
-                                                    </div>
-                                                    <div class="field-desc">{{item.value}}</div>
-                                                </div>
-                                                <!-- <ngx-json-viewer [json]="rtiData"></ngx-json-viewer> -->
+                            <div class="row mt-3">
+                                <div class="col-md-7 col-12">
+                                    <div class="service-type-details" *ngIf="rtiData">
+                                        <h4 class="text-nowrap">RTI details</h4>
+                                        <div class="field-group" *ngFor="let item of rtiData | keyvalue">
+                                            <div class="field-name">{{item.key | splitCamelcase | titlecase}}
                                             </div>
+                                            <div class="field-desc">{{item.value}}</div>
                                         </div>
-                                        <div class="col-md-5 col-12">
-                                            <div class="personal-details">
-                                                <h4 class="text-nowrap">Personal Details</h4>
-                                                <div class="field-group">
-                                                    <div class="field-name">Full Name</div>
-                                                    <div class="field-desc">{{fullname}}</div>
-                                                </div>
-                                                <div class="field-group">
-                                                    <div class="field-name">Mobile</div>
-                                                    <div class="field-desc">{{mobile}}</div>
-                                                </div>
-                                                <div class="field-group">
-                                                    <div class="field-name">Email</div>
-                                                    <div class="field-desc">{{email}}</div>
-                                                </div>
-                                                <div class="field-group">
-                                                    <div class="field-name">Address</div>
-                                                    <div class="field-desc">{{address}}</div>
-                                                </div>
-                                                <div class="field-group">
-                                                    <div class="field-name">Pincode</div>
-                                                    <div class="field-desc">{{pincode}}</div>
-                                                </div>
-                                            </div>
+                                        <!-- <ngx-json-viewer [json]="rtiData"></ngx-json-viewer> -->
+                                    </div>
+                                </div>
+                                <div class="col-md-5 col-12">
+                                    <div class="personal-details">
+                                        <h4 class="text-nowrap">Personal Details</h4>
+                                        <div class="field-group">
+                                            <div class="field-name">Full Name</div>
+                                            <div class="field-desc">{{fullname}}</div>
+                                        </div>
+                                        <div class="field-group">
+                                            <div class="field-name">Mobile</div>
+                                            <div class="field-desc">{{mobile}}</div>
+                                        </div>
+                                        <div class="field-group">
+                                            <div class="field-name">Email</div>
+                                            <div class="field-desc">{{email}}</div>
+                                        </div>
+                                        <div class="field-group">
+                                            <div class="field-name">Address</div>
+                                            <div class="field-desc">{{address}}</div>
+                                        </div>
+                                        <div class="field-group">
+                                            <div class="field-name">Pincode</div>
+                                            <div class="field-desc">{{pincode}}</div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-12">
                                     <div class="pricing">
                                         <h4>Pricing</h4>
-                                        <div class="table">
+                                        <div class="row">
+                                            <div class="col-12">
                                             <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedPlan"
                                                 name="radio" required>
                                                 <div class="table-responsive">
@@ -306,6 +311,7 @@
                                                 </div>
                                             </mat-radio-group>
                                         </div>
+                                    </div>
                                         <div class="row">
                                             <div class="col-12 text-right">
                                                 <div class="selected-plan" *ngIf="selectedPlan">
@@ -316,9 +322,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <button mat-flat-button color="secondary" matStepperPrevious>Back</button>
+                            <div class="row mt-3">
+                                <div class="col-12 text-right">
+                                    <button mat-flat-button color="secondary" matStepperPrevious class="mr-3">Back</button>
                                 <button mat-flat-button color="primary" (click)="onSubmitApplyForm()"
                                     [disabled]="!selectedPlan">Proceed to Payment</button>
+                                </div>
+                            </div>
                         </mat-step>
                     </mat-horizontal-stepper>
                 </div>
