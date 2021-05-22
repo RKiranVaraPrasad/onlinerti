@@ -4,10 +4,19 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+function _window() : any {
+  return window;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+  basicToken: string = "cnpwX3Rlc3Rfd3FuMHFTQlgxT0Y0ckc6aElsbzNKdHVHdmIzNnFYWVR3ZXVMUjkx";
+
+  get nativeWindow() : any {
+    return _window();
+ }
 
   logged = localStorage.getItem('user') != null;
   userDetails = JSON.parse(localStorage.getItem('user'));
@@ -46,6 +55,8 @@ export class ApiService {
   private governmentSchools = `${this.baseUrl}/government-schools`;
 
   private otherRti = `${this.baseUrl}/other-rtis`;
+
+  private generateOrderId = `${this.baseUrl}/order-ids`;
 
   constructor(
     private http: HttpClient,
@@ -118,6 +129,10 @@ export class ApiService {
   putPersonalDetailsService(id: any, data: any) {
     let reqID: any = id;
     return this.http.put(`${this.personalDetails}/${reqID}`, data)
+  }
+
+  createOrderId(data: any){
+    return this.http.post(this.generateOrderId, data);
   }
 
   postApplyService(data: any) {

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiService } from '../../services/api.service';
 import { ToastrService } from 'ngx-toastr';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-apply',
@@ -25,6 +26,8 @@ export class ApplyComponent implements OnInit, OnDestroy {
   selectControl = new FormControl('accent');
   fontSizeControl = new FormControl(16, Validators.min(10));
   selectedPlan: string;
+  finalAmount: any;
+  orderId: any;
   fullname: any;
   email: any;
   mobile: any;
@@ -72,7 +75,7 @@ export class ApplyComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-
+    console.log(uuidv4())
     this.apiService.subscribeFormStatus.subscribe(
       currentStatus => {
         this.status = currentStatus;
@@ -126,6 +129,14 @@ export class ApplyComponent implements OnInit, OnDestroy {
     this.stepThree = true;
   }
   onSubmitApplyForm() {
+
+    if (this.selectedPlan === "Basic ₹199") {
+      this.finalAmount = 19900;
+    } else if (this.selectedPlan === "Standard ₹299") {
+      this.finalAmount = 29900;
+    } else if (this.selectedPlan === "Premium ₹499") {
+      this.finalAmount = 49900;
+    }
     const applyData: any = {}
     applyData.serviceType = this.selectedValue;
     applyData.status = "Pending";
@@ -144,7 +155,7 @@ export class ApplyComponent implements OnInit, OnDestroy {
       this.apiService.getPersonalDetailByEmailService(email)
         .subscribe(
           (resultId: any) => {
-            console.log(resultId.length)
+            // console.log(resultId.length)
             if (resultId.length > 0) {
               let id = resultId[0].id;
               this.apiService.putPersonalDetailsService(id, personalData)
@@ -159,24 +170,73 @@ export class ApplyComponent implements OnInit, OnDestroy {
                           if (resultId) {
                             applyData.rtiDetailsId = resultId;
                             applyData.applicationId = this.selectControl.value.slice(0, 3).toUpperCase() + Math.floor(Date.now() / 1000);
-                            console.log(resultId)
-                            // submit two ids - step -03
-                            this.apiService.postApplyService(applyData)
+
+                            this.apiService.createOrderId({
+                              amount: this.finalAmount,
+                              currency: "INR",
+                              receipt: "receipt#1"
+                            })
                               .subscribe(
-                                (data: any) => {
-                                  this.toastr.success('Applied successfully');
-                                  console.log(data.applicationId)
-                                  // send email with details
-                                  const body = "<p>Thank you for submiting application</p><p>We will review your application and get back to you soon.</p><p>" + data.applicationId + " is application ID to track the status.</p>"
-                                  const emailData = {
-                                    to: email,
-                                    html: body
-                                  };
-                                  this.apiService.postApplyEmailService(emailData)
-                                    .subscribe()
-                                  this.router.navigate(['/my-rti'])
+                                (order: any) => {
+                                  console.log(order);
+                                  if (order.status === 'created') {
+                                    console.log(order.id)
+                                    this.orderId = order.id;
+                                    applyData.orderId = order.id;
+                                    this.apiService.postApplyService(applyData)
+                                      .subscribe(
+                                        (data: any) => {
+                                          if (data) {
+                                            // payment gateway
+                                            const razorpayOptions = {
+                                              "key": "rzp_test_wqn0qSBX1OF4rG",
+                                              "amount": this.finalAmount,
+                                              "currency": "INR",
+                                              "name": "Online RTI",
+                                              "description": "Test Transaction",
+                                              "image": "http://172.105.60.86/assets/images/onlineRTI.png",
+                                              "order_id": this.orderId,
+                                              "handler": function (response) {
+                                                alert(response.razorpay_payment_id);
+                                                alert(response.razorpay_order_id);
+                                                alert(response.razorpay_signature)
+                                              },
+                                              "prefill": {
+                                                "name": this.fullname,
+                                                "email": this.email,
+                                                "contact": this.mobile
+                                              },
+                                              "notes": {
+                                                "address": "Razorpay Corporate Office"
+                                              },
+                                              "theme": {
+                                                "color": "#3399cc"
+                                              }
+                                            };
+                                            const rzp1 = new this.apiService.nativeWindow.Razorpay(razorpayOptions);
+                                            rzp1.open();
+                                          }
+
+                                          this.toastr.success('Applied successfully');
+                                          // console.log(data.applicationId)
+                                          // send email with details
+                                          const body = "<p>Thank you for submiting application</p><p>We will review your application and get back to you soon.</p><p>" + data.applicationId + " is application ID to track the status.</p>"
+                                          const emailData = {
+                                            to: email,
+                                            html: body
+                                          };
+                                          this.apiService.postApplyEmailService(emailData)
+                                            .subscribe()
+                                          this.router.navigate(['/my-rti'])
+                                        }
+                                      )
+                                  }
                                 }
                               )
+
+                            // console.log(resultId)
+                            // submit two ids - step -03
+
                           }
                         }
                       )
@@ -186,9 +246,9 @@ export class ApplyComponent implements OnInit, OnDestroy {
               this.apiService.postPersonalDetailsService(personalData)
                 .subscribe(
                   (data: any) => {
-                    console.log(data)
+                    // console.log(data)
                     applyData.personalDetailsId = data.id;
-                    console.log(data.id)
+                    // console.log(data.id)
                     // submit rti data - step 02
                     this.apiService.submitRtiDetails(this.selectedValue);
                     this.rtiSubscription = this.apiService.subscribeRtiId
@@ -197,13 +257,13 @@ export class ApplyComponent implements OnInit, OnDestroy {
                           if (resultId) {
                             applyData.rtiDetailsId = resultId;
                             applyData.applicationId = this.selectControl.value.slice(0, 3).toUpperCase() + Math.floor(Date.now() / 1000);
-                            console.log(resultId)
+                            // console.log(resultId)
                             // submit two ids - step -03
                             this.apiService.postApplyService(applyData)
                               .subscribe(
                                 data => {
                                   this.toastr.success('Applied successfully');
-                                  console.log(data)
+                                  // console.log(data)
                                   this.router.navigate(['/my-rti'])
                                 }
                               )
@@ -222,8 +282,8 @@ export class ApplyComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    
-    
+
+
     if (this.applySubscription) {
       this.applySubscription.unsubscribe()
     }
