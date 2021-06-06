@@ -53,7 +53,11 @@ export class ApplyComponent implements OnInit, OnDestroy {
   finalPersonalArray: any = [];
   statusClass: boolean;
   childrenUrl: any;
-  applyData: any = {}
+  applyData: any;
+  serviceDisplay: boolean;
+  file: File;
+  documentsData: any;
+  applyFormData: any = {}
 
   constructor(
     private apiService: ApiService,
@@ -64,6 +68,7 @@ export class ApplyComponent implements OnInit, OnDestroy {
     private cd: ChangeDetectorRef
   ) {
     this.formData = new FormData();
+    this.applyData = new FormData();
     this.options = this.fb.group({
       color: this.selectControl,
       fontSize: this.fontSizeControl,
@@ -101,18 +106,6 @@ export class ApplyComponent implements OnInit, OnDestroy {
       .subscribe(
         data => {
           this.personalServices = data
-          // console.log(this.personalServices)
-          // this.personalServices.forEach(element => {
-          //   const url = element.icon.url
-          //   const obj = {
-          //     category: element.category,
-          //     icon: url,
-          //     link: element.link,
-          //     option: element.option
-          //   }
-          //   this.finalPersonalArray.push(obj)
-          // });
-          // console.log(this.finalPersonalArray)
         }
       )
     this.apiService.getSocialServicesService()
@@ -125,7 +118,6 @@ export class ApplyComponent implements OnInit, OnDestroy {
           this.otherServices = data;
         }
       )
-    // console.log(uuidv4())
     this.apiService.subscribeFormStatus.subscribe(
       currentStatus => {
         this.status = currentStatus;
@@ -146,13 +138,21 @@ export class ApplyComponent implements OnInit, OnDestroy {
   }
 
   onChangeService(event) {
+    this.serviceDisplay = this.router.navigate([`${this.childrenUrl}/${event.value}`], { relativeTo: this.route }) != null
     this.router.navigate([`${this.childrenUrl}/${event.value}`], { relativeTo: this.route })
     // console.log(event.value)
     document.getElementById("scollTo").scrollIntoView();
     this.selectedValue = this.router.url.split('/').pop();
     console.log(this.selectedValue)
   }
-
+  onFileSelect(event){
+    const files: FileList = event.target.files;
+    if (files.length) {
+      Array.from(files).forEach(file => {
+        this.applyData.append('files.documents', file, file.name);
+      });
+    }
+  }
   onSubmitRti() {
     this.selectedValue = this.router.url.split('/').pop();
     console.log(this.selectedValue)
@@ -183,10 +183,10 @@ export class ApplyComponent implements OnInit, OnDestroy {
     } else if (this.selectedPlan === "Premium ₹499") {
       this.finalAmount = 49900;
     }
-    // const applyData: any = {}
-    this.applyData.serviceType = this.selectedValue;
-    this.applyData.status = "Pending";
-    this.applyData.selectedPlan = this.selectedPlan;
+    
+    this.applyFormData.serviceType = this.selectedValue;
+    this.applyFormData.status = "Pending";
+    this.applyFormData.selectedPlan = this.selectedPlan;
 
     const personalData: any = {}
     personalData.fullname = this.fullname;
@@ -207,7 +207,7 @@ export class ApplyComponent implements OnInit, OnDestroy {
             this.apiService.putPersonalDetailsService(id, personalData)
               .subscribe(
                 (data: any) => {
-                  this.applyData.personalDetailsId = data.id;
+                  this.applyFormData.personalDetailsId = data.id;
                   this.applyPostMethod();
                 }
               )
@@ -217,7 +217,7 @@ export class ApplyComponent implements OnInit, OnDestroy {
               .subscribe(
                 (data: any) => {
                   if (data.id) {
-                    this.applyData.personalDetailsId = data.id;
+                    this.applyFormData.personalDetailsId = data.id;
                     this.applyPostMethod()
                   }
                 }
@@ -234,8 +234,8 @@ export class ApplyComponent implements OnInit, OnDestroy {
       .subscribe(
         (resultId: any) => {
           if (resultId) {
-            this.applyData.rtiDetailsId = resultId;
-            this.applyData.applicationId = this.selectedValue.slice(0, 3).toUpperCase() + Math.floor(Date.now() / 1000);
+            this.applyFormData.rtiDetailsId = resultId;
+            this.applyFormData.applicationId = this.selectedValue.slice(0, 3).toUpperCase() + Math.floor(Date.now() / 1000);
 
             // submit two ids - step -03
             this.apiService.createOrderId({
@@ -248,7 +248,8 @@ export class ApplyComponent implements OnInit, OnDestroy {
                 if (order.status === 'created') {
                   // console.log(order.id)
                   this.orderId = order.id;
-                  this.applyData.orderId = order.id;
+                  this.applyFormData.orderId = order.id;
+                  this.applyData.append('data', JSON.stringify(this.applyFormData));
                   this.apiService.postApplyService(this.applyData)
                     .subscribe(
                       (data: any) => {

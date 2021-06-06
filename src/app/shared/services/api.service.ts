@@ -29,6 +29,8 @@ export class ApiService {
   private userLogin = `${this.baseUrl}/auth/local`;
   private personalDetails = `${this.baseUrl}/personal-details`;
   private apply = `${this.baseUrl}/applies`;
+  private documents = `${this.baseUrl}/documents`;
+
   private applyEmailConfirmation = `${this.baseUrl}/apply/email-confirmation`;
   private services = `${this.baseUrl}/services`;
 
@@ -148,6 +150,10 @@ export class ApiService {
     return this.http.post(this.apply, data)
   }
 
+  postDocumentsService(data: any) {
+    return this.http.post(this.documents, data)
+  }
+
   postApplyEmailService(data: any){
     return this.http.post(this.applyEmailConfirmation, data)
   }
@@ -190,11 +196,7 @@ export class ApiService {
 
 
   postPropertyDetailsService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.propertyDetails, data, {
-      headers
-    });
+    return this.http.post(this.propertyDetails, data);
   }
 
   postEpfStatusService(data: any): Observable<any> {

@@ -162,7 +162,23 @@
     }
   }
 }
-
+.upload-files{
+  // background-color: red;
+  // padding: 10px 20px;
+  fieldset{
+    border: 1px solid #bfbfbf;
+    padding: 10px 20px;
+    legend{
+      width: auto;
+      font-size: 22px;
+      font-weight: 600;
+    }
+    input{
+      // background: #f1f1f1;
+      // padding: 10px;
+    }
+  }
+}
 @media only screen and (max-width: 600px) {
   .mat-radio-button {
     display: block;
