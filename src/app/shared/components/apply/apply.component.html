@@ -15,7 +15,7 @@
         <div class="container">
             <div class="row my-5">
                 <div class="col-12">
-                    <mat-horizontal-stepper #stepper>
+                    <mat-horizontal-stepper #stepper style="margin-left: -24px; margin-right: -24px;">
                         <mat-step [stepControl]="rtidetails">
                             <form [formGroup]="rtidetails">
                                 <ng-template matStepLabel>RTI Details</ng-template>
@@ -197,15 +197,13 @@
                                     <div class="service-type-details" *ngIf="rtiData">
                                         <h4 class="text-nowrap "><u>RTI details</u></h4>
                                         <div class="field-group" *ngFor="let item of rtiData | keyvalue">
-                                            <div class="d-none">{{rtiData | json}}</div>
                                             <div class="field-name">{{item.key | splitCamelcase | titlecase}}
                                             </div>
                                             <div class="field-desc">{{item.value}}</div>
                                         </div>
-                                        <!-- <ngx-json-viewer [json]="rtiData"></ngx-json-viewer> -->
                                     </div>
                                 </div>
-                                <div class="col-12 mt-4">
+                                <div class="col-12">
                                     <div class="personal-details">
                                         <h4 class="text-nowrap"><u>Personal Details</u></h4>
                                         <div class="field-group">
@@ -334,17 +332,17 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Choose your plan</td>
-                                                                    <td>
+                                                                    <td class="radio-btn">
                                                                         <mat-radio-button value="Basic &#8377;199">
                                                                             &#8377;199
                                                                         </mat-radio-button>
                                                                     </td>
-                                                                    <td>
+                                                                    <td class="radio-btn">
                                                                         <mat-radio-button value="Standard &#8377;299">
                                                                             &#8377;299
                                                                         </mat-radio-button>
                                                                     </td>
-                                                                    <td>
+                                                                    <td class="radio-btn">
                                                                         <mat-radio-button value="Premium &#8377;499">
                                                                             &#8377;499
                                                                         </mat-radio-button>

@@ -83,8 +83,8 @@ export class ApplyComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.selectedValue = this.router.url.split('/').pop();
-    console.log(this.selectedValue)
+    // this.selectedValue = this.router.url.split('/').pop();
+    // console.log(this.selectedValue)
     if (this.router.url === '/apply/personal' || this.router.url === `/apply/personal/${this.selectedValue}`) {
       this.categoryChange(1, 'personal')
       // this.onChangeService()
@@ -149,9 +149,12 @@ export class ApplyComponent implements OnInit, OnDestroy {
     this.router.navigate([`${this.childrenUrl}/${event.value}`], { relativeTo: this.route })
     // console.log(event.value)
     document.getElementById("scollTo").scrollIntoView();
+    this.selectedValue = this.router.url.split('/').pop();
+    console.log(this.selectedValue)
   }
 
   onSubmitRti() {
+    this.selectedValue = this.router.url.split('/').pop();
     console.log(this.selectedValue)
     this.apiService.saveServiceTypeData(this.selectedValue)
     this.applySubscription = this.apiService.subscribeApplyData

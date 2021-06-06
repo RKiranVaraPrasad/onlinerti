@@ -172,7 +172,53 @@ section {
         }
     }
 }
-
+.mat-horizontal-content-container h2 {
+    text-transform: uppercase;
+    border-bottom: 3px solid;
+}
+.basic{
+    tr{
+        td{
+            &:nth-child(2){
+                background-color: #095cf2;
+                color: white !important;
+            }
+        }
+    }
+}
+.premium{
+    tr{
+        td{
+            &:nth-child(4){
+                background-color: #095cf2;
+                color: white !important;
+            }
+        }
+    }
+}
+.standard{
+    tr{
+        td{
+            &:nth-child(3){
+                .mat-radio-outer-circle,
+                .mat-radio-inner-circle{
+                    background-color: white !important;
+                }
+                background-color: #095cf2;
+                color: white !important;
+            }
+        }
+    }
+}
+ .radio-btn{
+    .mat-radio-container{
+        display: block !important;
+    }
+    .mat-radio-button{
+        display: table;
+        margin: 0 auto;
+    }
+ }
 .choose-service {
     .mat-radio-button {
         margin-bottom: 25px;
