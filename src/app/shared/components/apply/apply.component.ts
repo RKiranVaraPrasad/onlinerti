@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { ApiService } from '../../services/api.service';
 import { ToastrService } from 'ngx-toastr';
 import { v4 as uuidv4 } from 'uuid';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-apply',
@@ -16,7 +17,9 @@ export class ApplyComponent implements OnInit, OnDestroy {
 
   step = 0;
   status: boolean = false;
-  finalServices: any = [];
+  personalServices: any;
+  socialServices: any;
+  otherServices: any;
   postalChecked = false;
   rtiChecked = false;
   expretChecked = false;
@@ -35,7 +38,7 @@ export class ApplyComponent implements OnInit, OnDestroy {
   city: any;
   pincode: any;
   address: any;
-  selectedValue: string = this.router.url.split('/').pop();
+  selectedValue: string;
   @Output() selectionChange: EventEmitter<any> = new EventEmitter()
   rtiData: any;
   applySubscription: Subscription;
@@ -46,6 +49,11 @@ export class ApplyComponent implements OnInit, OnDestroy {
   formData: any;
   applicationId: any;
   services: { id: number; category: number; option: string; link: string; };
+  displayCategoryItems: any;
+  finalPersonalArray: any = [];
+  statusClass: boolean;
+  childrenUrl: any;
+  applyData: any = {}
 
   constructor(
     private apiService: ApiService,
@@ -75,7 +83,49 @@ export class ApplyComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log(uuidv4())
+    this.selectedValue = this.router.url.split('/').pop();
+    console.log(this.selectedValue)
+    if (this.router.url === '/apply/personal' || this.router.url === `/apply/personal/${this.selectedValue}`) {
+      this.categoryChange(1, 'personal')
+      // this.onChangeService()
+      // console.log(this.selectedValue)
+    }
+    if (this.router.url === '/apply/social' || this.router.url === `/apply/social/${this.selectedValue}`) {
+      this.categoryChange(2, 'social')
+    }
+    if (this.router.url === '/apply/other' || this.router.url === `/apply/other/${this.selectedValue}`) {
+      this.categoryChange(3, 'other')
+    }
+
+    this.apiService.getPersonalServicesService()
+      .subscribe(
+        data => {
+          this.personalServices = data
+          // console.log(this.personalServices)
+          // this.personalServices.forEach(element => {
+          //   const url = element.icon.url
+          //   const obj = {
+          //     category: element.category,
+          //     icon: url,
+          //     link: element.link,
+          //     option: element.option
+          //   }
+          //   this.finalPersonalArray.push(obj)
+          // });
+          // console.log(this.finalPersonalArray)
+        }
+      )
+    this.apiService.getSocialServicesService()
+      .subscribe(
+        data => this.socialServices = data
+      )
+    this.apiService.getOtherServicesService()
+      .subscribe(
+        data => {
+          this.otherServices = data;
+        }
+      )
+    // console.log(uuidv4())
     this.apiService.subscribeFormStatus.subscribe(
       currentStatus => {
         this.status = currentStatus;
@@ -90,29 +140,19 @@ export class ApplyComponent implements OnInit, OnDestroy {
     }
 
   }
-  onChangeCategory(event) {
-    this.router.navigate(['/apply'])
-    this.finalServices = []
-    this.apiService.getServicesService()
-      .subscribe(
-        (data: any) => {
-          data.forEach(element => {
-            if (element.category == event.value) {
-              this.finalServices.push(element)
-            }
-          });
-          console.log(this.finalServices)
-        }
-      )
-
+  categoryChange(catId, url) {
+    this.childrenUrl = url;
+    this.displayCategoryItems = catId;
   }
 
   onChangeService(event) {
-    this.router.navigate([event.value], { relativeTo: this.route })
-    console.log(event.value)
+    this.router.navigate([`${this.childrenUrl}/${event.value}`], { relativeTo: this.route })
+    // console.log(event.value)
+    document.getElementById("scollTo").scrollIntoView();
   }
 
   onSubmitRti() {
+    console.log(this.selectedValue)
     this.apiService.saveServiceTypeData(this.selectedValue)
     this.applySubscription = this.apiService.subscribeApplyData
       .subscribe(
@@ -125,11 +165,14 @@ export class ApplyComponent implements OnInit, OnDestroy {
   }
 
   onSubmitPersonalDetails() {
+    console.log(this.rtiData)
     this.nextStep();
     this.stepThree = true;
   }
   onSubmitApplyForm() {
+    this.selectedValue = this.router.url.split('/').pop();
 
+    console.log(this.selectedValue);
     if (this.selectedPlan === "Basic ₹199") {
       this.finalAmount = 19900;
     } else if (this.selectedPlan === "Standard ₹299") {
@@ -137,10 +180,11 @@ export class ApplyComponent implements OnInit, OnDestroy {
     } else if (this.selectedPlan === "Premium ₹499") {
       this.finalAmount = 49900;
     }
-    const applyData: any = {}
-    applyData.serviceType = this.selectedValue;
-    applyData.status = "Pending";
-    applyData.selectedPlan = this.selectedPlan;
+    // const applyData: any = {}
+    this.applyData.serviceType = this.selectedValue;
+    this.applyData.status = "Pending";
+    this.applyData.selectedPlan = this.selectedPlan;
+
     const personalData: any = {}
     personalData.fullname = this.fullname;
     personalData.mobile = this.mobile;
@@ -148,142 +192,120 @@ export class ApplyComponent implements OnInit, OnDestroy {
     personalData.address = this.address;
     personalData.pincode = this.pincode;
     personalData.city = this.personalDetailsForm.get('city').value;
+    personalData.state = this.personalDetailsForm.get('state').value;
+
     // submit personal data - step 01
-    if (localStorage.getItem('user') != null) {
-      let user: any = JSON.parse(localStorage.getItem('user'));
-      let email = user.email;
-      this.apiService.getPersonalDetailByEmailService(email)
-        .subscribe(
-          (resultId: any) => {
-            // console.log(resultId.length)
-            if (resultId.length > 0) {
-              let id = resultId[0].id;
-              this.apiService.putPersonalDetailsService(id, personalData)
-                .subscribe(
-                  (data: any) => {
-                    applyData.personalDetailsId = data.id;
-                    //submit rti data - step 02
-                    this.apiService.submitRtiDetails(this.selectedValue);
-                    this.rtiSubscription = this.apiService.subscribeRtiId
-                      .subscribe(
-                        (resultId: any) => {
-                          if (resultId) {
-                            applyData.rtiDetailsId = resultId;
-                            applyData.applicationId = this.selectControl.value.slice(0, 3).toUpperCase() + Math.floor(Date.now() / 1000);
-
-                            this.apiService.createOrderId({
-                              amount: this.finalAmount,
-                              currency: "INR",
-                              receipt: "receipt#1"
-                            })
-                              .subscribe(
-                                (order: any) => {
-                                  console.log(order);
-                                  if (order.status === 'created') {
-                                    console.log(order.id)
-                                    this.orderId = order.id;
-                                    applyData.orderId = order.id;
-                                    this.apiService.postApplyService(applyData)
-                                      .subscribe(
-                                        (data: any) => {
-                                          if (data) {
-                                            // payment gateway
-                                            const razorpayOptions = {
-                                              "key": "rzp_test_wqn0qSBX1OF4rG",
-                                              "amount": this.finalAmount,
-                                              "currency": "INR",
-                                              "name": "Online RTI",
-                                              "description": "Test Transaction",
-                                              "image": "http://172.105.60.86/assets/images/onlineRTI.png",
-                                              "order_id": this.orderId,
-                                              "handler": function (response) {
-                                                alert(response.razorpay_payment_id);
-                                                alert(response.razorpay_order_id);
-                                                alert(response.razorpay_signature)
-                                              },
-                                              "prefill": {
-                                                "name": this.fullname,
-                                                "email": this.email,
-                                                "contact": this.mobile
-                                              },
-                                              "notes": {
-                                                "address": "Razorpay Corporate Office"
-                                              },
-                                              "theme": {
-                                                "color": "#3399cc"
-                                              }
-                                            };
-                                            const rzp1 = new this.apiService.nativeWindow.Razorpay(razorpayOptions);
-                                            rzp1.open();
-                                          }
-
-                                          this.toastr.success('Applied successfully');
-                                          // console.log(data.applicationId)
-                                          // send email with details
-                                          const body = "<p>Thank you for submiting application</p><p>We will review your application and get back to you soon.</p><p>" + data.applicationId + " is application ID to track the status.</p>"
-                                          const emailData = {
-                                            to: email,
-                                            html: body
-                                          };
-                                          this.apiService.postApplyEmailService(emailData)
-                                            .subscribe()
-                                          this.router.navigate(['/my-rti'])
-                                        }
-                                      )
-                                  }
-                                }
-                              )
-
-                            // console.log(resultId)
-                            // submit two ids - step -03
-
-                          }
-                        }
-                      )
-                  }
-                )
-            } else {
-              this.apiService.postPersonalDetailsService(personalData)
-                .subscribe(
-                  (data: any) => {
-                    // console.log(data)
-                    applyData.personalDetailsId = data.id;
-                    // console.log(data.id)
-                    // submit rti data - step 02
-                    this.apiService.submitRtiDetails(this.selectedValue);
-                    this.rtiSubscription = this.apiService.subscribeRtiId
-                      .subscribe(
-                        (resultId: any) => {
-                          if (resultId) {
-                            applyData.rtiDetailsId = resultId;
-                            applyData.applicationId = this.selectControl.value.slice(0, 3).toUpperCase() + Math.floor(Date.now() / 1000);
-                            // console.log(resultId)
-                            // submit two ids - step -03
-                            this.apiService.postApplyService(applyData)
-                              .subscribe(
-                                data => {
-                                  this.toastr.success('Applied successfully');
-                                  // console.log(data)
-                                  this.router.navigate(['/my-rti'])
-                                }
-                              )
-                          }
-                        }
-                      )
-                  }
-                )
-            }
+    this.apiService.getPersonalDetailByEmailService(this.email)
+      .subscribe(
+        (resultId: any) => {
+          // console.log(resultId.length)
+          if (resultId.length > 0) {
+            let id = resultId[0].id;
+            this.apiService.putPersonalDetailsService(id, personalData)
+              .subscribe(
+                (data: any) => {
+                  this.applyData.personalDetailsId = data.id;
+                  this.applyPostMethod();
+                }
+              )
           }
-        )
-    } else {
-      alert('Please login or Register')
-    }
+          else {
+            this.apiService.postPersonalDetailsService(personalData)
+              .subscribe(
+                (data: any) => {
+                  if (data.id) {
+                    this.applyData.personalDetailsId = data.id;
+                    this.applyPostMethod()
+                  }
+                }
+              )
+          }
+        }
+      )
+  }
 
+  applyPostMethod() {
+    // submit rti data - step 02
+    this.apiService.submitRtiDetails(this.selectedValue);
+    this.rtiSubscription = this.apiService.subscribeRtiId
+      .subscribe(
+        (resultId: any) => {
+          if (resultId) {
+            this.applyData.rtiDetailsId = resultId;
+            this.applyData.applicationId = this.selectedValue.slice(0, 3).toUpperCase() + Math.floor(Date.now() / 1000);
+
+            // submit two ids - step -03
+            this.apiService.createOrderId({
+              amount: this.finalAmount,
+              currency: "INR",
+              receipt: "receipt#1"
+            }).subscribe(
+              (order: any) => {
+                // console.log(order);
+                if (order.status === 'created') {
+                  // console.log(order.id)
+                  this.orderId = order.id;
+                  this.applyData.orderId = order.id;
+                  this.apiService.postApplyService(this.applyData)
+                    .subscribe(
+                      (data: any) => {
+                        if (data) {
+                          // payment gateway
+                          const razorpayOptions = {
+                            "key": "rzp_test_wqn0qSBX1OF4rG",
+                            "amount": this.finalAmount,
+                            "currency": "INR",
+                            "name": "Online RTI",
+                            "description": "Test Transaction",
+                            "image": "http://172.105.60.86/assets/images/onlineRTI.png",
+                            "order_id": this.orderId,
+                            "handler": function (response) {
+                              // alert(response.razorpay_payment_id);
+                              // alert(response.razorpay_order_id);
+                              // alert(response.razorpay_signature)
+                              if (response.razorpay_payment_id) {
+                                alert("payment done")
+                              }
+                              else (
+                                alert("payment failed")
+                              )
+                            },
+                            "prefill": {
+                              "name": this.fullname,
+                              "email": this.email,
+                              "contact": this.mobile
+                            },
+                            "notes": {
+                              "address": "Razorpay Corporate Office"
+                            },
+                            "theme": {
+                              "color": "#3399cc"
+                            }
+                          };
+                          const rzp1 = new this.apiService.nativeWindow.Razorpay(razorpayOptions);
+                          rzp1.open();
+                        }
+
+                        // this.toastr.success('Applied successfully');
+
+                        // send email with details
+                        const body = "<p>Thank you for submiting application</p><p>We will review your application and get back to you soon.</p><p>" + data.applicationId + " is application ID to track the status.</p>"
+                        const emailData = {
+                          to: this.email,
+                          html: body
+                        };
+                        this.apiService.postApplyEmailService(emailData).subscribe()
+                      }
+                    )
+                }
+              }
+            )
+          }
+        }
+      )
   }
 
   ngOnDestroy() {
-
-
     if (this.applySubscription) {
       this.applySubscription.unsubscribe()
     }
@@ -304,5 +326,4 @@ export class ApplyComponent implements OnInit, OnDestroy {
   getFontSize() {
     return Math.max(10, this.fontSizeControl.value);
   }
-
 }

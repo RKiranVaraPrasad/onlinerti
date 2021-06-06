@@ -31,6 +31,7 @@
     &.static-image{
         background: url(../../../assets/images/my-rti.jpg) center no-repeat;
         min-height: 360px;
+        background-size: cover;
     }
     .slider-content{
         position: absolute;

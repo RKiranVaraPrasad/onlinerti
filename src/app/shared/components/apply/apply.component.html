@@ -1,5 +1,5 @@
 <section class="apply">
-    <div class="static-banner">
+    <!-- <div class="static-banner">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -10,53 +10,93 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="content">
         <div class="container">
             <div class="row my-5">
-                <div class="col-md-8 col-12">
+                <div class="col-12">
                     <mat-horizontal-stepper #stepper>
                         <mat-step [stepControl]="rtidetails">
                             <form [formGroup]="rtidetails">
                                 <ng-template matStepLabel>RTI Details</ng-template>
+                                <h2>RTI Details</h2>
                                 <div class="choose-service">
                                     <div class="row mt-4">
                                         <div class="col-12">
-                                            <mat-radio-group aria-label="Select an option"
+                                            <!-- <button mat-flat-button color="primary" matStepperNext (click)="onChangeCategory(1)">Personal RTI</button>
+                                            <button mat-flat-button color="primary" matStepperNext (click)="onChangeCategory(2)">Social RTI</button>
+                                            <button mat-flat-button color="primary" matStepperNext (click)="onChangeCategory(3)">Other RTI</button> -->
+                                            <!-- <mat-radio-group aria-label="Select an option"
                                                 (change)="onChangeCategory($event)">
-                                                <mat-radio-button value="1">Personal RTI</mat-radio-button>
-                                                <mat-radio-button value="2">Social RTI</mat-radio-button>
+                                                <mat-radio-button value="1" class="mr-5">Personal RTI</mat-radio-button>
+                                                <mat-radio-button value="2" class="mr-5">Social RTI</mat-radio-button>
                                                 <mat-radio-button value="3">Other RTI</mat-radio-button>
-                                            </mat-radio-group>
+                                            </mat-radio-group> -->
                                         </div>
-                                        <!-- <div class="col-4">
-                                                    <div class="service-category" (click)="categoryChange(1)">
-                                                        <div class="img-wrapper">
-                                                            <img src="assets/svg/man-user.svg" alt="">
-                                                        </div>
-                                                        <span>Personal RTI</span>
-                                                    </div>
+                                        <div class="col-4 text-center">
+                                            <div class="service-category" routerLink="personal" routerLinkActive="active">
+                                                <div class="img-wrapper" (click)="categoryChange(1, 'personal')">
+                                                    <img src="assets/icons/personal-black.png" alt="">
+                                                    <span>Personal RTI</span>
                                                 </div>
-                                                <div class="col-4">
-                                                    <div class="service-category" (click)="categoryChange(2)">
-                                                        <div class="img-wrapper">
-                                                            <img src="assets/svg/users-group.svg" alt="">
-                                                        </div>
-                                                        <span>Social RTI</span>
-                                                    </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-4 text-center">
+                                            <div class="service-category" routerLink="social" routerLinkActive="active">
+                                                <div class="img-wrapper" (click)="categoryChange(2, 'social')">
+                                                    <img src="assets/icons/social-black.png" alt="">
+                                                    <span>Social RTI</span>
                                                 </div>
-                                                <div class="col-4">
-                                                    <div class="service-category" (click)="categoryChange(3)">
-                                                        <div class="img-wrapper">
-                                                            <img src="assets/svg/question-mark.svg" alt="">
-                                                        </div>
-                                                        <span>Other RTI</span>
-                                                    </div>
-                                                </div> -->
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-4 text-center">
+                                            <div class="service-category" routerLink="other" routerLinkActive="active">
+                                                <div class="img-wrapper" (click)="categoryChange(3, 'other')">
+                                                    <img src="assets/icons/social-black.png" alt="">
+                                                    <span>Other RTI</span>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row mt-4">
-                                        <div class="col-md-4 col-12">
-                                            <mat-form-field class="example-full-width" appearance="fill">
+                                        <div class="col-12">
+                                            <mat-radio-group aria-label="Select an option"
+                                                (change)="onChangeService($event)" class="row"
+                                                *ngIf="displayCategoryItems == 1">
+                                                <mat-radio-button value="{{service.link}}" class="col-2"
+                                                    *ngFor="let service of personalServices" routerLink="personal/{{service.link}}" routerLinkActive="active">
+                                                    <img *ngFor="let icon of service.icon" src="http://172.105.60.86:1337{{icon.url}}" alt=""
+                                                        style="display: block; text-align: center; margin: 0 auto 15px;">
+                                                    {{service.option}}
+                                                </mat-radio-button>
+                                            </mat-radio-group>
+                                            <mat-radio-group aria-label="Select an option"
+                                                (change)="onChangeService($event)" class="row"
+                                                *ngIf="displayCategoryItems == 2">
+                                                <mat-radio-button value="{{service.link}}" class="col-2"
+                                                    *ngFor="let service of socialServices" routerLink="social/{{service.link}}" routerLinkActive="active">
+                                                    <img *ngFor="let icon of service.icon" src="http://172.105.60.86:1337{{icon.url}}" alt=""
+                                                        style="display: block; text-align: center; margin: 0 auto 15px;">
+                                                    {{service.option}}
+                                                </mat-radio-button>
+                                            </mat-radio-group>
+                                            <mat-radio-group aria-label="Select an option"
+                                                (change)="onChangeService($event)" class="row"
+                                                *ngIf="displayCategoryItems == 3">
+                                                <mat-radio-button value="{{service.link}}" class="col-2"
+                                                    *ngFor="let service of otherServices" routerLink="other/{{service.link}}" routerLinkActive="active">
+                                                    <img *ngFor="let icon of service.icon" src="http://172.105.60.86:1337{{icon.url}}" alt=""
+                                                        style="display: block; text-align: center; margin: 0 auto 15px;">
+                                                    {{service.option}}
+                                                </mat-radio-button>
+                                            </mat-radio-group>
+                                            <!-- <div class="services-list-wrapper">
+                                                <div class="services-list-items" *ngFor="let service of finalServices">{{service.option}}</div>
+                                            </div> -->
+                                            <!-- <mat-form-field class="example-full-width" appearance="fill">
                                                 <mat-label>Select Service</mat-label>
                                                 <mat-select [formControl]="selectControl"
                                                     (selectionChange)="onChangeService($event)"
@@ -66,22 +106,23 @@
                                                         [value]="service.link">{{service.option}}
                                                     </mat-option>
                                                 </mat-select>
-                                            </mat-form-field>
+                                            </mat-form-field> -->
                                         </div>
                                     </div>
                                 </div>
-                                <div class="selected-service-form">
+                                <div class="selected-service-form" id="scollTo">
                                     <router-outlet></router-outlet>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 text-right">
                                         <button mat-flat-button color="primary" matStepperNext (click)="onSubmitRti()"
-                                        [disabled]="!status">Next</button>
+                                            [disabled]="!status">Next</button>
                                     </div>
                                 </div>
                             </form>
                         </mat-step>
                         <mat-step [stepControl]="personalDetailsForm" label="Personal Details">
+                            <h2>Personal Details</h2>
                             <form [formGroup]="personalDetailsForm">
                                 <div class="row mt-4">
                                     <div class="col-md-3 col-12">
@@ -139,21 +180,24 @@
 
                                 <div class="row">
                                     <div class="col-12 text-right">
-                                        <button mat-flat-button color="secondary" matStepperPrevious class="mr-3">Back</button>
-                                    <button mat-flat-button color="primary" matStepperNext
-                                        (click)="onSubmitPersonalDetails()"
-                                        [disabled]="this.personalDetailsForm.invalid">Next</button>
+                                        <button mat-flat-button color="secondary" matStepperPrevious
+                                            class="mr-3">Back</button>
+                                        <button mat-flat-button color="primary" matStepperNext
+                                            (click)="onSubmitPersonalDetails()"
+                                            [disabled]="this.personalDetailsForm.invalid">Next</button>
                                     </div>
                                 </div>
                             </form>
                         </mat-step>
                         <mat-step>
                             <ng-template matStepLabel>Summary and Payment</ng-template>
+                            <h2>Summary and Payment</h2>
                             <div class="row mt-3">
-                                <div class="col-md-7 col-12">
+                                <div class="col-12">
                                     <div class="service-type-details" *ngIf="rtiData">
-                                        <h4 class="text-nowrap">RTI details</h4>
+                                        <h4 class="text-nowrap "><u>RTI details</u></h4>
                                         <div class="field-group" *ngFor="let item of rtiData | keyvalue">
+                                            <div class="d-none">{{rtiData | json}}</div>
                                             <div class="field-name">{{item.key | splitCamelcase | titlecase}}
                                             </div>
                                             <div class="field-desc">{{item.value}}</div>
@@ -161,9 +205,9 @@
                                         <!-- <ngx-json-viewer [json]="rtiData"></ngx-json-viewer> -->
                                     </div>
                                 </div>
-                                <div class="col-md-5 col-12">
+                                <div class="col-12 mt-4">
                                     <div class="personal-details">
-                                        <h4 class="text-nowrap">Personal Details</h4>
+                                        <h4 class="text-nowrap"><u>Personal Details</u></h4>
                                         <div class="field-group">
                                             <div class="field-name">Full Name</div>
                                             <div class="field-desc">{{fullname}}</div>
@@ -187,131 +231,131 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row mt-4">
                                 <div class="col-12">
                                     <div class="pricing">
-                                        <h4>Pricing</h4>
+                                        <h4><u>Pricing</u></h4>
                                         <div class="row">
                                             <div class="col-12">
-                                            <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedPlan"
-                                                name="radio" required>
-                                                <div class="table-responsive">
-                                                    <table class="table table-bordered">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>Plan</td>
-                                                                <td align="middle">Basic</td>
-                                                                <td align="middle">Standard</td>
-                                                                <td align="middle">Premium</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Postal Charges
-                                                                    <div class="float-right">
-                                                                        <span>&#8377;49</span>
-                                                                        <mat-icon [ngStyle]="{'color':'#3d66b0'}">
-                                                                            contact_support</mat-icon>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <mat-icon [ngStyle]="{'color':'#3db04b'}">done
-                                                                    </mat-icon>
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <mat-icon [ngStyle]="{'color':'#3db04b'}">done
-                                                                    </mat-icon>
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <mat-icon [ngStyle]="{'color':'#3db04b'}">done
-                                                                    </mat-icon>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Processing Charges
-                                                                    <div class="float-right">
-                                                                        <span>&#8377;150</span>
-                                                                        <mat-icon [ngStyle]="{'color':'#3d66b0'}">
-                                                                            contact_support</mat-icon>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <mat-icon [ngStyle]="{'color':'#3db04b'}">done
-                                                                    </mat-icon>
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <mat-icon [ngStyle]="{'color':'#3db04b'}">done
-                                                                    </mat-icon>
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <mat-icon [ngStyle]="{'color':'#3db04b'}">done
-                                                                    </mat-icon>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>RTI Drafting Charges
-                                                                    <div class="float-right">
-                                                                        <span>&#8377;100</span>
-                                                                        <mat-icon [ngStyle]="{'color':'#3d66b0'}">
-                                                                            contact_support</mat-icon>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <mat-icon [ngStyle]="{'color':'#d20b0b'}">clear
-                                                                    </mat-icon>
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <mat-icon [ngStyle]="{'color':'#3db04b'}">done
-                                                                    </mat-icon>
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <mat-icon [ngStyle]="{'color':'#3db04b'}">done
-                                                                    </mat-icon>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Phone from RTI Expert
-                                                                    <div class="float-right">
-                                                                        <span>&#8377;200</span>
-                                                                        <mat-icon [ngStyle]="{'color':'#3d66b0'}">
-                                                                            contact_support</mat-icon>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <mat-icon [ngStyle]="{'color':'#d20b0b'}">clear
-                                                                    </mat-icon>
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <mat-icon [ngStyle]="{'color':'#d20b0b'}">clear
-                                                                    </mat-icon>
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <mat-icon [ngStyle]="{'color':'#3db04b'}">done
-                                                                    </mat-icon>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Choose your plan</td>
-                                                                <td>
-                                                                    <mat-radio-button value="Basic &#8377;199">
-                                                                        &#8377;199
-                                                                    </mat-radio-button>
-                                                                </td>
-                                                                <td>
-                                                                    <mat-radio-button value="Standard &#8377;299">
-                                                                        &#8377;299
-                                                                    </mat-radio-button>
-                                                                </td>
-                                                                <td>
-                                                                    <mat-radio-button value="Premium &#8377;499">
-                                                                        &#8377;499
-                                                                    </mat-radio-button>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </mat-radio-group>
+                                                <mat-radio-group aria-label="Select an option"
+                                                    [(ngModel)]="selectedPlan" name="radio" required>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>Plan</td>
+                                                                    <td align="middle">Basic</td>
+                                                                    <td align="middle">Standard</td>
+                                                                    <td align="middle">Premium</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Postal Charges
+                                                                        <div class="float-right">
+                                                                            <span>&#8377;49</span>
+                                                                            <mat-icon [ngStyle]="{'color':'#3d66b0'}">
+                                                                                contact_support</mat-icon>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <mat-icon [ngStyle]="{'color':'#3db04b'}">done
+                                                                        </mat-icon>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <mat-icon [ngStyle]="{'color':'#3db04b'}">done
+                                                                        </mat-icon>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <mat-icon [ngStyle]="{'color':'#3db04b'}">done
+                                                                        </mat-icon>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Processing Charges
+                                                                        <div class="float-right">
+                                                                            <span>&#8377;150</span>
+                                                                            <mat-icon [ngStyle]="{'color':'#3d66b0'}">
+                                                                                contact_support</mat-icon>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <mat-icon [ngStyle]="{'color':'#3db04b'}">done
+                                                                        </mat-icon>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <mat-icon [ngStyle]="{'color':'#3db04b'}">done
+                                                                        </mat-icon>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <mat-icon [ngStyle]="{'color':'#3db04b'}">done
+                                                                        </mat-icon>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>RTI Drafting Charges
+                                                                        <div class="float-right">
+                                                                            <span>&#8377;100</span>
+                                                                            <mat-icon [ngStyle]="{'color':'#3d66b0'}">
+                                                                                contact_support</mat-icon>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <mat-icon [ngStyle]="{'color':'#d20b0b'}">clear
+                                                                        </mat-icon>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <mat-icon [ngStyle]="{'color':'#3db04b'}">done
+                                                                        </mat-icon>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <mat-icon [ngStyle]="{'color':'#3db04b'}">done
+                                                                        </mat-icon>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Phone from RTI Expert
+                                                                        <div class="float-right">
+                                                                            <span>&#8377;200</span>
+                                                                            <mat-icon [ngStyle]="{'color':'#3d66b0'}">
+                                                                                contact_support</mat-icon>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <mat-icon [ngStyle]="{'color':'#d20b0b'}">clear
+                                                                        </mat-icon>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <mat-icon [ngStyle]="{'color':'#d20b0b'}">clear
+                                                                        </mat-icon>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <mat-icon [ngStyle]="{'color':'#3db04b'}">done
+                                                                        </mat-icon>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Choose your plan</td>
+                                                                    <td>
+                                                                        <mat-radio-button value="Basic &#8377;199">
+                                                                            &#8377;199
+                                                                        </mat-radio-button>
+                                                                    </td>
+                                                                    <td>
+                                                                        <mat-radio-button value="Standard &#8377;299">
+                                                                            &#8377;299
+                                                                        </mat-radio-button>
+                                                                    </td>
+                                                                    <td>
+                                                                        <mat-radio-button value="Premium &#8377;499">
+                                                                            &#8377;499
+                                                                        </mat-radio-button>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </mat-radio-group>
+                                            </div>
                                         </div>
-                                    </div>
                                         <div class="row">
                                             <div class="col-12 text-right">
                                                 <div class="selected-plan" *ngIf="selectedPlan">
@@ -324,21 +368,22 @@
                             </div>
                             <div class="row mt-3">
                                 <div class="col-12 text-right">
-                                    <button mat-flat-button color="secondary" matStepperPrevious class="mr-3">Back</button>
-                                <button mat-flat-button color="primary" (click)="onSubmitApplyForm()"
-                                    [disabled]="!selectedPlan">Proceed to Payment</button>
+                                    <button mat-flat-button color="secondary" matStepperPrevious
+                                        class="mr-3">Back</button>
+                                    <button mat-flat-button color="primary" (click)="onSubmitApplyForm()"
+                                        [disabled]="!selectedPlan">Proceed to Payment</button>
                                 </div>
                             </div>
                         </mat-step>
                     </mat-horizontal-stepper>
                 </div>
-                <div class="col-md-4 col-12 mt-md-0 mt-4">
+                <!-- <div class="col-12 mt-4">
                     <h3>Fed up with the corruption and slow Govt. work ?</h3>
                     <ul>
                         <li>Going all the way to a post office or finding someone to file an RTI for you could be a tedious and expensive task. Corruption and fraudulent is common in many organizations, but you have the power to file an RTI Online from your home.<br/><br/></li>
                         <li>Most of the people believe that filing an online RTI is an expensive task. That’s not the case with us! We are an independent entity and our sole aim is to provide you a platform to get answers to your queries. If nobody is hearing you out, we will ensure that the Government listens to your voice and what you wish to say.</li>
                     </ul>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

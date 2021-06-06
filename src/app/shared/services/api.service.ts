@@ -122,6 +122,15 @@ export class ApiService {
   getServicesService() {
     return this.http.get(this.services)
   }
+  getPersonalServicesService() {
+    return this.http.get(`${this.services}?category=1`)
+  }
+  getSocialServicesService() {
+    return this.http.get(`${this.services}?category=2`)
+  }
+  getOtherServicesService() {
+    return this.http.get(`${this.services}?category=3`)
+  }
   postPersonalDetailsService(data: any) {
     return this.http.post(this.personalDetails, data)
   }
@@ -144,11 +153,7 @@ export class ApiService {
   }
 
   postPassportDelayService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.passportDelay, data, {
-      headers
-    });
+    return this.http.post(this.passportDelay, data);
   }
 
   postItReturnService(data: any): Observable<any> {

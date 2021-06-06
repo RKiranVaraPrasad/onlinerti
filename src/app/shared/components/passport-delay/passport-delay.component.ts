@@ -33,6 +33,7 @@ export class PassportDelayComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    // console.log(this.selectedRoute)
     this.rtiDetailsForm.statusChanges.subscribe(
       newStatus => {
         if (newStatus === 'VALID') {
@@ -44,7 +45,7 @@ export class PassportDelayComponent implements OnInit, OnDestroy {
     )
     this.subscription = this.apiService.currentServiceType.subscribe(
       currentservice => {
-
+        // console.log(currentservice)
         const data: any = {}
         data.applicantName = this.rtiDetailsForm.get('applicantName').value;
         data.applicationNo = this.rtiDetailsForm.get('applicationNo').value;
@@ -53,11 +54,11 @@ export class PassportDelayComponent implements OnInit, OnDestroy {
         data.itOffice = this.rtiDetailsForm.get('itOffice').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
 
-        console.log(data)
+        // console.log(data)
         this.currentService = currentservice
         if (this.selectedRoute === this.currentService) {
-          console.log(this.currentService)
           this.apiService.sendApplyRtiData(data);
+          // console.log(data)
         }
       }
     )
@@ -76,13 +77,13 @@ export class PassportDelayComponent implements OnInit, OnDestroy {
           this.apiService.postPassportDelayService(data)
             .subscribe(
               (resultID: any) => {
-                console.log(resultID)
+                // console.log(resultID)
+                // console.log(resultID.id)
                 this.apiService.sendRtiId(resultID.id);
-                console.log(resultID.id)
               }
             )
         }
-        console.log(rtiData)
+        // console.log(rtiData)
       }
     )
   }

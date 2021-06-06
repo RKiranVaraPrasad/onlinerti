@@ -42,6 +42,9 @@ import { CollectorOfficeComponent } from './components/collector-office/collecto
 import { PrincipalSecretaryComponent } from './components/principal-secretary/principal-secretary.component';
 import { RevenueOfficesComponent } from './components/revenue-offices/revenue-offices.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import { PersonalComponent } from './components/personal/personal.component';
+import { SocialComponent } from './components/social/social.component';
+import { CategoryComponent } from './components/category/category.component';
 
 
 
@@ -73,7 +76,10 @@ import {MatStepperModule} from '@angular/material/stepper';
     EmailConfirmationComponent,
     CollectorOfficeComponent,
     PrincipalSecretaryComponent,
-    RevenueOfficesComponent
+    RevenueOfficesComponent,
+    PersonalComponent,
+    SocialComponent,
+    CategoryComponent
   ],
   imports: [
     CommonModule,

@@ -15,11 +15,13 @@ export class ItReturnsComponent implements OnInit, OnDestroy {
   selectedRoute: string = this.router.url.split('/').pop();
   subscription: Subscription;
   subscriptionTwo: Subscription;
+  formData: any;
   constructor(
     private apiService: ApiService,
     private router: Router,
     private fb: FormBuilder
   ) { 
+    this.formData = new FormData();
     this.rtiDetailsForm = this.fb.group({
       pancardNumber: new FormControl('', [Validators.required]),
       financialYear: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
@@ -53,10 +55,10 @@ export class ItReturnsComponent implements OnInit, OnDestroy {
           data.ApplicantDate = this.rtiDetailsForm.get('ApplicantDate').value;
           data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
 
-        console.log(data)
+        // console.log(data)
         this.currentService = currentservice
         if (this.selectedRoute === this.currentService) {
-          console.log(this.currentService)
+          // console.log(this.currentService)
           this.apiService.sendApplyRtiData(data);
         }
       }
@@ -77,13 +79,13 @@ export class ItReturnsComponent implements OnInit, OnDestroy {
           this.apiService.postItReturnService(data)
             .subscribe(
               (resultID: any) => {
-                console.log(resultID)
+                // console.log(resultID)
                 this.apiService.sendRtiId(resultID.id);
-                console.log(resultID.id)
+                // console.log(resultID.id)
               }
             )
         }
-        console.log(rtiData)
+        // console.log(rtiData)
       }
     )
     

@@ -1,18 +1,5 @@
 <header>
     <div class="container">
-        <div class="login-signup d-none d-md-block px-0">
-            <div class="row align-items-center">
-                <div class="col text-right">
-                    <div class="rti-count">
-                        RTIs since 2013 <span>1,001,673</span> &nbsp; &nbsp; &nbsp; &nbsp;
-                        RTIs last 24 hrs <span>274</span>
-                    </div>
-                </div>
-                <!-- <div class="col-auto text-right">
-                    <a mat-button routerLink="login-register">Login / Register</a>
-                </div> -->
-            </div>
-        </div>
         <nav class="navbar navbar-expand-lg navbar-light bg-white px-0">
             <a class="navbar-brand" routerLink="home">
                 <img src="assets/images/onlineRTI.png" alt="" width="86">
@@ -44,7 +31,7 @@
                             <a class="nav-link" routerLink="forum">Forum</a>
                         </li> -->
                         <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()" *ngIf="!logged">
-                            <a class="nav-link" routerLink="login">Register</a>
+                            <a class="nav-link login-link" routerLink="login">Login</a>
                         </li>
                         <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()" *ngIf="logged">
                             <a class="nav-link" routerLink="my-rti">My RTI</a>
