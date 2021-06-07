@@ -121,7 +121,7 @@
                                 <div class="selected-service-form" id="scollTo">
                                     <router-outlet></router-outlet>
                                 </div>
-                                <div class="upload-files mb-4" *ngIf="serviceDisplay === true">
+                                <div class="upload-files mb-4" *ngIf="serviceDisplay()">
                                     <fieldset>
                                         <legend>Upload Files <small>(Optional)</small></legend>
                                         <div class="row">

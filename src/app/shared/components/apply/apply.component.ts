@@ -54,14 +54,14 @@ export class ApplyComponent implements OnInit, OnDestroy {
   statusClass: boolean;
   childrenUrl: any;
   applyData: any;
-  serviceDisplay: boolean;
+  // serviceDisplay: boolean;
   file: File;
   documentsData: any;
   applyFormData: any = {}
 
   constructor(
     private apiService: ApiService,
-    private router: Router,
+    public router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private toastr: ToastrService,
@@ -88,9 +88,15 @@ export class ApplyComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // this.selectedValue = this.router.url.split('/').pop();
-    // console.log(this.selectedValue)
-    if (this.router.url === '/apply/personal' || this.router.url === `/apply/personal/${this.selectedValue}`) {
+    this.selectedValue = this.router.url.split('/').pop();
+    if (this.router.url === '/apply/personal') {
+      console.log(this.router.url)
+      this.categoryChange(1, 'personal')
+      // this.onChangeService()
+      // console.log(this.selectedValue)
+    }
+    if (this.router.url === `/apply/personal/${this.selectedValue}`) {
+      console.log(this.router.url)
       this.categoryChange(1, 'personal')
       // this.onChangeService()
       // console.log(this.selectedValue)
@@ -136,11 +142,12 @@ export class ApplyComponent implements OnInit, OnDestroy {
     this.childrenUrl = url;
     this.displayCategoryItems = catId;
   }
-
+  serviceDisplay(){
+    return this.router.url != '/apply/personal' && this.router.url != '/apply/social' && this.router.url != '/apply/other';
+  }
   onChangeService(event) {
-    this.serviceDisplay = this.router.navigate([`${this.childrenUrl}/${event.value}`], { relativeTo: this.route }) != null
     this.router.navigate([`${this.childrenUrl}/${event.value}`], { relativeTo: this.route })
-    // console.log(event.value)
+    console.log(this.serviceDisplay)
     document.getElementById("scollTo").scrollIntoView();
     this.selectedValue = this.router.url.split('/').pop();
     console.log(this.selectedValue)
