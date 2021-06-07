@@ -140,7 +140,7 @@ export class ApplyComponent implements OnInit, OnDestroy {
   }
   categoryChange(catId, url) {
     this.childrenUrl = url;
-    this.displayCategoryItems = catId;
+    this.displayCategoryItems = catId;  
   }
   serviceDisplay(){
     return this.router.url != '/apply/personal' && this.router.url != '/apply/social' && this.router.url != '/apply/other';

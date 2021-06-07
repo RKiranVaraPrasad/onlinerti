@@ -163,35 +163,19 @@ export class ApiService {
   }
 
   postItReturnService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.itReturns, data, {
-      headers
-    });
+    return this.http.post(this.itReturns, data);
   }
 
   postMarksheetVerificationService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.marksheetVerification, data, {
-      headers
-    });
+    return this.http.post(this.marksheetVerification, data);
   }
 
   postAnswerCopyService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.answerCopy, data, {
-      headers
-    });
+    return this.http.post(this.answerCopy, data);
   }
 
   postFirStatusService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.firStatus, data, {
-      headers
-    });
+    return this.http.post(this.firStatus, data);
   }
 
 
@@ -200,137 +184,73 @@ export class ApiService {
   }
 
   postEpfStatusService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.epfStatus, data, {
-      headers
-    });
+    return this.http.post(this.epfStatus, data);
   }
 
   postPensionApplicationService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.pensionApplication, data, {
-      headers
-    });
+    return this.http.post(this.pensionApplication, data);
   }
 
   postOccupancyCertificateService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.occupancyCertificate, data, {
-      headers
-    });
+    return this.http.post(this.occupancyCertificate, data);
   }
 
   postCollectorOfficeService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.collectorOffice, data, {
-      headers
-    });
+    return this.http.post(this.collectorOffice, data);
   }
 
   postRevenueOfficesService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.revenueOffices, data, {
-      headers
-    });
+    return this.http.post(this.revenueOffices, data);
   }
 
   postPrincipalSecretaryService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.principalSecretary, data, {
-      headers
-    });
+    return this.http.post(this.principalSecretary, data);
   }
 
   postMpFundsUtilizationService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.mpFundsUtilization, data, {
-      headers
-    });
+    return this.http.post(this.mpFundsUtilization, data);
   }
 
   postMlaFundUtilizationService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.mlaFundUtilization, data, {
-      headers
-    });
+    return this.http.post(this.mlaFundUtilization, data);
   }
 
   postGramPanchayatService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.gramPanchayat, data, {
-      headers
-    });
+    return this.http.post(this.gramPanchayat, data);
   }
 
   postFundsUtilizationService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.fundsUtilization, data, {
-      headers
-    });
+    return this.http.post(this.fundsUtilization, data);
   }
 
   postTenderDetailsService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.tenderDetails, data, {
-      headers
-    });
+    return this.http.post(this.tenderDetails, data);
   }
 
   postRoadWorkService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.roadWork, data, {
-      headers
-    });
+    return this.http.post(this.roadWork, data);
   }
 
   postGovernmentHostelsService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.governmentHostels, data, {
-      headers
-    });
+    return this.http.post(this.governmentHostels, data);
   }
 
   postGovernmentHospitalsService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.governmentHospitals, data, {
-      headers
-    });
+    return this.http.post(this.governmentHospitals, data);
   }
 
   postGovernmentSchoolsService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.governmentSchools, data, {
-      headers
-    });
+    return this.http.post(this.governmentSchools, data);
   }
 
   postOtherRtiService(data: any): Observable<any> {
-    const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
-    return this.http.post(this.otherRti, data, {
-      headers
-    });
+    return this.http.post(this.otherRti, data);
   }
 
-  // my rti
+  // single rti details
   getMyRtiService(id: any) {
     const accessToken = localStorage.getItem('access-token');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
+    // const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
     const params = new HttpParams().set('personalDetailsId', `${id}`);
     return this.http.get(this.apply, {
       params
