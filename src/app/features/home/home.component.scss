@@ -264,7 +264,10 @@ h2 {
             background-repeat: no-repeat;
             background-position: bottom right;
         }
-
+        .rti-count-wrapper{
+            position: static;
+            max-width: inherit;
+        }
         .card {
             background: linear-gradient(to right, rgb(9 92 242 / 89%) 0%, rgb(97 153 254 / 88%) 100%);
         }

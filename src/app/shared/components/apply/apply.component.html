@@ -33,7 +33,7 @@
                                                 <mat-radio-button value="3">Other RTI</mat-radio-button>
                                             </mat-radio-group> -->
                                         </div>
-                                        <div class="col-4 text-center">
+                                        <div class="col-4 text-center pr-0 pr-md-3">
                                             <div class="service-category" routerLink="personal"
                                                 routerLinkActive="active">
                                                 <div class="img-wrapper" (click)="categoryChange(1, 'personal')">
@@ -52,7 +52,7 @@
 
                                             </div>
                                         </div>
-                                        <div class="col-4 text-center">
+                                        <div class="col-4 text-center pl-0 pl-md-3">
                                             <div class="service-category" routerLink="other" routerLinkActive="active">
                                                 <div class="img-wrapper" (click)="categoryChange(3, 'other')">
                                                     <img src="assets/icons/social-black.png" alt="">
@@ -67,7 +67,7 @@
                                             <mat-radio-group aria-label="Select an option"
                                                 (change)="onChangeService($event)" class="row"
                                                 *ngIf="displayCategoryItems == 1">
-                                                <mat-radio-button value="{{service.link}}" class="col-2"
+                                                <mat-radio-button value="{{service.link}}" class="col-6 col-md-3 col-lg-2"
                                                     *ngFor="let service of personalServices"
                                                     routerLink="personal/{{service.link}}" routerLinkActive="active">
                                                     <img *ngFor="let icon of service.icon"
@@ -79,7 +79,7 @@
                                             <mat-radio-group aria-label="Select an option"
                                                 (change)="onChangeService($event)" class="row"
                                                 *ngIf="displayCategoryItems == 2">
-                                                <mat-radio-button value="{{service.link}}" class="col-2"
+                                                <mat-radio-button value="{{service.link}}" class="col-6 col-md-3 col-lg-2"
                                                     *ngFor="let service of socialServices"
                                                     routerLink="social/{{service.link}}" routerLinkActive="active">
                                                     <img *ngFor="let icon of service.icon"
@@ -91,7 +91,7 @@
                                             <mat-radio-group aria-label="Select an option"
                                                 (change)="onChangeService($event)" class="row"
                                                 *ngIf="displayCategoryItems == 3">
-                                                <mat-radio-button value="{{service.link}}" class="col-2"
+                                                <mat-radio-button value="{{service.link}}" class="col-6 col-md-3 col-lg-2"
                                                     *ngFor="let service of otherServices"
                                                     routerLink="other/{{service.link}}" routerLinkActive="active">
                                                     <img *ngFor="let icon of service.icon"
