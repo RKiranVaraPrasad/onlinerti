@@ -24,16 +24,18 @@
                 <h3>Uploaded Documents</h3>
                 <div class="row mt-3">
                     <div class="col-md-6 col-12">
-                        <ul class="uploaded-docs">
-                            <li><img src="assets/svg/download.svg" height="14" alt="" style="cursor: pointer;"> Passport-application-form.pdf</li>
-                            <li><img src="assets/svg/download.svg" height="14" alt="" style="cursor: pointer;"> Passport-application-acknowledgement.pdf</li>
-                            <li><img src="assets/svg/download.svg" height="14" alt="" style="cursor: pointer;"> Aadhar.pdf</li>
+                        <ul class="uploaded-docs" *ngIf="documents?.length > 0">
+                            <li *ngFor="let document of documents"><a href="http://172.105.60.86:1337{{document.url}}" target="_blank">{{document.name}}</a></li>
+                        </ul>
+                        <ul *ngIf="documents?.length === 0">
+                            <li>No documents found</li>
                         </ul>
                     </div>
-                    <div class="col-md-6 col-12">
+                    <div class="col-md-6 col-12" *ngIf="loggedIn">
                         <h4>Upload Pending Docs</h4>
                         <div class="upload-doc">
-                            <input type="file" name="" id="">
+                            <input type="file" [(ngModel)]="files" name="files" id="files" (change)="onFileSelect($event)" multiple class="mr-4">
+                            <button type="button" class="btn btn-primary" (click)="uploadDocuments()">Upload</button>
                         </div>
                     </div>
                 </div>

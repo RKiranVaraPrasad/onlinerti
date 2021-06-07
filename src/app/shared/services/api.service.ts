@@ -150,6 +150,11 @@ export class ApiService {
     return this.http.post(this.apply, data)
   }
 
+  putApplyService(id: any, data: any) {
+    let reqID: any = id;
+    return this.http.put(`${this.apply}/${reqID}`, data)
+  }
+
   postDocumentsService(data: any) {
     return this.http.post(this.documents, data)
   }
