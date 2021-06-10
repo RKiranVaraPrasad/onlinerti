@@ -77,7 +77,6 @@ h2 {
         border: 1px solid #007bff;
     }
 }
-
 .services {
     background: url(../../../assets/images/service-bg.png) center top no-repeat;
     min-height: 520px;
@@ -137,8 +136,7 @@ h2 {
 
         .mat-flat-button {
             &.mat-primary {
-                background-color: #e63535;
-
+                background-color: #007bff;
                 &.arrow {
                     padding: 10px 40px;
                     font-size: 22px;

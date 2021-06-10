@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -18,13 +20,15 @@ import { FooterComponent } from './core/components/footer/footer.component';
 import { ContentWrapperComponent } from './core/components/content-wrapper/content-wrapper.component';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 import { AuthModule } from './auth/auth.module';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { JwtInterceptor } from './core/interceptor/jwt.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 
 
-
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -37,7 +41,6 @@ import { ToastrModule } from 'ngx-toastr';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     AuthModule,
     FeaturesModule,
     SharedModule,
@@ -49,7 +52,15 @@ import { ToastrModule } from 'ngx-toastr';
     MatButtonModule,
     MatCardModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

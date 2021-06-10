@@ -1,47 +1,210 @@
 <header>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-white px-0">
-            <a class="navbar-brand" routerLink="home">
-                <img src="assets/images/onlineRTI.png" alt="" width="86">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <div class="navbar-nav mr-auto"></div>
-                <div class="form-inline my-2 my-lg-0">
-                    <ul class="navbar-nav">
-                        <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
-                            <a class="nav-link" routerLink="home">About RTI <span class="sr-only">(current)</span></a>
-                        </li> -->
-                        <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
-                            <a class="nav-link" routerLink="track-application">Application Status</a>
-                        </li>
-                        <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
-                            <a class="nav-link" routerLink="pricing">Pricing</a>
-                        </li>
-                        <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
-                            <a class="nav-link" routerLink="team">Team</a>
-                        </li> -->
-                        <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
-                            <a class="nav-link" routerLink="apply">Apply Now</a>
-                        </li>
-                        <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
-                            <a class="nav-link" routerLink="forum">Forum</a>
-                        </li> -->
-                        <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()" *ngIf="!logged">
-                            <a class="nav-link login-link" routerLink="login">Login</a>
-                        </li>
-                        <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()" *ngIf="logged">
-                            <a class="nav-link" routerLink="my-rti">My RTI</a>
-                        </li>
-                        <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()" *ngIf="logged">
-                            <a class="nav-link" (click)="logout()">Logout</a>
-                        </li>
-                    </ul>
+    <section class="top-language-change">
+        <div class="container">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-auto">
+                    <div class="form-group row mb-0">
+                        <label for="languageChange" class="col-auto col-form-label pr-0 text-uppercase"
+                            style="line-height: 12px;">Language</label>
+                        <div class="col">
+                            <select #langSelect (change)="translate.use(langSelect.value)"
+                                class="form-control language-change text-uppercase" id="languageChange">
+                                <option *ngFor="let lang of translate.getLangs()" [value]="lang"
+                                    [selected]="lang === translate.currentLang">{{ lang }}</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </div>
+        </div>
+    </section>
+    <section class="d-md-none">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white p-0">
+                <a class="navbar-brand" routerLink="home">
+                    <img src="assets/images/onlineRTI.png" alt="" width="86">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="navbar-nav mr-auto"></div>
+                    <div class="form-inline my-2 my-lg-0">
+                        <ul class="navbar-nav">
+                            <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                                <a class="nav-link" routerLink="apply">{{ 'Menu.ApplyNow' | translate }}</a>
+                            </li>
+                            <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                            <a class="nav-link" routerLink="home">About RTI <span class="sr-only">(current)</span></a>
+                        </li> -->
+                            <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                                <a class="nav-link" routerLink="track-application">{{ 'Menu.ApplicationStatus' |
+                                    translate }}</a>
+                            </li>
+                            <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                                <a class="nav-link" routerLink="pricing">{{ 'Menu.Pricing' | translate }}</a>
+                            </li>
+                            <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                            <a class="nav-link" routerLink="team">Team</a>
+                        </li> -->
+                            <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                            <a class="nav-link" routerLink="forum">Forum</a>
+                        </li> -->
+                            <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()" *ngIf="!logged">
+                                <a class="nav-link login-link" routerLink="login">{{ 'Menu.Login' | translate }}</a>
+                            </li>
+                            <li class="nav-item dropdown" routerLinkActive="active" (click)="ToggleNavBar()"
+                                *ngIf="logged">
+                                <a class="nav-link" id="myAccount" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">{{userName}}</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" routerLink="my-rti">My RTI</a>
+                                    <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+                                </div>
+                            </li>
+                            <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()" *ngIf="logged">
+                            <a class="nav-link" (click)="logout()">Logout</a>
+                        </li> -->
+                            <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                                <a class="nav-link" routerLink="contact">{{ 'Menu.Contact' | translate }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="logo-wrapper">
+                <div class="row">
+                    <div class="col-12">
+                        <a class="navbar-brand" routerLink="home">
+                            <img src="assets/images/onlineRTI.png" alt="" width="86">
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="navbar navbar-expand-lg navbar-light bg-white p-0">
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <div class="form-inline my-2 my-lg-0">
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                                            <a class="nav-link" routerLink="apply">{{ 'Menu.ApplyNow' | translate }}</a>
+                                        </li>
+                                        <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                                        <a class="nav-link" routerLink="home">About RTI <span class="sr-only">(current)</span></a>
+                                    </li> -->
+                                        <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                                            <a class="nav-link" routerLink="track-application">{{
+                                                'Menu.ApplicationStatus' | translate }}</a>
+                                        </li>
+                                        <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                                            <a class="nav-link" routerLink="pricing">{{ 'Menu.Pricing' | translate
+                                                }}</a>
+                                        </li>
+                                        <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                                        <a class="nav-link" routerLink="team">Team</a>
+                                    </li> -->
+                                        <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                                        <a class="nav-link" routerLink="forum">Forum</a>
+                                    </li> -->
+                                        <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()"
+                                            *ngIf="!logged">
+                                            <a class="nav-link login-link" routerLink="login">{{ 'Menu.Login' |
+                                                translate }}</a>
+                                        </li>
+                                        <li class="nav-item dropdown" routerLinkActive="active" (click)="ToggleNavBar()"
+                                            *ngIf="logged">
+                                            <a class="nav-link" id="myAccount" data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">{{userName}}</a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                <a class="dropdown-item" routerLink="my-rti">My RTI</a>
+                                                <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+                                            </div>
+                                        </li>
+                                        <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()" *ngIf="logged">
+                                        <a class="nav-link" (click)="logout()">Logout</a>
+                                    </li> -->
+                                        <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                                            <a class="nav-link" routerLink="contact">{{ 'Menu.Contact' | translate
+                                                }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="logo-wrapper my-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <a class="navbar-brand" routerLink="home">
+                        <img src="assets/images/onlineRTI.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="border-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-white p-0">
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <div class="navbar-nav mr-auto"></div>
+                            <div class="form-inline my-2 my-lg-0">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                                        <a class="nav-link" routerLink="apply">{{ 'Menu.ApplyNow' | translate }}</a>
+                                    </li>
+                                    <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                                        <a class="nav-link" routerLink="home">About RTI <span class="sr-only">(current)</span></a>
+                                    </li> -->
+                                    <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                                        <a class="nav-link" routerLink="track-application">{{
+                                            'Menu.ApplicationStatus' | translate }}</a>
+                                    </li>
+                                    <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                                        <a class="nav-link" routerLink="pricing">{{ 'Menu.Pricing' | translate
+                                            }}</a>
+                                    </li>
+                                    <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                                        <a class="nav-link" routerLink="team">Team</a>
+                                    </li> -->
+                                    <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                                        <a class="nav-link" routerLink="forum">Forum</a>
+                                    </li> -->
+                                    <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()"
+                                        *ngIf="!logged">
+                                        <a class="nav-link login-link" routerLink="login">{{ 'Menu.Login' |
+                                            translate }}</a>
+                                    </li>
+                                    <li class="nav-item dropdown" routerLinkActive="active" (click)="ToggleNavBar()"
+                                        *ngIf="logged">
+                                        <a class="nav-link" id="myAccount" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">{{userName}}</a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <a class="dropdown-item" routerLink="my-rti">My RTI</a>
+                                            <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+                                        </div>
+                                    </li>
+                                    <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()" *ngIf="logged">
+                                        <a class="nav-link" (click)="logout()">Logout</a>
+                                    </li> -->
+                                    <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                                        <a class="nav-link" routerLink="contact">{{ 'Menu.Contact' | translate
+                                            }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
 </header>
