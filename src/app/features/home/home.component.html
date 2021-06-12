@@ -152,14 +152,14 @@
         <div class="row">
             <div class="col-12">
                 <div class="services-wrapper pb-5">
-                    <div class="example-action-buttons text-right">
+                    <!-- <div class="example-action-buttons text-right">
                         <button mat-button (click)="accordion.openAll()">See all services</button>
                         <button mat-button (click)="accordion.closeAll()">Hide</button>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div class="col-6 col-md-4 mt-5 text-center"
                             *ngFor="let service of servicesArray; let index=index">
-                            <div class="service-opt">
+                            <div class="service-opt" routerLink="/apply/">
                                 <div class="service-icon">
                                     <img [src]="service.image" alt="">
                                 </div>
@@ -167,7 +167,7 @@
                             </div>
                         </div>
                     </div>
-                    <mat-accordion class="example-headers-align" multi>
+                    <!-- <mat-accordion class="example-headers-align" multi>
                         <mat-expansion-panel>
                             <div class="row">
                                 <div class="col-6 col-md-4 mt-5 text-center"
@@ -181,7 +181,7 @@
                                 </div>
                             </div>
                         </mat-expansion-panel>
-                    </mat-accordion>
+                    </mat-accordion> -->
                 </div>
             </div>
         </div>

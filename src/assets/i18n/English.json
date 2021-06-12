@@ -6,6 +6,11 @@
         "Login": "Login",
         "Contact": "Contact",
         "Faqs": "Faqs",
-        "About": "About RTI"
+        "About": "About RTI",
+        "Register": "Register"
+    },
+    "AppStatus": {
+        "applicationID": "Application ID",
+        "EMail": "Email"
     }
  }

@@ -29,6 +29,10 @@ export class HomeComponent implements OnInit {
     // this.apiService.menuAfterLogin.subscribe(
     //   value => {this.logged = value}
     // )
+    this.apiService.getServicesService()
+    .subscribe(
+      data => console.log(data)
+    )
   }
   onLogin(){
     console.log(this.loginForm.value)

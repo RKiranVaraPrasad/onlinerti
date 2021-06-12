@@ -24,6 +24,7 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 import { SharedModule } from './shared/shared.module';
 import { JwtInterceptor } from './core/interceptor/jwt.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -61,6 +62,10 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     })
+  ],
+  exports: [
+    CommonModule,
+    TranslateModule
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
