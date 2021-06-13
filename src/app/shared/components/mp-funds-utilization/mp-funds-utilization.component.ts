@@ -23,6 +23,7 @@ export class MpFundsUtilizationComponent implements OnInit, OnDestroy {
     this.rtiDetailsForm = this.fb.group({
       constituency: new FormControl('', [Validators.required]),
       district: new FormControl('', [Validators.required]),
+      state: new FormControl('', [Validators.required]),
       from: new FormControl('', [Validators.required]),
       to: new FormControl('', [Validators.required]),
       moreInfo: new FormControl('', [Validators.required])
@@ -45,6 +46,7 @@ export class MpFundsUtilizationComponent implements OnInit, OnDestroy {
         const data: any = {}
         data.constituency = this.rtiDetailsForm.get('constituency').value;
         data.district = this.rtiDetailsForm.get('district').value;
+        data.state = this.rtiDetailsForm.get('state').value;
         data.from = this.rtiDetailsForm.get('from').value;
         data.to = this.rtiDetailsForm.get('to').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
@@ -59,6 +61,7 @@ export class MpFundsUtilizationComponent implements OnInit, OnDestroy {
         const data: any = {}
         data.constituency = this.rtiDetailsForm.get('constituency').value;
         data.district = this.rtiDetailsForm.get('district').value;
+        data.state = this.rtiDetailsForm.get('state').value;
         data.from = this.rtiDetailsForm.get('from').value;
         data.to = this.rtiDetailsForm.get('to').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;

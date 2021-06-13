@@ -90,13 +90,13 @@ export class ApplyComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.selectedValue = this.router.url.split('/').pop();
     if (this.router.url === '/apply/personal') {
-      console.log(this.router.url)
+      // console.log(this.router.url)
       this.categoryChange(1, 'personal')
       // this.onChangeService()
       // console.log(this.selectedValue)
     }
     if (this.router.url === `/apply/personal/${this.selectedValue}`) {
-      console.log(this.router.url)
+      // console.log(this.router.url)
       this.categoryChange(1, 'personal')
       // this.onChangeService()
       // console.log(this.selectedValue)
@@ -147,10 +147,10 @@ export class ApplyComponent implements OnInit, OnDestroy {
   }
   onChangeService(event) {
     this.router.navigate([`${this.childrenUrl}/${event.value}`], { relativeTo: this.route })
-    console.log(this.serviceDisplay)
+    // console.log(this.serviceDisplay)
     document.getElementById("scollTo").scrollIntoView();
     this.selectedValue = this.router.url.split('/').pop();
-    console.log(this.selectedValue)
+    // console.log(this.selectedValue)
   }
   onFileSelect(event){
     const files: FileList = event.target.files;
@@ -162,27 +162,27 @@ export class ApplyComponent implements OnInit, OnDestroy {
   }
   onSubmitRti() {
     this.selectedValue = this.router.url.split('/').pop();
-    console.log(this.selectedValue)
+    // console.log(this.selectedValue)
     this.apiService.saveServiceTypeData(this.selectedValue)
     this.applySubscription = this.apiService.subscribeApplyData
       .subscribe(
         rtiDetails => {
           this.rtiData = rtiDetails;
-          console.log(this.rtiData)
+          // console.log(this.rtiData)
         })
     this.nextStep();
     this.stepTwo = true;
   }
 
   onSubmitPersonalDetails() {
-    console.log(this.rtiData)
+    // console.log(this.rtiData)
     this.nextStep();
     this.stepThree = true;
   }
   onSubmitApplyForm() {
     this.selectedValue = this.router.url.split('/').pop();
 
-    console.log(this.selectedValue);
+    // console.log(this.selectedValue);
     if (this.selectedPlan === "Basic ₹199") {
       this.finalAmount = 19900;
     } else if (this.selectedPlan === "Standard ₹299") {

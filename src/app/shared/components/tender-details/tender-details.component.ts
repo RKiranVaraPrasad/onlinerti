@@ -26,6 +26,7 @@ export class TenderDetailsComponent implements OnInit, OnDestroy {
       department: new FormControl('', [Validators.required]),
       villageTown: new FormControl('', [Validators.required]),
       district: new FormControl('', [Validators.required]),
+      state: new FormControl('', [Validators.required]),
       moreInfo: new FormControl('', [Validators.required])
     })
    }
@@ -49,6 +50,7 @@ export class TenderDetailsComponent implements OnInit, OnDestroy {
         data.department = this.rtiDetailsForm.get('department').value;
         data.villageTown = this.rtiDetailsForm.get('villageTown').value;
         data.district = this.rtiDetailsForm.get('district').value;
+        data.state = this.rtiDetailsForm.get('state').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
         this.currentService = currentservice
         if (this.selectedRoute === this.currentService) {
@@ -64,6 +66,7 @@ export class TenderDetailsComponent implements OnInit, OnDestroy {
         data.department = this.rtiDetailsForm.get('department').value;
         data.villageTown = this.rtiDetailsForm.get('villageTown').value;
         data.district = this.rtiDetailsForm.get('district').value;
+        data.state = this.rtiDetailsForm.get('state').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
 
         // this.currentService = rtiData

@@ -24,6 +24,7 @@ export class GramPanchayatComponent implements OnInit, OnDestroy {
       nameOfGramPanchayat: new FormControl('', [Validators.required]),
       nameOfScheme: new FormControl('', [Validators.required]),
       nameOfDistrict: new FormControl('', [Validators.required]),
+      state: new FormControl('', [Validators.required]),
       from: new FormControl('', [Validators.required]),
       to: new FormControl('', [Validators.required]),
       moreInfo: new FormControl('', [Validators.required])
@@ -47,6 +48,7 @@ export class GramPanchayatComponent implements OnInit, OnDestroy {
         data.nameOfGramPanchayat = this.rtiDetailsForm.get('nameOfGramPanchayat').value;
         data.nameOfScheme = this.rtiDetailsForm.get('nameOfScheme').value;
         data.nameOfDistrict = this.rtiDetailsForm.get('nameOfDistrict').value;
+        data.state = this.rtiDetailsForm.get('state').value;
         data.from = this.rtiDetailsForm.get('from').value;
         data.to = this.rtiDetailsForm.get('to').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
@@ -62,6 +64,7 @@ export class GramPanchayatComponent implements OnInit, OnDestroy {
         data.nameOfGramPanchayat = this.rtiDetailsForm.get('nameOfGramPanchayat').value;
         data.nameOfScheme = this.rtiDetailsForm.get('nameOfScheme').value;
         data.nameOfDistrict = this.rtiDetailsForm.get('nameOfDistrict').value;
+        data.state = this.rtiDetailsForm.get('state').value;
         data.from = this.rtiDetailsForm.get('from').value;
         data.to = this.rtiDetailsForm.get('to').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;

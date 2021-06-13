@@ -28,6 +28,7 @@ export class PassportDelayComponent implements OnInit, OnDestroy {
       passportOffice: new FormControl('', [Validators.required]),
       applicationDate: new FormControl('', [Validators.required]),
       itOffice: new FormControl('', [Validators.required]),
+      state: new FormControl('', [Validators.required]),
       moreInfo: new FormControl('', [Validators.required])
     })
   }
@@ -52,6 +53,7 @@ export class PassportDelayComponent implements OnInit, OnDestroy {
         data.passportOffice = this.rtiDetailsForm.get('passportOffice').value;
         data.applicationDate = this.rtiDetailsForm.get('applicationDate').value;
         data.itOffice = this.rtiDetailsForm.get('itOffice').value;
+        data.state = this.rtiDetailsForm.get('state').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
 
         // console.log(data)
@@ -70,6 +72,7 @@ export class PassportDelayComponent implements OnInit, OnDestroy {
         data.passportOffice = this.rtiDetailsForm.get('passportOffice').value;
         data.applicationDate = this.rtiDetailsForm.get('applicationDate').value;
         data.itOffice = this.rtiDetailsForm.get('itOffice').value;
+        data.state = this.rtiDetailsForm.get('state').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
 
         // this.currentService = rtiData

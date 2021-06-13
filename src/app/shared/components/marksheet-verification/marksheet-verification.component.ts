@@ -24,6 +24,8 @@ export class MarksheetVerificationComponent implements OnInit, OnDestroy {
       course: new FormControl('', [Validators.required]),
       college: new FormControl('', [Validators.required]),
       rollNo: new FormControl('', [Validators.required]),
+      regularSupplementary: new FormControl('', [Validators.required]),
+      collegeUniversityBoardAddress: new FormControl('', [Validators.required]),
       year: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
       moreInfo: new FormControl('', [Validators.required])
     })
@@ -47,6 +49,8 @@ export class MarksheetVerificationComponent implements OnInit, OnDestroy {
           data.college = this.rtiDetailsForm.get('college').value;
           data.rollNo = this.rtiDetailsForm.get('rollNo').value;
           data.year = this.rtiDetailsForm.get('year').value;
+          data.regularSupplementary = this.rtiDetailsForm.get('regularSupplementary').value;
+          data.collegeUniversityBoardAddress = this.rtiDetailsForm.get('collegeUniversityBoardAddress').value;
           data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
 
         console.log(data)
@@ -64,6 +68,8 @@ export class MarksheetVerificationComponent implements OnInit, OnDestroy {
           data.college = this.rtiDetailsForm.get('college').value;
           data.rollNo = this.rtiDetailsForm.get('rollNo').value;
           data.year = this.rtiDetailsForm.get('year').value;
+          data.regularSupplementary = this.rtiDetailsForm.get('regularSupplementary').value;
+          data.collegeUniversityBoardAddress = this.rtiDetailsForm.get('collegeUniversityBoardAddress').value;
           data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
 
         // this.currentService = rtiData

@@ -25,6 +25,8 @@ export class RoadWorkComponent implements OnInit, OnDestroy {
       roadStartingFrom: new FormControl('', [Validators.required]),
       roadStartingTo: new FormControl('', [Validators.required]),
       city: new FormControl('', [Validators.required]),
+      district: new FormControl('', [Validators.required]),
+      state: new FormControl('', [Validators.required]),
       maintainedBy: new FormControl('', [Validators.required]),
       moreInfo: new FormControl('', [Validators.required])
     })
@@ -48,6 +50,8 @@ export class RoadWorkComponent implements OnInit, OnDestroy {
         data.roadStartingFrom = this.rtiDetailsForm.get('roadStartingFrom').value;
         data.roadStartingTo = this.rtiDetailsForm.get('roadStartingTo').value;
         data.city = this.rtiDetailsForm.get('city').value;
+        data.district = this.rtiDetailsForm.get('district').value;
+        data.state = this.rtiDetailsForm.get('state').value;
         data.maintainedBy = this.rtiDetailsForm.get('maintainedBy').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
         this.currentService = currentservice
@@ -63,6 +67,8 @@ export class RoadWorkComponent implements OnInit, OnDestroy {
         data.roadStartingFrom = this.rtiDetailsForm.get('roadStartingFrom').value;
         data.roadStartingTo = this.rtiDetailsForm.get('roadStartingTo').value;
         data.city = this.rtiDetailsForm.get('city').value;
+        data.district = this.rtiDetailsForm.get('district').value;
+        data.state = this.rtiDetailsForm.get('state').value;
         data.maintainedBy = this.rtiDetailsForm.get('maintainedBy').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
 

@@ -24,6 +24,7 @@ export class FundsUtilizationComponent implements OnInit, OnDestroy {
       nameOfSchemeProject: new FormControl('', [Validators.required]),
       nameOfVillageTownCity: new FormControl('', [Validators.required]),
       nameOfDistrict: new FormControl('', [Validators.required]),
+      state: new FormControl('', [Validators.required]),
       from: new FormControl('', [Validators.required]),
       to: new FormControl('', [Validators.required]),
       moreInfo: new FormControl('', [Validators.required])
@@ -47,6 +48,7 @@ export class FundsUtilizationComponent implements OnInit, OnDestroy {
         data.nameOfSchemeProject = this.rtiDetailsForm.get('nameOfSchemeProject').value;
         data.nameOfVillageTownCity = this.rtiDetailsForm.get('nameOfVillageTownCity').value;
         data.nameOfDistrict = this.rtiDetailsForm.get('nameOfDistrict').value;
+        data.state = this.rtiDetailsForm.get('state').value;
         data.from = this.rtiDetailsForm.get('from').value;
         data.to = this.rtiDetailsForm.get('to').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
@@ -62,6 +64,7 @@ export class FundsUtilizationComponent implements OnInit, OnDestroy {
         data.nameOfSchemeProject = this.rtiDetailsForm.get('nameOfSchemeProject').value;
         data.nameOfVillageTownCity = this.rtiDetailsForm.get('nameOfVillageTownCity').value;
         data.nameOfDistrict = this.rtiDetailsForm.get('nameOfDistrict').value;
+        data.state = this.rtiDetailsForm.get('state').value;
         data.from = this.rtiDetailsForm.get('from').value;
         data.to = this.rtiDetailsForm.get('to').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;

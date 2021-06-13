@@ -28,6 +28,7 @@ export class ItReturnsComponent implements OnInit, OnDestroy {
       wardNumber: new FormControl('', [Validators.required]),
       refundAmount: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
       itOffice: new FormControl('', [Validators.required]),
+      state: new FormControl('', [Validators.required]),
       ApplicantDate: new FormControl('', [Validators.required]),
       moreInfo: new FormControl('', [Validators.required])
     })
@@ -52,6 +53,7 @@ export class ItReturnsComponent implements OnInit, OnDestroy {
           data.wardNumber = this.rtiDetailsForm.get('wardNumber').value;
           data.refundAmount = this.rtiDetailsForm.get('refundAmount').value;
           data.itOffice = this.rtiDetailsForm.get('itOffice').value;
+          data.state = this.rtiDetailsForm.get('state').value;
           data.ApplicantDate = this.rtiDetailsForm.get('ApplicantDate').value;
           data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
 
@@ -71,6 +73,7 @@ export class ItReturnsComponent implements OnInit, OnDestroy {
           data.wardNumber = this.rtiDetailsForm.get('wardNumber').value;
           data.refundAmount = this.rtiDetailsForm.get('refundAmount').value;
           data.itOffice = this.rtiDetailsForm.get('itOffice').value;
+          data.state = this.rtiDetailsForm.get('state').value;
           data.ApplicantDate = this.rtiDetailsForm.get('ApplicantDate').value;
           data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
 

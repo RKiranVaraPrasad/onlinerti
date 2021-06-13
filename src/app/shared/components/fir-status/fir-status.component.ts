@@ -24,6 +24,7 @@ export class FirStatusComponent implements OnInit, OnDestroy {
       firNo: new FormControl('', [Validators.required]),
       policeStation: new FormControl('', [Validators.required]),
       firDate: new FormControl('', [Validators.required]),
+      addressOfPoliceStation: new FormControl('', [Validators.required]),
       moreInfo: new FormControl('', [Validators.required])
     })
   }
@@ -45,6 +46,7 @@ export class FirStatusComponent implements OnInit, OnDestroy {
         data.firNo = this.rtiDetailsForm.get('firNo').value;
         data.policeStation = this.rtiDetailsForm.get('policeStation').value;
         data.firDate = this.rtiDetailsForm.get('firDate').value;
+        data.addressOfPoliceStation = this.rtiDetailsForm.get('addressOfPoliceStation').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
         this.currentService = currentservice
         if (this.selectedRoute === this.currentService) {
@@ -58,6 +60,7 @@ export class FirStatusComponent implements OnInit, OnDestroy {
         data.firNo = this.rtiDetailsForm.get('firNo').value;
         data.policeStation = this.rtiDetailsForm.get('policeStation').value;
         data.firDate = this.rtiDetailsForm.get('firDate').value;
+        data.addressOfPoliceStation = this.rtiDetailsForm.get('addressOfPoliceStation').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
 
         // this.currentService = rtiData
