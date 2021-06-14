@@ -55,6 +55,8 @@ export class ApiService {
   private governmentHostels = `${this.baseUrl}/government-hostels`;
   private governmentHospitals = `${this.baseUrl}/government-hospitals`;
   private governmentSchools = `${this.baseUrl}/government-schools`;
+  private govtSchemes = `${this.baseUrl}/govt-schemes`;
+  private nageraFunds = `${this.baseUrl}/nare-ga-funds`;
 
   private otherRti = `${this.baseUrl}/other-rtis`;
 
@@ -248,6 +250,14 @@ export class ApiService {
     return this.http.post(this.governmentSchools, data);
   }
 
+  postGovtSchemesService(data: any): Observable<any> {
+    return this.http.post(this.govtSchemes, data);
+  }
+
+  postNageraFundsService(data: any): Observable<any> {
+    return this.http.post(this.nageraFunds, data);
+  }
+
   postOtherRtiService(data: any): Observable<any> {
     return this.http.post(this.otherRti, data);
   }
@@ -311,6 +321,10 @@ export class ApiService {
       return this.http.get(`${this.governmentHospitals}/${id}`)
     } else if (service === 'government-schools') {
       return this.http.get(`${this.governmentSchools}/${id}`)
+    } else if (service === 'govt-schemes') {
+      return this.http.get(`${this.govtSchemes}/${id}`)
+    } else if (service === 'narega-funds') {
+      return this.http.get(`${this.nageraFunds}/${id}`)
     }
 
   }

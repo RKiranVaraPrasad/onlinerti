@@ -12,11 +12,13 @@ import { FundsUtilizationComponent } from './components/funds-utilization/funds-
 import { GovernmentHospitalsComponent } from './components/government-hospitals/government-hospitals.component';
 import { GovernmentHostelsComponent } from './components/government-hostels/government-hostels.component';
 import { GovernmentSchoolsComponent } from './components/government-schools/government-schools.component';
+import { GovtSchemesComponent } from './components/govt-schemes/govt-schemes.component';
 import { GramPanchayatComponent } from './components/gram-panchayat/gram-panchayat.component';
 import { ItReturnsComponent } from './components/it-returns/it-returns.component';
 import { MarksheetVerificationComponent } from './components/marksheet-verification/marksheet-verification.component';
 import { MlaFundUtilizationComponent } from './components/mla-fund-utilization/mla-fund-utilization.component';
 import { MpFundsUtilizationComponent } from './components/mp-funds-utilization/mp-funds-utilization.component';
+import { NaregaFundsComponent } from './components/narega-funds/narega-funds.component';
 import { OccupancyCertificateComponent } from './components/occupancy-certificate/occupancy-certificate.component';
 import { OtherComponent } from './components/other/other.component';
 import { PassportDelayComponent } from './components/passport-delay/passport-delay.component';
@@ -62,6 +64,8 @@ const routes: Routes = [
           {path: 'principal-secretary', component: PrincipalSecretaryComponent},
           {path: 'revenue-offices', component: RevenueOfficesComponent},
           {path: 'collector-office', component: CollectorOfficeComponent},
+          {path: 'narega-funds', component: NaregaFundsComponent},
+          {path: 'govt-schemes', component: GovtSchemesComponent},
           {path: 'other', component: OtherComponent},
         ]
       },

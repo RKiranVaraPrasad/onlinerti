@@ -45,6 +45,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { PersonalComponent } from './components/personal/personal.component';
 import { SocialComponent } from './components/social/social.component';
 import { CategoryComponent } from './components/category/category.component';
+import { NaregaFundsComponent } from './components/narega-funds/narega-funds.component';
+import { GovtSchemesComponent } from './components/govt-schemes/govt-schemes.component';
 
 
 
@@ -79,7 +81,9 @@ import { CategoryComponent } from './components/category/category.component';
     RevenueOfficesComponent,
     PersonalComponent,
     SocialComponent,
-    CategoryComponent
+    CategoryComponent,
+    NaregaFundsComponent,
+    GovtSchemesComponent
   ],
   imports: [
     CommonModule,
