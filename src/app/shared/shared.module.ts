@@ -47,6 +47,15 @@ import { SocialComponent } from './components/social/social.component';
 import { CategoryComponent } from './components/category/category.component';
 import { NaregaFundsComponent } from './components/narega-funds/narega-funds.component';
 import { GovtSchemesComponent } from './components/govt-schemes/govt-schemes.component';
+import { BanksComponent } from './components/banks/banks.component';
+import { MunicipalOfficesComponent } from './components/municipal-offices/municipal-offices.component';
+import { GramPanchayatOfficesComponent } from './components/gram-panchayat-offices/gram-panchayat-offices.component';
+import { StateGovernmentOfficesComponent } from './components/state-government-offices/state-government-offices.component';
+import { CentralGovernmentOfficesComponent } from './components/central-government-offices/central-government-offices.component';
+import { RtaOfficesComponent } from './components/rta-offices/rta-offices.component';
+import { PoliceStationsComponent } from './components/police-stations/police-stations.component';
+import { ServiceMattersComponent } from './components/service-matters/service-matters.component';
+import { ElectricityOfficesComponent } from './components/electricity-offices/electricity-offices.component';
 
 
 
@@ -83,7 +92,16 @@ import { GovtSchemesComponent } from './components/govt-schemes/govt-schemes.com
     SocialComponent,
     CategoryComponent,
     NaregaFundsComponent,
-    GovtSchemesComponent
+    GovtSchemesComponent,
+    BanksComponent,
+    MunicipalOfficesComponent,
+    GramPanchayatOfficesComponent,
+    StateGovernmentOfficesComponent,
+    CentralGovernmentOfficesComponent,
+    RtaOfficesComponent,
+    PoliceStationsComponent,
+    ServiceMattersComponent,
+    ElectricityOfficesComponent
   ],
   imports: [
     CommonModule,

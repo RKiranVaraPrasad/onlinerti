@@ -57,6 +57,15 @@ export class ApiService {
   private governmentSchools = `${this.baseUrl}/government-schools`;
   private govtSchemes = `${this.baseUrl}/govt-schemes`;
   private nageraFunds = `${this.baseUrl}/nare-ga-funds`;
+  private banks = `${this.baseUrl}/banks`;
+  private municipalOffices = `${this.baseUrl}/municipal-offices`;
+  private gramPanchayatOffices = `${this.baseUrl}/gram-panchayat-offices`;
+  private stateGovernmentOffices = `${this.baseUrl}/state-government-offices`;
+  private centralGovernmentOffices = `${this.baseUrl}/central-government-offices`;
+  private rtaOffices = `${this.baseUrl}/rta-offices`;
+  private policeStations = `${this.baseUrl}/police-stations`;
+  private serviceMatters = `${this.baseUrl}/service-matters`;
+  private electricityOffices = `${this.baseUrl}/electricity-offices`;
 
   private otherRti = `${this.baseUrl}/other-rtis`;
 
@@ -260,6 +269,36 @@ export class ApiService {
 
   postOtherRtiService(data: any): Observable<any> {
     return this.http.post(this.otherRti, data);
+  }
+
+  postPersonalRtiMoreInfoService(service: any, data: any): Observable<any> {
+    if (service === 'bank') {
+      return this.http.post(this.banks, data);
+    } 
+    else if (service === 'municipal-offices') {
+      return this.http.post(this.municipalOffices, data);
+    }
+    else if (service === 'gram-panchayat-offices') {
+      return this.http.post(this.gramPanchayatOffices, data);
+    }
+    else if (service === 'state-government-offices') {
+      return this.http.post(this.stateGovernmentOffices, data);
+    }
+    else if (service === 'central-government-offices') {
+      return this.http.post(this.centralGovernmentOffices, data);
+    }
+    else if (service === 'rta-offices') {
+      return this.http.post(this.rtaOffices, data);
+    }
+    else if (service === 'police-stations') {
+      return this.http.post(this.policeStations, data);
+    }
+    else if (service === 'service-matters') {
+      return this.http.post(this.serviceMatters, data);
+    }
+    else if (service === 'electricity-offices') {
+      return this.http.post(this.electricityOffices, data);
+    }
   }
 
   // single rti details
