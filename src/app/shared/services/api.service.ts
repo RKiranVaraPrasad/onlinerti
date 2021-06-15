@@ -362,8 +362,36 @@ export class ApiService {
       return this.http.get(`${this.governmentSchools}/${id}`)
     } else if (service === 'govt-schemes') {
       return this.http.get(`${this.govtSchemes}/${id}`)
-    } else if (service === 'narega-funds') {
+    } 
+    else if (service === 'narega-funds') {
       return this.http.get(`${this.nageraFunds}/${id}`)
+    }
+    else if (service === 'bank') {
+      return this.http.get(`${this.banks}/${id}`)
+    }
+    else if (service === 'municipal-offices') {
+      return this.http.get(`${this.municipalOffices}/${id}`)
+    }
+    else if (service === 'gram-panchayat-offices') {
+      return this.http.get(`${this.gramPanchayatOffices}/${id}`)
+    }
+    else if (service === 'state-government-offices') {
+      return this.http.get(`${this.stateGovernmentOffices}/${id}`)
+    }
+    else if (service === 'central-government-offices') {
+      return this.http.get(`${this.centralGovernmentOffices}/${id}`)
+    }
+    else if (service === 'rta-offices') {
+      return this.http.get(`${this.rtaOffices}/${id}`)
+    }
+    else if (service === 'police-stations') {
+      return this.http.get(`${this.policeStations}/${id}`)
+    }
+    else if (service === 'service-matters') {
+      return this.http.get(`${this.serviceMatters}/${id}`)
+    }
+    else if (service === 'electricity-offices') {
+      return this.http.get(`${this.electricityOffices}/${id}`)
     }
 
   }
