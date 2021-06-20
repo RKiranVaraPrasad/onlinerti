@@ -30,6 +30,7 @@ export class ApiService {
   private personalDetails = `${this.baseUrl}/personal-details`;
   private apply = `${this.baseUrl}/applies`;
   private documents = `${this.baseUrl}/documents`;
+  private states = `${this.baseUrl}/states`;
 
   private applyEmailConfirmation = `${this.baseUrl}/apply/email-confirmation`;
   private services = `${this.baseUrl}/services`;
@@ -130,6 +131,10 @@ export class ApiService {
     return this.http.get(this.personalDetails, {
       params
     })
+  }
+
+  getStatesService() {
+    return this.http.get(this.states)
   }
 
   getServicesService() {
@@ -366,7 +371,7 @@ export class ApiService {
     else if (service === 'narega-funds') {
       return this.http.get(`${this.nageraFunds}/${id}`)
     }
-    else if (service === 'bank') {
+    else if (service === 'banks') {
       return this.http.get(`${this.banks}/${id}`)
     }
     else if (service === 'municipal-offices') {

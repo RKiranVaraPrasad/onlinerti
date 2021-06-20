@@ -11,15 +11,650 @@
                 <img src="assets/svg/left-arrow.svg" (click)="back()" width="52" alt="" style="cursor: pointer;">
             </div>
         </div>
-        <div class="row">
+        <div class="row" *ngIf="passportDelay">
             <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>Name of the Applicant</h3>
+                        <span>{{passportDelay.applicantName}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Passport Application Number</h3>
+                        <span>{{passportDelay.applicationNo}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Passport Office</h3>
+                        <span>{{passportDelay.passportOffice}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Application Submission Date</h3>
+                        <span>{{passportDelay.applicationDate}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Name of the District of IT Office</h3>
+                        <span>{{passportDelay.itOffice}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>state</h3>
+                        <span>{{passportDelay.applicantName}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{passportDelay.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="itReturns">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>Pancard Number</h3>
+                        <span>{{itReturns.pancardNumber}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Financial Year</h3>
+                        <span>{{itReturns.financialYear}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Ward/Circle Number</h3>
+                        <span>{{itReturns.wardNumber}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Refund Amount</h3>
+                        <span>{{itReturns.refundAmount}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Name of the District of IT Office</h3>
+                        <span>{{itReturns.itOffice}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>State</h3>
+                        <span>{{itReturns.state}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Date of application</h3>
+                        <span>{{itReturns.ApplicantDate}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{itReturns.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="marksheetVerification">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>Name of Course</h3>
+                        <span>{{marksheetVerification.course}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Name of College/University</h3>
+                        <span>{{marksheetVerification.college}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Registration Roll No</h3>
+                        <span>{{marksheetVerification.rollNo}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Year & Month of Exam</h3>
+                        <span>{{marksheetVerification.year}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Regular/Supplementary</h3>
+                        <span>{{marksheetVerification.regularSupplementary}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>College/University/Board
+                            Address</h3>
+                        <span>{{marksheetVerification.collegeUniversityBoardAddress}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{marksheetVerification.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="answerCopy">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>Name of Applicant</h3>
+                        <span>{{answerCopy.applicantName}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Roll Number</h3>
+                        <span>{{answerCopy.rollNo}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Name of Exam</h3>
+                        <span>{{answerCopy.examName}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Date of Exam</h3>
+                        <span>{{answerCopy.examDate}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{answerCopy.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="firStatus">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>FIR Number</h3>
+                        <span>{{firStatus.firNo}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Police Station</h3>
+                        <span>{{firStatus.policeStation}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Date of FIR</h3>
+                        <span>{{firStatus.firDate}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Complete Address of Police Station</h3>
+                        <span>{{firStatus.addressOfPoliceStation}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{firStatus.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="propertyDetails">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col" style="flex: 0 100%;">
+                        <h3>Property Details</h3>
+                        <span>{{propertyDetails.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="epfStatus">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>EPF account number</h3>
+                        <span>{{epfStatus.epfAccountNo}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Previous Employer</h3>
+                        <span>{{epfStatus.previousEmployer}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Current Employer</h3>
+                        <span>{{epfStatus.currentEmployer}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>EPF office holding old account</h3>
+                        <span>{{epfStatus.epfOfficeOldAccount}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>EPF office holding new account</h3>
+                        <span>{{epfStatus.epfOfficeNewAccount}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Transfer application date</h3>
+                        <span>{{epfStatus.transferApplicationDate}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{epfStatus.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="pensionApplication">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>Name of the applicant</h3>
+                        <span>{{pensionApplication.applicantName}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Application number</h3>
+                        <span>{{pensionApplication.applicationNo}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Date of Application</h3>
+                        <span>{{pensionApplication.applicationDate}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{pensionApplication.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="occupancyCertificate">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>Address of Building</h3>
+                        <span>{{occupancyCertificate.buildingAddress}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Survey Number/CTS No/Khasra no</h3>
+                        <span>{{occupancyCertificate.surveyNo}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{occupancyCertificate.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="collectorOffice">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>District's Name</h3>
+                        <span>{{collectorOffice.districtName}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>state</h3>
+                        <span>{{collectorOffice.state}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Collectorate Address</h3>
+                        <span>{{collectorOffice.collectorateAddress}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{collectorOffice.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="principalSecretary">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>Department’s name</h3>
+                        <span>{{principalSecretary.departmentName}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>State</h3>
+                        <span>{{principalSecretary.state}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{principalSecretary.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="revenueOffices">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>Name of the office (MRO/RDO/DRO/Joint Collector etc)</h3>
+                        <span>{{revenueOffices.nameOfTheOffice}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>State</h3>
+                        <span>{{revenueOffices.state}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Mandal/Tehsil & district</h3>
+                        <span>{{revenueOffices.mandalTehsilDistrict}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Office Address</h3>
+                        <span>{{revenueOffices.officeAddress}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{revenueOffices.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="mpFundsUtilization">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>Constituency</h3>
+                        <span>{{mpFundsUtilization.constituency}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>District</h3>
+                        <span>{{mpFundsUtilization.district}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>State</h3>
+                        <span>{{mpFundsUtilization.state}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>From (Year)</h3>
+                        <span>{{mpFundsUtilization.from}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>To (Year)</h3>
+                        <span>{{mpFundsUtilization.to}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{mpFundsUtilization.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="gramPanchayat">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>Name of Gram Panchayat</h3>
+                        <span>{{gramPanchayat.nameOfGramPanchayat}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Name of Scheme</h3>
+                        <span>{{gramPanchayat.nameOfScheme}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Name of District</h3>
+                        <span>{{gramPanchayat.nameOfDistrict}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>State</h3>
+                        <span>{{gramPanchayat.state}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>From(Year)</h3>
+                        <span>{{gramPanchayat.from}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>To(Year)</h3>
+                        <span>{{gramPanchayat.to}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{gramPanchayat.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="fundsUtilization">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>Name of scheme/Project</h3>
+                        <span>{{fundsUtilization.nameOfSchemeProject}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Name of Village/Town/City</h3>
+                        <span>{{fundsUtilization.nameOfVillageTownCity}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Name of District</h3>
+                        <span>{{fundsUtilization.nameOfDistrict}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>State</h3>
+                        <span>{{fundsUtilization.state}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>From(Year)</h3>
+                        <span>{{fundsUtilization.from}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>To(Year)</h3>
+                        <span>{{fundsUtilization.to}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{fundsUtilization.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="tenderDetails">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>Tender Number</h3>
+                        <span>{{tenderDetails.tenderNumber}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Date</h3>
+                        <span>{{tenderDetails.date}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Department</h3>
+                        <span>{{tenderDetails.department}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Village/Town</h3>
+                        <span>{{tenderDetails.villageTown}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>District</h3>
+                        <span>{{tenderDetails.district}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>State</h3>
+                        <span>{{tenderDetails.state}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{tenderDetails.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="roadWork">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>Name of the road</h3>
+                        <span>{{roadWork.nameOfTheRoad}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Road starting from</h3>
+                        <span>{{roadWork.roadStartingFrom}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Road starting to</h3>
+                        <span>{{roadWork.roadStartingTo}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>City/Village/Tehsil</h3>
+                        <span>{{roadWork.city}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>District</h3>
+                        <span>{{roadWork.district}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>State</h3>
+                        <span>{{roadWork.state}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Maintained By</h3>
+                        <span>{{roadWork.state}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{roadWork.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="governmentHostels">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>Hostel's name</h3>
+                        <span>{{governmentHostels.hostelName}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Department's name</h3>
+                        <span>{{governmentHostels.departmentName}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Hostel's Address</h3>
+                        <span>{{governmentHostels.hostelAddress}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Village, Mandal & District</h3>
+                        <span>{{governmentHostels.villageMandalDistrict}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>State</h3>
+                        <span>{{governmentHostels.state}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Maintained By</h3>
+                        <span>{{governmentHostels.state}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{governmentHostels.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="governmentHospitals">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>Hospital's name</h3>
+                        <span>{{governmentHospitals.hospitalName}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Department's name</h3>
+                        <span>{{governmentHospitals.departmentName}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Hospital's Address</h3>
+                        <span>{{governmentHospitals.hospitalAddress}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Village, Mandal & District</h3>
+                        <span>{{governmentHospitals.villageMandalDistrict}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>State</h3>
+                        <span>{{governmentHospitals.state}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{governmentHospitals.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="governmentSchools">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>School's name</h3>
+                        <span>{{governmentSchools.schoolName}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Department's name</h3>
+                        <span>{{governmentSchools.departmentName}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>School's Address</h3>
+                        <span>{{governmentSchools.schoolAddress}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Village, Mandal & District</h3>
+                        <span>{{governmentSchools.villageMandalDistrict}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>State</h3>
+                        <span>{{governmentSchools.state}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{governmentSchools.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="naregaFunds">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>Name of the village</h3>
+                        <span>{{naregaFunds.villageName}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Tehsil/Block</h3>
+                        <span>{{naregaFunds.tehsilBlock}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>District</h3>
+                        <span>{{naregaFunds.district}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>State</h3>
+                        <span>{{naregaFunds.state}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Years (From-To)</h3>
+                        <span>{{naregaFunds.years}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{naregaFunds.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="govtSchemes">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>Name of the Scheme</h3>
+                        <span>{{govtSchemes.schemeName}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>Department Name</h3>
+                        <span>{{govtSchemes.departmentName}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>State</h3>
+                        <span>{{govtSchemes.state}}</span>
+                    </div>
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{govtSchemes.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="moreInfo">
+            <div class="col-12">
+                <div class="flex-box">
+                    <div class="flex-col">
+                        <h3>More Information</h3>
+                        <span>{{moreInfo.moreInfo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- <div class="col-12">
                 <div class="flex-box">
                     <div class="flex-col" *ngFor="let item of rtiDetails | keyvalue">
                         <h3>{{item.key  | splitCamelcase | uppercase}}</h3>
                         <span>{{item.value}}</span>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="col-12 pt-5">
                 <h3>Uploaded Documents</h3>
                 <div class="row mt-3">

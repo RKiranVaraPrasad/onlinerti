@@ -16,6 +16,7 @@ export class PassportDelayComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   subscriptionTwo: Subscription;
   formData: any;
+  states: any;
   constructor(
     private apiService: ApiService,
     private router: Router,
@@ -29,11 +30,17 @@ export class PassportDelayComponent implements OnInit, OnDestroy {
       applicationDate: new FormControl('', [Validators.required]),
       itOffice: new FormControl('', [Validators.required]),
       state: new FormControl('', [Validators.required]),
-      moreInfo: new FormControl('', [Validators.required])
+      moreInfo: new FormControl('')
     })
   }
 
   ngOnInit(): void {
+    this.apiService.getStatesService()
+    .subscribe(
+      (data: any) => {
+        this.states = data;
+      }
+    )
     // console.log(this.selectedRoute)
     this.rtiDetailsForm.statusChanges.subscribe(
       newStatus => {
