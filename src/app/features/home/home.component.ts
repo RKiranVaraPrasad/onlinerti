@@ -57,12 +57,12 @@ export class HomeComponent implements OnInit {
 
   // services
   servicesArray = [
-    { image: 'assets/icons/service-01.png', title: 'Passport Delay' },
-    { image: 'assets/icons/service-02.png', title: 'Income Tax Refund' },
-    { image: 'assets/icons/service-03.png', title: 'Answer Sheet Copies' },
-    { image: 'assets/icons/service-04.png', title: 'MP/ MLA Funds' },
-    { image: 'assets/icons/service-05.png', title: 'Property Documents' },
-    { image: 'assets/icons/service-06.png', title: 'Market sheet verification' },
+    { image: 'assets/icons/service-01.png', title: 'Passport Delay', link: 'personal/passport-delay' },
+    { image: 'assets/icons/service-02.png', title: 'Income Tax Refund', link: 'personal/it-returns' },
+    { image: 'assets/icons/service-03.png', title: 'Answer Sheet Copies', link: 'personal/answer-copy' },
+    { image: 'assets/icons/service-04.png', title: 'MP Funds', link: 'social/mp-funds-utilization' },
+    { image: 'assets/icons/service-05.png', title: 'Property Documents', link: 'personal/property-details' },
+    { image: 'assets/icons/service-06.png', title: 'Market sheet verification', link: 'personal/marksheet-verification' },
   ]
 
 }

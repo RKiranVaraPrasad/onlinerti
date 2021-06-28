@@ -1,64 +1,67 @@
 <section class="container">
-    <div class="row pt-4">
+    <div class="row my-5">
+        <div class="col-12">
+            <div class="content-title">Enquiry</div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-9">
-            <h2>Enquiry</h2>
             <form [formGroup]="personalDetailsForm">
                 <div class="row mt-4">
-                    <div class="col-md-3 col-12">
+                    <div class="col-md-7 col-12">
                         <mat-form-field class="example-full-width">
                             <mat-label>Full name</mat-label>
                             <input matInput ngDefaultControl
                                 formControlName="fullname">
                         </mat-form-field>
                     </div>
-                    <div class="col-md-3 col-12">
-                        <mat-form-field class="example-full-width">
-                            <mat-label>Mobile</mat-label>
-                            <input matInput type="tel" ngDefaultControl
-                                formControlName="mobile" maxlength="10">
-                        </mat-form-field>
-                    </div>
-                    <div class="col-md-3 col-12">
+                    <div class="col-md-7 col-12">
                         <mat-form-field class="example-full-width">
                             <mat-label>Email</mat-label>
                             <input matInput type="email" ngDefaultControl
                                 formControlName="email">
                         </mat-form-field>
                     </div>
-                    <div class="col-md-3 col-12">
+                    <div class="col-md-5 col-12">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Mobile</mat-label>
+                            <input matInput type="tel" ngDefaultControl
+                                formControlName="mobile" maxlength="10">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4 col-12">
                         <mat-form-field class="example-full-width">
                             <mat-label>State</mat-label>
                             <input matInput type="text" formControlName="state"
                                 ngDefaultControl>
                         </mat-form-field>
                     </div>
-                    <div class="col-md-3 col-12">
+                    <div class="col-md-4 col-12">
                         <mat-form-field class="example-full-width">
                             <mat-label>City</mat-label>
                             <input matInput type="text" formControlName="city"
                                 ngDefaultControl>
                         </mat-form-field>
                     </div>
-                    <div class="col-md-3 col-12">
+                    <div class="col-md-4 col-12">
                         <mat-form-field class="example-full-width">
                             <mat-label>Pincode</mat-label>
                             <input matInput type="text" formControlName="pincode"
                                 ngDefaultControl maxlength="6">
                         </mat-form-field>
                     </div>
-                    <div class="col-md-6 col-12">
+                    <div class="col-12">
                         <mat-form-field class="example-full-width">
                             <mat-label>Address</mat-label>
                             <textarea matInput style="resize: none;"
                                 formControlName="address" ngDefaultControl></textarea>
                         </mat-form-field>
                     </div>
-                    
                 </div>
-                <div class="row">
+                <div class="row my-4">
                     <div class="col-12 text-right">
                         <button mat-flat-button color="primary" (click)="onSubmitEnquirryForm()"
-                                    [disabled]="!personalDetailsForm">Submit</button>
+                                    [disabled]="personalDetailsForm.invalid">Submit</button>
                     </div>
                 </div>
             </form>
