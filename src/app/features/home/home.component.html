@@ -32,16 +32,23 @@
                             <img src="assets/images/logo-banner.png" alt="">
                         </div>
                         <div class="col-12">
-                            <div class="slider-text">
-                                <span>Tired of</span><br>
-                                Bribes and Slow<br>Government Serivces?
-                            </div>
+                            <carousel [isAnimated]="true" class="d-none d-md-block mt-3" [showIndicators]="false" [interval]="3000">
+                                <slide *ngFor="let bannerSlider of bannerSlidesArray; let index=index">
+                                    <div class="carousel-caption">
+                                        <h4>{{bannerSlider.text}}</h4>
+                                    </div>
+                                </slide>
+                            </carousel>
+                            <!-- <div class="slider-text">
+                                <span>Disappointed with reckless public servants?</span>
+                            </div> -->
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-12">
-                            <div class="slider-text" style="line-height: 32px;">
-                                <span>Use Online RTI to speed up the government from the comfort of your home.</span>
+                            <div class="slider-text" style="line-height: 42px;">
+                                <h5>Don't worry, we'll let them to be accountable and transparent.</h5>
+                                Tell us by clicking on Apply Now<br> <span>We will take care of the rest.</span>
                                 <button mat-flat-button color="primary" class="arrow mt-4 d-block float-right" (click)="apply()">Apply Now</button>
                             </div>
                         </div>
@@ -58,22 +65,23 @@
             RTIs last 24 hrs - 453
         </div>
     </div>
-    <carousel [isAnimated]="true" class="d-none d-md-block">
-        <slide *ngFor="let bannerSlider of bannerSlidesArray; let index=index">
-            <img [src]="bannerSlider.image" alt="image slide" style="display: block; width: 100%;">
-            <div class="carousel-caption">
-                <h4>{{bannerSlider.text}}</h4>
-            </div>
-        </slide>
-    </carousel>
+    
 </section>
 <section class="what-is-online pt-5">
-    <h2 class="mb-0 pb-4 text-center">What is Online RTI ?</h2>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-11">
                 <div class="row">
-                    <div class="col-12 col-md-4 mb-5">
+                    <div class="col-12 text-center">
+                        <h2 class="mb-0 pb-4 text-center">What is RTI?</h2>
+                        <p style="font-size: 16px; font-weight: 300;">RTI stands for Right to Information. Right to Information Act, 2005 enables every citizen, to exercise his right, to obtain information from any Govt. Office in India. The fundamental object of the RTI Act is to bring transparency, accountability and make the nation corruption free. It also encourages every citizen in active participation in governmental activities. All you have to do is, you should file an RTI application in the Govt. Office from which you are seeking information.</p>
+                    </div>
+                    <div class="col-12 text-center mt-5">
+                        <h2 class="mb-0 pb-4 text-center">Your Hardship – Our Solution</h2>
+                        <p style="font-size: 16px; font-weight: 300;">Although most people know about RTI, they don’t know how to use it. Lack of knowledge to prepare RTI application and inability to prepare the application effectively are the major hardships commonly faced by every person.</p>
+                        <p style="font-size: 16px; font-weight: 300;">We understand your hardships besides your concerns. Our experts will draft your RTI application and send the it on your behalf to the concerned office. So that your application will be very efficient and will not be subject to rejection. <br>Just click on <strong routerLink="/apply" class="link-text">Apply Now</strong> here.</p>
+                    </div>
+                    <!-- <div class="col-12 col-md-4 mb-5">
                         <div class="row">
                             <div class="col-12 text-center">
                                 <div class="what-is-online-icon">
@@ -90,9 +98,6 @@
                                     tax refunds, and exam answer sheets.
                                 </p>
                             </mat-card-content>
-                            <!-- <mat-card-actions class="text-right">
-                                <button mat-flat-button color="primary">Read More</button>
-                            </mat-card-actions> -->
                         </mat-card>
                     </div>
                     <div class="col-12 col-md-4 mb-5">
@@ -112,9 +117,6 @@
                                     application. Even worse, many fail to get a government response.
                                 </p>
                             </mat-card-content>
-                            <!-- <mat-card-actions class="text-right">
-                                <button mat-flat-button color="primary">Read More</button>
-                            </mat-card-actions> -->
                         </mat-card>
                     </div>
                     <div class="col-12 col-md-4 mb-5">
@@ -134,11 +136,11 @@
                                     consider your case at the top of the government’s queue.
                                 </p>
                             </mat-card-content>
-                            <!-- <mat-card-actions class="text-right">
+                            <mat-card-actions class="text-right">
                                 <button mat-flat-button color="primary">Read More</button>
-                            </mat-card-actions> -->
+                            </mat-card-actions>
                         </mat-card>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

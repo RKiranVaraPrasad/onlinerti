@@ -114,7 +114,21 @@ h2 {
 
 .banner-slider {
     position: relative;
-
+    // background-color: red;
+    background: #DFDBCF url(../../../assets/images/home-banner.jpg) no-repeat top center;
+    background-size: cover;
+    height: 500px;
+    .carousel-caption{
+        position: static;
+        text-align: left;
+        padding: 0;
+        h4{
+            font-weight: 300;
+            font-size: 26px;
+            color: #294358;
+            margin: 0;
+        }
+    }
     .slider-content {
         position: absolute;
         z-index: 99;

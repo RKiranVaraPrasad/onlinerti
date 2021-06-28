@@ -17,6 +17,7 @@ export class PassportDelayComponent implements OnInit, OnDestroy {
   subscriptionTwo: Subscription;
   formData: any;
   states: any;
+  selectedState: any;
   constructor(
     private apiService: ApiService,
     private router: Router,
@@ -41,7 +42,6 @@ export class PassportDelayComponent implements OnInit, OnDestroy {
         this.states = data;
       }
     )
-    // console.log(this.selectedRoute)
     this.rtiDetailsForm.statusChanges.subscribe(
       newStatus => {
         if (newStatus === 'VALID') {
@@ -96,6 +96,9 @@ export class PassportDelayComponent implements OnInit, OnDestroy {
         // console.log(rtiData)
       }
     )
+  }
+  onChangeSelect(event){
+    this.selectedState = event;
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();

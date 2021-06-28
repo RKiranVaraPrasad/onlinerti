@@ -16,6 +16,7 @@ export class ItReturnsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   subscriptionTwo: Subscription;
   formData: any;
+  states: any;
   constructor(
     private apiService: ApiService,
     private router: Router,
@@ -35,6 +36,12 @@ export class ItReturnsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.apiService.getStatesService()
+    .subscribe(
+      (data: any) => {
+        this.states = data;
+      }
+    )
     this.rtiDetailsForm.statusChanges.subscribe(
       newStatus => {
         if (newStatus === 'VALID') {

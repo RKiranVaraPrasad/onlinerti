@@ -15,6 +15,7 @@ export class RevenueOfficesComponent implements OnInit, OnDestroy {
   selectedRoute: string = this.router.url.split('/').pop();
   subscription: Subscription;
   subscriptionTwo: Subscription;
+  states: any;
   constructor(
     private apiService: ApiService,
     private router: Router,
@@ -30,6 +31,12 @@ export class RevenueOfficesComponent implements OnInit, OnDestroy {
    }
 
    ngOnInit(): void {
+    this.apiService.getStatesService()
+    .subscribe(
+      (data: any) => {
+        this.states = data;
+      }
+    )
     this.rtiDetailsForm.statusChanges.subscribe(
       newStatus => {
         if (newStatus === 'VALID') {

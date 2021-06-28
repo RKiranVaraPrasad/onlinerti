@@ -18,6 +18,9 @@ import { TeamComponent } from './team/team.component';
 import { TrackComponent } from './track/track.component';
 import { SharedModule } from '../shared/shared.module';
 import {  TranslateModule } from '@ngx-translate/core';
+import { AboutRtiComponent } from './about-rti/about-rti.component';
+import { FaqsComponent } from './faqs/faqs.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 
@@ -26,7 +29,10 @@ import {  TranslateModule } from '@ngx-translate/core';
     HomeComponent,
     PricingComponent,
     TeamComponent,
-    TrackComponent
+    TrackComponent,
+    AboutRtiComponent,
+    FaqsComponent,
+    ContactComponent
   ],
   imports: [
     CommonModule,
