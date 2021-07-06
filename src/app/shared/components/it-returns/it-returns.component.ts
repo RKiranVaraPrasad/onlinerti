@@ -17,6 +17,7 @@ export class ItReturnsComponent implements OnInit, OnDestroy {
   subscriptionTwo: Subscription;
   formData: any;
   states: any;
+  selectedState: any;
   constructor(
     private apiService: ApiService,
     private router: Router,
@@ -31,7 +32,7 @@ export class ItReturnsComponent implements OnInit, OnDestroy {
       itOffice: new FormControl('', [Validators.required]),
       state: new FormControl('', [Validators.required]),
       ApplicantDate: new FormControl('', [Validators.required]),
-      moreInfo: new FormControl('', [Validators.required])
+      moreInfo: new FormControl('')
     })
   }
 
@@ -99,6 +100,9 @@ export class ItReturnsComponent implements OnInit, OnDestroy {
       }
     )
     
+  }
+  onChangeSelect(event){
+    this.selectedState = event;
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();

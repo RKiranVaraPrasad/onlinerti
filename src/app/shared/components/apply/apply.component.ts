@@ -255,6 +255,7 @@ export class ApplyComponent implements OnInit, OnDestroy {
                 if (order.status === 'created') {
                   // console.log(order.id)
                   this.orderId = order.id;
+                  localStorage.setItem('orderId', this.orderId);
                   this.applyFormData.orderId = order.id;
                   this.applyData.append('data', JSON.stringify(this.applyFormData));
                   this.apiService.postApplyService(this.applyData)
@@ -274,12 +275,13 @@ export class ApplyComponent implements OnInit, OnDestroy {
                               // alert(response.razorpay_payment_id);
                               // alert(response.razorpay_order_id);
                               // alert(response.razorpay_signature)
-                              if (response.razorpay_payment_id) {
-                                alert("payment done")
+                              this.orderId = response.razorpay_order_id;
+                              if (typeof response.razorpay_payment_id == 'undefined' ||  response.razorpay_payment_id < 1) {
+                                this.redirect_url = 'apply'
+                              } else {
+                                this.redirect_url = 'confirmation'
                               }
-                              else (
-                                alert("payment failed")
-                              )
+                              location.href = this.redirect_url
                             },
                             "prefill": {
                               "name": this.fullname,
@@ -291,7 +293,12 @@ export class ApplyComponent implements OnInit, OnDestroy {
                             },
                             "theme": {
                               "color": "#3399cc"
-                            }
+                            },
+                            "modal": {
+                              "ondismiss": function(){
+                                window.location.href = `payment-pending`
+                              }
+                          }
                           };
                           const rzp1 = new this.apiService.nativeWindow.Razorpay(razorpayOptions);
                           rzp1.open();

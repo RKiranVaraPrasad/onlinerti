@@ -56,6 +56,8 @@ import { RtaOfficesComponent } from './components/rta-offices/rta-offices.compon
 import { PoliceStationsComponent } from './components/police-stations/police-stations.component';
 import { ServiceMattersComponent } from './components/service-matters/service-matters.component';
 import { ElectricityOfficesComponent } from './components/electricity-offices/electricity-offices.component';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { PaymentPendingComponent } from './components/payment-pending/payment-pending.component';
 
 
 
@@ -101,7 +103,9 @@ import { ElectricityOfficesComponent } from './components/electricity-offices/el
     RtaOfficesComponent,
     PoliceStationsComponent,
     ServiceMattersComponent,
-    ElectricityOfficesComponent
+    ElectricityOfficesComponent,
+    ConfirmationComponent,
+    PaymentPendingComponent
   ],
   imports: [
     CommonModule,

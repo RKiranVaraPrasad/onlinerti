@@ -378,7 +378,12 @@ section {
 .mat-step-label {
     font-size: 18px;
 }
-
+.mat-form-field-appearance-fill .mat-form-field-flex{
+    background-color: transparent !important
+}
+.mat-form-field-appearance-fill .mat-form-field-flex{
+    padding: 0 !important;
+}
 .mat-step-label-selected {
     font-size: 18px;
     font-weight: 600;

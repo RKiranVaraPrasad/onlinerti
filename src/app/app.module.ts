@@ -25,6 +25,7 @@ import { SharedModule } from './shared/shared.module';
 import { JwtInterceptor } from './core/interceptor/jwt.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import { ConfirmationComponent } from './share/components/confirmation/confirmation.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -37,7 +38,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavbarComponent,
     FooterComponent,
     ContentWrapperComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,
