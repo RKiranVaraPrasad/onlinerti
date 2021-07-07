@@ -1,14 +1,15 @@
 <section class="container">
     <div class="row my-5">
         <div class="col-12">
-            <div class="content-title">Application submitted successfully</div>
+            <div class="content-title text-success">Application submitted successfully</div>
         </div>
     </div>
     <div class="row">
-        <div class="col-9">
+        <div class="col-12 text-center">
             <p>Thanks to submit your application. Our expert will review and get back to you soon.</p>
-            <h2 class="mt-4">Application id:</h2>
-            <p>Please use id '' to track your application status . Just click on <strong class="link-text" (click)="trackApplication()">Track Application</strong> here.</p>
+            <h2 class="pb-0">Application ID: {{applicationId}}</h2>
+            <p>Please use application id to track your application status.</p>
+            <p>Just click on <strong class="link-text" (click)="trackApplication()">Track Application</strong> here.</p>
         </div>
     </div>
 </section>

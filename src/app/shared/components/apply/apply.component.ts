@@ -242,8 +242,9 @@ export class ApplyComponent implements OnInit, OnDestroy {
         (resultId: any) => {
           if (resultId) {
             this.applyFormData.rtiDetailsId = resultId;
-            this.applyFormData.applicationId = this.selectedValue.slice(0, 3).toUpperCase() + Math.floor(Date.now() / 1000);
-
+            this.applicationId = this.selectedValue.slice(0, 3).toUpperCase() + Math.floor(Date.now() / 1000);
+            this.applyFormData.applicationId = this.applicationId;
+            localStorage.setItem('applicationId', this.applicationId);
             // submit two ids - step -03
             this.apiService.createOrderId({
               amount: this.finalAmount,
@@ -297,6 +298,10 @@ export class ApplyComponent implements OnInit, OnDestroy {
                             "modal": {
                               "ondismiss": function(){
                                 window.location.href = `payment-pending`
+                                this.apiService.putApplyService()
+                                .subscribe(
+                                  data => console.log('payment failed')
+                                )
                               }
                           }
                           };

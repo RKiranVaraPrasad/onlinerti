@@ -8,23 +8,16 @@ import { ApiService } from '../../services/api.service';
   styleUrls: ['./payment-pending.component.scss']
 })
 export class PaymentPendingComponent implements OnInit {
-  order_id: string;
-
+  applicationId: string;
   constructor(
     private route: ActivatedRoute,
     private api: ApiService
 
   ) {
-    this.order_id = localStorage.getItem('orderId');
    }
 
   ngOnInit(): void {
-    this.api.getOrderByIdService(this.order_id)
-    .subscribe(
-      data => {
-        console.log(data)
-      }
-    )
+    this.applicationId = localStorage.getItem('applicationId');
   }
   payNow(){
 

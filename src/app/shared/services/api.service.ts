@@ -321,10 +321,7 @@ export class ApiService {
   getOrderByIdService(id: any) {
     const headers = new HttpHeaders({
       'Authorization': 'Basic ' + 'cnpwX3Rlc3Rfd3FuMHFTQlgxT0Y0ckc6aElsbzNKdHVHdmIzNnFYWVR3ZXVMUjkx',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'Access-Control-Allow-Methods, Access-Control-Allow-Origin, Origin, Accept, Content-Type',
-      'Accept': 'application/json',
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/json'
     });
     return this.http.get(`${this.getOrderId}/${id}`, {
       headers
