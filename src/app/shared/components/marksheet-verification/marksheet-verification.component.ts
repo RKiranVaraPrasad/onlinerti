@@ -44,18 +44,18 @@ export const MY_FORMATS = {
 export class MarksheetVerificationComponent implements OnInit, OnDestroy {
 
 
-  date = new FormControl(moment());
+  year = new FormControl(moment());
 
   chosenYearHandler(normalizedYear: Moment) {
-    const ctrlValue = this.date.value;
+    const ctrlValue = this.year.value;
     ctrlValue.year(normalizedYear.year());
-    this.date.setValue(ctrlValue);
+    this.year.setValue(ctrlValue);
   }
 
   chosenMonthHandler(normalizedMonth: Moment, datepicker: MatDatepicker<Moment>) {
-    const ctrlValue = this.date.value;
+    const ctrlValue = this.year.value;
     ctrlValue.month(normalizedMonth.month());
-    this.date.setValue(ctrlValue);
+    this.year.setValue(ctrlValue);
     datepicker.close();
   }
 
@@ -64,6 +64,7 @@ export class MarksheetVerificationComponent implements OnInit, OnDestroy {
   selectedRoute: string = this.router.url.split('/').pop();
   subscription: Subscription;
   subscriptionTwo: Subscription;
+  regularSupplementary: string;
   constructor(
     private apiService: ApiService,
     private router: Router,
@@ -75,7 +76,7 @@ export class MarksheetVerificationComponent implements OnInit, OnDestroy {
       rollNo: new FormControl('', [Validators.required]),
       regularSupplementary: new FormControl('', [Validators.required]),
       collegeUniversityBoardAddress: new FormControl('', [Validators.required]),
-      year: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
+      year: new FormControl('', [Validators.required]),
       moreInfo: new FormControl('')
     })
   }

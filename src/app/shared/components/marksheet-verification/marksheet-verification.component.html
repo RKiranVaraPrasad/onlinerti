@@ -19,9 +19,9 @@
             </mat-form-field>
         </div>
         <div class="col-md-3 col-12">
-            <mat-form-field appearance="fill">
+            <!-- <mat-form-field appearance="fill">
                 <mat-label>Year & Month of Exam</mat-label>
-                <input matInput [matDatepicker]="dp" [formControl]="date">
+                <input matInput [matDatepicker]="dp" [formControlName]="year">
                 <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                 <mat-datepicker #dp
                                 startView="multi-year"
@@ -29,18 +29,25 @@
                                 (monthSelected)="chosenMonthHandler($event, dp)"
                                 panelClass="example-month-picker">
                 </mat-datepicker>
-              </mat-form-field>
-            <!-- <mat-form-field class="example-full-width">
+              </mat-form-field> -->
+            <mat-form-field class="example-full-width">
                 <mat-label>Year & Month of Exam</mat-label>
                 <input type="text" matInput placeholder="MM/YYYY" formControlName="year"
                 required>
-            </mat-form-field> -->
+            </mat-form-field>
         </div>
         <div class="col-md-3 col-12">
-            <mat-form-field class="example-full-width">
+            <mat-form-field appearance="fill">
+                <mat-label>Regular/Supplementary</mat-label>
+                <mat-select [(value)]="regularSupplementary" formControlName="regularSupplementary">
+                  <mat-option value="regular">Regular</mat-option>
+                  <mat-option value="supplementary">Supplementary</mat-option>
+                </mat-select>
+              </mat-form-field>
+            <!-- <mat-form-field class="example-full-width">
                 <input type="text" matInput placeholder="Regular/Supplementary" formControlName="regularSupplementary"
                 required>
-            </mat-form-field>
+            </mat-form-field> -->
         </div>
         <div class="col-md-3 col-12">
             <mat-form-field class="example-full-width">

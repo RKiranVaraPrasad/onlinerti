@@ -17,6 +17,7 @@ export class NaregaFundsComponent implements OnInit, OnDestroy {
   subscriptionTwo: Subscription;
   selectedState: any;
   states: any;
+ 
   constructor(
     private apiService: ApiService,
     private router: Router,
@@ -27,7 +28,8 @@ export class NaregaFundsComponent implements OnInit, OnDestroy {
       tehsilBlock: new FormControl('', [Validators.required]),
       district: new FormControl('', [Validators.required]),
       state: new FormControl('', [Validators.required]),
-      years: new FormControl('', [Validators.required]),
+      yearFrom: new FormControl('', [Validators.required]),
+      yearTo: new FormControl('', [Validators.required]),
       moreInfo: new FormControl('', [Validators.required])
     })
    }
@@ -56,7 +58,8 @@ export class NaregaFundsComponent implements OnInit, OnDestroy {
         data.tehsilBlock = this.rtiDetailsForm.get('tehsilBlock').value;
         data.district = this.rtiDetailsForm.get('district').value;
         data.state = this.rtiDetailsForm.get('state').value;
-        data.years = this.rtiDetailsForm.get('years').value;
+        data.yearFrom = this.rtiDetailsForm.get('yearFrom').value;
+        data.yearTo = this.rtiDetailsForm.get('yearTo').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
         this.currentService = currentservice
         if (this.selectedRoute === this.currentService) {
@@ -71,7 +74,8 @@ export class NaregaFundsComponent implements OnInit, OnDestroy {
         data.tehsilBlock = this.rtiDetailsForm.get('tehsilBlock').value;
         data.district = this.rtiDetailsForm.get('district').value;
         data.state = this.rtiDetailsForm.get('state').value;
-        data.years = this.rtiDetailsForm.get('years').value;
+        data.yearFrom = this.rtiDetailsForm.get('yearFrom').value;
+        data.yearTo = this.rtiDetailsForm.get('yearTo').value;
         data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
 
         // this.currentService = rtiData

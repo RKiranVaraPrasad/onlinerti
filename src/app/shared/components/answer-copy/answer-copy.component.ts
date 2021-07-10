@@ -15,16 +15,18 @@ export class AnswerCopyComponent implements OnInit, OnDestroy {
   selectedRoute: string = this.router.url.split('/').pop();
   subscription: Subscription;
   subscriptionTwo: Subscription;
+  maxDate: Date;
   constructor(
     private apiService: ApiService,
     private router: Router,
     private fb: FormBuilder
   ) {
+    this.maxDate = new Date();
     this.rtiDetailsForm = this.fb.group({
       applicantName: new FormControl('', [Validators.required]),
       rollNo: new FormControl('', [Validators.required]),
       examName: new FormControl('', [Validators.required]),
-      examDate: new FormControl('', [Validators.required]),
+      examDate: new FormControl(''),
       moreInfo: new FormControl('')
     })
    }

@@ -15,11 +15,13 @@ export class FirStatusComponent implements OnInit, OnDestroy {
   selectedRoute: string = this.router.url.split('/').pop();
   subscription: Subscription;
   subscriptionTwo: Subscription;
+  maxDate: Date;
   constructor(
     private apiService: ApiService,
     private router: Router,
     private fb: FormBuilder
   ) {
+    this.maxDate = new Date();
     this.rtiDetailsForm = this.fb.group({
       firNo: new FormControl('', [Validators.required]),
       policeStation: new FormControl('', [Validators.required]),

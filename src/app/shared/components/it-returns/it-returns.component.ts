@@ -18,11 +18,13 @@ export class ItReturnsComponent implements OnInit, OnDestroy {
   formData: any;
   states: any;
   selectedState: any;
+  maxDate: Date;
   constructor(
     private apiService: ApiService,
     private router: Router,
     private fb: FormBuilder
   ) { 
+    this.maxDate = new Date();
     this.formData = new FormData();
     this.rtiDetailsForm = this.fb.group({
       pancardNumber: new FormControl('', [Validators.required]),

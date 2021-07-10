@@ -15,11 +15,13 @@ export class EpfStatusComponent implements OnInit, OnDestroy {
   selectedRoute: string = this.router.url.split('/').pop();
   subscription: Subscription;
   subscriptionTwo: Subscription;
+  maxDate: Date;
   constructor(
     private apiService: ApiService,
     private router: Router,
     private fb: FormBuilder
   ) {
+    this.maxDate = new Date();
     this.rtiDetailsForm = this.fb.group({
       epfAccountNo: new FormControl('', [Validators.required]),
       previousEmployer: new FormControl('', [Validators.required]),
