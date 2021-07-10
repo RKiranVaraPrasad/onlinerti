@@ -16,6 +16,7 @@ export class RevenueOfficesComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   subscriptionTwo: Subscription;
   states: any;
+  selectedState: any;
   constructor(
     private apiService: ApiService,
     private router: Router,
@@ -26,7 +27,7 @@ export class RevenueOfficesComponent implements OnInit, OnDestroy {
       state: new FormControl('', [Validators.required]),
       mandalTehsilDistrict: new FormControl('', [Validators.required]),
       officeAddress: new FormControl('', [Validators.required]),
-      moreInfo: new FormControl('', [Validators.required])
+      moreInfo: new FormControl('')
     })
    }
 
@@ -81,6 +82,9 @@ export class RevenueOfficesComponent implements OnInit, OnDestroy {
         }
       }
     )
+  }
+  onChangeSelect(event){
+    this.selectedState = event;
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();

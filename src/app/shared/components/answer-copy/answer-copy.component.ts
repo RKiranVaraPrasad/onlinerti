@@ -25,7 +25,7 @@ export class AnswerCopyComponent implements OnInit, OnDestroy {
       rollNo: new FormControl('', [Validators.required]),
       examName: new FormControl('', [Validators.required]),
       examDate: new FormControl('', [Validators.required]),
-      moreInfo: new FormControl('', [Validators.required])
+      moreInfo: new FormControl('')
     })
    }
 

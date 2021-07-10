@@ -5,7 +5,13 @@ ul{
     margin: 0;
     padding: 0;
     .mat-icon{
-        margin-right: 15px;
+        display: inline-block;
+        vertical-align: top;
+    }
+    span{
+        width: calc(100% - 40px);
+        display: inline-block;
+        margin-left: 10px;
     }
 }
 li{
@@ -18,4 +24,7 @@ li{
             white-space: nowrap;
         }
     }
+}
+.bg-secondary{
+    background-color: #dedede !important;
 }

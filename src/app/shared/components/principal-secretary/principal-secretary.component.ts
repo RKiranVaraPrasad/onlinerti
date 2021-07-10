@@ -16,6 +16,7 @@ export class PrincipalSecretaryComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   subscriptionTwo: Subscription;
   states: any;
+  selectedState: any;
   constructor(
     private apiService: ApiService,
     private router: Router,
@@ -24,7 +25,7 @@ export class PrincipalSecretaryComponent implements OnInit, OnDestroy {
     this.rtiDetailsForm = this.fb.group({
       departmentName: new FormControl('', [Validators.required]),
       state: new FormControl('', [Validators.required]),
-      moreInfo: new FormControl('', [Validators.required])
+      moreInfo: new FormControl('')
     })
    }
 
@@ -75,6 +76,9 @@ export class PrincipalSecretaryComponent implements OnInit, OnDestroy {
         }
       }
     )
+  }
+  onChangeSelect(event){
+    this.selectedState = event;
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();

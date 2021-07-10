@@ -15,6 +15,8 @@ export class MpFundsUtilizationComponent implements OnInit, OnDestroy {
   selectedRoute: string = this.router.url.split('/').pop();
   subscription: Subscription;
   subscriptionTwo: Subscription;
+  states: any;
+  selectedState: any;
   constructor(
     private apiService: ApiService,
     private router: Router,
@@ -26,11 +28,17 @@ export class MpFundsUtilizationComponent implements OnInit, OnDestroy {
       state: new FormControl('', [Validators.required]),
       from: new FormControl('', [Validators.required]),
       to: new FormControl('', [Validators.required]),
-      moreInfo: new FormControl('', [Validators.required])
+      moreInfo: new FormControl('')
     })
    }
 
    ngOnInit(): void {
+    this.apiService.getStatesService()
+    .subscribe(
+      (data: any) => {
+        this.states = data;
+      }
+    )
     this.rtiDetailsForm.statusChanges.subscribe(
       newStatus => {
         if (newStatus === 'VALID') {
@@ -77,6 +85,9 @@ export class MpFundsUtilizationComponent implements OnInit, OnDestroy {
         }
       }
     )
+  }
+  onChangeSelect(event){
+    this.selectedState = event;
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();

@@ -23,7 +23,7 @@ export class OccupancyCertificateComponent implements OnInit, OnDestroy {
     this.rtiDetailsForm = this.fb.group({
       buildingAddress: new FormControl('', [Validators.required]),
       surveyNo: new FormControl('', [Validators.required]),
-      moreInfo: new FormControl('', [Validators.required])
+      moreInfo: new FormControl('')
     })
    }
 

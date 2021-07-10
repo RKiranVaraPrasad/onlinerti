@@ -25,7 +25,7 @@ export class FirStatusComponent implements OnInit, OnDestroy {
       policeStation: new FormControl('', [Validators.required]),
       firDate: new FormControl('', [Validators.required]),
       addressOfPoliceStation: new FormControl('', [Validators.required]),
-      moreInfo: new FormControl('', [Validators.required])
+      moreInfo: new FormControl('')
     })
   }
 

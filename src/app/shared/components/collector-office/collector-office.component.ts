@@ -16,6 +16,7 @@ export class CollectorOfficeComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   subscriptionTwo: Subscription;
   states: any;
+  selectedState: any;
   constructor(
     private apiService: ApiService,
     private router: Router,
@@ -25,7 +26,7 @@ export class CollectorOfficeComponent implements OnInit, OnDestroy {
       districtName: new FormControl('', [Validators.required]),
       state: new FormControl('', [Validators.required]),
       collectorateAddress: new FormControl('', [Validators.required]),
-      moreInfo: new FormControl('', [Validators.required])
+      moreInfo: new FormControl('')
     })
   }
 
@@ -78,6 +79,9 @@ export class CollectorOfficeComponent implements OnInit, OnDestroy {
         }
       }
     )
+  }
+  onChangeSelect(event){
+    this.selectedState = event;
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();

@@ -27,7 +27,7 @@ export class EpfStatusComponent implements OnInit, OnDestroy {
       epfOfficeOldAccount: new FormControl('', [Validators.required]),
       epfOfficeNewAccount: new FormControl('', [Validators.required]),
       transferApplicationDate: new FormControl('', [Validators.required]),
-      moreInfo: new FormControl('', [Validators.required])
+      moreInfo: new FormControl('')
     })
    }
 

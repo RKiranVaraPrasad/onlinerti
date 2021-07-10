@@ -24,7 +24,7 @@ export class PensionApplicationComponent implements OnInit, OnDestroy {
       applicantName: new FormControl('', [Validators.required]),
       applicationNo: new FormControl('', [Validators.required]),
       applicationDate: new FormControl('', [Validators.required]),
-      moreInfo: new FormControl('', [Validators.required])
+      moreInfo: new FormControl('')
     })
    }
 
