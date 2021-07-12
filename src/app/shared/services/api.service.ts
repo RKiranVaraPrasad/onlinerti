@@ -312,7 +312,7 @@ export class ApiService {
     const accessToken = localStorage.getItem('access-token');
     // const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
     const params = new HttpParams().set('personalDetailsId', `${id}`);
-    return this.http.get(this.apply, {
+    return this.http.get(`${this.apply}?_sort=published_at:DESC`, {
       params
     });
   }
