@@ -21,6 +21,7 @@ import {  TranslateModule } from '@ngx-translate/core';
 import { AboutRtiComponent } from './about-rti/about-rti.component';
 import { FaqsComponent } from './faqs/faqs.component';
 import { ContactComponent } from './contact/contact.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 
@@ -47,7 +48,8 @@ import { ContactComponent } from './contact/contact.component';
     FormsModule,
     ReactiveFormsModule,
     FeaturesRoutingModule,
-    TranslateModule
+    TranslateModule,
+    ModalModule.forRoot()
   ],
   exports: [
     HomeComponent,

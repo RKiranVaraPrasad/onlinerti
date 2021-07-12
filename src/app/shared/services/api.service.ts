@@ -20,7 +20,7 @@ export class ApiService {
 
   logged = localStorage.getItem('user') != null;
   userDetails = JSON.parse(localStorage.getItem('user'));
-  baseUrl = "http://172.105.60.86:1337";
+  baseUrl = "http://onlinerti.co:1337";
 
   private userRegistration = `${this.baseUrl}/auth/local/register`;
   private forgotPassword = `${this.baseUrl}/auth/forgot-password`;
