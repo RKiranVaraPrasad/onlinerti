@@ -3,6 +3,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -19,7 +20,8 @@ export class ContactComponent implements OnInit {
     private fb: FormBuilder,
     private apiService: ApiService,
     private http: HttpClient,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private router: Router
   ) { 
     this.queryDetailsForm = this.fb.group({
       fullName: new FormControl('', [Validators.required]),
@@ -32,6 +34,10 @@ export class ContactComponent implements OnInit {
     })}
     
   ngOnInit(): void {
+  }
+  close(){
+    this.modalRef.hide()
+    this.router.navigate(['/'])
   }
   onSubmitEnquirryForm(template: TemplateRef<any>){
     const data: any = {}
