@@ -274,11 +274,12 @@ h2 {
             background-image: url(../../../assets/images/home-banner.jpg);
             background-size: cover;
             background-repeat: no-repeat;
-            background-position: bottom right;
+            background-position: bottom left;
         }
         .rti-count-wrapper{
-            position: static;
             max-width: inherit;
+            bottom: 0px;
+
         }
         .card {
             background: linear-gradient(to right, rgb(9 92 242 / 89%) 0%, rgb(97 153 254 / 88%) 100%);
