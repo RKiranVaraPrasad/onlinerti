@@ -21,6 +21,7 @@ export class MyRtiComponent implements OnInit {
   ngOnInit(): void {
     const userData = JSON.parse(localStorage.getItem('user'))
     this.username = userData.username;
+    console.log(this.username)
     let email = userData.email;
     this.apiService.getPersonalDetailByEmailService(email)
       .subscribe(
@@ -29,7 +30,7 @@ export class MyRtiComponent implements OnInit {
           this.apiService.getMyRtiService(resultID[0].id)
             .subscribe(
               data => {
-                console.log(data)
+                // console.log(data)
                 this.applyData = data;
               }
             )

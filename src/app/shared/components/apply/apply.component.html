@@ -71,7 +71,7 @@
                                                     *ngFor="let service of personalServices"
                                                     routerLink="personal/{{service.link}}" routerLinkActive="active">
                                                     <img *ngFor="let icon of service.icon"
-                                                        src="http://172.105.60.86:1337{{icon.url}}" alt=""
+                                                        src="http://onlinerti.co:1337{{icon.url}}" alt=""
                                                         style="display: block; text-align: center; margin: 0 auto 15px;">
                                                     {{service.option}}
                                                 </mat-radio-button>
@@ -83,7 +83,7 @@
                                                     *ngFor="let service of socialServices"
                                                     routerLink="social/{{service.link}}" routerLinkActive="active">
                                                     <img *ngFor="let icon of service.icon"
-                                                        src="http://172.105.60.86:1337{{icon.url}}" alt=""
+                                                        src="http://onlinerti.co:1337{{icon.url}}" alt=""
                                                         style="display: block; text-align: center; margin: 0 auto 15px;">
                                                     {{service.option}}
                                                 </mat-radio-button>
@@ -95,7 +95,7 @@
                                                     *ngFor="let service of otherServices"
                                                     routerLink="other/{{service.link}}" routerLinkActive="active">
                                                     <img *ngFor="let icon of service.icon"
-                                                        src="http://172.105.60.86:1337{{icon.url}}" alt=""
+                                                        src="http://onlinerti.co:1337{{icon.url}}" alt=""
                                                         style="display: block; text-align: center; margin: 0 auto 15px;">
                                                     {{service.option}}
                                                 </mat-radio-button>
@@ -168,7 +168,7 @@
                                         <mat-form-field class="example-full-width">
                                             <mat-label>Email</mat-label>
                                             <input matInput type="email" [(ngModel)]="email" ngDefaultControl
-                                                formControlName="email">
+                                                formControlName="email" [readonly]="loggedIn ? 'true' : null">
                                         </mat-form-field>
                                     </div>
                                     <div class="col-md-3 col-12">
@@ -244,12 +244,20 @@
                                             <div class="field-desc">{{email}}</div>
                                         </div>
                                         <div class="field-group">
-                                            <div class="field-name">Address</div>
-                                            <div class="field-desc">{{address}}</div>
+                                            <div class="field-name">State</div>
+                                            <div class="field-desc">{{state}}</div>
+                                        </div>
+                                        <div class="field-group">
+                                            <div class="field-name">City</div>
+                                            <div class="field-desc">{{city}}</div>
                                         </div>
                                         <div class="field-group">
                                             <div class="field-name">Pincode</div>
                                             <div class="field-desc">{{pincode}}</div>
+                                        </div>
+                                        <div class="field-group">
+                                            <div class="field-name">Address</div>
+                                            <div class="field-desc">{{address}}</div>
                                         </div>
                                     </div>
                                 </div>

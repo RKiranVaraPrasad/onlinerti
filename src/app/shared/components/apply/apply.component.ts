@@ -58,7 +58,7 @@ export class ApplyComponent implements OnInit, OnDestroy {
   file: File;
   documentsData: any;
   applyFormData: any = {}
-
+  loggedIn: boolean = localStorage.getItem('user') != null;
   constructor(
     private apiService: ApiService,
     public router: Router,

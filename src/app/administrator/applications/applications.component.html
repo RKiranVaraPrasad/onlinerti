@@ -10,7 +10,7 @@
         </div> -->
         <div class="row mb-3">
             <div class="col-12">
-                <h3>Your Applications</h3>
+                <h3>All Applications</h3>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -27,11 +27,11 @@
                         <tbody>
                             <tr *ngFor="let data of applyData; let i = index">
                                 <td style="text-align: center;">{{i+1}}</td>
-                                <td>{{data.serviceType | splitCamelcase | titlecase}}</td>
+                                <td>{{data.serviceType}}</td>
                                 <td>{{data.applicationId}}</td>
                                 <td>{{data.published_at | date }}</td>
                                 <!-- <td>{{data.updatedAt | date}}</td> -->
-                                <td>{{data.status}}</td>
+                                <td>{{data.status}} <img src="../../../assets/icons/edit.png" alt="Edit" title="Change Status" height="16" style="cursor: pointer; margin-left: 5px;"></td>
                                 <td>
                                     <a mat-button routerLink="../details/{{data.serviceType}}/{{data.id}}">Details</a>
                                 </td>

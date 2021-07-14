@@ -37,9 +37,6 @@
                             <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
                                 <a class="nav-link" routerLink="apply">{{ 'Menu.ApplyNow' | translate }}</a>
                             </li>
-                            <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
-                            <a class="nav-link" routerLink="home">About RTI <span class="sr-only">(current)</span></a>
-                        </li> -->
                             <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
                                 <a class="nav-link" routerLink="track-application">{{ 'Menu.ApplicationStatus' |
                                     translate }}</a>
@@ -47,12 +44,17 @@
                             <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
                                 <a class="nav-link" routerLink="pricing">{{ 'Menu.Pricing' | translate }}</a>
                             </li>
-                            <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
-                            <a class="nav-link" routerLink="team">Team</a>
-                        </li> -->
-                            <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
-                            <a class="nav-link" routerLink="forum">Forum</a>
-                        </li> -->
+                            <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                                <a class="nav-link" routerLink="about-rti">{{ 'Menu.About' | translate
+                                    }}</a>
+                            </li>
+                            <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                                <a class="nav-link" routerLink="faqs">{{ 'Menu.Faqs' | translate
+                                    }}</a>
+                            </li>
+                            <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
+                                <a class="nav-link" routerLink="contact">{{ 'Menu.Contact' | translate }}</a>
+                            </li>
                             <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()" *ngIf="!logged">
                                 <a class="nav-link login-link" routerLink="login">{{ 'Menu.Login' | translate }}</a>
                             </li>
@@ -64,12 +66,6 @@
                                     <a class="dropdown-item" routerLink="my-rti">My RTI</a>
                                     <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
                                 </div>
-                            </li>
-                            <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()" *ngIf="logged">
-                            <a class="nav-link" (click)="logout()">Logout</a>
-                        </li> -->
-                            <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
-                                <a class="nav-link" routerLink="contact">{{ 'Menu.Contact' | translate }}</a>
                             </li>
                         </ul>
                     </div>
@@ -130,9 +126,6 @@
                                     <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
                                         <a class="nav-link" routerLink="apply">{{ 'Menu.ApplyNow' | translate }}</a>
                                     </li>
-                                    <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
-                                        <a class="nav-link" routerLink="home">About RTI <span class="sr-only">(current)</span></a>
-                                    </li> -->
                                     <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
                                         <a class="nav-link" routerLink="track-application">{{
                                             'Menu.ApplicationStatus' | translate }}</a>
@@ -145,19 +138,10 @@
                                         <a class="nav-link" routerLink="about-rti">{{ 'Menu.About' | translate
                                             }}</a>
                                     </li>
-                                    <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
-                                        <a class="nav-link" routerLink="team">Team</a>
-                                    </li> -->
-                                    <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
-                                        <a class="nav-link" routerLink="forum">Forum</a>
-                                    </li> -->
                                     <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
                                         <a class="nav-link" routerLink="faqs">{{ 'Menu.Faqs' | translate
                                             }}</a>
                                     </li>
-                                    <!-- <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()" *ngIf="logged">
-                                        <a class="nav-link" (click)="logout()">Logout</a>
-                                    </li> -->
                                     <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()">
                                         <a class="nav-link" routerLink="contact">{{ 'Menu.Contact' | translate
                                             }}</a>

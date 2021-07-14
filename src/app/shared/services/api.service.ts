@@ -167,9 +167,17 @@ export class ApiService {
     return this.http.post(this.apply, data)
   }
 
+  getApplyService() {
+    return this.http.get(`${this.apply}?_sort=published_at:DESC`)
+  }
+
   putApplyService(id: any, data: any) {
+    const accessToken = localStorage.getItem('access-token');
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
     let reqID: any = id;
-    return this.http.put(`${this.apply}/${reqID}`, data)
+    return this.http.put(`${this.apply}/${reqID}`, data, {
+      headers
+    })
   }
 
   postDocumentsService(data: any) {
@@ -278,7 +286,7 @@ export class ApiService {
   }
 
   postPersonalRtiMoreInfoService(service: any, data: any): Observable<any> {
-    if (service === 'bank') {
+    if (service === 'banks') {
       return this.http.post(this.banks, data);
     } 
     else if (service === 'municipal-offices') {
@@ -462,7 +470,14 @@ export class ApiService {
     // remove user from local storage to log user out
     localStorage.removeItem('user');
     localStorage.removeItem('access-token');
-    this.router.navigate(['login']);
+    // this.router.navigate(['login']);
+  }
+
+  administratorLogout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('user');
+    localStorage.removeItem('access-token');
+    // this.router.navigate(['administrator/login']);
   }
 
 }

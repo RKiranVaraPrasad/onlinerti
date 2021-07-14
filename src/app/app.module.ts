@@ -26,6 +26,7 @@ import { JwtInterceptor } from './core/interceptor/jwt.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { ConfirmationComponent } from './share/components/confirmation/confirmation.component';
+import { AdministratorModule } from './administrator/administrator.module';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -44,6 +45,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AdministratorModule,
     AuthModule,
     FeaturesModule,
     SharedModule,
