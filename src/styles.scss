@@ -176,6 +176,9 @@ section {
         }
     }
 }
+.cdk-overlay-container{
+    z-index: 1099;
+}
 .mat-horizontal-content-container h2 {
     text-transform: uppercase;
     border-bottom: 3px solid;
@@ -450,5 +453,10 @@ section {
         span {
             font-weight: 300;
         }
+    }
+}
+@media (max-width: 576px) {
+    .carousel-inner {
+        min-height: 95px;
     }
 }

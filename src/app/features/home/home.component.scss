@@ -279,6 +279,16 @@ h2 {
         .rti-count-wrapper{
             max-width: inherit;
             bottom: 0px;
+            background: #294358;
+            position: static;
+            .rti-count{
+                font-size: 16px;
+                border-top-left-radius: 0px;
+                border-bottom-left-radius: 0px;
+                margin-bottom: 0px;
+                box-shadow: none;
+                padding: 10px;
+            }
 
         }
         .card {

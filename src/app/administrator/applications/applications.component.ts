@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/shared/services/api.service';
+import {MatSelectModule} from '@angular/material/select';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-applications',
@@ -10,14 +15,30 @@ import { ApiService } from 'src/app/shared/services/api.service';
 export class ApplicationsComponent implements OnInit {
   username: any;
   applyData: any;
+  modalRef: BsModalRef;
+  editData: Object;
+  editApplyStatus: FormGroup
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private modalService: BsModalService,
+    private fb: FormBuilder
   ) {
-
+    this.editApplyStatus = this.fb.group({
+      status: new FormControl([])
+    })
   }
-
+  editStatus(id, template: TemplateRef<any>){
+    this.modalRef = this.modalService.show(template);
+    this.apiService.getAppliesService(id)
+    .subscribe(
+      data => {
+        this.editData = data;
+        console.log(this.editData)
+      }
+    )
+  }
   ngOnInit(): void {
     const userData = JSON.parse(localStorage.getItem('user'))
     this.username = userData.username;
