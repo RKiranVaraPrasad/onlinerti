@@ -10,14 +10,13 @@ import { element } from 'protractor';
 @Component({
   selector: 'app-apply',
   templateUrl: './apply.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./apply.component.scss']
 })
 export class ApplyComponent implements OnInit, OnDestroy {
 
   step = 0;
   status: boolean = false;
-  personalServices: any;
+  personalServices: any= [];
   socialServices: any;
   otherServices: any;
   postalChecked = false;
@@ -88,32 +87,35 @@ export class ApplyComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.selectedValue = this.router.url.split('/').pop();
-    if (this.router.url === '/apply/personal') {
-      // console.log(this.router.url)
-      this.categoryChange(1, 'personal')
-      // this.onChangeService()
-      // console.log(this.selectedValue)
-    }
-    if (this.router.url === `/apply/personal/${this.selectedValue}`) {
-      // console.log(this.router.url)
-      this.categoryChange(1, 'personal')
-      // this.onChangeService()
-      // console.log(this.selectedValue)
-    }
-    if (this.router.url === '/apply/social' || this.router.url === `/apply/social/${this.selectedValue}`) {
-      this.categoryChange(2, 'social')
-    }
-    if (this.router.url === '/apply/other' || this.router.url === `/apply/other/${this.selectedValue}`) {
-      this.categoryChange(3, 'other')
-    }
+    this.route.url.subscribe(url => {
+      this.selectedValue = this.router.url.split('/').pop();
+      //console.log("IN ROUTE",this.router.url , this.selectedValue);
+      if (this.router.url.includes('/apply/personal')) {
+        // console.log(this.router.url)
+        this.categoryChange(1, 'personal');
+        return;
+        // this.onChangeService()
+        // console.log(this.selectedValue)
+      }
+      if (this.router.url.includes('/apply/social')) {
+        this.categoryChange(2, 'social');
+        return;
+      }
+      if (this.router.url.includes('/apply/other')) {
+        this.categoryChange(3, 'other');
+        return;
+      }
+    })
+   
 
     this.apiService.getPersonalServicesService()
-      .subscribe(
-        data => {
-          this.personalServices = data
-        }
-      )
+    .subscribe(
+      data => {
+        console.log(data)
+        this.personalServices = data
+      }
+    )
+
     this.apiService.getSocialServicesService()
       .subscribe(
         data => this.socialServices = data
@@ -139,6 +141,7 @@ export class ApplyComponent implements OnInit, OnDestroy {
 
   }
   categoryChange(catId, url) {
+    console.log(catId,url);
     this.childrenUrl = url;
     this.displayCategoryItems = catId;  
   }
