@@ -64,7 +64,7 @@
                         </mat-select>
                     </mat-form-field>
                     <button mat-flat-button color="primary" matStepperNext (click)="onChangeStatus()"
-                                            [disabled]="!status"  class="ml-5">Save</button>
+                                            [disabled]="this.editApplyStatus.invalid"  class="ml-5">Save</button>
                 </div>
             </div>
         </form>
