@@ -15,6 +15,8 @@ export class IdentifierComponent implements OnInit {
   loginForm: FormGroup;
   formData: any;
   error: any;
+  message: string;
+  userData;
 
   constructor(
     private fb: FormBuilder,
@@ -30,7 +32,7 @@ export class IdentifierComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.isLoggedUser();
     // get return url from route parameters or default to '/my-rti'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/my-rti';
   }
@@ -40,17 +42,34 @@ export class IdentifierComponent implements OnInit {
   togglePassword() {
     this.fieldType = !this.fieldType;
   }
+  
+  isLoggedUser(){
+    this.apiService.userDataAfterLoggedIn.subscribe((user)=>{
+        if(user){
+          this.router.navigate(['/']);
+        }
+    })
+  }
+
   onLogin() {
     const data: any = {}
     data.identifier = this.loginForm.get('identifier').value;
     data.password = this.loginForm.get('password').value;
 
+
+
     this.apiService.postUserLoginService(data)
       .subscribe(
         data => {
-          this.router.navigateByUrl(this.returnUrl);
+          const userRole = JSON.parse(localStorage.getItem('user'))
+          if(userRole.role.type != 'authenticated'){
+            this.apiService.logout();
+            this.message = "User does not exist";
+          }
+          else{
+            this.router.navigateByUrl(this.returnUrl);
+          }
           //this.toastr.success('Login Successful');
-          this.apiService.menuFlag(true);
         },
         err => {
           // this.error = err.error.message[0].messages[0].message;

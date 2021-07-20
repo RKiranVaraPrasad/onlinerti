@@ -21,12 +21,12 @@ export class MyRtiComponent implements OnInit {
   ngOnInit(): void {
     const userData = JSON.parse(localStorage.getItem('user'))
     this.username = userData.username;
-    console.log(this.username)
+    // console.log(this.username)
     let email = userData.email;
     this.apiService.getPersonalDetailByEmailService(email)
       .subscribe(
         (resultID: any) => {
-          console.log(resultID)
+          // console.log(resultID)
           this.apiService.getMyRtiService(resultID[0].id)
             .subscribe(
               data => {

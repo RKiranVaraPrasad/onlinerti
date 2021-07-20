@@ -3,8 +3,9 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
-function _window() : any {
+function _window(): any {
   return window;
 }
 
@@ -13,73 +14,90 @@ function _window() : any {
 })
 export class ApiService {
   basicToken: string = "cnpwX3Rlc3Rfd3FuMHFTQlgxT0Y0ckc6aElsbzNKdHVHdmIzNnFYWVR3ZXVMUjkx";
+  private loginStatus: BehaviorSubject<boolean>
+  public logged: Observable<any>;;
+  public userDataAfterLoggedIn: BehaviorSubject<any>;
+  public userData: Observable<any>;
 
-  get nativeWindow() : any {
+  get nativeWindow(): any {
     return _window();
- }
+  }
 
-  logged = localStorage.getItem('user') != null;
-  userDetails = JSON.parse(localStorage.getItem('user'));
-  baseUrl = "http://onlinerti.co:1337";
+  // baseUrl = "http://onlinerti.co:1337";
 
-  private userRegistration = `${this.baseUrl}/auth/local/register`;
-  private forgotPassword = `${this.baseUrl}/auth/forgot-password`;
-  private resetPassword = `${this.baseUrl}/auth/reset-password`;
-  private emailConfirmation = `${this.baseUrl}/auth/send-email-confirmation`;
-  private userLogin = `${this.baseUrl}/auth/local`;
-  private personalDetails = `${this.baseUrl}/personal-details`;
-  private apply = `${this.baseUrl}/applies`;
-  private documents = `${this.baseUrl}/documents`;
-  private states = `${this.baseUrl}/states`;
+  private userRegistration = `${environment.baseUrl}/auth/local/register`;
+  private forgotPassword = `${environment.baseUrl}/auth/forgot-password`;
+  private resetPassword = `${environment.baseUrl}/auth/reset-password`;
+  private emailConfirmation = `${environment.baseUrl}/auth/send-email-confirmation`;
+  private userLogin = `${environment.baseUrl}/auth/local`;
+  private personalDetails = `${environment.baseUrl}/personal-details`;
+  private apply = `${environment.baseUrl}/applies`;
+  private documents = `${environment.baseUrl}/documents`;
+  private states = `${environment.baseUrl}/states`;
 
-  private applyEmailConfirmation = `${this.baseUrl}/apply/email-confirmation`;
-  private services = `${this.baseUrl}/services`;
+  private applyEmailConfirmation = `${environment.baseUrl}/apply/email-confirmation`;
+  private services = `${environment.baseUrl}/services`;
 
-  private passportDelay = `${this.baseUrl}/passport-delays`;
-  private itReturns = `${this.baseUrl}/income-tax-refunds`;
-  private marksheetVerification = `${this.baseUrl}/marksheet-verifications`;
-  private answerCopy = `${this.baseUrl}/answer-copies`;
-  private firStatus = `${this.baseUrl}/fir-statuses`;
-  private propertyDetails = `${this.baseUrl}/property-details`;
-  private epfStatus = `${this.baseUrl}/epf-statuses`;
-  private pensionApplication = `${this.baseUrl}/pension-applications`;
-  private occupancyCertificate = `${this.baseUrl}/occupancy-certificates`;
-  private collectorOffice = `${this.baseUrl}/collector-offices`;
-  private revenueOffices = `${this.baseUrl}/revenue-offices`;
-  private principalSecretary = `${this.baseUrl}/principal-secretary-to-govts`;
-  private mpFundsUtilization = `${this.baseUrl}/mp-funds-utilizations`;
-  private mlaFundUtilization = `${this.baseUrl}/mla-fund-utilizations`;
-  private gramPanchayat = `${this.baseUrl}/gram-panchayats`;
-  private fundsUtilization = `${this.baseUrl}/funds-utilizations`;
-  private tenderDetails = `${this.baseUrl}/tender-details`;
-  private roadWork = `${this.baseUrl}/road-works`;
-  private governmentHostels = `${this.baseUrl}/government-hostels`;
-  private governmentHospitals = `${this.baseUrl}/government-hospitals`;
-  private governmentSchools = `${this.baseUrl}/government-schools`;
-  private govtSchemes = `${this.baseUrl}/govt-schemes`;
-  private nageraFunds = `${this.baseUrl}/nare-ga-funds`;
-  private banks = `${this.baseUrl}/banks`;
-  private municipalOffices = `${this.baseUrl}/municipal-offices`;
-  private gramPanchayatOffices = `${this.baseUrl}/gram-panchayat-offices`;
-  private stateGovernmentOffices = `${this.baseUrl}/state-government-offices`;
-  private centralGovernmentOffices = `${this.baseUrl}/central-government-offices`;
-  private rtaOffices = `${this.baseUrl}/rta-offices`;
-  private policeStations = `${this.baseUrl}/police-stations`;
-  private serviceMatters = `${this.baseUrl}/service-matters`;
-  private electricityOffices = `${this.baseUrl}/electricity-offices`;
+  private passportDelay = `${environment.baseUrl}/passport-delays`;
+  private itReturns = `${environment.baseUrl}/income-tax-refunds`;
+  private marksheetVerification = `${environment.baseUrl}/marksheet-verifications`;
+  private answerCopy = `${environment.baseUrl}/answer-copies`;
+  private firStatus = `${environment.baseUrl}/fir-statuses`;
+  private propertyDetails = `${environment.baseUrl}/property-details`;
+  private epfStatus = `${environment.baseUrl}/epf-statuses`;
+  private pensionApplication = `${environment.baseUrl}/pension-applications`;
+  private occupancyCertificate = `${environment.baseUrl}/occupancy-certificates`;
+  private collectorOffice = `${environment.baseUrl}/collector-offices`;
+  private revenueOffices = `${environment.baseUrl}/revenue-offices`;
+  private principalSecretary = `${environment.baseUrl}/principal-secretary-to-govts`;
+  private mpFundsUtilization = `${environment.baseUrl}/mp-funds-utilizations`;
+  private mlaFundUtilization = `${environment.baseUrl}/mla-fund-utilizations`;
+  private gramPanchayat = `${environment.baseUrl}/gram-panchayats`;
+  private fundsUtilization = `${environment.baseUrl}/funds-utilizations`;
+  private tenderDetails = `${environment.baseUrl}/tender-details`;
+  private roadWork = `${environment.baseUrl}/road-works`;
+  private governmentHostels = `${environment.baseUrl}/government-hostels`;
+  private governmentHospitals = `${environment.baseUrl}/government-hospitals`;
+  private governmentSchools = `${environment.baseUrl}/government-schools`;
+  private govtSchemes = `${environment.baseUrl}/govt-schemes`;
+  private nageraFunds = `${environment.baseUrl}/nare-ga-funds`;
+  private banks = `${environment.baseUrl}/banks`;
+  private municipalOffices = `${environment.baseUrl}/municipal-offices`;
+  private gramPanchayatOffices = `${environment.baseUrl}/gram-panchayat-offices`;
+  private stateGovernmentOffices = `${environment.baseUrl}/state-government-offices`;
+  private centralGovernmentOffices = `${environment.baseUrl}/central-government-offices`;
+  private rtaOffices = `${environment.baseUrl}/rta-offices`;
+  private policeStations = `${environment.baseUrl}/police-stations`;
+  private serviceMatters = `${environment.baseUrl}/service-matters`;
+  private electricityOffices = `${environment.baseUrl}/electricity-offices`;
 
-  private otherRti = `${this.baseUrl}/other-rtis`;
+  private otherRti = `${environment.baseUrl}/other-rtis`;
 
-  private generateOrderId = `${this.baseUrl}/order-ids`;
+  private generateOrderId = `${environment.baseUrl}/order-ids`;
   private getOrderId = `https://api.razorpay.com/v1/orders`;
+
+  private userSubject: BehaviorSubject<any>;
+  public user: Observable<any>;
 
   constructor(
     private http: HttpClient,
     private router: Router
   ) {
-    setTimeout(() => {
-      this.userDataAfterLoggedIn.next(this.userDetails);
-    }, 500);
+    
+    // user details after login
+    this.userDataAfterLoggedIn = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('user')));
+    this.userData = this.userDataAfterLoggedIn.asObservable();
+
+    // login status
+    this.loginStatus = new BehaviorSubject<boolean>(false);
+    this.logged = this.loginStatus.asObservable();
+  }
+
+  public get userName() {
+    return this.userDataAfterLoggedIn.value;
+  }
+  public get loginState() {
+    return this.loginStatus.value;
   }
 
   //apply now
@@ -159,7 +177,7 @@ export class ApiService {
     return this.http.put(`${this.personalDetails}/${reqID}`, data)
   }
 
-  createOrderId(data: any){
+  createOrderId(data: any) {
     return this.http.post(this.generateOrderId, data);
   }
 
@@ -184,7 +202,7 @@ export class ApiService {
     return this.http.post(this.documents, data)
   }
 
-  postApplyEmailService(data: any){
+  postApplyEmailService(data: any) {
     return this.http.post(this.applyEmailConfirmation, data)
   }
 
@@ -288,7 +306,7 @@ export class ApiService {
   postPersonalRtiMoreInfoService(service: any, data: any): Observable<any> {
     if (service === 'banks') {
       return this.http.post(this.banks, data);
-    } 
+    }
     else if (service === 'municipal-offices') {
       return this.http.post(this.municipalOffices, data);
     }
@@ -387,7 +405,7 @@ export class ApiService {
       return this.http.get(`${this.governmentSchools}/${id}`)
     } else if (service === 'govt-schemes') {
       return this.http.get(`${this.govtSchemes}/${id}`)
-    } 
+    }
     else if (service === 'narega-funds') {
       return this.http.get(`${this.nageraFunds}/${id}`)
     }
@@ -421,17 +439,6 @@ export class ApiService {
 
   }
 
-  // user details after login
-  userDataAfterLoggedIn = new BehaviorSubject<any>(this.userDetails);
-  userData = this.userDataAfterLoggedIn.asObservable();
-
-
-  //menu items
-  public menuAfterLogin: EventEmitter<any> = new EventEmitter();
-  public menuFlag(value: any) {
-    this.menuAfterLogin.emit(value);
-  }
-
   // user registration
   postUserRegistrationService(data: any): Observable<any> {
     return this.http.post<any>(this.userRegistration, data);
@@ -441,10 +448,11 @@ export class ApiService {
   postUserLoginService(data: any) {
     return this.http.post<any>(this.userLogin, data)
       .pipe(map(user => {
-        console.log(user.user)
         if (user && user.jwt) {
           localStorage.setItem('access-token', user.jwt);
           localStorage.setItem('user', JSON.stringify(user.user));
+          this.userDataAfterLoggedIn.next(user.user);
+          this.loginStatus.next(true);
         }
         return user;
       }));
@@ -455,29 +463,23 @@ export class ApiService {
     return this.http.post<any>(this.forgotPassword, email);
   }
 
-    // reset password
-    postResetPasswordService(password: any): Observable<any> {
-      return this.http.post<any>(this.resetPassword, password);
-    }
+  // reset password
+  postResetPasswordService(password: any): Observable<any> {
+    return this.http.post<any>(this.resetPassword, password);
+  }
 
-    // email confirmation
-    postEmailConfirmationService(email: any): Observable<any> {
-      return this.http.post<any>(this.emailConfirmation, email);
-    }
+  // email confirmation
+  postEmailConfirmationService(email: any): Observable<any> {
+    return this.http.post<any>(this.emailConfirmation, email);
+  }
 
   // user logout
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('user');
+    this.userDataAfterLoggedIn.next(null);
     localStorage.removeItem('access-token');
     // this.router.navigate(['login']);
-  }
-
-  administratorLogout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('user');
-    localStorage.removeItem('access-token');
-    // this.router.navigate(['administrator/login']);
   }
 
 }

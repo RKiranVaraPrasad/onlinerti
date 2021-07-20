@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   formData: any;
   error: any;
+  message: string;
 
   constructor(
     private fb: FormBuilder,
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.apiService.administratorLogout();
+    this.isLoggedUser();
     // get return url from route parameters or default to '/my-rti'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/administrator/applications';
   }
@@ -45,12 +46,12 @@ export class LoginComponent implements OnInit {
     this.apiService.postUserLoginService(data)
       .subscribe(
         data => {
-          if(data.user.role.type === 'admin'){
-            this.router.navigateByUrl(this.returnUrl);
-            this.apiService.menuFlag(true);
+          const userRole = JSON.parse(localStorage.getItem('user'))
+          if(userRole.role.type != 'admin'){
+            this.message = "User does not exist";
           }
           else{
-            this.apiService.administratorLogout();
+            this.router.navigateByUrl(this.returnUrl);
           }
           //this.toastr.success('Login Successful');
         },
@@ -60,6 +61,14 @@ export class LoginComponent implements OnInit {
         }
       )
 
+  }
+
+  isLoggedUser(){
+    this.apiService.userDataAfterLoggedIn.subscribe((user)=>{
+        if(user){
+          this.router.navigate(['/']);
+        }
+    })
   }
 
 }

@@ -31,7 +31,9 @@ export class HomeComponent implements OnInit {
     // )
     this.apiService.getServicesService()
       .subscribe(
-        data => console.log(data)
+        data => {
+          // console.log(data)
+        }
       )
   }
   onLogin() {

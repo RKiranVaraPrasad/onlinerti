@@ -27,7 +27,7 @@
                         <tbody>
                             <tr *ngFor="let data of applyData; let i = index">
                                 <td style="text-align: center;">{{i+1}}</td>
-                                <td>{{data.serviceType}}</td>
+                                <td>{{data.serviceType | splitHyphen }}</td>
                                 <td>{{data.applicationId}}</td>
                                 <td>{{data.published_at | date }}</td>
                                 <!-- <td>{{data.updatedAt | date}}</td> -->
@@ -52,17 +52,19 @@
     </div>
     <div class="modal-body" *ngIf="editData">
         <form class="rit-details-form" [formGroup]="editApplyStatus">
-            <div class="row">
-                <div class="col-12">
+            <div class="row justify-content-center">
+                <div class="col-auto">
                     <mat-form-field appearance="fill">
                         <mat-label>Update Status</mat-label>
                         <mat-select (selectionChange)="onChangeSelect($event)" formControlName="status">
                             <mat-option value="pending">Pending</mat-option>
-                            <mat-option value="pending">In Review</mat-option>
-                            <mat-option value="pending">In Progress</mat-option>
-                            <mat-option value="pending">Closed</mat-option>
+                            <mat-option value="In Review">In Review</mat-option>
+                            <mat-option value="In Progress">In Progress</mat-option>
+                            <mat-option value="Closed">Closed</mat-option>
                         </mat-select>
                     </mat-form-field>
+                    <button mat-flat-button color="primary" matStepperNext (click)="onChangeStatus()"
+                                            [disabled]="!status"  class="ml-5">Save</button>
                 </div>
             </div>
         </form>

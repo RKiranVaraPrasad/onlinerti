@@ -89,13 +89,9 @@ export class ApplyComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.route.url.subscribe(url => {
       this.selectedValue = this.router.url.split('/').pop();
-      //console.log("IN ROUTE",this.router.url , this.selectedValue);
       if (this.router.url.includes('/apply/personal')) {
-        // console.log(this.router.url)
         this.categoryChange(1, 'personal');
         return;
-        // this.onChangeService()
-        // console.log(this.selectedValue)
       }
       if (this.router.url.includes('/apply/social')) {
         this.categoryChange(2, 'social');

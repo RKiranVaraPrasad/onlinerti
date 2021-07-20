@@ -10,6 +10,8 @@ import { ApiService } from 'src/app/shared/services/api.service';
 export class NavbarComponent implements OnInit, AfterContentInit {
   logged: boolean;
   userName: string;
+  adminLogged: boolean;
+  userData = this.apiService.userName;
 
   constructor(
     private apiService: ApiService,
@@ -17,7 +19,6 @@ export class NavbarComponent implements OnInit, AfterContentInit {
   ) {
     translate.addLangs(["English"]); //, "Telugu"
     translate.setDefaultLang('English');
-
     let browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/English|Telugu/) ? browserLang : 'English');
   }
@@ -30,45 +31,50 @@ export class NavbarComponent implements OnInit, AfterContentInit {
   }
 
   ngOnInit(): void {
-    if(this.apiService.logged){
-      this.logged = true;
+    this.apiService.userDataAfterLoggedIn.subscribe((user) => {
+      this.userData = user;
+    })
+    if (this.userData) {
+      if (Array.isArray(this.userData)) {
+        this.userName = this.userData[0].username;
+      } else if (typeof this.userData === 'object') {
+        this.userName = this.userData.username;
+      }
     }
-    this.apiService.menuAfterLogin.subscribe(
-      value => { 
-        this.logged = value;
-        if (localStorage.getItem('user') != null) {
-          const userData: any = JSON.parse(localStorage.getItem('user'))
-          // console.log(typeof userData)
-          if (Array.isArray(userData)) {
-            this.userName = userData[0].username;
-          } else if (typeof userData === 'object') {
-            this.userName = userData.username;
-            // console.log(this.userName)
+    if (this.userData) {
+      this.apiService.logged.subscribe(
+        status => {
+          if (status === true) {
+            this.apiService.userData.subscribe(
+              data => {
+                console.log(data)
+                if (data) {
+                  if (data.user.role.type === 'admin') {
+                    this.adminLogged = true;
+                  }
+                  if (data.user.role.type === 'authenticated') {
+                    this.adminLogged = false;
+                  }
+                }
+              })
           }
         }
-        // console.log(this.userName)
-      }
-    )
+      )
+    }
+
   }
 
-  ngAfterContentInit(){
-    if (this.apiService.logged) {
-      this.logged = true;
-      if (localStorage.getItem('user') != null) {
-        const userData: any = JSON.parse(localStorage.getItem('user'))
-        // console.log(typeof userData)
-        if (Array.isArray(userData)) {
-          this.userName = userData[0].username;
-        } else if (typeof userData === 'object') {
-          this.userName = userData.username;
-          // console.log(this.userName)
-        }
+  ngAfterContentInit() {
+    if (this.userData) {
+      if (Array.isArray(this.userData)) {
+        this.userName = this.userData[0].username;
+      } else if (typeof this.userData === 'object') {
+        this.userName = this.userData.username;
       }
     }
   }
 
   logout() {
     this.apiService.logout();
-    this.apiService.menuFlag(false);
   }
 }

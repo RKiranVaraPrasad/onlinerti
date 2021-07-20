@@ -30,7 +30,6 @@ export class ApplicationsComponent implements OnInit {
     })
   }
   editStatus(id, template: TemplateRef<any>){
-    this.modalRef = this.modalService.show(template);
     this.apiService.getAppliesService(id)
     .subscribe(
       data => {
@@ -38,6 +37,13 @@ export class ApplicationsComponent implements OnInit {
         console.log(this.editData)
       }
     )
+    this.modalRef = this.modalService.show(template);
+  }
+  onChangeSelect(event){
+    console.log(event.value)
+  }
+  onChangeStatus(){
+    const fd = FormData;
   }
   ngOnInit(): void {
     const userData = JSON.parse(localStorage.getItem('user'))
