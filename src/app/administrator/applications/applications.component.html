@@ -18,6 +18,7 @@
                                 <th style="text-align: center;">S.No</th>
                                 <th>Application</th>
                                 <th>Tracking ID</th>
+                                <th>Order ID</th>
                                 <th>Posted On</th>
                                 <!-- <th>Updated On</th> -->
                                 <th>Status</th>
@@ -29,6 +30,7 @@
                                 <td style="text-align: center;">{{i+1}}</td>
                                 <td>{{data.serviceType | splitHyphen }}</td>
                                 <td>{{data.applicationId}}</td>
+                                <td>{{data.orderId}}</td>
                                 <td>{{data.published_at | date }}</td>
                                 <!-- <td>{{data.updatedAt | date}}</td> -->
                                 <td><span class="status" [ngClass]="className(data.status)">{{data.status}}</span> <img src="../../../assets/icons/edit.png" (click)="editStatus(data.id, template)" alt="Edit" title="Change Status" height="16" style="cursor: pointer; margin-left: 5px;"></td>
