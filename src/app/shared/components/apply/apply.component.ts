@@ -257,20 +257,20 @@ export class ApplyComponent implements OnInit, OnDestroy {
                   this.orderId = order.id;
                   localStorage.setItem('orderId', this.orderId);
                   this.applyFormData.orderId = order.id;
-                  this.applyData.append('data', JSON.stringify(this.applyFormData));
+                  this.applyData.set('data', JSON.stringify(this.applyFormData));
                   this.apiService.postApplyService(this.applyData)
                     .subscribe(
                       (data: any) => {
                         if (data) {
                           // payment gateway
                           const razorpayOptions = {
-                            "key": "rzp_test_wqn0qSBX1OF4rG",
+                            "key": "rzp_live_ZkQ2Rv1rj2inKx",
                             "amount": this.finalAmount,
                             "currency": "INR",
                             "name": "Online RTI",
                             "description": "Test Transaction",
-                            "image": "http://172.105.60.86/assets/images/onlineRTI.png",
-                            "order_id": this.orderId,
+                            "image": "http://onlinerti.co/assets/images/onlineRTI.png",
+                            "order_id": localStorage.getItem('orderId'),
                             "handler": function (response) {
                               // alert(response.razorpay_payment_id);
                               // alert(response.razorpay_order_id);
