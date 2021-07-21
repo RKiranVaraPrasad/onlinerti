@@ -1,7 +1,7 @@
 <form class="rit-details-form" [formGroup]="rtiDetailsForm">
     <div class="row">
         <div class="col-12">
-            <label for="">Tell us
+            <!-- <label for="">Tell us
                 what information do you want. Also tell us the complete address
                 like office’s name, City/Town/Village/Tehsil & District and state
                 of the office to which your RTI should send. Don’t worry if you do
@@ -9,16 +9,32 @@
                 have and what information you need, then our Tele Caller will
                 contact you and get required details from you and finally our
                 experts will draft your RTI application perfectly and send it to the
-                concerned office</label>
+                concerned office</label> -->
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <mat-form-field class="example-full-width">
+            <div class="card px-4 pt-3 pb-4 mb-3 border-0" style="background: rgba(232,232,232,.85);">
+                <label for="">Tell us what information do you want. Also tell
+                    us the complete address like office’s name,
+                    City/Town/Village/Tehsil & District and state of the office to
+                    which your RTI should send. Don’t worry if you do not provide us
+                    with complete details, just tell us what details you have and what
+                    information you need, then our Tele Caller will contact you and get
+                    required details from you and finally our experts will draft your RTI
+                    application perfectly and send it to the concerned office.</label>
+                    <textarea name="" class="border p-3" style="resize: none;" id="" cols="30" rows="10" formControlName="moreInfo" required placeholder="Please write your RTI Details..."></textarea>
+                <!-- <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>More Information</mat-label>
+                    <textarea matInput formControlName="moreInfo"
+                    required></textarea>
+                </mat-form-field> -->
+            </div>
+            <!-- <mat-form-field class="example-full-width">
                 <mat-label>More Information</mat-label>
                 <textarea matInput style="resize: none;" formControlName="moreInfo"
                 required></textarea>
-            </mat-form-field>
+            </mat-form-field> -->
         </div>
     </div>
 </form>
