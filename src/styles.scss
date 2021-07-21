@@ -82,10 +82,12 @@ section {
         color: #095cf2;
     }
 }
-.link-text{
+
+.link-text {
     cursor: pointer;
     color: #095cf2;
 }
+
 .service-opt {
     position: relative;
     left: 50%;
@@ -176,62 +178,73 @@ section {
         }
     }
 }
-.cdk-overlay-container{
+
+.cdk-overlay-container {
     z-index: 1099;
 }
+
 .mat-horizontal-content-container h2 {
     text-transform: uppercase;
     border-bottom: 3px solid;
 }
-.basic{
-    tr{
-        td{
-            &:nth-child(2){
+
+.basic {
+    tr {
+        td {
+            &:nth-child(2) {
                 background-color: #095cf2;
                 color: white !important;
             }
         }
     }
 }
-.premium{
-    tr{
-        td{
-            &:nth-child(4){
+
+.premium {
+    tr {
+        td {
+            &:nth-child(4) {
                 background-color: #095cf2;
                 color: white !important;
             }
         }
     }
 }
-.standard{
-    tr{
-        td{
-            &:nth-child(3){
+
+.standard {
+    tr {
+        td {
+            &:nth-child(3) {
+
                 .mat-radio-outer-circle,
-                .mat-radio-inner-circle{
+                .mat-radio-inner-circle {
                     background-color: white !important;
                 }
+
                 background-color: #095cf2;
                 color: white !important;
             }
         }
     }
 }
- .radio-btn{
-    .mat-radio-container{
+
+.radio-btn {
+    .mat-radio-container {
         display: block !important;
     }
-    .mat-radio-button{
+
+    .mat-radio-button {
         display: table;
         margin: 0 auto;
     }
- }
+}
+
 .choose-service {
     .mat-radio-button {
         margin-bottom: 25px;
-        &.active{
+
+        &.active {
             .mat-radio-label {
-                background-color: rgba(9,92,242,.28);
+                background-color: rgba(9, 92, 242, .28);
             }
         }
     }
@@ -241,8 +254,9 @@ section {
         text-align: center;
         border-radius: 5px;
         height: 150px;
-        &:hover{
-            background-color: rgba(9,92,242,.28);
+
+        &:hover {
+            background-color: rgba(9, 92, 242, .28);
         }
     }
 
@@ -322,14 +336,17 @@ section {
 .mat-radio-button~.mat-radio-button {
     // margin-left: 50px;
 }
-.select-field{
-    .mat-form-field{
+
+.select-field {
+    .mat-form-field {
         width: 100%;
     }
-    .mat-form-field-flex{
+
+    .mat-form-field-flex {
         padding: 0 !important;
     }
 }
+
 .mat-radio-container {
     display: none !important;
 }
@@ -381,12 +398,15 @@ section {
 .mat-step-label {
     font-size: 18px;
 }
-.mat-form-field-appearance-fill .mat-form-field-flex{
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
     background-color: transparent !important
 }
-.mat-form-field-appearance-fill .mat-form-field-flex{
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
     padding: 0 !important;
 }
+
 .mat-step-label-selected {
     font-size: 18px;
     font-weight: 600;
@@ -455,6 +475,32 @@ section {
         }
     }
 }
+
+.my-rti {
+    .status {
+        // font-weight: 500;
+        background-color: #d7d7d7;
+        padding: 2px 6px;
+        min-width: 110px;
+        display: inline-block;
+        text-align: center;
+
+        &.in-review {
+            background-color: #ffc107;
+        }
+
+        &.in-progress {
+            background-color: green;
+            color: white;
+        }
+
+        &.closed {
+            background-color: red;
+            color: white;
+        }
+    }
+}
+
 @media (max-width: 576px) {
     .carousel-inner {
         min-height: 95px;

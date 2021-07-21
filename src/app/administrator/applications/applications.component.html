@@ -31,7 +31,7 @@
                                 <td>{{data.applicationId}}</td>
                                 <td>{{data.published_at | date }}</td>
                                 <!-- <td>{{data.updatedAt | date}}</td> -->
-                                <td>{{data.status}} <img src="../../../assets/icons/edit.png" (click)="editStatus(data.id, template)" alt="Edit" title="Change Status" height="16" style="cursor: pointer; margin-left: 5px;"></td>
+                                <td><span class="status" [ngClass]="className(data.status)">{{data.status}}</span> <img src="../../../assets/icons/edit.png" (click)="editStatus(data.id, template)" alt="Edit" title="Change Status" height="16" style="cursor: pointer; margin-left: 5px;"></td>
                                 <td>
                                     <a mat-button routerLink="../details/{{data.serviceType}}/{{data.id}}">Details</a>
                                 </td>

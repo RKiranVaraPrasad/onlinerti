@@ -46,6 +46,21 @@ export class ApplicationsComponent implements OnInit {
       )
     this.modalRef = this.modalService.show(template, this.config);
   }
+  className(value) {
+    switch (value) {
+      case "In Review":
+        return "in-review";
+        break;
+      case "In Progress":
+        return "in-progress";
+        break;
+      case "Closed":
+        return "closed";
+        break;
+      default:
+        return "pending";
+    }
+  }
   onChangeSelect(event) {
     console.log(event.value)
     this.statusUpdated = event.value;
@@ -58,7 +73,7 @@ export class ApplicationsComponent implements OnInit {
     this.applyFormData.serviceType = this.editData.serviceType;
     this.applyFormData.status = this.statusUpdated;
     this.applyFormData.selectedPlan = this.editData.selectedPlan;
-    this.applicationData.append('data', JSON.stringify(this.applyFormData));
+    this.applicationData.set('data', JSON.stringify(this.applyFormData));
     this.apiService.putApplyService(this.editData.id, this.applicationData)
       .subscribe(
         data => {

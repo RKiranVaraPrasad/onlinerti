@@ -31,7 +31,7 @@
                                 <td>{{data.applicationId}}</td>
                                 <td>{{data.published_at | date }}</td>
                                 <!-- <td>{{data.updatedAt | date}}</td> -->
-                                <td>{{data.status}}</td>
+                                <td><span class="status" [ngClass]="className(data.status)">{{data.status}}</span></td>
                                 <td>
                                     <a mat-button routerLink="../details/{{data.serviceType}}/{{data.id}}">Details</a>
                                 </td>

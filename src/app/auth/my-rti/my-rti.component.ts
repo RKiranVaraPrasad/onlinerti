@@ -18,6 +18,21 @@ export class MyRtiComponent implements OnInit {
 
   }
 
+  className(value) {
+    switch (value) {
+      case "In Review":
+        return "in-review";
+        break;
+      case "In Progress":
+        return "in-progress";
+        break;
+      case "Closed":
+        return "closed";
+        break;
+      default:
+        return "pending";
+    }
+  }
   ngOnInit(): void {
     const userData = JSON.parse(localStorage.getItem('user'))
     this.username = userData.username;
