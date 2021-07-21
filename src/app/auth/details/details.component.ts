@@ -65,7 +65,7 @@ export class DetailsComponent implements OnInit {
     this.applyFormData.serviceType = this.singleRecord.serviceType;
     this.applyFormData.status = this.singleRecord.status;
     this.applyFormData.selectedPlan = this.singleRecord.selectedPlan;
-    this.applyData.append('data', JSON.stringify(this.applyFormData));
+    this.applyData.set('data', JSON.stringify(this.applyFormData));
     this.apiService.putApplyService(this.applyId, this.applyData)
     .subscribe(
       data => {
@@ -74,6 +74,7 @@ export class DetailsComponent implements OnInit {
         .subscribe(
           (data: any) => {
             this.documents = data.documents;
+            this.files = '';
           })
       }
     )
