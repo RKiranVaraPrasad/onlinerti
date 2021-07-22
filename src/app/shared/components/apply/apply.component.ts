@@ -269,7 +269,7 @@ export class ApplyComponent implements OnInit, OnDestroy {
                             "currency": "INR",
                             "name": "Online RTI",
                             "description": "Test Transaction",
-                            "image": "http://onlinerti.co/assets/images/onlineRTI.png",
+                            "image": "https://onlinerti.co/assets/images/onlineRTI.png",
                             "order_id": localStorage.getItem('orderId'),
                             "handler": function (response) {
                               // alert(response.razorpay_payment_id);
