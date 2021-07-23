@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://onlinerti.co:1337'
+  baseUrl: 'http://onlinerti.co:1337'
 };
 
 /*
