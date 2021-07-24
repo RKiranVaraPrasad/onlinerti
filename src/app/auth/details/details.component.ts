@@ -85,12 +85,12 @@ export class DetailsComponent implements OnInit {
     this.apiService.getAppliesService(id)
       .subscribe(
         (data: any) => {
-          console.log(data.documents)
+          // console.log(data.documents)
           this.singleRecord = data;
           this.applyId = data.id
           this.documents = data.documents;
           let rtiId = data.rtiDetailsId;
-          console.log(rtiId)
+          // console.log(rtiId)
           this.apiService.getRtiDetailsService(service, rtiId)
             .subscribe(
               data => {
@@ -164,7 +164,7 @@ export class DetailsComponent implements OnInit {
                   this.naregaFunds = data
                 }
                 this.rtiDetails = data;
-                console.log(data)
+                // console.log(data)
               }
             )
         }

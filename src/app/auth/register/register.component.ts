@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
       data => {
         this.toastr.success('Your details has been submitted!');
         this.router.navigate(['/email-confirmation']);
-        console.log(data)
+        // console.log(data)
         localStorage.setItem('confirmEmail', this.email);
       },
       err => {

@@ -39,7 +39,7 @@ export class ResetPasswordComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.code = params['code'];
     });
-    console.log(this.code)
+    // console.log(this.code)
   }
 
   onSubmit() {
@@ -52,11 +52,11 @@ export class ResetPasswordComponent implements OnInit {
         data => {
           this.toastr.success('Password reset successfully, Login with new password');
           this.router.navigate(['/login']);
-          console.log(data)
+          // console.log(data)
         },
         err => {
           this.toastr.error('An error occurred');
-          console.log(err)
+          // console.log(err)
         }
       )
   }

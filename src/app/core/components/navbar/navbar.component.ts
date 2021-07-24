@@ -47,7 +47,7 @@ export class NavbarComponent implements OnInit, AfterContentInit {
           if (status === true) {
             this.apiService.userData.subscribe(
               data => {
-                console.log(data)
+                // console.log(data)
                 if (data) {
                   if (data.user.role.type === 'admin') {
                     this.adminLogged = true;

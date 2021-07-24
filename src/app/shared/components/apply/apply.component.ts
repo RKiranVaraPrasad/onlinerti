@@ -107,7 +107,7 @@ export class ApplyComponent implements OnInit, OnDestroy {
     this.apiService.getPersonalServicesService()
     .subscribe(
       data => {
-        console.log(data)
+        // console.log(data)
         this.personalServices = data
       }
     )
@@ -137,7 +137,7 @@ export class ApplyComponent implements OnInit, OnDestroy {
 
   }
   categoryChange(catId, url) {
-    console.log(catId,url);
+    // console.log(catId,url);
     this.childrenUrl = url;
     this.displayCategoryItems = catId;  
   }

@@ -35,16 +35,16 @@ export class TrackComponent implements OnInit {
     this.apiService.getPersonalDetailByEmailService(email)
       .subscribe(
         (resultID: any) => {
-          console.log(resultID)
+          // console.log(resultID)
           this.apiService.getMyRtiService(resultID[0].id)
             .subscribe(
               (data: any) => {
-                console.log(data)
+                // console.log(data)
                 data.forEach(element => {
                   if (element.applicationId === application) {
                     this.applicationDetails = element;
                     this.router.navigate(['../details', element.serviceType, element.id])
-                    console.log(element)
+                    // console.log(element)
                   }
                 });
 

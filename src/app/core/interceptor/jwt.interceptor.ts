@@ -24,7 +24,7 @@ export class JwtInterceptor implements HttpInterceptor {
           'Authorization': `Bearer ${jwt}`
         })
       })
-    console.log('Intercepted HTTP call', authReq);
+    // console.log('Intercepted HTTP call', authReq);
     return next.handle(authReq);
   }
 }

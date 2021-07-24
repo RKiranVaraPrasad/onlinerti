@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
       )
   }
   onLogin() {
-    console.log(this.loginForm.value)
+    // console.log(this.loginForm.value)
   }
 
   // apply now

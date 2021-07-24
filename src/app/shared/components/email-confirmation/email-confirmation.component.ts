@@ -31,7 +31,7 @@ export class EmailConfirmationComponent implements OnInit {
         data => {
           this.toastr.success('Email sent successfullly');
           // this.router.navigate(['/login']);
-          console.log(data)
+          // console.log(data)
         },
         err => {
           this.toastr.error('An error occurred');

@@ -103,10 +103,10 @@ export class MarksheetVerificationComponent implements OnInit, OnDestroy {
           data.collegeUniversityBoardAddress = this.rtiDetailsForm.get('collegeUniversityBoardAddress').value;
           data.moreInfo = this.rtiDetailsForm.get('moreInfo').value;
 
-        console.log(data)
+        // console.log(data)
         this.currentService = currentservice
         if (this.selectedRoute === this.currentService) {
-          console.log(this.currentService)
+          // console.log(this.currentService)
           this.apiService.sendApplyRtiData(data);
         }
       }
@@ -129,11 +129,11 @@ export class MarksheetVerificationComponent implements OnInit, OnDestroy {
               (resultID: any) => {
                 console.log(resultID)
                 this.apiService.sendRtiId(resultID.id);
-                console.log(resultID.id)
+                // console.log(resultID.id)
               }
             )
         }
-        console.log(rtiData)
+        // console.log(rtiData)
       }
     )
   }

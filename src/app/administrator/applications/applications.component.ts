@@ -41,7 +41,7 @@ export class ApplicationsComponent implements OnInit {
       .subscribe(
         data => {
           this.editData = data;
-          console.log(this.editData)
+          // console.log(this.editData)
         }
       )
     this.modalRef = this.modalService.show(template, this.config);
@@ -62,7 +62,7 @@ export class ApplicationsComponent implements OnInit {
     }
   }
   onChangeSelect(event) {
-    console.log(event.value)
+    // console.log(event.value)
     this.statusUpdated = event.value;
   }
   onChangeStatus() {
@@ -77,7 +77,7 @@ export class ApplicationsComponent implements OnInit {
     this.apiService.putApplyService(this.editData.id, this.applicationData)
       .subscribe(
         data => {
-          console.log('modified data ' + data)
+          // console.log('modified data ' + data)
           this.modalService.hide();
           this.apiService.getApplyService()
             .subscribe(

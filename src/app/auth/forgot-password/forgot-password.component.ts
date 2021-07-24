@@ -36,7 +36,7 @@ export class ForgotPasswordComponent implements OnInit {
         data => {
           this.toastr.success('Your user received an email');
           this.router.navigate(['/login']);
-          console.log(data)
+          // console.log(data)
         },
         err => {
           this.toastr.error('An error occurred');
