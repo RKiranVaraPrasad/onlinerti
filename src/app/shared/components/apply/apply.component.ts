@@ -183,7 +183,7 @@ export class ApplyComponent implements OnInit, OnDestroy {
 
     // console.log(this.selectedValue);
     if (this.selectedPlan === "Basic ₹199") {
-      this.finalAmount = 19900;
+      this.finalAmount = 23952;
     } else if (this.selectedPlan === "Standard ₹299") {
       this.finalAmount = 29900;
     } else if (this.selectedPlan === "Premium ₹499") {

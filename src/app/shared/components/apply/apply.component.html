@@ -366,7 +366,7 @@
                                                                 <tr>
                                                                     <td>Choose your plan</td>
                                                                     <td class="radio-btn">
-                                                                        <mat-radio-button value="Basic &#8377;199">
+                                                                        <mat-radio-button value="&#8377;239.52">
                                                                             &#8377;199
                                                                         </mat-radio-button>
                                                                     </td>
@@ -386,14 +386,43 @@
                                                     </div>
                                                 </mat-radio-group>
                                             </div>
+                                            <div class="col-4">
+                                                <table class="table table-bordered" *ngIf="selectedPlan">
+                                                    <thead>
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <h3>Payment Details</h3>
+                                                            </td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Plan</td>
+                                                            <td class="text-right">&#8377;199</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Service Charge</td>
+                                                            <td class="text-right">&#8377;3.98</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>GST</td>
+                                                            <td class="text-right">&#8377;36.54</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Total</td>
+                                                            <td class="text-right">{{selectedPlan}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
-                                        <div class="row">
+                                        <!-- <div class="row">
                                             <div class="col-12 text-right">
                                                 <div class="selected-plan" *ngIf="selectedPlan">
                                                     <strong>Selected Plan: </strong> {{selectedPlan}}
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
