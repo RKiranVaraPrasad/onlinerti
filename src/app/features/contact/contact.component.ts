@@ -48,7 +48,7 @@ export class ContactComponent implements OnInit {
     data.city = this.queryDetailsForm.get('city').value;
     data.pincode = this.queryDetailsForm.get('pincode').value;
     data.address = this.queryDetailsForm.get('address').value;
-    this.http.post('https://onlinerti.co:1337/contact-uses', data)
+    this.http.post('https://app.onlinerti.co/contact-uses', data)
     .subscribe(
       data => {
         this.success = "We have received your details. We will get back to you soon";
