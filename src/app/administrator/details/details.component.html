@@ -11,43 +11,49 @@
                 <img src="assets/svg/left-arrow.svg" (click)="back()" width="52" alt="" style="cursor: pointer;">
             </div>
         </div>
-        <!-- <div class="row">
+        <div class="row my-3">
             <div class="col-12">
-                <div class="personal-details">
-                    <h3>Personal Details</h3>
+                <div class="personal-details" *ngIf="personalDetails">
+                    <h3 class="text-uppercase pb-3" style="color: #095cf2">Personal Details</h3>
                     <div class="flex-box">
                         <div class="flex-col">
-                            <div class="field-name">Full Name</div>
-                            <div class="field-desc">{{fullname}}</div>
+                            <h3>Full Name</h3>
+                            <span>{{personalDetails.fullname}}</span>
                         </div>
                     <div class="flex-col">
-                        <div class="field-name">Mobile</div>
-                        <div class="field-desc">{{mobile}}</div>
+                        <h3>Mobile</h3>
+                        <span>{{personalDetails.mobile}}</span>
                     </div>
                     <div class="flex-col">
-                        <div class="field-name">Email</div>
-                        <div class="field-desc">{{email}}</div>
+                        <h3>Email</h3>
+                        <span>{{personalDetails.email}}</span>
                     </div>
                     <div class="flex-col">
-                        <div class="field-name">State</div>
-                        <div class="field-desc">{{state}}</div>
+                        <h3>State</h3>
+                        <span>{{personalDetails.state}}</span>
                     </div>
                     <div class="flex-col">
-                        <div class="field-name">City</div>
-                        <div class="field-desc">{{city}}</div>
+                        <h3>City</h3>
+                        <span>{{personalDetails.city}}</span>
                     </div>
                     <div class="flex-col">
-                        <div class="field-name">Pincode</div>
-                        <div class="field-desc">{{pincode}}</div>
+                        <h3>Pincode</h3>
+                        <span>{{personalDetails.pincode}}</span>
                     </div>
                     <div class="flex-col8">
-                        <div class="field-name">Address</div>
-                        <div class="field-desc">{{address}}</div>
+                        <h3>Address</h3>
+                        <span>{{personalDetails.address}}</span>
                     </div>
                 </div>
                 </div>
             </div>
-        </div> -->
+        </div>
+        <hr>
+        <div class="row my-3">
+            <div class="col-12">
+                <h3 class="text-uppercase" style="color: #095cf2">RTI Details</h3>
+            </div>
+        </div>
         <div class="row" *ngIf="passportDelay">
             <div class="col-12">
                 <div class="flex-box">
@@ -693,7 +699,7 @@
                 </div>
             </div> -->
             <div class="col-12 pt-5">
-                <h3>Uploaded Documents</h3>
+                <h3 style="color: #095cf2">Uploaded Documents</h3>
                 <div class="row mt-3">
                     <div class="col-md-6 col-12">
                         <ul class="uploaded-docs" *ngIf="documents?.length > 0">

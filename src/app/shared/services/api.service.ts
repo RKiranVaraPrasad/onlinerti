@@ -153,6 +153,10 @@ export class ApiService {
     })
   }
 
+  getPersonalDetailByIdService(id: any) {
+    return this.http.get(`${this.personalDetails}/${id}`)
+  }
+
   getStatesService() {
     return this.http.get(this.states)
   }

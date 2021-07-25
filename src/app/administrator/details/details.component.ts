@@ -41,6 +41,7 @@ export class DetailsComponent implements OnInit {
   governmentHospitals: Object;
   governmentSchools: Object;
   naregaFunds: Object;
+  personalDetails: any;
   constructor(
     private location: Location,
     private apiService: ApiService,
@@ -79,6 +80,7 @@ export class DetailsComponent implements OnInit {
     )
   }
   ngOnInit(): void {
+
     let service = this.route.snapshot.paramMap.get('service')
     let id = this.route.snapshot.paramMap.get('id')
     this.apiService.getAppliesService(id)
@@ -89,7 +91,14 @@ export class DetailsComponent implements OnInit {
           this.applyId = data.id
           this.documents = data.documents;
           let rtiId = data.rtiDetailsId;
+          const personalId = data.personalDetailsId;
           // console.log(rtiId)
+          this.apiService.getPersonalDetailByIdService(personalId)
+          .subscribe(
+            (data: any) => {
+              this.personalDetails = data;
+            }
+          )
           this.apiService.getRtiDetailsService(service, rtiId)
             .subscribe(
               data => {
