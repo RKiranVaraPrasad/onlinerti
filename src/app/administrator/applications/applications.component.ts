@@ -96,7 +96,7 @@ export class ApplicationsComponent implements OnInit {
     this.apiService.getApplyService()
       .subscribe(
         data => {
-          // console.log(data)
+          console.log(data)
           this.applyData = data;
         }
       );

@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   logged: boolean = localStorage.getItem('access-token') != null;
   @ViewChild(MatAccordion) accordion: MatAccordion;
   loginForm: FormGroup;
+  rtiCount: Object;
   constructor(
     private apiService: ApiService,
     private fb: FormBuilder,
@@ -26,6 +27,12 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.apiService.getApplyCountService()
+    .subscribe(
+      data => {
+        this.rtiCount = data;
+      }
+    )
     // this.apiService.menuAfterLogin.subscribe(
     //   value => {this.logged = value}
     // )

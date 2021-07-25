@@ -32,6 +32,7 @@ export class ApiService {
   private userLogin = `${environment.baseUrl}/auth/local`;
   private personalDetails = `${environment.baseUrl}/personal-details`;
   private apply = `${environment.baseUrl}/applies`;
+  private applyCount = `${environment.baseUrl}/applies/count`;
   private documents = `${environment.baseUrl}/documents`;
   private states = `${environment.baseUrl}/states`;
 
@@ -187,6 +188,10 @@ export class ApiService {
 
   getApplyService() {
     return this.http.get(`${this.apply}?_sort=published_at:DESC`)
+  }
+
+  getApplyCountService() {
+    return this.http.get(`${this.applyCount}`)
   }
 
   putApplyService(id: any, data: any) {
