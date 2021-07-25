@@ -56,14 +56,20 @@
                                 <a class="nav-link" routerLink="contact">{{ 'Menu.Contact' | translate }}</a>
                             </li>
                             <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()" *ngIf="!userData">
+                                <a class="nav-link login-link" routerLink="register">{{ 'Menu.Register' | translate
+                                    }}</a>
+                            </li>
+                            <li class="nav-item" routerLinkActive="active" (click)="ToggleNavBar()" *ngIf="!userData">
                                 <a class="nav-link login-link" routerLink="login">{{ 'Menu.Login' | translate }}</a>
                             </li>
                             <li class="nav-item dropdown" routerLinkActive="active" (click)="ToggleNavBar()"
                                 *ngIf="userData">
-                                <a class="nav-link" id="myAccount" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">{{userName}}</a>
+                                <a class="nav-link dropdown-toggle" id="myAccount" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">Hi {{userData?.username}}</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" routerLink="my-rti">My RTI</a>
+                                    <a class="dropdown-item"
+                                        [routerLink]="userData?.role?.type == 'admin' ? ['administrator/applications'] : ['my-rti']">My
+                                        RTIs</a>
                                     <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
                                 </div>
                             </li>
@@ -100,10 +106,12 @@
 
                                     <li class="nav-item dropdown" routerLinkActive="active" (click)="ToggleNavBar()"
                                         *ngIf="userData">
-                                        <a class="nav-link dropdown-toggle" id="myAccount" data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">Hi {{userData?.username}}</a>
+                                        <a class="nav-link dropdown-toggle" id="myAccount" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">Hi {{userData?.username}}</a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <a class="dropdown-item" [routerLink]="userData?.role?.type == 'admin' ? ['administrator/applications'] : ['my-rti']">My RTIs</a>
+                                            <a class="dropdown-item"
+                                                [routerLink]="userData?.role?.type == 'admin' ? ['administrator/applications'] : ['my-rti']">My
+                                                RTIs</a>
                                             <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
                                         </div>
                                     </li>
