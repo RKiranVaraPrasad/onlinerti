@@ -182,13 +182,13 @@ export class ApplyComponent implements OnInit, OnDestroy {
     this.selectedValue = this.router.url.split('/').pop();
 
     // console.log(this.selectedValue);
-    if (this.selectedPlan === "Basic ₹199") {
-      this.finalAmount = 23952;
-    } else if (this.selectedPlan === "Standard ₹299") {
-      this.finalAmount = 29900;
-    } else if (this.selectedPlan === "Premium ₹499") {
-      this.finalAmount = 49900;
-    }
+    // if (this.selectedPlan === "Basic ₹199") {
+    //   this.finalAmount = 23952;
+    // } else if (this.selectedPlan === "Standard ₹299") {
+    //   this.finalAmount = 29900;
+    // } else if (this.selectedPlan === "Premium ₹499") {
+    //   this.finalAmount = 49900;
+    // }
     
     this.applyFormData.serviceType = this.selectedValue;
     this.applyFormData.status = "Pending";
@@ -246,7 +246,7 @@ export class ApplyComponent implements OnInit, OnDestroy {
             localStorage.setItem('applicationId', this.applicationId);
             // submit two ids - step -03
             this.apiService.createOrderId({
-              amount: this.finalAmount,
+              amount: 23952,
               currency: "INR",
               receipt: "receipt#1"
             }).subscribe(
@@ -265,7 +265,7 @@ export class ApplyComponent implements OnInit, OnDestroy {
                           // payment gateway
                           const razorpayOptions = {
                             "key": "rzp_live_ZkQ2Rv1rj2inKx",
-                            "amount": this.finalAmount,
+                            "amount": 23952,
                             "currency": "INR",
                             "name": "Online RTI",
                             "description": "Test Transaction",
